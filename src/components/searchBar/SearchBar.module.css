@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.divSearch {
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  flex: 1;
+  border-radius: .3rem 0 0 .3rem;
+  background: #EAEAEA;
+  padding: .8rem 1.5rem;
+  font-size: 1.8rem;
+  width: 50rem;
+}
+
+.searchBtn {
+  background: linear-gradient(to right, var(--main-color), var(--second-color));
+  border-radius: 0 .3rem .3rem 0;
+  padding: .85rem 1.5rem;
+  cursor: pointer;
+}
+
+.icon{
+  font-size: 1.8rem;
+}

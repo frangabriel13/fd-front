@@ -23,12 +23,22 @@
 .search {
   grid-column: 2 / 4;
   grid-row: 1 / 2;
-  justify-self: center;
+  /* justify-self: center; */
+  /* justify-self: start; */
 }
 
 .message {
   grid-column: 4 / 5;
   grid-row: 1 / 2;
+  /* background-color: var(--main-color); */
+  background: linear-gradient(to right, var(--main-color), var(--second-color));
+  color: white;
+  padding: .8rem 1.5rem;
+  border-radius: .3rem;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  justify-self: end;
 }
 
 .placeholder {

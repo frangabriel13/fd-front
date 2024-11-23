@@ -1,0 +1,47 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  align-items: center;
+  justify-items: center;
+  background-color: var(--second-bg-color);
+  padding: .5rem 20rem;
+}
+
+.divLogo {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  justify-self: start;
+}
+
+.logo {
+  max-width: 15rem;
+  height: auto;
+  display: block;
+}
+
+.search {
+  grid-column: 2 / 4;
+  grid-row: 1 / 2;
+  justify-self: center;
+}
+
+.message {
+  grid-column: 4 / 5;
+  grid-row: 1 / 2;
+}
+
+.placeholder {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+.navbar {
+  grid-column: 2 / 4;
+  grid-row: 2 / 3;
+}
+
+.login {
+  grid-column: 4 / 5;
+  grid-row: 2 / 3;
+}

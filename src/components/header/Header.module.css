@@ -44,6 +44,10 @@
 .placeholder {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
+  justify-self: start;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
 }
 
 .navbar {
@@ -54,4 +58,13 @@
 .login {
   grid-column: 4 / 5;
   grid-row: 2 / 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.link {
+  color: white;
+  font-size: 1.8rem;
 }

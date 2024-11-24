@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding-top: .5rem;
+  gap: 2rem;
+}
+
+.link {
+  color: white;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.link:hover {
+  color: var(--bg-color);
+}

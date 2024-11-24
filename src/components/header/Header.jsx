@@ -1,6 +1,7 @@
 import s from './Header.module.css';
 import logo from '../../assets/logo.jpg';
 import SearchBar from '../searchBar/SearchBar';
+import Navbar from '../navbar/Navbar';
 
 const Header = () => {
   return (
@@ -13,7 +14,9 @@ const Header = () => {
       </div>
       <div className={s.message}>Ofertas Exclusivas por tiempo limitado</div>
       <div className={s.placeholder}>Placeholder</div>
-      <div className={s.navbar}>Navbar</div>
+      <div className={s.navbar}>
+        <Navbar />
+      </div>
       <div className={s.login}>Ingresa</div>
     </div>
   );

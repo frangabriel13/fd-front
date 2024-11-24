@@ -2,6 +2,8 @@ import s from './Header.module.css';
 import logo from '../../assets/logo.jpg';
 import SearchBar from '../searchBar/SearchBar';
 import Navbar from '../navbar/Navbar';
+import { Link } from 'react-router-dom';
+import { BsCart2 } from "react-icons/bs";
 
 const Header = () => {
   return (
@@ -13,11 +15,18 @@ const Header = () => {
         <SearchBar />
       </div>
       <div className={s.message}>Ofertas Exclusivas por tiempo limitado</div>
-      <div className={s.placeholder}>Placeholder</div>
+      <div className={s.placeholder}>
+        {/* <Link to="/login" className={s.link}>Mi cuenta</Link> */}
+        {/* <Link className={s.link}>Registrarse</Link> */}
+      </div>
       <div className={s.navbar}>
         <Navbar />
       </div>
-      <div className={s.login}>Ingresa</div>
+      <div className={s.login}>
+        <Link to="/login" className={s.link}>Ingresar</Link>
+        <Link className={s.link}>Registrarse</Link>
+        <BsCart2 className={s.link} />
+      </div>
     </div>
   );
 };

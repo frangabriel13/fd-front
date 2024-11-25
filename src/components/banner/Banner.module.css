@@ -1,4 +1,4 @@
-.container {
+/* .container {
   position: relative;
   width: 100%;
   height: 75rem;
@@ -7,10 +7,6 @@
 
 .slide {
   position: absolute;
-  /* top: 0;
-  left: 100%;
-  width: 100%;
-  height: 100%; */
   opacity: 0;
   transition: all 0.5s ease-in-out;
 }
@@ -24,4 +20,70 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+} */
+
+.container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.prevButton, .nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 1rem;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 1.8rem;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.prevButton {
+  left: 1rem;
+}
+
+.nextButton {
+  right: 1rem;
+}
+
+.slide {
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+}
+
+.indicator {
+  color: white;
+  font-size: 5rem;
+  cursor: pointer;
+}
+
+.indicator.active {
+  color: var(--main-color);
 }

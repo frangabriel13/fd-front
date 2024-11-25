@@ -9,6 +9,7 @@ import image5 from '../../assets/banner5.png';
 const Banner = () => {
   const images = [image1, image2, image3, image4, image5];
   const [index, setIndex] = useState(0);
+  const [resetInterval, setResetInterval] = useState(false);
 
   useEffect(() => { 
     const interval = setInterval(() => {
@@ -16,10 +17,22 @@ const Banner = () => {
     }, 4000);
 
     return () => clearInterval(interval);
-  }, [images.length]);
+  }, [images.length, resetInterval]);
+
+  const handlePrev = () => {
+    setIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
+    setResetInterval((prev) => !prev);
+  };
+
+  const handleNext = () => {
+    setIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setResetInterval((prev) => !prev);
+  };
 
   return (
     <div className={s.container}>
+      <button onClick={handlePrev} className={s.prevButton}>&lt;</button>
+      <button onClick={handleNext} className={s.nextButton}>&gt;</button>
       {
         images.map((image, i) => (
           <div key={i} className={`${s.slide} ${i === index ? s.active : ''}`}>
@@ -27,6 +40,11 @@ const Banner = () => {
           </div>
         ))
       }
+      <div className={s.indicators}>
+        {images.map((_, i) => (
+          <span key={i} className={`${s.indicator} ${i === index ? s.active : ''}`}>_</span>
+        ))}
+      </div>
     </div>
   );
 };

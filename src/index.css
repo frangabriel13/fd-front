@@ -83,6 +83,7 @@ button:focus-visible {
 
 :root {
   --bg-color: #e4e4e4;
+  --gray-color: #666;
   --second-bg-color: #021344;
   --dark-color: #0F1422;
   --text-color: black;

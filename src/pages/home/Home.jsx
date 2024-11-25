@@ -1,10 +1,10 @@
-import Header from '../../components/header/Header';
+import Banner from '../../components/banner/Banner';
 import s from './Home.module.css';
 
 const Home = () => {
   return (
     <div className={s.divContainer}>
-      <h1>Éste es el HOME</h1>
+      <Banner />
     </div>
   );
 };

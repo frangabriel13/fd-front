@@ -16,8 +16,6 @@ const Header = () => {
       </div>
       <div className={s.message}>Ofertas Exclusivas por tiempo limitado</div>
       <div className={s.placeholder}>
-        {/* <Link to="/login" className={s.link}>Mi cuenta</Link> */}
-        {/* <Link className={s.link}>Registrarse</Link> */}
       </div>
       <div className={s.navbar}>
         <Navbar />

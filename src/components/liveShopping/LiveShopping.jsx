@@ -15,10 +15,10 @@ const LiveShopping = () => {
   return (
     <div className={s.container}>
       <div className={s.divTitle}>
-        <h2>Live Shopping</h2>
-        <button>Ver más</button>
+        <h2 className={s.title}>Live Shopping</h2>
+        <button className={s.btnMore}>Ver más</button>
       </div>
-      <div>
+      <div className={s.liveManufacturers}>
         {liveManufacturers.map((manufacturer) => (
           <LiveManufacturer key={manufacturer.id} manufacturer={manufacturer} />
         ))}

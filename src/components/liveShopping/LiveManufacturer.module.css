@@ -8,14 +8,15 @@
 .divImage {
   display: flex;
   gap: 1rem;
-  overflow-x: auto;
-  padding-bottom: 1rem;
+  /* overflow-x: auto; */
+  /* padding-bottom: 1rem; */
   scrollbar-width: none;
-  flex-grow: 1;
+  /* flex-grow: 1; */
+  position: relative;
 }
 
 .divImage::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .image {
@@ -27,4 +28,17 @@
 
 .liveImage {
   border: .4rem solid red;
+}
+
+.live {
+  position: absolute;
+  font-size: 1.2rem;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: red;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+  z-index: 10;
 }

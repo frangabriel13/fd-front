@@ -8,6 +8,7 @@
   padding: 2.5rem;
   width: 100%;
   text-align: center;
+  position: relative;
 }
 
 .divTitle {
@@ -38,4 +39,29 @@
 .liveManufacturers {
   display: flex;
   gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.btnPrev, .btnNext {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--main-color);
+  padding: 2rem;
+  font-size: 2.5rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.btnPrev {
+  left: 0;
+}
+
+.btnNext {
+  right: 0;
 }

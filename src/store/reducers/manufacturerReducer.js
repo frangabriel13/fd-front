@@ -2,10 +2,16 @@ const initialState = {
   liveManufacturers: [],
   loading: false,
   error: null,
-}
+};
 
 const manufacturerReducer = (state = initialState, action) => {
   switch (action.type) {
+    case 'GET_LIVE_MANUFACTURERS_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
     case 'GET_LIVE_MANUFACTURERS':
       return {
         ...state,
@@ -13,21 +19,16 @@ const manufacturerReducer = (state = initialState, action) => {
         loading: false,
         error: null,
       };
-    case 'GET_LIVE_MANUFACTURERS_LOADING':
-      return {
-        ...state,
-        loading: true,
-      };
-    case 'GET_LIVE_MANUFACTURERS_ERROR':
+    case 'GET_LIVE_MANUFACTURERS_FAILURE':
       return {
         ...state,
         loading: false,
-        error: action.payload,
+        error: action.error,
       };
     default:
       return state;
   }
-}
+};
 
 
 export default manufacturerReducer;

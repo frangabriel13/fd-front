@@ -8,7 +8,6 @@ const LiveManufacturer = ({ manufacturer }) => {
         <img src={manufacturer.image} alt={manufacturer.name} className={manufacturer.live ? `${s.image} ${s.liveImage}` : s.image} />
         { manufacturer.live && <div className={s.live}>LIVE</div> }
       </div>
-      <button className={s.btnMore}>Ver tienda</button>
     </div>
   )
 }

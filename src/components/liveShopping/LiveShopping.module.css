@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: white;
+  box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
+  border-radius: .3rem;
+  padding: 2rem;
+  width: 100%;
+  text-align: center;
+}
+
+.divTitle {
+  display: flex;
+  gap: 2rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 2.5rem;
+}
+
+.btnMore {
+  /* background-color: #646cff; */
+  background-color: var(--main-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: .3rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: background-color .3s;
+}
+
+.btnMore:hover {
+  background-color: var(--second-color);
+}
+
+.liveManufacturers {
+  display: flex;
+}

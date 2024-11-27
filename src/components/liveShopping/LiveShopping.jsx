@@ -20,7 +20,7 @@ const LiveShopping = () => {
         <button className={s.btnMore}>Ver más</button>
       </div>
       <div className={s.navigation}>
-        <button className={s.navButton}>
+        <button className={s.prevButton}>
           <GrPrevious />
         </button>
         <div className={s.liveManufacturers}>
@@ -28,7 +28,7 @@ const LiveShopping = () => {
             <LiveManufacturer key={`${manufacturer.id}-${index}`} manufacturer={manufacturer} />
           ))}
         </div>
-        <button className={s.navButton}>
+        <button className={s.nextButton}>
           <GrNext />
         </button>
       </div>

@@ -40,6 +40,7 @@
 .navigation {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .navButton {
@@ -57,10 +58,31 @@
   padding-top: 1rem;
 }
 
-/* .liveManufacturers {
-  background-color: aquamarine;
+.prevButton, .nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  padding: 2.5rem;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 2.5rem;
+  border-radius: 50%;
   display: flex;
-  gap: 1rem;
-  justify-content: center;
   align-items: center;
-} */
+  justify-content: center;
+}
+
+.prevButton {
+  left: -3.75rem;
+}
+
+.nextButton {
+  right: -3.75rem;
+}
+
+.prevButton:hover, .nextButton:hover {
+  background-color: var(--second-color);
+}

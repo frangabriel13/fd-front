@@ -1,17 +1,19 @@
+/* El tema del vivo se solucionó bajando el gap a 1 rem y agregando padding-top 1 rem a .liveManufacturers */
+
 .container {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
   background-color: white;
   box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
   border-radius: .3rem;
-  padding: 2.5rem;
+  padding: 2.5rem 0;
   width: 100%;
-  text-align: center;
   position: relative;
 }
 
 .divTitle {
+  padding: 0 2.5rem;
   display: flex;
   gap: 2rem;
   text-align: center;
@@ -22,7 +24,6 @@
 }
 
 .btnMore {
-  /* background-color: #646cff; */
   background-color: var(--main-color);
   color: white;
   padding: 1rem 2rem;
@@ -36,32 +37,30 @@
   background-color: var(--second-color);
 }
 
+.navigation {
+  display: flex;
+  align-items: center;
+}
+
+.navButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
 .liveManufacturers {
+  display: flex;
+  overflow-x: auto;
+  flex-grow: 1;
+  gap: 1rem;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+/* .liveManufacturers {
+  background-color: aquamarine;
   display: flex;
   gap: 1rem;
   justify-content: center;
   align-items: center;
-  position: relative;
-}
-
-.btnPrev, .btnNext {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: var(--main-color);
-  padding: 2rem;
-  font-size: 2.5rem;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.btnPrev {
-  left: 0;
-}
-
-.btnNext {
-  right: 0;
-}
+} */

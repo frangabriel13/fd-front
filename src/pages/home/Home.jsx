@@ -1,6 +1,7 @@
 import Banner from '../../components/banner/Banner';
 import Features from '../../components/features/Features';
 import LiveShopping from '../../components/liveShopping/LiveShopping';
+import ProductRow from '../../components/productRow/ProductRow';
 import s from './Home.module.css';
 
 const Home = () => {
@@ -10,6 +11,7 @@ const Home = () => {
       <div className={s.home}>
         <Features />
         <LiveShopping />
+        <ProductRow />
       </div>
     </div>
   );

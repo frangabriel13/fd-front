@@ -3,7 +3,7 @@ import { productInstance } from "../../utils/axiosConfig";
 export const getProducts = (page = 1, pageSize = 20) => async (dispatch) => {
   dispatch({ type: 'GET_PRODUCTS_REQUEST' });
   try {
-    const response = await productInstance.get('/products', {
+    const response = await productInstance.get('/', {
       params: {
         page,
         pageSize,

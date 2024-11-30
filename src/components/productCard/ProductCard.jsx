@@ -5,7 +5,7 @@ const ProductCard = ({ product }) => {
   return (
     <div className={s.container}>
       <div className={s.divImage}>
-        <img src={product.product.variations[0].mainImage} alt={product.name} className={s.image} />
+        <img src={product.mainImage} alt={product.name} className={s.image} />
       </div>
       <div className={s.information}>
         <h3 className={s.name}>{product.name}</h3>

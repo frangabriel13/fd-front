@@ -12,6 +12,8 @@ const NewArrivals = () => {
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
+
+  console.log(products);
   
   return (
     <div className={s.container}>
@@ -24,10 +26,9 @@ const NewArrivals = () => {
           <GrPrevious />
         </button>
         <div className={s.divProducts}>
-          {/* {products.map((product, index) => (
+          {products.map((product, index) => (
             <ProductCard key={`${product.id}-${index}`} product={product} />
-          ))} */}
-          <ProductCard product={products[1]} />
+          ))}
         </div>
         <button className={s.nextButton}>
           <GrNext />

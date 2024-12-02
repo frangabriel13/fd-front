@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  justify-content: center;
+  padding: 5rem 50rem;
+  gap: 5rem;
+}
+
+.divTitle {
+  width: 50%;
+}
+
+.title {
+  font-size: 3.5rem;
+  /* font-weight: bold; */
+  /* text-align: center; */
+}
+
+.divForm {
+  padding: 2rem;
+  width: 50%;
+  /* border: 1px solid var(--gray-color-light); */
+  border-radius: .4rem;
+  background-color: white;
+  box-shadow: 0 0 .1rem rgba(0, 0, 0, 0.1);
+}

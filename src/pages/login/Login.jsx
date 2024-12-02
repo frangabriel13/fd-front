@@ -1,4 +1,5 @@
 import s from './Login.module.css';
+import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
   return (
@@ -21,7 +22,9 @@ const Login = () => {
         <div className={s.divBtns}>
           <button className={s.btnForgot}>¿Olvidaste tu contraseña?</button>
           <button className={s.btnCreate}>Crear cuenta</button>
-          <button>Iniciar sesión con Google</button>
+          <button className={s.btnGoogle}>
+            <FcGoogle className={s.googleIcon} /> Iniciar sesión con Google
+          </button>
         </div>
       </div>
     </div>

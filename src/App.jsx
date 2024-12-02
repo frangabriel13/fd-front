@@ -9,7 +9,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/iniciar-sesion' element={<Login />} />
+        <Route path='/ingresar' element={<Login />} />
       </Routes>
     </>
   )

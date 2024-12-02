@@ -21,7 +21,7 @@ const Header = () => {
         <Navbar />
       </div>
       <div className={s.login}>
-        <Link to="/login" className={s.link}>Ingresar</Link>
+        <Link to="/iniciar-sesion" className={s.link}>Ingresar</Link>
         <Link className={s.link}>Registrarse</Link>
         <BsCart2 className={s.link} />
       </div>

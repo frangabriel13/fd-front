@@ -12,7 +12,7 @@ const Register = () => {
   return (
     <div className={s.container}>
       <div className={s.divTitle}>
-        <h2 className={s.title}>ingresa tu e-mail y contraseña para crear una cuenta</h2>
+        <h2 className={s.title}>Ingresa tu e-mail y contraseña para crear una cuenta</h2>
       </div>
       <div className={s.divForm}>
         <form className={s.form}>

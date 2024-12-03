@@ -5,7 +5,7 @@ const ForgotPassword = () => {
   return (
     <div className={s.container}>
       <div className={s.divTitle}>
-        <h2 className={s.title}>ingresa tu e-mail para recuperar tu contraseña</h2>
+        <h2 className={s.title}>Ingresa tu e-mail para recuperar tu contraseña</h2>
         <p className={s.info}>Se te enviará un correo al e-mail especificado con el enlace para resetear la contraseña</p>
       </div>
       <div className={s.divForm}>

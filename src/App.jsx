@@ -3,10 +3,14 @@ import Home from './pages/home/Home';
 import Header from './components/header/Header';
 import Login from './pages/login/Login';
 import HeaderLogin from './components/header/HeaderLogin';
+import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 
 function App() {
   const location = useLocation();
-  const isLoginPage = location.pathname === '/ingresar';
+  const isLoginPage = location.pathname === '/ingresar' || location.pathname === '/recuperar-password';
+
+  console.log('Ruta actual:', location.pathname);
+  console.log('Es página de login:', isLoginPage);
 
   return (
     <>
@@ -14,6 +18,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/ingresar' element={<Login />} />
+        <Route path='/recuperar-password' element={<ForgotPassword />} />
       </Routes>
     </>
   );

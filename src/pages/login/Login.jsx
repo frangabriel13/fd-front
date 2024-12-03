@@ -1,7 +1,14 @@
 import s from './Login.module.css';
 import { FcGoogle } from "react-icons/fc";
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const handleForgotPassword = () => {
+    navigate('/recuperar-password');
+  };
+
   return (
     <div className={s.container}>
       <div className={s.divTitle}>
@@ -20,7 +27,7 @@ const Login = () => {
           <button type="submit" className={s.button}>Ingresar</button>
         </form>
         <div className={s.divBtns}>
-          <button className={s.btnForgot}>¿Olvidaste tu contraseña?</button>
+          <button className={s.btnForgot} onClick={handleForgotPassword}>¿Olvidaste tu contraseña?</button>
           <button className={s.btnCreate}>Crear cuenta</button>
           <button className={s.btnGoogle}>
             <FcGoogle className={s.googleIcon} /> Iniciar sesión con Google

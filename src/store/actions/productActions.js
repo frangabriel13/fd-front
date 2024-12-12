@@ -23,6 +23,5 @@ export const getProducts = (page = 1, pageSize = 20) => async (dispatch) => {
       type: 'GET_PRODUCTS_FAILURE',
       error: error.message,
     });
-    console.log(error);
   }
 };

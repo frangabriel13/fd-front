@@ -12,8 +12,6 @@ const NewArrivals = () => {
   useEffect(() => {
     dispatch(getProducts());
   }, [dispatch]);
-
-  console.log(products);
   
   return (
     <div className={s.container}>

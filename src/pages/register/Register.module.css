@@ -60,3 +60,8 @@
 .button:hover {
   background-color: var(--second-color);
 }
+
+.error {
+  color: red;
+  font-size: 1.1rem;
+}

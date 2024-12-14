@@ -10,9 +10,6 @@ function App() {
   const location = useLocation();
   const isLoginPage = location.pathname === '/ingresar' || location.pathname === '/recuperar-password' || location.pathname === '/registro';
 
-  console.log('Ruta actual:', location.pathname);
-  console.log('Es página de login:', isLoginPage);
-
   return (
     <>
       {isLoginPage ? <HeaderLogin /> : <Header />}

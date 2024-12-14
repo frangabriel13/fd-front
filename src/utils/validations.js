@@ -1,20 +1,23 @@
 export const registerUserValidator = (email, password, confirmPassword) => {
   let errors = {};
-  if(!email) {
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email) {
     errors.email = 'El email es requerido';
-  } else if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+  } else if (!emailRegex.test(email)) {
     errors.email = 'El email es inválido';
   }
 
-  if(!password) {
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()_+[\]{};':"\\|,.<>\/?`~\-]{8,}$/;
+  if (!password) {
     errors.password = 'La contraseña es requerida';
-  } else if(password.length < 6) {
-    errors.password = 'La contraseña debe tener al menos 6 caracteres';
+  } else if (!passwordRegex.test(password)) {
+    errors.password = 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número';
   }
 
-  if(!confirmPassword) {
+  if (!confirmPassword) {
     errors.confirmPassword = 'Debes confirmar la contraseña';
-  } else if(password !== confirmPassword) {
+  } else if (password !== confirmPassword) {
     errors.confirmPassword = 'Las contraseñas no coinciden';
   }
 

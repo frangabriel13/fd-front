@@ -22,10 +22,7 @@ export const registerUser = (email, password) => async (dispatch) => {
 export const verifyEmail = (token) => async (dispatch) => {
   dispatch({ type: 'VERIFY_EMAIL_REQUEST' });
   try {
-    const response = await userInstance.post('/verify-email', {
-      // token,
-      params: { token },
-    });
+    const response = await userInstance.get('/verify-email?token=' + token);
     dispatch({
       type: 'VERIFY_EMAIL_SUCCESS',
       payload: response.data,

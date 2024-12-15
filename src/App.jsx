@@ -4,7 +4,8 @@ import Header from './components/header/Header';
 import Login from './pages/login/Login';
 import HeaderLogin from './components/header/HeaderLogin';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
-import  Register from './pages/register/Register';
+import Register from './pages/register/Register';
+import VerifyEmail from './pages/verifyEmail/VerifyEmail';
 
 function App() {
   const location = useLocation();
@@ -18,6 +19,7 @@ function App() {
         <Route path='/ingresar' element={<Login />} />
         <Route path='/recuperar-password' element={<ForgotPassword />} />
         <Route path='/registro' element={<Register />} />
+        <Route path='/verify-email' element={<VerifyEmail />} />
       </Routes>
     </>
   );

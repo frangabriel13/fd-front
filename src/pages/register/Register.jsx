@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../store/actions/userActions';
 import { registerUserValidator } from '../../utils/validations';
 import s from './Register.module.css';
@@ -9,7 +10,9 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState('');
+  const [successMessage, setSuccessMessage] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,6 +21,13 @@ const Register = () => {
       setErrors(validationErrors);
     } else {
       dispatch(registerUser(email, password));
+      setEmail('');
+      setPassword('');
+      setConfirmPassword('');
+      setSuccessMessage('Se ha enviado un correo de verificación a tu e-mail. Serás redirigido a la página de inicio de sesión en 3 segundos.');
+      setTimeout(() => {
+        navigate('/ingresar');
+      }, 3000);
     }
   };
 
@@ -63,6 +73,7 @@ const Register = () => {
           </div>
           <button type="submit" className={s.button}>Registrarse</button>
         </form>
+        {successMessage && <p className={s.success}>{successMessage}</p>}
       </div>
     </div>
   );

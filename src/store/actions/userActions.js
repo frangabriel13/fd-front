@@ -11,11 +11,13 @@ export const registerUser = (email, password) => async (dispatch) => {
       type: 'REGISTER_USER_SUCCESS',
       payload: response.data,
     });
+    return { success: true };
   } catch(error) {
     dispatch({
       type: 'REGISTER_USER_FAILURE',
-      error: error.message,
+      message: error.message,
     });
+    return { success: false, message: error.response.data };
   }
 };
 

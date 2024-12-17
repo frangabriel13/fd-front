@@ -45,11 +45,11 @@ const Register = () => {
       setEmail('');
       setPassword('');
       setConfirmPassword('');
-      setSuccessMessage('Se ha enviado un correo de verificación a tu e-mail. Serás redirigido a la página de inicio de sesión en 3 segundos.');
+      setSuccessMessage('Se ha enviado un correo de verificación a tu e-mail. Serás redirigido a la página de inicio de sesión.');
       setErrors('');
       setTimeout(() => {
         navigate('/ingresar');
-      }, 3000);
+      }, 5000);
     } else {
       setErrors({ error: result.message });
     }

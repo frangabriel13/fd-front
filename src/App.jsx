@@ -9,7 +9,8 @@ import VerifyEmail from './pages/verifyEmail/VerifyEmail';
 
 function App() {
   const location = useLocation();
-  const isLoginPage = location.pathname === '/ingresar' || location.pathname === '/recuperar-password' || location.pathname === '/registro';
+  const loginPages = ['/ingresar', '/recuperar-password', '/registro', '/verify-email'];
+  const isLoginPage = loginPages.includes(location.pathname);
 
   return (
     <>

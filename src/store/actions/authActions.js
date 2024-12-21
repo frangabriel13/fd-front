@@ -1,4 +1,4 @@
-import { userInstance } from "../../utils/axiosConfig";
+import { authInstance } from "../../utils/axiosConfig";
 import { jwtDecode } from "jwt-decode";
 
 // export const isTokenExpired = (token) => {
@@ -14,7 +14,7 @@ import { jwtDecode } from "jwt-decode";
 
 export const login = (data) => async (dispatch) => {
   try {
-    const response = await userInstance.post("/login", data);
+    const response = await authInstance.post("/login", data);
     const { user, token } = response.data;
 
     localStorage.setItem("token", token);
@@ -37,7 +37,7 @@ export const login = (data) => async (dispatch) => {
 
 export const logout = () => async (dispatch) => {
   try {
-    await userInstance.post("/logout");
+    await authInstance.post("/logout");
     localStorage.removeItem("token");
     dispatch({
       type: "LOGOUT",

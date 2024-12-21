@@ -23,3 +23,20 @@ export const registerUserValidator = (email, password, confirmPassword) => {
 
   return errors;
 };
+
+export const loginValidator = (data) => {
+  let errors = {};
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!data.email) {
+    errors.email = 'El email es requerido';
+  } else if (!emailRegex.test(data.email)) {
+    errors.email = 'El email es inválido';
+  }
+
+  if (!data.password) {
+    errors.password = 'La contraseña es requerida';
+  }
+
+  return errors;
+};

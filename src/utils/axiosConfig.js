@@ -11,3 +11,7 @@ export const userInstance = axios.create({
 export const productInstance = axios.create({
   baseURL: 'http://localhost:3000/api/products',
 });
+
+export const authInstance = axios.create({
+  baseURL: 'http://localhost:3001/api/auth',
+});

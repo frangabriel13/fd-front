@@ -70,6 +70,7 @@ const Login = () => {
             {errors.password && <p className={s.error}>{errors.password}</p>}
           </div>
           <button type="submit" className={s.button}>Ingresar</button>
+          {errors.message && <p className={s.error}>{errors.message}</p>}
         </form>
         <div className={s.divBtns}>
           <button className={s.btnForgot} onClick={handleForgotPassword}>¿Olvidaste tu contraseña?</button>

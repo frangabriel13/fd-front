@@ -46,3 +46,25 @@ export const logout = () => async (dispatch) => {
     console.log(error);
   }
 };
+
+export const forgotPassword = (email) => async (dispatch) => {
+  try {
+    const response = await authInstance.post("/forgot-password", { email });
+    dispatch({
+      type: "FORGOT_PASSWORD_SUCCESS",
+      payload: response.data.message,
+    });
+
+    return { success: true };
+  } catch(error) {
+    console.log(error);
+    dispatch({
+      type: "FORGOT_PASSWORD_ERROR",
+      payload: error.response.data.message,
+    });
+    return {
+      success: false,
+      message: error.response.data.message,
+    }
+  }
+};

@@ -56,7 +56,6 @@ const Login = () => {
             <h3>E-mail</h3>
             <input 
               type="email" 
-              placeholder="Email" 
               className={s.input}
               value={email}
               onChange={(e) => setEmail(e.target.value)} 
@@ -68,7 +67,6 @@ const Login = () => {
             <div className={s.divPass}>
               <input 
                 type={showPassword ? "text" : "password"} 
-                placeholder="Contraseña" 
                 className={s.inputPass}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

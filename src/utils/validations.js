@@ -40,3 +40,22 @@ export const loginValidator = (data) => {
 
   return errors;
 };
+
+export const resetPasswordValidator = (password, confirmPassword) => {
+  let errors = {};
+
+  const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d!@#$%^&*()_+[\]{};':"\\|,.<>\/?`~\-]{8,}$/;
+  if (!password) {
+    errors.password = 'La contraseña es requerida';
+  } else if (!passwordRegex.test(password)) {
+    errors.password = 'La contraseña debe tener al menos 8 caracteres, una mayúscula, una minúscula y un número';
+  }
+
+  if (!confirmPassword) {
+    errors.confirmPassword = 'Debes confirmar la contraseña';
+  } else if (password !== confirmPassword) {
+    errors.confirmPassword = 'Las contraseñas no coinciden';
+  }
+
+  return errors;
+};

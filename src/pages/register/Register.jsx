@@ -15,22 +15,6 @@ const Register = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const validationErrors = registerUserValidator(email, password, confirmPassword);
-  //   if(Object.keys(validationErrors).length > 0) {
-  //     setErrors(validationErrors);
-  //   } else {
-  //     dispatch(registerUser(email, password));
-  //     setEmail('');
-  //     setPassword('');
-  //     setConfirmPassword('');
-  //     setSuccessMessage('Se ha enviado un correo de verificación a tu e-mail. Serás redirigido a la página de inicio de sesión en 3 segundos.');
-  //     setTimeout(() => {
-  //       navigate('/ingresar');
-  //     }, 3000);
-  //   }
-  // };
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = registerUserValidator(email, password, confirmPassword);

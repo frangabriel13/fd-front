@@ -47,6 +47,35 @@
   font-size: 1.5rem;
 }
 
+.divPass {
+  position: relative;
+}
+
+.inputPass {
+  padding: 1rem;
+  border: .1rem solid var(--gray-color-light);
+  border-radius: .3rem;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.inputPass[type="password"] {
+  font-size: 2em;
+  padding: .75rem 1rem;
+}
+
+.eyeIcon {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.icon {
+  font-size: 1.2rem;
+}
+
 .button {
   padding: 1.2rem;
   border: none;
@@ -111,3 +140,5 @@
   color: red;
   font-size: 1.2rem;
 }
+
+/* El password tiene un css diferenciado, ya que se le agrega un icono para mostrar y ocultar la contraseña. Para ello, se agrega un evento click al icono, que cambia el tipo de input de password a text y viceversa. */

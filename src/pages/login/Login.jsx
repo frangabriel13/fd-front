@@ -5,6 +5,7 @@ import { login } from '../../store/actions/authActions';
 import { loginValidator } from '../../utils/validations';
 import s from './Login.module.css';
 import { FcGoogle } from "react-icons/fc";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -40,6 +41,10 @@ const Login = () => {
     navigate('/registro');
   };
 
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className={s.container}>
       <div className={s.divTitle}>
@@ -60,13 +65,18 @@ const Login = () => {
           </div>
           <div className={s.divInput}>
             <h3>Contraseña</h3>
-            <input 
-              type="password" 
-              placeholder="Contraseña" 
-              className={s.input}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className={s.divPass}>
+              <input 
+                type={showPassword ? "text" : "password"} 
+                placeholder="Contraseña" 
+                className={s.inputPass}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span className={s.eyeIcon} onClick={handleShowPassword}>
+                {showPassword ? <FaRegEyeSlash className={s.icon} /> : <FaRegEye className={s.icon} />}
+              </span>
+            </div>
             {errors.password && <p className={s.error}>{errors.password}</p>}
           </div>
           <button type="submit" className={s.button}>Ingresar</button>

@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../store/actions/userActions';
 import { registerUserValidator } from '../../utils/validations';
 import s from './Register.module.css';
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -12,6 +13,7 @@ const Register = () => {
   const [errors, setErrors] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -39,6 +41,10 @@ const Register = () => {
     }
   }
 
+  const handleShowPassword = () => {
+    setShowPassword(!showPassword);
+  };
+
   return (
     <div className={s.container}>
       <div className={s.divTitle}>
@@ -49,8 +55,7 @@ const Register = () => {
           <div className={s.divInput}>
             <h3>E-mail</h3>
             <input 
-              type="email" 
-              placeholder="Email" 
+              type="email"
               className={s.input}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -59,27 +64,34 @@ const Register = () => {
           </div>
           <div className={s.divInput}>
             <h3>Contraseña</h3>
-            <input 
-              type="password" 
-              placeholder="Contraseña" 
-              className={s.input}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className={s.divPass}>
+              <input 
+                type={showPassword ? "text" : "password"}
+                className={s.inputPass}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span className={s.eyeIcon} onClick={handleShowPassword}>
+                {showPassword ? <FaRegEyeSlash className={s.icon} /> : <FaRegEye className={s.icon} />}
+              </span>
+            </div>
             {errors.password && <p className={s.error}>{errors.password}</p>}
           </div>
           <div className={s.divInput}>
             <h3>Repetir contraseña</h3>
-            <input 
-              type="password" 
-              placeholder="Contraseña" 
-              className={s.input}
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
+            <div className={s.divPass}>
+              <input 
+                type={showPassword ? "text" : "password"}
+                className={s.inputPass}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <span className={s.eyeIcon} onClick={handleShowPassword}>
+                {showPassword ? <FaRegEyeSlash className={s.icon} /> : <FaRegEye className={s.icon} />}
+              </span>
+            </div>
             {errors.confirmPassword && <p className={s.error}>{errors.confirmPassword}</p>}
           </div>
-          {/* <button type="submit" className={s.button}>Registrarse</button> */}
           <button type="submit" className={s.button} disabled={loading}>
             {loading ? 'Registrando...' : 'Registrarse'}
           </button>

@@ -25,11 +25,13 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         error: null,
+        token: action.payload.token,
       }
     case "FORGOT_PASSWORD_ERROR":
       return {
         ...state,
         error: action.payload,
+        token: null,
       }
     default:
       return state;

@@ -33,6 +33,16 @@ const authReducer = (state = initialState, action) => {
         error: action.payload,
         token: null,
       }
+    case "RESET_PASSWORD_SUCCESS":
+      return {
+        ...state,
+        error: null,
+      }
+    case "RESET_PASSWORD_ERROR":
+      return {
+        ...state,
+        error: action.payload,
+      }
     default:
       return state;
   }

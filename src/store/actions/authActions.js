@@ -68,3 +68,24 @@ export const forgotPassword = (email) => async (dispatch) => {
     }
   }
 };
+
+export const resetPassword = (token, password) => async (dispatch) => {
+  try {
+    const response = await authInstance.post(`/reset-password/${token}`, { password });
+    dispatch({
+      type: "RESET_PASSWORD_SUCCESS",
+      payload: response.data.message,
+    });
+    return { success: true };
+  } catch(error) {
+    console.log(error);
+    dispatch({
+      type: "RESET_PASSWORD_FAILURE",
+      payload: error.response.data.message,
+    });
+    return {
+      success: false,
+      message: error.response.data.message,
+    }
+  }
+}

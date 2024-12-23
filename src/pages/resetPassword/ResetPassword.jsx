@@ -44,31 +44,39 @@ const ResetPassword = () => {
   return (
     <div className={s.container}>
       <div className={s.divTitle}>
-        <h2 className={s.title}>Ingresa tu nueva contraseña para reestablecerla</h2>
+        <h2 className={s.title}>Ingresa tu nueva contraseña para restablecerla</h2>
       </div>
       <div className={s.divForm}>
         <form className={s.form} onSubmit={handleSubmit}>
           <div className={s.divInput}>
             <h3>Nueva contraseña</h3>
-            <input 
-              type={showPassword ? "text" : "password"}
-              name='password' 
-              placeholder="Contraseña" 
-              className={s.input}
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+            <div className={s.divPass}>
+              <input 
+                type={showPassword ? "text" : "password"}
+                name='password' 
+                className={s.inputPass}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <span className={s.eyeIcon} onClick={handleShowPassword}>
+                {showPassword ? <FaRegEyeSlash className={s.icon} /> : <FaRegEye className={s.icon} />}
+              </span>
+            </div>
             {errors.password && <p className={s.error}>{errors.password}</p>}
           </div>
           <div className={s.divInput}>
             <h3>Repetir contraseña</h3>
-            <input 
-              type={showPassword ? "text" : "password"} 
-              placeholder="Contraseña" 
-              className={s.input}
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
+            <div className={s.divPass}>
+              <input 
+                type={showPassword ? "text" : "password"}
+                className={s.inputPass}
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
+              <span className={s.eyeIcon} onClick={handleShowPassword}>
+                {showPassword ? <FaRegEyeSlash className={s.icon} /> : <FaRegEye className={s.icon} />}
+              </span>
+            </div>
             {errors.confirmPassword && <p className={s.error}>{errors.confirmPassword}</p>}
           </div>
           {errors.general && <p className={s.error}>{errors.general}</p>}

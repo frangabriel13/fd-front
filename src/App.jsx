@@ -6,11 +6,18 @@ import HeaderLogin from './components/header/HeaderLogin';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import Register from './pages/register/Register';
 import VerifyEmail from './pages/verifyEmail/VerifyEmail';
+import ResetPassword from './pages/resetPassword/ResetPassword';
 
 function App() {
   const location = useLocation();
-  const loginPages = ['/ingresar', '/recuperar-password', '/registro', '/verify-email'];
-  const isLoginPage = loginPages.includes(location.pathname);
+  const loginPages = [
+    '/ingresar', 
+    '/recuperar-password', 
+    '/registro', 
+    '/verify-email',
+    '/reset-password'
+  ];
+  const isLoginPage = loginPages.some(page => location.pathname.startsWith(page));
 
   return (
     <>
@@ -21,6 +28,7 @@ function App() {
         <Route path='/recuperar-password' element={<ForgotPassword />} />
         <Route path='/registro' element={<Register />} />
         <Route path='/verify-email' element={<VerifyEmail />} />
+        <Route path='/reset-password/:token' element={<ResetPassword />} />
       </Routes>
     </>
   );

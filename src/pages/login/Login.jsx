@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate, Link } from 'react-router-dom';
-import { login } from '../../store/actions/authActions';
+import { login, googleLogin } from '../../store/actions/authActions';
 import { loginValidator } from '../../utils/validations';
 import s from './Login.module.css';
 import { FcGoogle } from "react-icons/fc";
@@ -45,6 +45,15 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
+  const handleGoogleLogin = async () => {
+    const result = await dispatch(googleLogin());
+    if(result.success) {
+      navigate('/');
+    } else {
+      setErrors({ message: result.message });
+    }
+  };
+
   return (
     <div className={s.container}>
       <div className={s.divTitle}>
@@ -83,7 +92,7 @@ const Login = () => {
         <div className={s.divBtns}>
           <button className={s.btnForgot} onClick={handleForgotPassword}>¿Olvidaste tu contraseña?</button>
           <button className={s.btnCreate} onClick={handleCreateAccount}>Crear cuenta</button>
-          <button className={s.btnGoogle}>
+          <button className={s.btnGoogle} onClick={handleGoogleLogin}>
             <FcGoogle className={s.googleIcon} /> Iniciar sesión con Google
           </button>
         </div>

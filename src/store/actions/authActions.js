@@ -89,3 +89,13 @@ export const resetPassword = (token, password) => async (dispatch) => {
     }
   }
 }
+
+export const googleLogin = () => async dispatch => {
+  try {
+    window.location.href = 'http://localhost:3001/api/auth/google';
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: 'LOGIN_FAIL', payload: error.response.data.message });
+    throw error;
+  }
+};

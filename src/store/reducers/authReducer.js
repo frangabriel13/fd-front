@@ -14,6 +14,13 @@ const authReducer = (state = initialState, action) => {
         user: action.payload.user,
         token: action.payload.token,
       }
+    case "LOGIN_GOOGLE":
+      return {
+        ...state,
+        isAuthenticated: true,
+        user: action.payload.user,
+        token: action.payload.token,
+      }
     case "LOGOUT":
       return {
         ...state,

@@ -38,8 +38,8 @@ const Header = () => {
         {isAuthenticated ? (
           <>
             {/* <span className={s.link}>Hola, {user.name}</span> */}
-            <button>Mi cuenta</button>
-            <button onClick={handleLogout} className={s.link}>Logout</button>
+            <button className={s.btnNav}>Mi cuenta</button>
+            <button onClick={handleLogout} className={s.btnNav}>Logout</button>
           </>
         ) : (
           <>

@@ -1,7 +1,7 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate, Link } from 'react-router-dom';
-import { login, googleLogin } from '../../store/actions/authActions';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { login, googleLogin, loginGoogle } from '../../store/actions/authActions';
 import { loginValidator } from '../../utils/validations';
 import s from './Login.module.css';
 import { FcGoogle } from "react-icons/fc";
@@ -14,6 +14,20 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const token = queryParams.get('token');
+    if(token) {
+      dispatch(loginGoogle(token)).then((result) => {
+        if(result.success) {
+          navigate('/');
+        } else {
+          setErrors({ message: result.message });
+        }
+      });
+    }
+  }, [dispatch, navigate, window.location.search]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

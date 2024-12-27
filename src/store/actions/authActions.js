@@ -35,6 +35,26 @@ export const login = (data) => async (dispatch) => {
   }
 };
 
+export const loginGoogle = (token) => async (dispatch) => {
+  try {
+    const user = jwtDecode(token);
+    localStorage.setItem("token", token);
+
+    dispatch({
+      type: "LOGIN",
+      payload: { user, token },
+    });
+
+    return { success: true };
+  } catch(error) {
+    console.log(error);
+    return {
+      success: false,
+      message: error.response.data.message,
+    }
+  }
+};
+
 export const logout = () => async (dispatch) => {
   try {
     await authInstance.post("/logout");
@@ -93,7 +113,7 @@ export const resetPassword = (token, password) => async (dispatch) => {
 export const googleLogin = () => async dispatch => {
   try {
     window.location.href = 'http://localhost:3001/api/auth/google';
-  } catch (error) {
+  } catch(error) {
     console.log(error);
     dispatch({ type: 'LOGIN_FAIL', payload: error.response.data.message });
     throw error;

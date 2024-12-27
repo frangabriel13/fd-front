@@ -1,4 +1,6 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import Home from './pages/home/Home';
 import Header from './components/header/Header';
 import Login from './pages/login/Login';
@@ -10,6 +12,9 @@ import ResetPassword from './pages/resetPassword/ResetPassword';
 
 function App() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+
   const loginPages = [
     '/ingresar', 
     '/recuperar-password', 
@@ -18,6 +23,12 @@ function App() {
     '/reset-password'
   ];
   const isLoginPage = loginPages.some(page => location.pathname.startsWith(page));
+
+  useEffect(() => {
+    if (isAuthenticated && isLoginPage) {
+      navigate('/');
+    }
+  }, [isAuthenticated, isLoginPage, navigate]);
 
   return (
     <>

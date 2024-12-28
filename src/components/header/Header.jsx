@@ -34,7 +34,8 @@ const Header = () => {
       <div className={s.login}>
         {isAuthenticated ? (
           <>
-            <button className={s.btnNav}>Mi cuenta</button>
+            <Link to="/mi-cuenta" className={s.link}>Mi cuenta</Link>
+            {/* <button className={s.btnNav}>Mi cuenta</button> */}
             <button onClick={handleLogout} className={s.btnNav}>Logout</button>
           </>
         ) : (

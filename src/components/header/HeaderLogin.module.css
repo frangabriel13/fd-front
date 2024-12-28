@@ -3,7 +3,7 @@
   top: 0;
   width: 100%;
   z-index: 1000;
-  height: 7.8rem;
+  height: 5.4rem;
 
   display: grid;
   grid-template-columns: repeat(4, 1fr);

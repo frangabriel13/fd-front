@@ -41,7 +41,7 @@ function App() {
         <Route path='/registro' element={<Register />} />
         <Route path='/verify-email' element={<VerifyEmail />} />
         <Route path='/reset-password/:token' element={<ResetPassword />} />
-        <Route path='/mi-cuenta' element={<Account />} />
+        <Route path='/mi-cuenta/*' element={<Account />} />
       </Routes>
     </>
   );

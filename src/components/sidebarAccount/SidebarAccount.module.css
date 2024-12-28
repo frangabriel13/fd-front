@@ -1,5 +1,63 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    background-color: white;
+  position: fixed;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* padding: 2rem; */
+  height: 100vh;
+  /* gap: 2rem; */
+  /* width: 12rem; */
+  transition: width 0.3s ease-in-out;
+  padding-top: 7.8rem;
+  padding: 7.8rem 2rem 0;
+}
+
+.divTitle {
+  padding: 5rem 0;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #666;
+  text-align: center;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.link {
+  font-size: 1.8rem;
+  color: #666;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.icon {
+  font-size: 2.5rem;
+}
+
+.btnLogout {
+  display: flex;
+  background-color: #e67070;
+  /* border: 1px solid transparent; */
+  padding: 0.6em 1.2em;
+  font-size: 1.5rem;
+  cursor: pointer;
+  /* transition: border-color 0.25s; */
+  border-radius: .3rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #ad0000;
+}
+
+.iconLogout {
+  font-size: 2rem;
+  color: #ad0000;
 }

@@ -9,6 +9,7 @@ import ForgotPassword from './pages/forgotPassword/ForgotPassword';
 import Register from './pages/register/Register';
 import VerifyEmail from './pages/verifyEmail/VerifyEmail';
 import ResetPassword from './pages/resetPassword/ResetPassword';
+import Account from './pages/account/Account';
 
 function App() {
   const location = useLocation();
@@ -40,6 +41,7 @@ function App() {
         <Route path='/registro' element={<Register />} />
         <Route path='/verify-email' element={<VerifyEmail />} />
         <Route path='/reset-password/:token' element={<ResetPassword />} />
+        <Route path='/mi-cuenta' element={<Account />} />
       </Routes>
     </>
   );

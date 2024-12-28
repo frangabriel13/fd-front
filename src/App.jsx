@@ -15,6 +15,9 @@ function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
+  const user = useSelector(state => state.auth.user);
+
+  console.log('user', user);
 
   const loginPages = [
     '/ingresar', 

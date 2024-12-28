@@ -3,16 +3,20 @@ import s from './Header.module.css';
 import logo from '../../assets/logo.jpg';
 import SearchBar from '../searchBar/SearchBar';
 import Navbar from '../navbar/Navbar';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsCart2 } from "react-icons/bs";
 import { logout } from '../../store/actions/authActions';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-  const user = useSelector((state) => state.auth.user);
+
   const handleLogout = () => {
     dispatch(logout());
+    setTimeout(() => {
+      navigate('/ingresar');
+    }, 1000);
   };
 
   return (
@@ -36,7 +40,7 @@ const Header = () => {
           <>
             <Link to="/mi-cuenta" className={s.link}>Mi cuenta</Link>
             {/* <button className={s.btnNav}>Mi cuenta</button> */}
-            <button onClick={handleLogout} className={s.btnNav}>Logout</button>
+            <button onClick={handleLogout} className={s.btnNav}>Salir</button>
           </>
         ) : (
           <>

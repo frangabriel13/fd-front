@@ -1,3 +1,14 @@
 .container {
+  /* padding: 0 30rem; */
   margin-top: 7.8rem;
+  display: flex;
+  /* flex-direction: column; */
+  /* gap: 4rem; */
+}
+
+.divAccount {
+  padding: 0 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
 }

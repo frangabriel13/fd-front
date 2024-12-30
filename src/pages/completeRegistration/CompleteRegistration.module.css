@@ -3,7 +3,7 @@
   padding-top: 7.8rem;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  /* gap: 4rem; */
 }
 
 .divRole {

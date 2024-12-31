@@ -17,8 +17,6 @@ const RegisterManufacturer = ({ user }) => {
     userId: user.userId,
   });
   const [errors, setErrors] = useState({});
-  console.log('owner component', formData.owner);
-  console.log('street component', formData.street);
 
   const handleHasPointOfSale = () => {
     setHasPointOfSale(!hasPointOfSale);

@@ -27,6 +27,10 @@ export const createManufacturer = (manufacturer) => async (dispatch) => {
       type: 'CREATE_MANUFACTURER',
       payload: response.data,
     });
+    dispatch({
+      type: 'UPDATE_USER_ROLE',
+      payload: 'manufacturer',
+    })
   } catch (error) {
     dispatch({
       type: 'CREATE_MANUFACTURER_FAILURE',

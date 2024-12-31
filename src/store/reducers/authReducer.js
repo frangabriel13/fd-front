@@ -50,6 +50,14 @@ const authReducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
       }
+    case "UPDATE_USER_ROLE":
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          role: action.payload,
+        }
+      }
     default:
       return state;
   }

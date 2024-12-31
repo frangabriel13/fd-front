@@ -83,8 +83,6 @@ export const registerManufacturerValidator = ({ name, owner, phone, minPurchase,
     errors.pointOfSale = 'El campo punto de venta debe ser un booleano';
   }
 
-  console.log('street', street);
-  console.log('owner', owner);
   if (pointOfSale && (!street || typeof street !== 'string' || street.length < 3 || street.length > 100)) {
     errors.street = 'La dirección debe tener entre 3 y 100 caracteres';
   }

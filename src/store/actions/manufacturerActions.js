@@ -18,3 +18,20 @@ export const getLiveManufacturers = (limit = 24, offset = 0) => async (dispatch)
     console.error(error);
   }
 };
+
+export const createManufacturer = (manufacturer) => async (dispatch) => {
+  dispatch({ type: 'CREATE_MANUFACTURER_REQUEST' });
+  try {
+    const response = await manufacturerInstance.post('/', manufacturer);
+    dispatch({
+      type: 'CREATE_MANUFACTURER',
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'CREATE_MANUFACTURER_FAILURE',
+      error: error.message,
+    });
+    console.error(error);
+  }
+};

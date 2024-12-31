@@ -35,7 +35,7 @@ const manufacturerReducer = (state = initialState, action) => {
     case 'CREATE_MANUFACTURER':
       return {
         ...state,
-        manufacturers: [...state.manufacturers, action.payload],
+        // manufacturers: [...state.manufacturers, action.payload],
         loading: false,
         error: null,
       };

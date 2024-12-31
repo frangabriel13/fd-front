@@ -30,10 +30,18 @@ function App() {
   const isLoginPage = loginPages.some(page => location.pathname.startsWith(page));
 
   useEffect(() => {
-    if (isAuthenticated && isLoginPage) {
+    if(isAuthenticated && isLoginPage) {
       navigate('/');
     }
   }, [isAuthenticated, isLoginPage, navigate]);
+
+  useEffect(() => {
+    if (!isAuthenticated && location.pathname.startsWith('/mi-cuenta')) {
+      navigate('/ingresar');
+    } else if (isAuthenticated && user && user.role === null && location.pathname.startsWith('/mi-cuenta')) {
+      navigate('/completar-registro');
+    }
+  }, [isAuthenticated, user, location.pathname, navigate]);
 
   return (
     <>

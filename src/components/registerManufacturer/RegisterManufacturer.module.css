@@ -100,3 +100,8 @@
 .btnForm:hover {
   background-color: var(--third-bg-color);
 }
+
+.error {
+  color: red;
+  font-size: 1.2rem;
+}

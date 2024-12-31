@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import RegisterWholesaler from '../../components/registerWholesaler/RegisterWholesaler';
 import RegisterManufacturer from '../../components/registerManufacturer/RegisterManufacturer';
 import s from './CompleteRegistration.module.css';
 
 const CompleteRegistration = () => {
+  const user = useSelector(state => state.auth.user);
   const [role, setRole] = useState('');
 
   const handleRoleSelection = (role) => {
@@ -23,10 +25,10 @@ const CompleteRegistration = () => {
         </div>
       </div>
       {
-        role === 'manufacturer' && <RegisterManufacturer />
+        role === 'manufacturer' && <RegisterManufacturer user={user} />
       }
       {
-        role === 'wholesaler' && <RegisterWholesaler />
+        role === 'wholesaler' && <RegisterWholesaler user={user} />
       }
     </div>
   )

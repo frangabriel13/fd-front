@@ -16,6 +16,7 @@ export const login = (data) => async (dispatch) => {
   try {
     const response = await authInstance.post("/login", data);
     const { user, token } = response.data;
+    console.log(user, token);
 
     localStorage.setItem("token", token);
 

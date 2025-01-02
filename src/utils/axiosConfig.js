@@ -1,8 +1,17 @@
 import axios from 'axios';
 
+const addAuthHeader = (config) => {
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers['Authorization'] = `Bearer ${token}`;
+  }
+  return config;
+};
+
 export const manufacturerInstance = axios.create({
   baseURL: 'http://localhost:3001/api/manufacturers',
 });
+manufacturerInstance.interceptors.request.use(addAuthHeader);
 
 export const userInstance = axios.create({
   baseURL: 'http://localhost:3001/api/users',

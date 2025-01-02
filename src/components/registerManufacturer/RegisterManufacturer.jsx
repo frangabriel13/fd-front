@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { createManufacturer } from '../../store/actions/manufacturerActions';
 import { registerManufacturerValidator } from '../../utils/validations';
 import s from './RegisterManufacturer.module.css';
 
 const RegisterManufacturer = ({ user }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [hasPointOfSale, setHasPointOfSale] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
@@ -42,6 +44,17 @@ const RegisterManufacturer = ({ user }) => {
     } else {
       setErrors({});
       dispatch(createManufacturer(formData));
+      setFormData({
+        name: '',
+        owner: '',
+        pointOfSale: false,
+        street: '',
+        phone: '',
+        minPurchase: 0,
+        userId: user.userId,
+      });
+      setHasPointOfSale(false);
+      navigate('/verificar-cuenta');
     }
   };
 

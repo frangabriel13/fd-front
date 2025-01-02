@@ -41,6 +41,8 @@ function App() {
       navigate('/ingresar');
     } else if (isAuthenticated && user && user.role === null && location.pathname.startsWith('/mi-cuenta')) {
       navigate('/completar-registro');
+    } else if (isAuthenticated && user && user.role === 'manufacturer') {
+      navigate('/verificar-cuenta');
     }
   }, [isAuthenticated, user, location.pathname, navigate]);
 

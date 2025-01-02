@@ -43,7 +43,11 @@ const RegisterManufacturer = ({ user }) => {
       setErrors(validationErrors);
     } else {
       setErrors({});
-      dispatch(createManufacturer(formData));
+      const dataToSubmit = { ...formData };
+      if (!dataToSubmit.pointOfSale) {
+        delete dataToSubmit.street;
+      }
+      dispatch(createManufacturer(dataToSubmit));
       setFormData({
         name: '',
         owner: '',

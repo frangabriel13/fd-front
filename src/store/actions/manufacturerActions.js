@@ -39,3 +39,24 @@ export const createManufacturer = (manufacturer) => async (dispatch) => {
     console.error(error);
   }
 };
+
+export const uploadManufacturerImages = (id, formData) => async (dispatch) => {
+  dispatch({ type: 'UPLOAD_MANUFACTURER_IMAGES_REQUEST' });
+  try {
+    const response = await manufacturerInstance.post(`/${id}/images`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    dispatch({
+      type: 'UPLOAD_MANUFACTURER_IMAGES_SUCCESS',
+      payload: response.data.images,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'UPLOAD_MANUFACTURER_IMAGES_FAILURE',
+      error: error.message,
+    });
+    console.error(error);
+  }
+};

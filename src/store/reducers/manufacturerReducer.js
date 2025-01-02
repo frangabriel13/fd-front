@@ -3,6 +3,7 @@ const initialState = {
   manufacturers: [],
   loading: false,
   error: null,
+  uploadedImages: {},
 };
 
 const manufacturerReducer = (state = initialState, action) => {
@@ -40,6 +41,24 @@ const manufacturerReducer = (state = initialState, action) => {
         error: null,
       };
     case 'CREATE_MANUFACTURER_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    case 'UPLOAD_MANUFACTURER_IMAGES_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case 'UPLOAD_MANUFACTURER_IMAGES_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        uploadedImages: action.payload,
+      };
+    case 'UPLOAD_MANUFACTURER_IMAGES_FAILURE':
       return {
         ...state,
         loading: false,

@@ -45,6 +45,29 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         error: action.error,
       };
+    case 'GET_ME_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case 'GET_ME_SUCCESS':
+      console.log('inaction', action.payload);
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          ...action.payload,
+        },
+        loading: false,
+        error: null,
+      };
+    case 'GET_ME_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
     default:
       return state;
   }

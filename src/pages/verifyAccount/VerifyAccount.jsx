@@ -5,6 +5,7 @@ import s from './VerifyAccount.module.css';
 
 const VerifyAccount = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user);
   const { loading, error, uploadedImages } = useSelector((state) => state.manufacturer);
   const [images, setImages] = useState({
     selfie: null,
@@ -25,7 +26,7 @@ const VerifyAccount = () => {
     Object.keys(images).forEach((key) => {
       formData.append(key, images[key]);
     });
-    dispatch(uploadManufacturerImages(manufacturerId, formData));
+    dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
   };
 
   const isDisabled = !images.selfie || !images.dniFront || !images.dniBack;

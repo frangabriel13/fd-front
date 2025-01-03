@@ -16,6 +16,7 @@ manufacturerInstance.interceptors.request.use(addAuthHeader);
 export const userInstance = axios.create({
   baseURL: 'http://localhost:3001/api/users',
 });
+userInstance.interceptors.request.use(addAuthHeader);
 
 export const productInstance = axios.create({
   baseURL: 'http://localhost:3000/api/products',

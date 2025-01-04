@@ -11,6 +11,7 @@
   transition: width 0.3s ease-in-out;
   padding-top: 7.8rem;
   padding: 7.8rem 2rem 0;
+  left: 0;
 }
 
 .divTitle {

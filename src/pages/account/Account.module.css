@@ -4,12 +4,13 @@
   display: flex;
   /* flex-direction: column; */
   /* gap: 4rem; */
+  justify-content: center;
 }
 
 .divAccount {
   padding: 0 30rem;
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  /* gap: 4rem; */
   padding-top: 7.8rem;
 }

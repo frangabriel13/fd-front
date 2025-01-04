@@ -40,36 +40,52 @@ const VerifyAccount = () => {
 
   return (
     <div className={s.container}>
-      <div className={s.divVerifyAccount}>
-        <div className={s.divHeader}>
-          <h2>Verificar cuenta</h2>
-          <p>Su cuenta ha sido registrada con éxito. Ahora solo falta verificar su cuenta con una selfie y la imagen del dni (frente y reverso).</p>
-        </div>
-        <div className={s.divImages}>
-          <div className={s.divImage}>
-            <h4>Selfie:</h4>
-            <input type="file" name="selfie" className={s.input} onChange={handleFileChange} />
-          </div>
-          <div className={s.divImage}>
-            <h4>DNI Frente:</h4>
-            <input type="file" name="dniFront" className={s.input} onChange={handleFileChange} />
-          </div>
-          <div className={s.divImage}>
-            <h4>DNI Reverso:</h4>
-            <input type="file" name="dniBack" className={s.input} onChange={handleFileChange} />
+      {user.manufacturer.verificationStatus === 'pending' ? (
+        <div className={s.divVerifyAccount}>
+          <div className={s.divHeader}>
+            <h2>Verificación pendiente</h2>
+            <p>Su cuenta se encuentra en proceso de verificación. Un asesor analizará los datos a la brevedad.</p>
           </div>
         </div>
-        <div className={s.divbtn}>
-          <button 
-            onClick={handleUpload}
-            className={isDisabled ? `${s.btnForm} ${s.btnFormDisabled}` : s.btnForm} 
-            disabled={isDisabled}
-          >
-            Subir Imágenes
-          </button>
+      ) : user.manufacturer.verificationStatus === 'verified' ? (
+        <div className={s.divVerifyAccount}>
+          <div className={s.divHeader}>
+            <h2>Verificación completada</h2>
+            <p>Su cuenta ha sido verificada con éxito. Ya puede comenzar a utilizar todas las funcionalidades de la plataforma.</p>
+          </div>
         </div>
-        {successMessage && <p className={s.successMessage}>{successMessage}</p>}
-      </div>
+      ) : user.manufacturer.verificationStatus === 'not_started' && (
+        <div className={s.divVerifyAccount}>
+          <div className={s.divHeader}>
+            <h2>Verificar cuenta</h2>
+            <p>Su cuenta ha sido registrada con éxito. Ahora solo falta verificar su cuenta con una selfie y la imagen del dni (frente y reverso).</p>
+          </div>
+          <div className={s.divImages}>
+            <div className={s.divImage}>
+              <h4>Selfie:</h4>
+              <input type="file" name="selfie" className={s.input} onChange={handleFileChange} />
+            </div>
+            <div className={s.divImage}>
+              <h4>DNI Frente:</h4>
+              <input type="file" name="dniFront" className={s.input} onChange={handleFileChange} />
+            </div>
+            <div className={s.divImage}>
+              <h4>DNI Reverso:</h4>
+              <input type="file" name="dniBack" className={s.input} onChange={handleFileChange} />
+            </div>
+          </div>
+          <div className={s.divbtn}>
+            <button 
+              onClick={handleUpload}
+              className={isDisabled ? `${s.btnForm} ${s.btnFormDisabled}` : s.btnForm} 
+              disabled={isDisabled}
+            >
+              Subir Imágenes
+            </button>
+          </div>
+          {successMessage && <p className={s.successMessage}>{successMessage}</p>}
+        </div>
+      )}
     </div>
   )
 };

@@ -32,7 +32,7 @@ const SidebarAccount = () => {
         <Link to="/mi-cuenta/ordenes" className={s.link}>
           <BsTag className={s.icon} /> Mis ordenes
         </Link>
-        <Link to="/mi-cuenta/perfil" className={s.link}>
+        <Link to="/mi-cuenta/" className={s.link}>
           <PiUserCircle className={s.icon} /> Mi perfil
         </Link>
         <button onClick={handleLogout} className={s.btnLogout}>

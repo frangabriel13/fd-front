@@ -1,8 +1,12 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Routes, Route } from "react-router-dom";
 import { getMe } from "../../store/actions/userActions";
 import SidebarAccount from "../../components/sidebarAccount/SidebarAccount";
+import Profile from "../../components/accountComponents/Profile";
+import MyProducts from "../../components/accountComponents/MyProducts";
+import MyOrders from "../../components/accountComponents/MyOrders";
+import UploadProduct from "../../components/accountComponents/UploadProduct";
 import s from "./Account.module.css";
 
 const Account = () => {
@@ -25,7 +29,12 @@ const Account = () => {
     <div className={s.container}>
       <SidebarAccount />
       <div className={s.divAccount}>
-        <h2>Mi Cuenta</h2>
+        <Routes>
+          <Route path="/" element={<Profile user={user} />} />
+          <Route path="subir-producto" element={<UploadProduct />} />
+          <Route path="publicaciones" element={<MyProducts />} />
+          <Route path="ordenes" element={<MyOrders />} />
+        </Routes>
       </div>
     </div>
   );

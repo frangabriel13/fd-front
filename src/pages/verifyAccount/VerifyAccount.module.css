@@ -91,3 +91,8 @@
 .btnFormDisabled:hover {
   background-color: grey;
 }
+
+.successMessage {
+  color: green;
+  font-size: 1.2rem;
+}

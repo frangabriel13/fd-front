@@ -58,7 +58,7 @@ const RegisterManufacturer = ({ user }) => {
         userId: user.userId,
       });
       setHasPointOfSale(false);
-      navigate('/verificar-cuenta');
+      navigate('/mi-cuenta');
     }
   };
 

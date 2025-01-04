@@ -5,13 +5,14 @@ import s from './VerifyAccount.module.css';
 
 const VerifyAccount = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.user);
+  const { user } = useSelector((state) => state.user);
   const { loading, error, uploadedImages } = useSelector((state) => state.manufacturer);
   const [images, setImages] = useState({
     selfie: null,
     dniFront: null,
     dniBack: null,
   });
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
@@ -21,12 +22,18 @@ const VerifyAccount = () => {
     }));
   };
 
-  const handleUpload = () => {
+  const handleUpload = async () => {
     const formData = new FormData();
     Object.keys(images).forEach((key) => {
       formData.append(key, images[key]);
     });
-    dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
+
+    try {
+      await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
+      setSuccessMessage('Imágenes subidas correctamente');
+    } catch(error) {
+      setSuccessMessage('');
+    }
   };
 
   const isDisabled = !images.selfie || !images.dniFront || !images.dniBack;
@@ -61,6 +68,7 @@ const VerifyAccount = () => {
             Subir Imágenes
           </button>
         </div>
+        {successMessage && <p className={s.successMessage}>{successMessage}</p>}
       </div>
     </div>
   )

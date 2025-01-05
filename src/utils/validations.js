@@ -89,3 +89,17 @@ export const registerManufacturerValidator = ({ name, owner, phone, minPurchase,
 
   return errors;
 };
+
+export const registerWholesalerValidator = ({ name, phone }) => {
+  const errors = {};
+
+  if(!name || typeof name !== 'string' || name.lejgth < 3 || name.length > 100) {  
+    errors.name = 'El nombre de la tienda debe tener entre 3 y 100 caracteres';
+  }
+
+  if(!phone || typeof phone !== 'string' || phone.lejgth < 10 || phone.length > 15) {  
+    errors.phone = 'El teléfono debe tener entre 10 y 15 caracteres';
+  }
+
+  return errors;
+};

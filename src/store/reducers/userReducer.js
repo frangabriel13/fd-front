@@ -52,7 +52,6 @@ const userReducer = (state = initialState, action) => {
         error: null,
       };
     case 'GET_ME_SUCCESS':
-      console.log('inaction', action.payload);
       return {
         ...state,
         user: {

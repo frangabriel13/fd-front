@@ -2,10 +2,10 @@ import ManufacturerData from './profileData/ManufacturerData';
 import UserData from './profileData/UserData';
 import s from './Profile.module.css';
 
-const Profile = () => {
+const Profile = ({ user }) => {
   return (
     <div className={s.container}>
-      <UserData />
+      <UserData user={user} />
       <ManufacturerData />
     </div>
   )

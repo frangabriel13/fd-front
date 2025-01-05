@@ -41,7 +41,6 @@ export const getMe = () => async (dispatch) => {
   dispatch({ type: 'GET_ME_REQUEST' });
   try {
     const response = await userInstance.get('/me');
-    console.log(response.data);
     dispatch({
       type: 'GET_ME_SUCCESS',
       payload: response.data,

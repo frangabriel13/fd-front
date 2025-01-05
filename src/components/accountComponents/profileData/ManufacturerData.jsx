@@ -1,10 +1,37 @@
 import s from './ManufacturerData.module.css';
 
-const ManufacturerData = () => {
+const ManufacturerData = ({ user }) => {
+  console.log('user', user.manufacturer.pointOfSale);
+
   return (
     <div className={s.container}>
-      <h2>Manufacturer Data</h2>
-      <p>Here you can see your manufacturer data</p>
+      <h3>Información del fabricante</h3>
+      <div className={s.divData}>
+        <div className={s.divInput}>
+          <h4>Nombre de la tienda</h4>
+          <p>{user.manufacturer.name}</p>
+        </div>
+        <div className={s.divInput}>
+          <h4>Nombre del dueño</h4>
+          <p>{user.manufacturer.owner}</p>
+        </div>
+        <div className={s.divInput}>
+          <h4>Número de teléfono</h4>
+          <p>{user.manufacturer.phone}</p>
+        </div>
+        <div className={s.divInput}>
+          <h4>Punto de venta</h4>
+          <p>{user.manufacturer.pointOfSale ? 'Sí' : 'No'}</p>
+        </div>
+        <div className={s.divInput}>
+          <h4>Dirección</h4>
+          <p>{user.manufacturer.street}</p>
+        </div>
+        <div className={s.divInput}>
+          <h4>TikTok URL</h4>
+          <p>{user.manufacturer.tiktokUrl}</p>
+        </div>
+      </div>
     </div>
   )
 };

@@ -1,7 +1,6 @@
 import s from './UserData.module.css';
 
 const UserData = ({ user }) => {
-  console.log(user);
   return (
     <div className={s.container}>
       <h3>Mis datos</h3>

@@ -1,10 +1,16 @@
 import s from './UserData.module.css';
 
-const UserData = () => {
+const UserData = ({ user }) => {
+  console.log(user);
   return (
     <div className={s.container}>
-      <h2>User Data</h2>
-      <p>Here you can see your user data</p>
+      <h3>Mis datos</h3>
+      <div className={s.divData}>
+        <div className={s.divInput}>
+          <h4>Email</h4>
+          <p>{user.email}</p>
+        </div>
+      </div>
     </div>
   )
 };

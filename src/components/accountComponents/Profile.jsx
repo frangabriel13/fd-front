@@ -6,7 +6,7 @@ const Profile = ({ user }) => {
   return (
     <div className={s.container}>
       <UserData user={user} />
-      <ManufacturerData />
+      <ManufacturerData user={user} />
     </div>
   )
 };

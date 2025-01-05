@@ -1,0 +1,107 @@
+.container {
+  margin-top: 5.4rem;
+  background-color: white;
+  padding: 3rem;
+  border-radius: .3rem;
+  box-shadow: 0 0 .1rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.container h3 {
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.divInputs {
+  display: flex;
+  gap: 3rem;
+}
+
+.divInput {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: 50%;
+}
+
+.divInput h4 {
+  font-size: 1.5rem;
+}
+
+.input {
+  padding: 1rem;
+  border: .1rem solid var(--gray-color-light);
+  border-radius: .3rem;
+  font-size: 1.5rem;
+}
+
+.divInputAddress {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: 100%;
+}
+
+.divInputCheck {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.divInputCheck h4 {
+  font-size: 1.5rem;
+}
+
+.inputCheck {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.inputAddress {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: .5rem;
+}
+
+.inputAddress h4 {
+  font-size: 1.5rem;
+}
+
+.inputDisabled {
+  background-color: #f0f0f0;
+  cursor: not-allowed;
+}
+
+.divBtn {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.btnForm {
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: var(--second-bg-color);
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btnForm:hover {
+  background-color: var(--third-bg-color);
+}
+
+.error {
+  color: red;
+  font-size: 1.2rem;
+}

@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createWholesaler } from '../../store/actions/wholesalerActions';
 import { registerWholesalerValidator } from '../../utils/validations';
+import { getMe } from '../../store/actions/userActions';
 import s from './RegisterWholesaler.module.css';
 
 const RegisterWholesaler = ({ user }) => {
@@ -23,19 +24,20 @@ const RegisterWholesaler = ({ user }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = registerWholesalerValidator(formData);
     if(Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
       setErrors({});
-      dispatch(createWholesaler(formData));
+      await dispatch(createWholesaler(formData));
       setFormData({
         name: '',
         phone: '',
         userId: user.userId,
       });
+      dispatch(getMe());
       navigate('/mi-cuenta');
     }
   };

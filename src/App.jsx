@@ -41,9 +41,9 @@ function App() {
     else if (isAuthenticated && user && user.role === null && location.pathname.startsWith('/mi-cuenta')) {
       navigate('/completar-registro');
     } 
-    else if (isAuthenticated && user && user.role === 'manufacturer' && (location.pathname.startsWith('/mi-cuenta') || location.pathname.startsWith('/completar-registro'))) {
-      navigate('/verificar-cuenta');
-    }
+    // else if (isAuthenticated && user && user.role === 'manufacturer' && (location.pathname.startsWith('/mi-cuenta') || location.pathname.startsWith('/completar-registro'))) {
+    //   navigate('/verificar-cuenta');
+    // }
   }, [isAuthenticated, user, location.pathname, navigate]);
 
   return (

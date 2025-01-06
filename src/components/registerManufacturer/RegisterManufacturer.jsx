@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { createManufacturer } from '../../store/actions/manufacturerActions';
 import { registerManufacturerValidator } from '../../utils/validations';
+import { getMe } from '../../store/actions/userActions';
 import s from './RegisterManufacturer.module.css';
 
 const RegisterManufacturer = ({ user }) => {
@@ -58,6 +59,7 @@ const RegisterManufacturer = ({ user }) => {
         userId: user.userId,
       });
       setHasPointOfSale(false);
+      dispatch(getMe());
       navigate('/mi-cuenta');
     }
   };

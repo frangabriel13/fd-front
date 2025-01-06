@@ -3,14 +3,14 @@ import s from './WholesalerData.module.css';
 const WholesalerData = ({ user }) => {
   return (
     <div className={s.container}>
-      <h3>Datos del mayorista</h3>
+      <h3>Información del mayorista</h3>
       <div className={s.divData}>
         <div className={s.divInput}>
-          <h4>Nombre de la tienda</h4>
+          <h4>Nombre</h4>
           <p>{user.wholesaler.name}</p>
         </div>
         <div className={s.divInput}>
-          <h4>Númeto de teléfono</h4>
+          <h4>Número de teléfono</h4>
           <p>{user.wholesaler.phone}</p>
         </div>
         <div className={s.divInput}>

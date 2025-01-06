@@ -26,6 +26,10 @@ const ManufacturerData = ({ user }) => {
           <p>{user.manufacturer.street}</p>
         </div>
         <div className={s.divInput}>
+          <h4>Compra mínima</h4>
+          <p>${user.manufacturer.minPurchase}</p>
+        </div>
+        <div className={s.divInput}>
           <h4>TikTok URL</h4>
           <p>{user.manufacturer.tiktokUrl}</p>
         </div>

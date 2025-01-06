@@ -1,10 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { uploadManufacturerImages } from '../../store/actions/manufacturerActions';
+// import { getMe } from '../../store/actions/userActions';
 import s from './VerifyAccount.module.css';
 
 const VerifyAccount = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { user } = useSelector((state) => state.user);
   const { loading, error, uploadedImages } = useSelector((state) => state.manufacturer);
   const [images, setImages] = useState({
@@ -31,6 +34,10 @@ const VerifyAccount = () => {
     try {
       await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
       setSuccessMessage('Imágenes subidas correctamente');
+      // dispatch(getMe());
+      setTimeout(() => {
+        navigate('/mi-cuenta');
+      }, 1000);
     } catch(error) {
       setSuccessMessage('');
     }

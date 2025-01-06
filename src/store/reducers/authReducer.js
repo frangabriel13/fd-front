@@ -51,6 +51,7 @@ const authReducer = (state = initialState, action) => {
         error: action.payload,
       }
     case "UPDATE_USER_ROLE":
+      console.log('payload: ', action.payload);
       return {
         ...state,
         user: {

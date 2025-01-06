@@ -1,8 +1,6 @@
 import s from './ManufacturerData.module.css';
 
 const ManufacturerData = ({ user }) => {
-  console.log('user', user.manufacturer.pointOfSale);
-
   return (
     <div className={s.container}>
       <h3>Información del fabricante</h3>

@@ -18,10 +18,16 @@ const Login = () => {
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const token = queryParams.get('token');
+    const isNewUser = queryParams.get('isNewUser') === 'true';
+
     if(token) {
       dispatch(loginGoogle(token)).then((result) => {
         if(result.success) {
-          navigate('/');
+          if (isNewUser) {
+            navigate('/mi-cuenta');
+          } else {
+            navigate('/');
+          }
         } else {
           setErrors({ message: result.message });
         }

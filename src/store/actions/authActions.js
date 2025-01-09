@@ -111,6 +111,7 @@ export const resetPassword = (token, password) => async (dispatch) => {
   }
 }
 
+// Redirige a la ruta que hemos definido en el backend para que inicie el proceso de autenticación con Google.
 export const googleLogin = () => async dispatch => {
   try {
     window.location.href = 'http://localhost:3001/api/auth/google';

@@ -68,29 +68,31 @@ button:focus-visible {
   }
 } */
 
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap');
+/* @import url('https://fonts.googleapis.com/css2?family=PT+Sans+Narrow&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
- 
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: 'PT Sans Narrow', sans-serif;
+  /* font-family: 'PT Sans Narrow', sans-serif; */
+  font-family: 'Montserrat', sans-serif;
   border: none;
   outline: none;
   scroll-behavior: smooth;
 }
 
 :root {
-  
-  --bg-color: #ffffff;
-  --second-bg-color: #08223c;
+  --bg-color: #e4e4e4;
+  --gray-color: #666;
+  --gray-color-light: #d1d1d1;
+  --second-bg-color: #021344;
+  --third-bg-color: #051853;
   --dark-color: #0F1422;
- 
   --text-color: black;
-  --main-color: #24a0cc ;
-  --second-color: #0085b8;
+  --main-color: #f86f1a ;
+  --second-color: #fc9251;
 }
 
 html {

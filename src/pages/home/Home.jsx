@@ -1,9 +1,18 @@
+import Banner from '../../components/banner/Banner';
+import Features from '../../components/features/Features';
+import LiveShopping from '../../components/liveShopping/LiveShopping';
+import NewArrivals from '../../components/productRow/NewArrivals';
 import s from './Home.module.css';
 
 const Home = () => {
   return (
-    <div className={s.home}>
-      <h1>Home</h1>
+    <div className={s.container}>
+      <Banner />
+      <div className={s.home}>
+        <Features />
+        <LiveShopping />
+        <NewArrivals />
+      </div>
     </div>
   );
 };

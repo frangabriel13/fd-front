@@ -1,0 +1,71 @@
+.container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.prevButton, .nextButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 1.5rem;
+  cursor: pointer;
+  z-index: 1;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.container:hover .prevButton,
+.container:hover .nextButton {
+  opacity: 1;
+}
+
+.prevButton {
+  border-radius: 0 50% 50% 0;
+  left: 0rem;
+}
+
+.nextButton {
+  right: 0rem;
+  border-radius: 50% 0 0 50%;
+}
+
+.slide {
+  display: none;
+}
+
+.slide.active {
+  display: block;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 1rem;
+}
+
+.indicator {
+  color: white;
+  font-size: 5rem;
+  cursor: pointer;
+}
+
+.indicator.active {
+  color: var(--main-color);
+}

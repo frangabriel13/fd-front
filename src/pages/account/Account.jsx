@@ -25,6 +25,16 @@ const Account = () => {
     }
   }, [isAuthenticated, navigate, dispatch]);
 
+  useEffect(() => {
+    if (!loading) {
+      if (isAuthenticated && user && user.role === null) {
+        navigate('/completar-registro');
+      } else if (isAuthenticated && user && user.role === 'manufacturer') {
+        navigate('/verificar-cuenta');
+      }
+    }
+  }, [loading, isAuthenticated, user, navigate]);
+
   if (loading) {
     return <div>Cargando...</div>;
   }

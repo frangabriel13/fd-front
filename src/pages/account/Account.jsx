@@ -29,9 +29,10 @@ const Account = () => {
     if (!loading) {
       if (isAuthenticated && user && user.role === null) {
         navigate('/completar-registro');
-      } else if (isAuthenticated && user && user.role === 'manufacturer') {
-        navigate('/verificar-cuenta');
-      }
+      } 
+      // else if (isAuthenticated && user && user.role === 'manufacturer') {
+      //   navigate('/verificar-cuenta');
+      // }
     }
   }, [loading, isAuthenticated, user, navigate]);
 

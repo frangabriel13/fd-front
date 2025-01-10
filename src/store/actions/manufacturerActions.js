@@ -60,3 +60,20 @@ export const uploadManufacturerImages = (id, formData) => async (dispatch) => {
     console.error(error);
   }
 };
+
+export const updateManufacturer = (id, manufacturerData) => async (dispatch) => {
+  dispatch({ type: 'UPDATE_MANUFACTURER_REQUEST' });
+  try {
+    const response = await manufacturerInstance.put(`/${id}`, manufacturerData);
+    dispatch({
+      type: 'UPDATE_MANUFACTURER',
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'UPDATE_MANUFACTURER_FAILURE',
+      error: error.message,
+    });
+    console.error(error);
+  }
+};

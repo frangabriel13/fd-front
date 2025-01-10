@@ -64,6 +64,26 @@ const manufacturerReducer = (state = initialState, action) => {
         loading: false,
         error: action.error,
       };
+    case 'UPDATE_MANUFACTURER_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case 'UPDATE_MANUFACTURER':
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
+    case 'UPDATE_MANUFACTURER_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        manufacturers: state.manufacturers.map(manufacturer =>
+          manufacturer.id === action.payload.id ? action.payload : manufacturer
+        ),
+      };
     default:
       return state;
   }

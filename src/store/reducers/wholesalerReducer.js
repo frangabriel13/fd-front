@@ -24,6 +24,27 @@ const wholesalerReducer = (state = initialState, action) => {
         loading: false,
         error: action.error,
       };
+    case 'UPDATE_WHOLESALER_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case 'UPDATE_WHOLESALER':
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        wholesalers: state.wholesalers.map(wholesaler =>
+          wholesaler.id === action.payload.id ? action.payload : wholesaler
+        ),
+      };
+    case 'UPDATE_WHOLESALER_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
     default:
       return state;
   }

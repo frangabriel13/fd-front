@@ -31,3 +31,29 @@
   font-size: 1.6rem;
   color: var(--gray-color);
 }
+
+.divBtn {
+  display: flex;
+  justify-content: end;
+}
+
+.btnEdit {
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: var(--second-bg-color);
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btnEdit:hover {
+  background-color: var(--third-bg-color);
+}
+
+.divider {
+  border: 0;
+  height: .1rem;
+  background: #ccc;
+  /* margin: 20px 0; */
+}

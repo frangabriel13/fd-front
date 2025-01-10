@@ -13,7 +13,7 @@ const EditManufacturer = ({ user, closeModal }) => {
         <div className={s.container}>
           <div className={s.container}>
             <h3>Editar Información</h3>
-            <form>
+            <form className={s.form}>
               <div className={s.divInputs}>
                 <div className={s.divInput}>
                   <h4>Nombre del fabricante</h4>

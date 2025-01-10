@@ -13,16 +13,14 @@
 
 .modalContent {
   background-color: white;
-  margin: 2rem;
-  padding: 1rem;
   border-radius: .4rem;
   overflow-y: auto;
+  width: 40%;
 }
 
 .container {
-  /* margin-top: 5.4rem; */
   background-color: white;
-  padding: 3rem;
+  padding: 1.5rem 1.5rem;
   border-radius: .3rem;
   box-shadow: 0 0 .1rem rgba(0, 0, 0, 0.1);
   display: flex;

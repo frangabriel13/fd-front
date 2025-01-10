@@ -9,6 +9,10 @@ const ManufacturerData = ({ user }) => {
     setEditModal(true);
   }
 
+  const closeModal = () => {
+    setEditModal(false);
+  }
+
   return (
     <div className={s.container}>
       <h3>Información del fabricante</h3>
@@ -48,7 +52,7 @@ const ManufacturerData = ({ user }) => {
       </div>
       {
         editModal && (
-          <EditManufacturer user={user} setEditModal={setEditModal} />
+          <EditManufacturer user={user} closeModal={closeModal} />
         )
       }
     </div>

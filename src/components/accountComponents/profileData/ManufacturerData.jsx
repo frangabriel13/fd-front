@@ -1,7 +1,14 @@
 import { useState } from 'react';
+import EditManufacturer from './editData/EditManufacturer';
 import s from './ManufacturerData.module.css';
 
 const ManufacturerData = ({ user }) => {
+  const [editModal, setEditModal] = useState(false);
+
+  const handleEdit = () => {
+    setEditModal(true);
+  }
+
   return (
     <div className={s.container}>
       <h3>Información del fabricante</h3>
@@ -35,6 +42,15 @@ const ManufacturerData = ({ user }) => {
           <p>{user.manufacturer.tiktokUrl}</p>
         </div>
       </div>
+      <hr className={s.divider} />
+      <div className={s.divBtn}>
+        <button className={s.btnEdit} onClick={handleEdit}>Editar</button>
+      </div>
+      {
+        editModal && (
+          <EditManufacturer user={user} setEditModal={setEditModal} />
+        )
+      }
     </div>
   )
 };

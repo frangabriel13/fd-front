@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import s from './ManufacturerData.module.css';
 
 const ManufacturerData = ({ user }) => {

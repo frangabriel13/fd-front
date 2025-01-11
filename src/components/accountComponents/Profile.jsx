@@ -4,7 +4,6 @@ import WholesalerData from './profileData/WholesalerData';
 import s from './Profile.module.css';
 
 const Profile = ({ user }) => {
-  console.log(user);
   return (
     <div className={s.container}>
       <UserData user={user} />

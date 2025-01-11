@@ -105,6 +105,7 @@ export const registerWholesalerValidator = ({ name, phone }) => {
 };
 
 export const editManufacturerValidator = ({ name, owner, phone, minPurchase, pointOfSale, street, tiktokUrl }) => {
+  console.log('minPurchase', minPurchase);
   const errors = {};
 
   if(!name || typeof name !== 'string' || name.lejgth < 3 || name.length > 100) {  

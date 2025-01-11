@@ -67,6 +67,14 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         error: action.error,
       };
+    case 'UPDATE_USER_MANUFACTURER':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          manufacturer: action.payload,
+        },
+      };
     default:
       return state;
   }

@@ -10,7 +10,6 @@ import UploadProduct from "../../components/accountComponents/UploadProduct";
 import s from "./Account.module.css";
 
 const Account = () => {
-  console.log("Paso por Account");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);

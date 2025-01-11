@@ -103,3 +103,37 @@ export const registerWholesalerValidator = ({ name, phone }) => {
 
   return errors;
 };
+
+export const editManufacturerValidator = ({ name, owner, phone, minPurchase, pointOfSale, street, tiktokUrl }) => {
+  const errors = {};
+
+  if(!name || typeof name !== 'string' || name.lejgth < 3 || name.length > 100) {  
+    errors.name = 'El nombre de la tienda debe tener entre 3 y 100 caracteres';
+  }
+
+  if(!owner || typeof owner !== 'string' || owner.lejgth < 3 || owner.length > 100) {  
+    errors.owner = 'El nombre del dueño debe tener entre 3 y 100 caracteres';
+  }
+
+  if(!phone || typeof phone !== 'string' || phone.lejgth < 10 || phone.length > 15) {  
+    errors.phone = 'El teléfono debe tener entre 10 y 15 caracteres';
+  }
+
+  if(!minPurchase || typeof minPurchase !== 'number' || minPurchase < 1) {  
+    errors.minPurchase = 'La compra mínima debe ser un número mayor a 0';
+  }
+
+  if (typeof pointOfSale !== 'boolean') {
+    errors.pointOfSale = 'El campo punto de venta debe ser un booleano';
+  }
+
+  if (pointOfSale && (!street || typeof street !== 'string' || street.length < 3 || street.length > 100)) {
+    errors.street = 'La dirección debe tener entre 3 y 100 caracteres';
+  }
+
+  if(tiktokUrl && typeof tiktokUrl !== 'string') {
+    errors.tiktokUrl = 'La URL de TikTok debe ser un string';
+  }
+
+  return errors;
+};

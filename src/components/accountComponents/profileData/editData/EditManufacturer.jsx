@@ -27,7 +27,7 @@ const EditManufacturer = ({ user, closeModal }) => {
     const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: type === 'checkbox' ? checked : value,
+      [name]: type === 'checkbox' ? checked : type === 'number' ? Number(value) : value,
     });
   };
 
@@ -57,7 +57,7 @@ const EditManufacturer = ({ user, closeModal }) => {
               <div className={s.divInputs}>
                 <div className={s.divInput}>
                   <h4>Nombre del fabricante</h4>
-                  <input 
+                  <input
                     className={s.input}
                     type="text"
                     name="owner"
@@ -68,8 +68,8 @@ const EditManufacturer = ({ user, closeModal }) => {
                 </div>
                 <div className={s.divInput}>
                   <h4>Nombre de la tienda</h4>
-                  <input 
-                    className={s.input} 
+                  <input
+                    className={s.input}
                     type="text"
                     name="name"
                     value={formData.name}
@@ -81,8 +81,8 @@ const EditManufacturer = ({ user, closeModal }) => {
               <div className={s.divInputs}>
                 <div className={s.divInput}>
                   <h4>Número de teléfono</h4>
-                  <input 
-                    className={s.input} 
+                  <input
+                    className={s.input}
                     type="text"
                     name="phone"
                     value={formData.phone}
@@ -92,7 +92,7 @@ const EditManufacturer = ({ user, closeModal }) => {
                 </div>
                 <div className={s.divInput}>
                   <h4>Mínimo de compra</h4>
-                  <input 
+                  <input
                     className={s.input}
                     type="number"
                     name="minPurchase"
@@ -105,7 +105,7 @@ const EditManufacturer = ({ user, closeModal }) => {
               <div className={s.divInputAddress}>
                 <div className={s.divInputCheck}>
                   <h4>¿Cuénta con punto de venta?</h4>
-                  <input 
+                  <input
                     className={s.inputCheck}
                     type="checkbox"
                     name="pointOfSale"
@@ -115,9 +115,9 @@ const EditManufacturer = ({ user, closeModal }) => {
                 </div>
                 <div className={s.inputAddress}>
                   <h4>Dirección</h4>
-                  <input 
-                    className={`${s.input} ${!formData.pointOfSale ? s.inputDisabled : ''}`} 
-                    type="text" 
+                  <input
+                    className={`${s.input} ${!formData.pointOfSale ? s.inputDisabled : ''}`}
+                    type="text"
                     name="street"
                     value={formData.street}
                     onChange={handleChange}
@@ -129,10 +129,10 @@ const EditManufacturer = ({ user, closeModal }) => {
               <div className={s.divInputTikTok}>
                 <div className={s.divInput}>
                   <h4>Usuario de TikTok</h4>
-                  <input 
+                  <input
                     className={s.input}
                     type="text"
-                    name="owner"
+                    name="tiktokUrl"
                     value={formData.tiktokUrl}
                     onChange={handleChange}
                   />

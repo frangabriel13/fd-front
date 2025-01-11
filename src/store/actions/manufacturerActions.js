@@ -69,6 +69,10 @@ export const updateManufacturer = (id, manufacturerData) => async (dispatch) => 
       type: 'UPDATE_MANUFACTURER',
       payload: response.data,
     });
+    dispatch({
+      type: 'UPDATE_USER_MANUFACTURER',
+      payload: response.data,
+    });
   } catch (error) {
     dispatch({
       type: 'UPDATE_MANUFACTURER_FAILURE',

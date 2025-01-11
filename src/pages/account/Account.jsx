@@ -16,6 +16,8 @@ const Account = () => {
   const user = useSelector((state) => state.user.user);
   const [loading, setLoading] = useState(true);
 
+  console.log('user aacount', user);
+
   useEffect(() => {
     if (!isAuthenticated) {
       navigate("/ingresar");

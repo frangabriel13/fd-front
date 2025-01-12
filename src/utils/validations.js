@@ -138,3 +138,37 @@ export const editManufacturerValidator = ({ name, owner, phone, minPurchase, poi
 
   return errors;
 };
+
+export const editWholesalerValidator = ({ name, phone, street, city, province, postalCode, country }) => {
+  const errors = {};
+
+  if(!name || typeof name !== 'string' || name.lejgth < 3 || name.length > 100) {  
+    errors.name = 'El nombre de la tienda debe tener entre 3 y 100 caracteres';
+  }
+
+  if(!phone || typeof phone !== 'string' || phone.lejgth < 10 || phone.length > 15) {  
+    errors.phone = 'El teléfono debe tener entre 10 y 15 caracteres';
+  }
+
+  if(!street || typeof street !== 'string' || street.length < 3 || street.length > 100) {  
+    errors.street = 'La dirección debe tener entre 3 y 100 caracteres';
+  }
+
+  if(!city || typeof city !== 'string' || city.length < 3 || city.length > 100) {  
+    errors.city = 'La ciudad debe tener entre 3 y 100 caracteres';
+  }
+
+  if(!province || typeof province !== 'string' || province.length < 3 || province.length > 100) {  
+    errors.province = 'La provincia debe tener entre 3 y 100 caracteres';
+  }
+
+  if(!postalCode || typeof postalCode !== 'string' || postalCode.length < 3 || postalCode.length > 100) {  
+    errors.postalCode = 'El código postal debe tener entre 3 y 100 caracteres';
+  }
+
+  if(!country || typeof country !== 'string' || country.length < 3 || country.length > 100) {  
+    errors.country = 'El país debe tener entre 3 y 100 caracteres';
+  }
+
+  return errors;
+};

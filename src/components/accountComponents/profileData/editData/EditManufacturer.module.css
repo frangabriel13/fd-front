@@ -107,8 +107,9 @@
 
 .divBtn {
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   padding-top: 1rem;
+  gap: 1rem;
 }
 
 .btnForm {
@@ -123,6 +124,20 @@
 
 .btnForm:hover {
   background-color: var(--third-bg-color);
+}
+
+.btnCancel {
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: var(--red-color);
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btnCancel:hover {
+  background-color: var(--red-color-light);
 }
 
 .error {

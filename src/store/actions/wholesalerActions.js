@@ -29,6 +29,10 @@ export const updateWholesaler = (id, wholesalerData) => async (dispatch) => {
       type: 'UPDATE_WHOLESALER',
       payload: response.data,
     });
+    dispatch({
+      type: 'UPDATE_USER_WHOLESALER',
+      payload: response.data,
+    });
   } catch(error) {
     dispatch({
       type: 'UPDATE_WHOLESALER_FAILURE',

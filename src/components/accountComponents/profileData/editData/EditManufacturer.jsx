@@ -140,7 +140,7 @@ const EditManufacturer = ({ user, closeModal }) => {
                 </div>
               </div>
               <div className={s.divBtn}>
-                <button className={s.btnForm}>Cancelar</button>
+                <button className={s.btnCancel}>Cancelar</button>
                 <button className={s.btnForm} type='submit'>Guardar cambios</button>
               </div>
             </form>

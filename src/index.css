@@ -93,6 +93,8 @@ button:focus-visible {
   --text-color: black;
   --main-color: #f86f1a ;
   --second-color: #fc9251;
+  --red-color: #be1212;
+  --red-color-light: #c52323;
 }
 
 html {

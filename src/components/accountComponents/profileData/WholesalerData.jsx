@@ -1,6 +1,18 @@
+import { useState } from 'react';
+import EditWholesaler from './editData/EditWholesaler';
 import s from './WholesalerData.module.css';
 
 const WholesalerData = ({ user }) => {
+  const [editModal, setEditModal] = useState(false);
+
+  const handleEdit = () => {
+    setEditModal(true);
+  };
+
+  const closeModal = () => {
+    setEditModal(false);
+  };
+
   return (
     <div className={s.container}>
       <h3>Información del mayorista</h3>
@@ -34,9 +46,18 @@ const WholesalerData = ({ user }) => {
           <p>{user.wholesaler.country}</p>
         </div>
       </div>
+      <hr className={s.divider} />
+      <div className={s.divBtn}>
+        <button className={s.btnEdit} onClick={handleEdit}>Editar</button>
+      </div>
+      {
+        editModal && (
+          <EditWholesaler user={user} closeModal={closeModal} />
+        )
+      }
     </div>
   )
-}
+};
 
 
 export default WholesalerData;

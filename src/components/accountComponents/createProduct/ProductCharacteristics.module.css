@@ -1,0 +1,60 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+  padding: 3rem;
+}
+
+.divTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divTitle h3 {
+  font-size: 2.2rem;
+}
+
+.divTitle p {
+  font-size: 1.6rem;
+  color: var(--gray-color);
+}
+
+.divTypes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+}
+
+.divTypes h4 {
+  font-size: 1.8rem;
+}
+
+.divButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border-radius: .3rem;
+  background-color: white;
+  color: var(--second-bg-color);
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: .2rem solid var(--second-bg-color);
+}
+
+.btn:hover {
+  background-color: var(--second-color);
+}
+
+.btn span {
+  display: block;
+}

@@ -19,15 +19,24 @@ const UploadProduct = () => {
           <p>Elige el tipo de producto que quieres publicar</p>
         </div>
         <div className={s.divTypes}>
-          <div className={s.divCard} onClick={() => handleTypeClick('Indumentaria')}>
+          <div 
+            className={`${s.divCard} ${productType === 'Indumentaria' ? s.selected : ''}`}
+            onClick={() => handleTypeClick('Indumentaria')}
+          >
             <PiTShirtLight className={s.icon} />
             <p>Indumentaria</p>
           </div>
-          <div className={s.divCard} onClick={() => handleTypeClick('Blanquería')}>
+          <div 
+            className={`${s.divCard} ${productType === 'Blanquería' ? s.selected : ''}`} 
+            onClick={() => handleTypeClick('Blanquería')}
+          >
             <PiTowel className={s.icon} />
             <p>Blanquería</p>
           </div>
-          <div className={s.divCard} onClick={() => handleTypeClick('Bisutería')}>
+          <div 
+            className={`${s.divCard} ${productType === 'Bisutería' ? s.selected : ''}`} 
+            onClick={() => handleTypeClick('Bisutería')}
+          >
             <GiBigDiamondRing className={s.icon} />
             <p>Bisutería</p>
           </div>

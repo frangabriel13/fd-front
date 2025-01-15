@@ -56,6 +56,10 @@
   background-color: var(--second-color);
 }
 
+.selected {
+  background-color: var(--second-color);
+}
+
 .divCard p {
   font-size: 1.6rem;
   color: var(--second-bg-color);

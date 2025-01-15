@@ -27,7 +27,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 2rem;
 }
 
 .divTypes h4 {
@@ -57,4 +57,49 @@
 
 .btn span {
   display: block;
+}
+
+.divGenres {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.divGenres h4 {
+  font-size: 1.8rem;
+}
+
+.divIcons {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.btnIcon {
+  width: 8rem;
+  height: 8rem;
+  border-radius: .3rem;
+  background-color: white;
+  color: var(--second-bg-color);
+  font-size: 1.6rem;
+  cursor: pointer;
+  border: .2rem solid var(--second-bg-color);
+}
+
+.btnIcon:hover {
+  background-color: var(--second-color);
+}
+
+.btnIcon span {
+  display: block;
+}
+
+.icon {
+  font-size: 3rem;
+  color: var(--second-bg-color);
+}
+
+.selected {
+  background-color: var(--second-color);
 }

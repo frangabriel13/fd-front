@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import s from './EditManufacturer.module.css';
 import { updateManufacturer } from '../../../../store/actions/manufacturerActions';
 import { editManufacturerValidator } from '../../../../utils/validations';
+import { nicknameToUrl, urlToNickname } from '../../../../utils/utils';
 
 const EditManufacturer = ({ user, closeModal }) => {
   const dispatch = useDispatch();
@@ -13,7 +14,8 @@ const EditManufacturer = ({ user, closeModal }) => {
     minPurchase: user.manufacturer.minPurchase || 0,
     pointOfSale: user.manufacturer.pointOfSale || false,
     street: user.manufacturer.street || '',
-    tiktokUrl: user.manufacturer.tiktokUrl || '',
+    // tiktokUrl: user.manufacturer.tiktokUrl || '',
+    tiktokUrl: user.manufacturer.tiktokUrl ? urlToNickname(user.manufacturer.tiktokUrl) : '',
   });
   const [errors, setErrors] = useState({});
 
@@ -41,6 +43,9 @@ const EditManufacturer = ({ user, closeModal }) => {
       const dataToSubmit = { ...formData };
       if (!dataToSubmit.pointOfSale) {
         delete dataToSubmit.street;
+      }
+      if (dataToSubmit.tiktokUrl) {
+        dataToSubmit.tiktokUrl = nicknameToUrl(dataToSubmit.tiktokUrl);
       }
       dispatch(updateManufacturer(user.manufacturer.id, dataToSubmit));
       closeModal();
@@ -140,7 +145,7 @@ const EditManufacturer = ({ user, closeModal }) => {
                 </div>
               </div>
               <div className={s.divBtn}>
-                <button className={s.btnCancel}>Cancelar</button>
+                <button className={s.btnCancel} onClick={closeModal}>Cancelar</button>
                 <button className={s.btnForm} type='submit'>Guardar cambios</button>
               </div>
             </form>

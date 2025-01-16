@@ -22,9 +22,13 @@ const ProductCharacteristics = ({ productType, setProductType }) => {
 
   const handleGenderClick = (gender) => {
     setGenderProduct(gender);
-  }
+  };
 
-  console.log('categories', categories);
+  // const filteredCategories = categories.filter((category) => category.parentId === productType.id);
+  const filteredCategories = categories.filter((category) => 
+    category.parentId === productType.id && 
+    category.genders.some(gender => gender.id === genderProduct)
+  );
 
   return (
     <div className={s.container}>
@@ -55,36 +59,36 @@ const ProductCharacteristics = ({ productType, setProductType }) => {
         <h4>¿A qué género está dirigido tu producto?</h4>
         <div className={s.divIcons}>
           <button 
-            className={`${s.btnIcon} ${genderProduct === 'man' ? s.selected : ''}`} 
-            onClick={() => handleGenderClick('man')}
+            className={`${s.btnIcon} ${genderProduct === 1 ? s.selected : ''}`} 
+            onClick={() => handleGenderClick(1)}
           >
             <IoMan className={s.icon} />
             <span>Hombre</span>
           </button>
           <button 
-            className={`${s.btnIcon} ${genderProduct === 'woman' ? s.selected : ''}`} 
-            onClick={() => handleGenderClick('woman')}
+            className={`${s.btnIcon} ${genderProduct === 2 ? s.selected : ''}`} 
+            onClick={() => handleGenderClick(2)}
           >
             <IoWoman className={s.icon} />
             <span>Mujer</span>
           </button>
           <button 
-            className={`${s.btnIcon} ${genderProduct === 'boy' ? s.selected : ''}`} 
-            onClick={() => handleGenderClick('boy')}
+            className={`${s.btnIcon} ${genderProduct === 3 ? s.selected : ''}`} 
+            onClick={() => handleGenderClick(3)}
           >
             <FaChild className={s.icon} />
             <span>Niño</span>
           </button>
           <button 
-            className={`${s.btnIcon} ${genderProduct === 'girl' ? s.selected : ''}`} 
-            onClick={() => handleGenderClick('girl')}
+            className={`${s.btnIcon} ${genderProduct === 4 ? s.selected : ''}`} 
+            onClick={() => handleGenderClick(4)}
           >
             <FaChildDress className={s.icon} />
             <span>Niña</span>
           </button>
           <button 
-            className={`${s.btnIcon} ${genderProduct === 'baby' ? s.selected : ''}`} 
-            onClick={() => handleGenderClick('baby')}
+            className={`${s.btnIcon} ${genderProduct === 5 ? s.selected : ''}`} 
+            onClick={() => handleGenderClick(5)}
           >
             <FaBaby className={s.icon} />
             <span>Bebés</span>
@@ -95,7 +99,7 @@ const ProductCharacteristics = ({ productType, setProductType }) => {
         <h4>¿A qué categoría pertenece tu producto?</h4>
         <select>
           <option>Selecciona una categoría</option>
-          {categories.map((category) => (
+          {filteredCategories.map((category) => (
             <option key={category.id} value={category.id}>
               {category.name}
             </option>

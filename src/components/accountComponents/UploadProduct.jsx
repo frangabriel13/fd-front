@@ -7,8 +7,8 @@ import ProductCharacteristics from './createProduct/ProductCharacteristics';
 const UploadProduct = () => {
   const [productType, setProductType] = useState(null);
 
-  const handleTypeClick = (type) => {
-    setProductType(type);
+  const handleTypeClick = (type, id) => {
+    setProductType({ type, id });
   }
 
   return (
@@ -20,22 +20,22 @@ const UploadProduct = () => {
         </div>
         <div className={s.divTypes}>
           <div 
-            className={`${s.divCard} ${productType === 'Indumentaria' ? s.selected : ''}`}
-            onClick={() => handleTypeClick('Indumentaria')}
+            className={`${s.divCard} ${productType?.id === 1 ? s.selected : ''}`}
+            onClick={() => handleTypeClick('Indumentaria', 1)}
           >
             <PiTShirtLight className={s.icon} />
             <p>Indumentaria</p>
           </div>
           <div 
-            className={`${s.divCard} ${productType === 'Blanquería' ? s.selected : ''}`} 
-            onClick={() => handleTypeClick('Blanquería')}
+            className={`${s.divCard} ${productType?.id === 3 ? s.selected : ''}`} 
+            onClick={() => handleTypeClick('Blanquería', 3)}
           >
             <PiTowel className={s.icon} />
             <p>Blanquería</p>
           </div>
           <div 
-            className={`${s.divCard} ${productType === 'Bisutería' ? s.selected : ''}`} 
-            onClick={() => handleTypeClick('Bisutería')}
+            className={`${s.divCard} ${productType?.id === 2 ? s.selected : ''}`} 
+            onClick={() => handleTypeClick('Bisutería', 2)}
           >
             <GiBigDiamondRing className={s.icon} />
             <p>Bisutería</p>

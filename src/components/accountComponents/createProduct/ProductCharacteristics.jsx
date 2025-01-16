@@ -1,12 +1,20 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategories } from '../../../store/actions/categoryActions';
 import s from './ProductCharacteristics.module.css';
 import { FaChild, FaChildDress, FaBaby } from "react-icons/fa6";
 import { IoWoman, IoMan } from "react-icons/io5";
 import SimpleProductForm from './SimpleProductForm';
 
 const ProductCharacteristics = ({ productType, setProductType }) => {
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => state.category.categories);
   const [typeProduct, setTypeProduct] = useState(null);
   const [genderProduct, setGenderProduct] = useState(null);
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
   const handleTypeClick = (type) => {
     setTypeProduct(type);
@@ -15,6 +23,8 @@ const ProductCharacteristics = ({ productType, setProductType }) => {
   const handleGenderClick = (gender) => {
     setGenderProduct(gender);
   }
+
+  console.log('categories', categories);
 
   return (
     <div className={s.container}>
@@ -83,7 +93,14 @@ const ProductCharacteristics = ({ productType, setProductType }) => {
       </div>
       <div className={s.divCategory}>
         <h4>¿A qué categoría pertenece tu producto?</h4>
-        <select></select>
+        <select>
+          <option>Selecciona una categoría</option>
+          {categories.map((category) => (
+            <option key={category.id} value={category.id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
       </div>
     </div>
   );

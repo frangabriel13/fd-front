@@ -30,3 +30,7 @@ export const wholesalerInstance = axios.create({
   baseURL: 'http://localhost:3001/api/wholesalers',
 });
 wholesalerInstance.interceptors.request.use(addAuthHeader);
+
+export const categoryInstance = axios.create({
+  baseURL: 'http://localhost:3001/api/categories',
+});

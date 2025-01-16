@@ -84,16 +84,22 @@ const ProductCharacteristics = ({ productType, setProductType, categories }) => 
           </button>
         </div>
       </div>
-      <div className={s.divCategory}>
-        <h4>¿A qué categoría pertenece tu producto?</h4>
-        <select>
-          <option>Selecciona una categoría</option>
-          {filteredCategories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
+      <div className={s.divFinal}>
+        <div className={s.divCategory}>
+          <h4>¿A qué categoría pertenece tu producto?</h4>
+          <select>
+            <option>Selecciona una categoría</option>
+            {filteredCategories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <hr className={s.divider} />
+        <div className={s.divBtn}>
+          <button className={s.btnNext}>Siguiente</button>
+        </div>
       </div>
     </div>
   );

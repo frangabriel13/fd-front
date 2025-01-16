@@ -9,6 +9,6 @@ export const urlToNickname = (url) => {
 export const filterCategoriesByParentAndGender = (categories, parentId, genderId) => {
   return categories.filter((category) => 
     category.parentId === parentId && 
-    category.genders.some(gender => gender.id === genderId)
+    (genderId == null || category.genders.some(gender => gender.id === genderId))
   );
 };

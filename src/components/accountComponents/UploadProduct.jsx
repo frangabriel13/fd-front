@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCategories } from '../../store/actions/categoryActions';
 import s from './UploadProduct.module.css';
 import { PiTShirtLight, PiTowel } from "react-icons/pi";
 import { GiBigDiamondRing } from "react-icons/gi";
@@ -6,7 +8,13 @@ import ProductCharacteristics from './createProduct/ProductCharacteristics';
 import OtherProductCharacteristics from './createProduct/OtherProductCharacteristics';
 
 const UploadProduct = () => {
+  const dispatch = useDispatch();
+  const categories = useSelector((state) => state.category.categories);
   const [productType, setProductType] = useState(null);
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
   const handleTypeClick = (type, id) => {
     setProductType({ type, id });
@@ -43,8 +51,8 @@ const UploadProduct = () => {
           </div>
         </div>
       </div>
-      {productType && productType.id === 1 && <ProductCharacteristics productType={productType} setProductType={setProductType} />}
-      {productType && (productType.id === 2 || productType.id === 3) && <OtherProductCharacteristics productType={productType} setProductType={setProductType} />}
+      {productType && productType.id === 1 && <ProductCharacteristics productType={productType} setProductType={setProductType} categories={categories} />}
+      {productType && (productType.id === 2 || productType.id === 3) && <OtherProductCharacteristics productType={productType} setProductType={setProductType} categories={categories} />}
     </div>
   )
 };

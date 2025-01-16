@@ -1,6 +1,6 @@
 import s from './OtherProductCharacteristics.module.css';
 
-const OtherProductCharacteristics = ({ productType, setProductType }) => {
+const OtherProductCharacteristics = ({ productType, setProductType, categories }) => {
   return (
     <div>
       <h1>OtherProductCharacteristics</h1>

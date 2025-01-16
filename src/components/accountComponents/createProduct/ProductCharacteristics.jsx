@@ -1,21 +1,13 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getCategories } from '../../../store/actions/categoryActions';
+import { useState } from 'react';
 import s from './ProductCharacteristics.module.css';
 import { FaChild, FaChildDress, FaBaby } from "react-icons/fa6";
 import { IoWoman, IoMan } from "react-icons/io5";
 import SimpleProductForm from './SimpleProductForm';
 import { filterCategoriesByParentAndGender } from '../../../utils/utils';
 
-const ProductCharacteristics = ({ productType, setProductType }) => {
-  const dispatch = useDispatch();
-  const categories = useSelector((state) => state.category.categories);
+const ProductCharacteristics = ({ productType, setProductType, categories }) => {
   const [typeProduct, setTypeProduct] = useState(null);
   const [genderProduct, setGenderProduct] = useState(null);
-
-  useEffect(() => {
-    dispatch(getCategories());
-  }, [dispatch]);
 
   const handleTypeClick = (type) => {
     setTypeProduct(type);

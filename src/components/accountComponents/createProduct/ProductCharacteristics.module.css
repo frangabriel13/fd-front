@@ -103,3 +103,27 @@
 .selected {
   background-color: var(--second-color);
 }
+
+.divCategory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.divCategory h4 {
+  font-size: 1.8rem;
+}
+
+.divCategory select {
+  /* width: 20rem; */
+  /* height: 3rem; */
+  border-radius: .3rem;
+  border: .2rem solid var(--second-bg-color);
+  font-size: 1.6rem;
+  padding: .5rem 1rem;
+}
+
+.divCategory option {
+  font-size: 1.6rem;
+}

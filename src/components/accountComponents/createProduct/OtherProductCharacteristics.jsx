@@ -7,16 +7,22 @@ const OtherProductCharacteristics = ({ productType, setProductType, categories }
 
   return (
     <div className={s.container}>
-      <div className={s.divCategory}>
-        <h3>¿A qué categoría pertenece tu producto?</h3>
-        <select>
-          <option>Selecciona una categoría</option>
-          {filteredCategories.map((category) => (
-            <option key={category.id} value={category.id}>
-              {category.name}
-            </option>
-          ))}
-        </select>
+      <div className={s.divFinal}>
+        <div className={s.divCategory}>
+          <h3>¿A qué categoría pertenece tu producto?</h3>
+          <select>
+            <option>Selecciona una categoría</option>
+            {filteredCategories.map((category) => (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        <hr className={s.divider} />
+        <div className={s.divBtn}>
+          <button className={s.btnNext}>Siguiente</button>
+        </div>
       </div>
     </div>
   );

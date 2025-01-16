@@ -2,6 +2,7 @@ import { useState } from 'react';
 import s from './ProductCharacteristics.module.css';
 import { FaChild, FaChildDress, FaBaby } from "react-icons/fa6";
 import { IoWoman, IoMan } from "react-icons/io5";
+import SimpleProductForm from './SimpleProductForm';
 
 const ProductCharacteristics = ({ productType, setProductType }) => {
   const [typeProduct, setTypeProduct] = useState(null);
@@ -79,6 +80,10 @@ const ProductCharacteristics = ({ productType, setProductType }) => {
             <span>Bebés</span>
           </button>
         </div>
+      </div>
+      <div className={s.divCategory}>
+        <h4>¿A qué categoría pertenece tu producto?</h4>
+        <select></select>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import s from './UploadProduct.module.css';
 import { PiTShirtLight, PiTowel } from "react-icons/pi";
 import { GiBigDiamondRing } from "react-icons/gi";
 import ProductCharacteristics from './createProduct/ProductCharacteristics';
+import OtherProductCharacteristics from './createProduct/OtherProductCharacteristics';
 
 const UploadProduct = () => {
   const [productType, setProductType] = useState(null);
@@ -42,7 +43,8 @@ const UploadProduct = () => {
           </div>
         </div>
       </div>
-      {productType && <ProductCharacteristics productType={productType} setProductType={setProductType} />}
+      {productType && productType.id === 1 && <ProductCharacteristics productType={productType} setProductType={setProductType} />}
+      {productType && (productType.id === 2 || productType.id === 3) && <OtherProductCharacteristics productType={productType} setProductType={setProductType} />}
     </div>
   )
 };

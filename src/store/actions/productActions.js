@@ -25,3 +25,19 @@ export const getProducts = (page = 1, pageSize = 20) => async (dispatch) => {
     });
   }
 };
+
+export const createProduct = (productData) => async (dispatch) => {
+  dispatch({ type: 'CREATE_PRODUCT_REQUEST' });
+  try {
+    const response = await productInstance.post('/', productData);
+    dispatch({
+      type: 'CREATE_PRODUCT_SUCCESS',
+      payload: response.data
+    });
+  } catch(error) {
+    dispatch({
+      type: 'CREATE_PRODUCT_FAILURE',
+      error: error.message,
+    });
+  }
+};

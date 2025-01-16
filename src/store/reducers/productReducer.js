@@ -23,6 +23,17 @@ const productReducer = (state = initialState, action) => {
       };
     case 'GET_PRODUCTS_FAILURE':
       return { ...state, loading: false, error: action.error };
+    case 'CREATE_PRODUCT_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'CREATE_PRODUCT_SUCCESS':
+      return { 
+        ...state, 
+        loading: false, 
+        error: null,
+        products: [...state.products, action.payload],
+      };
+    case 'CREATE_PRODUCT_FAILURE':
+      return { ...state, loading: false, error: action.error };
     default:
       return state;
   }

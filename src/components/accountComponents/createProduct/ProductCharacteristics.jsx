@@ -5,6 +5,7 @@ import s from './ProductCharacteristics.module.css';
 import { FaChild, FaChildDress, FaBaby } from "react-icons/fa6";
 import { IoWoman, IoMan } from "react-icons/io5";
 import SimpleProductForm from './SimpleProductForm';
+import { filterCategoriesByParentAndGender } from '../../../utils/utils';
 
 const ProductCharacteristics = ({ productType, setProductType }) => {
   const dispatch = useDispatch();
@@ -24,11 +25,7 @@ const ProductCharacteristics = ({ productType, setProductType }) => {
     setGenderProduct(gender);
   };
 
-  // const filteredCategories = categories.filter((category) => category.parentId === productType.id);
-  const filteredCategories = categories.filter((category) => 
-    category.parentId === productType.id && 
-    category.genders.some(gender => gender.id === genderProduct)
-  );
+  const filteredCategories = filterCategoriesByParentAndGender(categories, productType.id, genderProduct);
 
   return (
     <div className={s.container}>

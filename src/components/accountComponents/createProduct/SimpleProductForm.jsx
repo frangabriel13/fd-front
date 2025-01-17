@@ -74,12 +74,21 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
           </div>
           <div className={s.divTags}>
             <h4 className={s.label}>Tags</h4>
-            <input
-              type="text"
-              name="tags"
-              value={formData.tags}
-              onChange={handleChange}
-            />
+            <div className={s.tagsContainer}>
+              <div className={s.tagContainer}>
+                <input
+                  className={s.inputTag}
+                  type="text"
+                  name="tags"
+                  value={formData.tags}
+                  onChange={handleChange}
+                />
+                <button className={s.btnAddTag}>Agregar</button>
+              </div>
+              <div className={s.tags}>
+                Acá van los tags
+              </div>
+            </div>
           </div>
         </div>
         <div className={s.divBtn}>

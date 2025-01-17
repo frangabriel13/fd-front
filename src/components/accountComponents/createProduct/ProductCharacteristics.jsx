@@ -2,12 +2,12 @@ import { useState } from 'react';
 import s from './ProductCharacteristics.module.css';
 import { FaChild, FaChildDress, FaBaby } from "react-icons/fa6";
 import { IoWoman, IoMan } from "react-icons/io5";
-import SimpleProductForm from './SimpleProductForm';
 import { filterCategoriesByParentAndGender } from '../../../utils/utils';
 
-const ProductCharacteristics = ({ productType, setProductType, categories }) => {
+const ProductCharacteristics = ({ productType, setProductType, categories, onShowForm }) => {
   const [typeProduct, setTypeProduct] = useState(null);
   const [genderProduct, setGenderProduct] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const handleTypeClick = (type) => {
     setTypeProduct(type);
@@ -15,6 +15,18 @@ const ProductCharacteristics = ({ productType, setProductType, categories }) => 
 
   const handleGenderClick = (gender) => {
     setGenderProduct(gender);
+  };
+
+  const handleCategoryChange = (e) => {
+    setSelectedCategory(e.target.value);
+  };
+
+  const handleNextClick = () => {
+    onShowForm({
+      productType,
+      genderProduct,
+      selectedCategory,
+    });
   };
 
   const filteredCategories = filterCategoriesByParentAndGender(categories, productType.id, genderProduct);
@@ -87,7 +99,7 @@ const ProductCharacteristics = ({ productType, setProductType, categories }) => 
       <div className={s.divFinal}>
         <div className={s.divCategory}>
           <h4>¿A qué categoría pertenece tu producto?</h4>
-          <select>
+          <select onChange={handleCategoryChange}>
             <option>Selecciona una categoría</option>
             {filteredCategories.map((category) => (
               <option key={category.id} value={category.id}>
@@ -98,7 +110,7 @@ const ProductCharacteristics = ({ productType, setProductType, categories }) => 
         </div>
         <hr className={s.divider} />
         <div className={s.divBtn}>
-          <button className={s.btnNext}>Siguiente</button>
+          <button className={s.btnNext} onClick={handleNextClick}>Siguiente</button>
         </div>
       </div>
     </div>

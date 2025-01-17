@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createProduct } from '../../../store/actions/productActions';
 import { getSizes } from '../../../store/actions/sizeAction';
+import { categorizeSizes } from '../../../utils/utils';
 import s from './SimpleProductForm.module.css';
 import SizeModal from './SizeModal';
 import ImageModal from './ImageModal';
@@ -26,6 +27,10 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
     dispatch(getSizes());
   }, [dispatch]);
 
+  const { numericSizes, letterSizes } = categorizeSizes(sizes);
+  console.log('numericSizes', numericSizes);
+  console.log('letterSizes', letterSizes);
+ 
   const handleChange = (e) => {
     setFormData({
       ...formData,

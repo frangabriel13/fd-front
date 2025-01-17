@@ -72,6 +72,15 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
               onChange={handleChange}
             />
           </div>
+          <div className={s.divTags}>
+            <h4 className={s.label}>Tags</h4>
+            <input
+              type="text"
+              name="tags"
+              value={formData.tags}
+              onChange={handleChange}
+            />
+          </div>
         </div>
         <div className={s.divBtn}>
           <button className={s.btnForm} type='submit'>Siguiente</button>

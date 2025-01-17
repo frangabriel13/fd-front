@@ -43,25 +43,34 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
         <div className={s.divForm}>
           <div className={s.divInputs}>
             <div className={s.divInput}>
-              <h4>Nombre</h4>
+              <h4 className={s.label}>Nombre</h4>
               <input
                 className={s.input}
                 type="text"
-                name="owner"
-                value={formData.owner}
+                name="name"
+                value={formData.name}
                 onChange={handleChange}
               />
             </div>
             <div className={s.divInput}>
-              <h4>Precio</h4>
+              <h4 className={s.label}>Precio</h4>
               <input
                 className={s.input}
-                type="text"
-                name="owner"
-                value={formData.owner}
+                type="number"
+                name="price"
+                value={formData.price}
                 onChange={handleChange}
               />
             </div>
+          </div>
+          <div className={s.divDescription}>
+            <h4 className={s.label}>Descripción</h4>
+            <textarea
+              className={s.textarea}
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+            />
           </div>
         </div>
         <div className={s.divBtn}>

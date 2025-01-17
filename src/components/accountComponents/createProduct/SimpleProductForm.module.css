@@ -1,0 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+  padding: 3rem;
+}
+
+.divTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divTitle h3 {
+  font-size: 2.2rem;
+}
+
+.divTitle p {
+  font-size: 1.6rem;
+  color: var(--gray-color);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+}
+
+.divInputs {
+  display: flex;
+  gap: 3rem;
+}
+
+.divInput {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: 50%;
+}
+
+.divInput h4 {
+  font-size: 1.5rem;
+}
+
+.input {
+  padding: 1rem;
+  border: .1rem solid var(--gray-color-light);
+  border-radius: .3rem;
+  font-size: 1.5rem;
+}

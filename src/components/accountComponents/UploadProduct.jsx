@@ -6,11 +6,14 @@ import { PiTShirtLight, PiTowel } from "react-icons/pi";
 import { GiBigDiamondRing } from "react-icons/gi";
 import ProductCharacteristics from './createProduct/ProductCharacteristics';
 import OtherProductCharacteristics from './createProduct/OtherProductCharacteristics';
+import SimpleProductForm from './createProduct/SimpleProductForm';
 
 const UploadProduct = () => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.category.categories);
   const [productType, setProductType] = useState(null);
+  const [showForm, setShowForm] = useState(false);
+  const [formProps, setFormProps] = useState(null);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -19,6 +22,11 @@ const UploadProduct = () => {
   const handleTypeClick = (type, id) => {
     setProductType({ type, id });
   }
+
+  const handleShowForm = (props) => {
+    setFormProps(props);
+    setShowForm(true);
+  };
 
   return (
     <div className={s.container}>
@@ -51,8 +59,29 @@ const UploadProduct = () => {
           </div>
         </div>
       </div>
-      {productType && productType.id === 1 && <ProductCharacteristics productType={productType} setProductType={setProductType} categories={categories} />}
-      {productType && (productType.id === 2 || productType.id === 3) && <OtherProductCharacteristics productType={productType} setProductType={setProductType} categories={categories} />}
+      {productType && productType.id === 1 && (
+        <ProductCharacteristics 
+          productType={productType} 
+          setProductType={setProductType} 
+          categories={categories} 
+          onShowForm={handleShowForm}
+        />
+      )}
+      {productType && (productType.id === 2 || productType.id === 3) && (
+        <OtherProductCharacteristics 
+          productType={productType} 
+          setProductType={setProductType} 
+          categories={categories} 
+          onShowForm={handleShowForm}
+        />
+      )}
+      {showForm && (
+        <SimpleProductForm
+          productType={formProps.productType}
+          genderProduct={formProps.genderProduct}
+          selectedCategory={formProps.selectedCategory}
+        />
+      )}
     </div>
   )
 };

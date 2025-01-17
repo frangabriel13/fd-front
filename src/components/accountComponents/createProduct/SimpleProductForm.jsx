@@ -1,10 +1,12 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { createProduct } from '../../../store/actions/productActions';
+import { getSizes } from '../../../store/actions/sizeAction';
 import s from './SimpleProductForm.module.css';
 
 const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => {
   const dispatch = useDispatch();
+  const sizes = useSelector((state) => state.size.sizes);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -15,6 +17,12 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
     sizes: [],
   });
   const [tagInput, setTagInput] = useState('');
+
+  useEffect(() => {
+    dispatch(getSizes());
+  }, [dispatch]);
+
+  console.log(sizes);
 
   const handleChange = (e) => {
     setFormData({
@@ -95,26 +103,34 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
               onChange={handleChange}
             />
           </div>
-          <div className={s.divTags}>
-            <h4 className={s.label}>Etiquetas</h4>
-            <div className={s.tagsContainer}>
-              <div className={s.tagContainer}>
-                <input
-                  className={s.inputTag}
-                  type="text"
-                  name="tagInput"
-                  value={tagInput}
-                  onChange={handleTagChange}
-                />
-                <button className={s.btnAddTag} onClick={handleAddTag}>Agregar</button>
+          <div className={s.divInputs}>
+            <div className={s.divTags}>
+              <h4 className={s.label}>Etiquetas</h4>
+              <div className={s.tagsContainer}>
+                <div className={s.tagContainer}>
+                  <input
+                    className={s.inputTag}
+                    type="text"
+                    name="tagInput"
+                    value={tagInput}
+                    onChange={handleTagChange}
+                  />
+                  <button className={s.btnAddTag} onClick={handleAddTag}>Agregar</button>
+                </div>
+                <div className={s.tags}>
+                  {formData.tags.map((tag, index) => (
+                    <span key={index} className={s.tag}>
+                      {tag}
+                      <button className={s.btnRemoveTag} onClick={() => handleRemoveTag(index)}>x</button>
+                    </span>
+                  ))}
+                </div>
               </div>
-              <div className={s.tags}>
-                {formData.tags.map((tag, index) => (
-                  <span key={index} className={s.tag}>
-                    {tag}
-                    <button className={s.btnRemoveTag} onClick={() => handleRemoveTag(index)}>x</button>
-                  </span>
-                ))}
+            </div>
+            <div className={s.divCategories}>
+              <h4>Talles</h4>
+              <div>
+                <button>Editar talles</button>
               </div>
             </div>
           </div>

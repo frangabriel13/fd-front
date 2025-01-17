@@ -26,7 +26,7 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 3rem;
   width: 100%;
 }
 
@@ -174,4 +174,30 @@
 .divCategories button:hover {
   border: .1rem solid var(--second-color);
   background-color: var(--second-color);
+}
+
+.divider {
+  border: 0;
+  height: .1rem;
+  background: #ccc;
+  width: 100%;
+}
+
+.divBtn {
+  display: flex;
+  justify-content: end;
+}
+
+.btnNext {
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: var(--second-bg-color);
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btnNext:hover {
+  background-color: var(--third-bg-color);
 }

@@ -135,8 +135,9 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
             </div>
           </div>
         </div>
+        <hr className={s.divider} />
         <div className={s.divBtn}>
-          <button className={s.btnForm} type='submit'>Siguiente</button>
+          <button className={s.btnNext} type='submit'>Siguiente</button>
         </div>
       </form>
     </div>

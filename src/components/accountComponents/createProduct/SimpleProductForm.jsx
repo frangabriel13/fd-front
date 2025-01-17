@@ -19,12 +19,12 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
     sizes: [],
   });
   const [tagInput, setTagInput] = useState('');
+  const [showSizeModal, setShowSizeModal] = useState(false);
+  const [showImageModal, setShowImageModal] = useState(false);
 
   useEffect(() => {
     dispatch(getSizes());
   }, [dispatch]);
-
-  console.log(sizes);
 
   const handleChange = (e) => {
     setFormData({
@@ -64,6 +64,22 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
       categoryId: selectedCategory,
     };
     dispatch(createProduct(productData));
+  };
+
+  const handleShowSizeModal = () => {
+    setShowSizeModal(true);
+  };
+
+  const handleHideSizeModal = () => {
+    setShowSizeModal(false);
+  };
+
+  const handleShowImageModal = () => {
+    setShowImageModal(true);
+  };
+
+  const handleHideImageModal = () => {
+    setShowImageModal(false);
   };
   
   return (
@@ -133,13 +149,13 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
               <div className={s.divCategories}>
                 <h4>Talles</h4>
                 <div>
-                  <button>Editar talles</button>
+                  <button type="button" onClick={handleShowSizeModal}>Editar talles</button>
                 </div>
               </div>
               <div className={s.divCategories}>
                 <h4>Imágenes</h4>
                 <div>
-                  <button>Editar imágenes</button>
+                  <button type="button" onClick={handleShowImageModal}>Editar imágenes</button>
                 </div>
               </div>
             </div>
@@ -150,6 +166,8 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
           <button className={s.btnNext} type='submit'>Siguiente</button>
         </div>
       </form>
+      {showSizeModal && <SizeModal onClose={handleHideSizeModal} />}
+      {showImageModal && <ImageModal onClose={handleHideImageModal} />}
     </div>
   )
 }

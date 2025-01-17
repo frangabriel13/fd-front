@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createProduct } from '../../../store/actions/productActions';
 import { getSizes } from '../../../store/actions/sizeAction';
 import s from './SimpleProductForm.module.css';
+import SizeModal from './SizeModal';
+import ImageModal from './ImageModal';
 
 const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => {
   const dispatch = useDispatch();
@@ -127,10 +129,18 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
                 </div>
               </div>
             </div>
-            <div className={s.divCategories}>
-              <h4>Talles</h4>
-              <div>
-                <button>Editar talles</button>
+            <div className={s.divSubInputs}>
+              <div className={s.divCategories}>
+                <h4>Talles</h4>
+                <div>
+                  <button>Editar talles</button>
+                </div>
+              </div>
+              <div className={s.divCategories}>
+                <h4>Imágenes</h4>
+                <div>
+                  <button>Editar imágenes</button>
+                </div>
               </div>
             </div>
           </div>

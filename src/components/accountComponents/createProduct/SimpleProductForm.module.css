@@ -149,6 +149,12 @@
   color: var(--secondary-color);
 }
 
+.divSubInputs {
+  display: flex;
+  gap: 3rem;
+  width: 50%;
+}
+
 .divCategories {
   display: flex;
   flex-direction: column;

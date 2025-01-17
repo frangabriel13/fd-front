@@ -121,7 +121,7 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
               onChange={handleChange}
             />
           </div>
-          <div className={s.divInputs}>
+          <div className={s.divInputsTwo}>
             <div className={s.divTags}>
               <h4 className={s.label}>Etiquetas</h4>
               <div className={s.tagsContainer}>

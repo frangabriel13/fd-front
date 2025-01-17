@@ -5,6 +5,7 @@ import userReducer from './userReducer';
 import authReducer from './authReducer';
 import wholesalerReducer from './wholesalerReducer';
 import categoryReducer from './categoryReducer';
+import sizeReducer from './seizeReducer';
 
 const rootReducer = combineReducers({
   manufacturer: manufacturerReducer,
@@ -13,6 +14,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   wholesaler: wholesalerReducer,
   category: categoryReducer,
+  size: sizeReducer,
 });
 
 

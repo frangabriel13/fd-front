@@ -14,11 +14,34 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
     images: [],
     sizes: [],
   });
+  const [tagInput, setTagInput] = useState('');
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleTagChange = (e) => {
+    setTagInput(e.target.value);
+  };
+
+  const handleAddTag = (e) => {
+    e.preventDefault();
+    if (tagInput.trim() !== '') {
+      setFormData({
+        ...formData,
+        tags: [...formData.tags, tagInput.trim()],
+      });
+      setTagInput('');
+    }
+  };
+
+  const handleRemoveTag = (index) => {
+    setFormData({
+      ...formData,
+      tags: formData.tags.filter((_, i) => i !== index),
     });
   };
 
@@ -73,13 +96,27 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
             />
           </div>
           <div className={s.divTags}>
-            <h4 className={s.label}>Tags</h4>
-            <input
-              type="text"
-              name="tags"
-              value={formData.tags}
-              onChange={handleChange}
-            />
+            <h4 className={s.label}>Etiquetas</h4>
+            <div className={s.tagsContainer}>
+              <div className={s.tagContainer}>
+                <input
+                  className={s.inputTag}
+                  type="text"
+                  name="tagInput"
+                  value={tagInput}
+                  onChange={handleTagChange}
+                />
+                <button className={s.btnAddTag} onClick={handleAddTag}>Agregar</button>
+              </div>
+              <div className={s.tags}>
+                {formData.tags.map((tag, index) => (
+                  <span key={index} className={s.tag}>
+                    {tag}
+                    <button className={s.btnRemoveTag} onClick={() => handleRemoveTag(index)}>x</button>
+                  </span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
         <div className={s.divBtn}>

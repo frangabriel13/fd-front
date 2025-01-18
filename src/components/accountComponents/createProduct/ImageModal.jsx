@@ -45,11 +45,6 @@ const ImageModal = ({ onClose, onSave }) => {
     setMainImage(imageId);
   };
 
-  // const handleAccept = () => {
-  //   const imageIds = uploadedImages.map(image => image.id);
-  //   onSave(imageIds, mainImage);
-  //   onClose();
-  // };
   const handleAccept = () => {
     const imageUrls = uploadedImages.map(image => image.url);
     const mainImageUrl = uploadedImages.find(image => image.id === mainImage)?.url || '';

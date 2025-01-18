@@ -180,7 +180,7 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
         </div>
         <hr className={s.divider} />
         <div className={s.divBtn}>
-          <button className={s.btnNext} type='submit'>Siguiente</button>
+          <button className={s.btnNext} type='submit'>Crear producto</button>
         </div>
       </form>
       {showSizeModal &&

@@ -26,7 +26,7 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
     dispatch(getSizes());
   }, [dispatch]);
 
-  console.log(sizes);
+  console.log('formData', formData);
  
   const handleChange = (e) => {
     setFormData({
@@ -74,6 +74,13 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
 
   const handleHideSizeModal = () => {
     setShowSizeModal(false);
+  };
+
+  const handleSaveSizes = (selectedSizes) => {
+    setFormData({
+      ...formData,
+      sizes: selectedSizes,
+    });
   };
 
   const handleShowImageModal = () => {
@@ -168,7 +175,13 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
           <button className={s.btnNext} type='submit'>Siguiente</button>
         </div>
       </form>
-      {showSizeModal && <SizeModal onClose={handleHideSizeModal} sizes={sizes} />}
+      {showSizeModal &&
+        <SizeModal 
+          onClose={handleHideSizeModal} 
+          sizes={sizes} 
+          onSave={handleSaveSizes}
+          initialSelectedSizes={formData.sizes} 
+        />}
       {showImageModal && <ImageModal onClose={handleHideImageModal} />}
     </div>
   )

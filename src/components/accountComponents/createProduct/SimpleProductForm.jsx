@@ -182,7 +182,10 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
           onSave={handleSaveSizes}
           initialSelectedSizes={formData.sizes}
         />}
-      {showImageModal && <ImageModal onClose={handleHideImageModal} />}
+      {showImageModal && 
+        <ImageModal 
+          onClose={handleHideImageModal} 
+        />}
     </div>
   )
 }

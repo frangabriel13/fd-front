@@ -1,13 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import s from './SizeModal.module.css';
 
-const SizeModal = ({ sizes, onClose, onSave }) => {
+const SizeModal = ({ sizes, onClose, onSave, initialSelectedSizes }) => {
   const [selectedSizes, setSelectedSizes] = useState([]);
+
+  useEffect(() => {
+    setSelectedSizes(initialSelectedSizes);
+  }, [initialSelectedSizes]);
 
   const handleCheckboxChange = (e) => {
     const { value, checked } = e.target;
+    const id = Number(value); // Convertir a número
     setSelectedSizes((prevSelectedSizes) =>
-      checked ? [...prevSelectedSizes, value] : prevSelectedSizes.filter((id) => id !== value)
+      checked ? [...prevSelectedSizes, id] : prevSelectedSizes.filter((item) => item !== id)
     );
   };
 
@@ -44,6 +49,7 @@ const SizeModal = ({ sizes, onClose, onSave }) => {
                         name="numeric" 
                         value={size.id} 
                         onChange={handleCheckboxChange}
+                        checked={selectedSizes.includes(size.id)}
                       />
                       <label className={s.label} htmlFor={`numeric-${index}`}>{size.name}</label>
                     </div>
@@ -59,8 +65,9 @@ const SizeModal = ({ sizes, onClose, onSave }) => {
                       type="checkbox" 
                       id={`alphanumeric-${index}`} 
                       name="alphanumeric" 
-                      value={size.name}
+                      value={size.id}
                       onChange={handleCheckboxChange}
+                      checked={selectedSizes.includes(size.id)}
                     />
                     <label className={s.label} htmlFor={`alphanumeric-${index}`}>{size.name}</label>
                   </div>
@@ -76,8 +83,9 @@ const SizeModal = ({ sizes, onClose, onSave }) => {
                         type="checkbox" 
                         id={`shoe-${index}`} 
                         name="shoe" 
-                        value={size.name}
+                        value={size.id}
                         onChange={handleCheckboxChange}
+                        checked={selectedSizes.includes(size.id)}
                       />
                       <label className={s.label} htmlFor={`shoe-${index}`}>{size.name}</label>
                     </div>

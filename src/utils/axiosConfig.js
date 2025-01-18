@@ -38,3 +38,8 @@ export const categoryInstance = axios.create({
 export const sizeInstance = axios.create({
   baseURL: 'http://localhost:3000/api/sizes',
 });
+
+export const imageInstance = axios.create({
+  baseURL: 'http://localhost:3000/api/images',
+});
+imageInstance.interceptors.request.use(addAuthHeader);

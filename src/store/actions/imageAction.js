@@ -4,7 +4,7 @@ export const uploadImages = (images) => async (dispatch) => {
   try {
     dispatch({ type: 'UPLOAD_IMAGES_REQUEST' });
     
-    const { data } = await imageInstance.post('/images', images);
+    const { data } = await imageInstance.post('/', images);
 
     dispatch({ type: 'UPLOAD_IMAGES_SUCCESS', payload: data });
   } catch(error) {

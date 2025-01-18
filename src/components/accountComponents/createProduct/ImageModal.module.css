@@ -53,6 +53,19 @@
   border-radius: .3rem;
 }
 
+.uploadImages {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.uploadedImage {
+  width: 150px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: .3rem;
+}
+
 
 
 

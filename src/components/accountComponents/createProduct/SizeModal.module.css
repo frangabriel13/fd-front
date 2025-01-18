@@ -20,7 +20,7 @@
 
 .container {
   background-color: white;
-  padding: 1.5rem 1.5rem;
+  padding: 3rem;
   border-radius: .3rem;
   box-shadow: 0 0 .1rem rgba(0, 0, 0, 0.1);
   display: flex;
@@ -37,4 +37,65 @@
   font-size: 1.6rem;
   text-align: center;
   color: var(--gray-color);
+}
+
+.divContent {
+}
+
+.divLists {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.list {
+}
+
+.list h4 {
+  font-size: 1.8rem;
+}
+
+.largeList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 3rem;
+}
+
+.divCheck {
+  display: flex;
+  gap: 1rem;
+}
+
+.input {
+
+}
+
+.label {
+  font-size: 1.6rem;
+}
+
+.divider {
+  border: 0;
+  height: .1rem;
+  background: #ccc;
+  width: 100%;
+  margin-top: -.5rem;
+}
+
+.divBtn {
+  display: flex;
+  justify-content: end;
+}
+
+.btnNext {
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: var(--second-bg-color);
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btnNext:hover {
+  background-color: var(--third-bg-color);
 }

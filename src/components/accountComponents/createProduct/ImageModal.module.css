@@ -1,0 +1,86 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: white;
+  border-radius: .4rem;
+  overflow-y: auto;
+  width: 40%;
+}
+
+.container {
+  background-color: white;
+  padding: 3rem;
+  border-radius: .3rem;
+  box-shadow: 0 0 .1rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.container h3 {
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+.container p {
+  font-size: 1.6rem;
+  text-align: center;
+  color: var(--gray-color);
+}
+
+
+
+
+.divider {
+  border: 0;
+  height: .1rem;
+  background: #ccc;
+  width: 100%;
+  /* margin-top: -.5rem; */
+}
+
+.divBtn {
+  display: flex;
+  justify-content: flex-end;
+  /* padding-top: 1rem; */
+  gap: 1rem;
+}
+
+.btnNext {
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: var(--second-bg-color);
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btnNext:hover {
+  background-color: var(--third-bg-color);
+}
+
+.btnCancel {
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: var(--red-color);
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btnCancel:hover {
+  background-color: var(--red-color-light);
+}

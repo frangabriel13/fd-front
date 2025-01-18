@@ -17,6 +17,7 @@ const ImageModal = ({ onClose, onSave }) => {
   }, [images]);
 
   console.log('images', images);
+  console.log('uploadedImages', uploadedImages);
 
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
@@ -44,9 +45,15 @@ const ImageModal = ({ onClose, onSave }) => {
     setMainImage(imageId);
   };
 
+  // const handleAccept = () => {
+  //   const imageIds = uploadedImages.map(image => image.id);
+  //   onSave(imageIds, mainImage);
+  //   onClose();
+  // };
   const handleAccept = () => {
-    const imageIds = uploadedImages.map(image => image.id);
-    onSave(imageIds, mainImage);
+    const imageUrls = uploadedImages.map(image => image.url);
+    const mainImageUrl = uploadedImages.find(image => image.id === mainImage)?.url || '';
+    onSave(imageUrls, mainImageUrl);
     onClose();
   };
 
@@ -67,19 +74,6 @@ const ImageModal = ({ onClose, onSave }) => {
               <h4>Elige la imagen principal</h4>
               <p>La imagen seleccionada será la de portada de tu producto</p>
             </div>
-            {/* <div className={s.mapImages}>
-              {uploadedImages && uploadedImages.map((image, index) => (
-                <div key={index} className={s.uploadedImageContainer}>
-                  <img 
-                    src={image.url} 
-                    alt={`uploaded ${index}`} 
-                    className={s.uploadedImage} 
-                    onClick={() => handleSelectMainImage(image.id)}
-                  />
-                  {mainImage === image.id && <span className={s.mainImageLabel}>Principal</span>}
-                </div>
-              ))}
-            </div> */}
             <div className={s.mapImages}>
               {uploadedImages && uploadedImages.map((image, index) => (
                 <div 

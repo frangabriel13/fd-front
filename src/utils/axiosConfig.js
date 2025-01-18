@@ -21,6 +21,7 @@ userInstance.interceptors.request.use(addAuthHeader);
 export const productInstance = axios.create({
   baseURL: 'http://localhost:3000/api/products',
 });
+productInstance.interceptors.request.use(addAuthHeader);
 
 export const authInstance = axios.create({
   baseURL: 'http://localhost:3001/api/auth',

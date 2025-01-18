@@ -16,6 +16,7 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
     tags: [],
     mainImage: '',
     images: [],
+    imgIds: [],
     sizes: [],
   });
   const [tagInput, setTagInput] = useState('');
@@ -91,11 +92,12 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
     setShowImageModal(false);
   };
 
-  const handleSaveImages = (selectedImages, mainImage) => {
+  const handleSaveImages = (selectedImages, mainImage, imgIds) => {
     setFormData({
       ...formData,
       images: selectedImages,
       mainImage: mainImage,
+      imgIds: imgIds,
     });
   };
   

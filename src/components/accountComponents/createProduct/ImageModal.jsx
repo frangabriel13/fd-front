@@ -3,10 +3,18 @@ import { useDispatch, useSelector } from 'react-redux';
 import { uploadImages } from '../../../store/actions/imageAction';
 import s from './ImageModal.module.css';
 
-const ImageModal = ({ onClose }) => {
+const ImageModal = ({ onClose, onSave }) => {
   const dispatch = useDispatch();
   const { images } = useSelector((state) => state.image);
   const [selectedImages, setSelectedImages] = useState([]);
+  const [uploadedImages, setUploadedImages] = useState([]);
+  const [mainImage, setMainImage] = useState('');
+
+  useEffect(() => {
+    if (images) {
+      setUploadedImages(images);
+    }
+  }, [images]);
 
   console.log('images', images);
 
@@ -30,6 +38,15 @@ const ImageModal = ({ onClose }) => {
       formData.append('images', image);
     });
     dispatch(uploadImages(formData));
+  };
+
+  const handleSelectMainImage = (imageId) => {
+    setMainImage(imageId);
+  };
+
+  const handleAccept = () => {
+    const imageIds = uploadedImages.map(image => image.id);
+    onSave(imageIds, mainImage);
     onClose();
   };
 
@@ -46,14 +63,43 @@ const ImageModal = ({ onClose }) => {
             <button className={s.btnNext} type='button' onClick={handleUpload}>Subir imágenes</button>
           </div>
           <div className={s.uploadImages}>
-            {images && images.map((image, index) => (
-              <img key={index} src={image.url} alt={`uploaded ${index}`} className={s.uploadedImage} />
-            ))}
+            <div className={s.divMainImage}>
+              <h4>Elige la imagen principal</h4>
+              <p>La imagen seleccionada será la de portada de tu producto</p>
+            </div>
+            {/* <div className={s.mapImages}>
+              {uploadedImages && uploadedImages.map((image, index) => (
+                <div key={index} className={s.uploadedImageContainer}>
+                  <img 
+                    src={image.url} 
+                    alt={`uploaded ${index}`} 
+                    className={s.uploadedImage} 
+                    onClick={() => handleSelectMainImage(image.id)}
+                  />
+                  {mainImage === image.id && <span className={s.mainImageLabel}>Principal</span>}
+                </div>
+              ))}
+            </div> */}
+            <div className={s.mapImages}>
+              {uploadedImages && uploadedImages.map((image, index) => (
+                <div 
+                  key={index} 
+                  className={`${s.uploadedImageContainer} ${mainImage === image.id ? s.mainImageSelected : ''}`}
+                  onClick={() => handleSelectMainImage(image.id)}
+                >
+                  <img 
+                    src={image.url} 
+                    alt={`uploaded ${index}`} 
+                    className={s.uploadedImage} 
+                  />
+                </div>
+              ))}
+            </div>
           </div>
           <hr className={s.divider} />
           <div className={s.divBtn}>
             <button className={s.btnCancel} onClick={onClose}>Cerrar</button>
-            <button className={s.btnNext} type='button'>Aceptar</button>
+            <button className={s.btnNext} type='button' onClick={handleAccept}>Aceptar</button>
           </div>
         </div>
       </div>

@@ -53,17 +53,49 @@
   border-radius: .3rem;
 }
 
+.divMainImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divMainImage h4 {
+  font-size: 1.8rem;
+  color: black;
+}
+
 .uploadImages {
   display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   gap: 2rem;
+}
+
+.mapImages {
+  display: flex;
+  gap: 1rem;
   justify-content: center;
 }
 
+.uploadedImageContainer {
+  position: relative;
+  cursor: pointer;
+}
+
 .uploadedImage {
-  width: 150px;
-  height: 200px;
+  width: 15rem;
+  height: 20rem;
   object-fit: cover;
   border-radius: .3rem;
+  border: .4rem solid transparent;
+}
+
+.uploadedImageContainer:hover .uploadedImage {
+  border-color: var(--second-color);
+}
+
+.mainImageSelected .uploadedImage {
+  border-color: var(--second-color);
 }
 
 

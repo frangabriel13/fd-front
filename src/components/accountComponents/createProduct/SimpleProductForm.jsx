@@ -90,6 +90,14 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
   const handleHideImageModal = () => {
     setShowImageModal(false);
   };
+
+  const handleSaveImages = (selectedImages, mainImage) => {
+    setFormData({
+      ...formData,
+      images: selectedImages,
+      mainImage: mainImage,
+    });
+  };
   
   return (
     <div className={s.container}>
@@ -184,7 +192,8 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
         />}
       {showImageModal && 
         <ImageModal 
-          onClose={handleHideImageModal} 
+          onClose={handleHideImageModal}
+          onSave={handleSaveImages}
         />}
     </div>
   )

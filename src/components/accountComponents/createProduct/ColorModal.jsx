@@ -47,40 +47,36 @@ const ColorModal = ({ onClose, onSave, colors, initialSelectedColors }) => {
             <p>Selecciona todas las variantes de colores que tenga tu producto</p>
           </div>
           <div className={s.divContent}>
-
-
-          <input 
-            type="text" 
-            placeholder="Buscar colores..." 
-            value={searchTerm} 
-            onChange={handleSearchChange} 
-            className={s.searchInput}
-          />
-          <div className={s.colorsList}>
-            {filteredColors.map(color => (
-              <div 
-                key={color.id} 
-                className={`${s.colorItem} ${selectedColors.includes(color.id) ? s.selected : ''}`} 
-                onClick={() => handleColorClick(color)}
-              >
-                {color.name}
-              </div>
-            ))}
-          </div>
-          <div className={s.selectedColors}>
-            <h4>Colores seleccionados:</h4>
-            {selectedColors.map(color => (
-              <div 
-                key={color.id} 
-                className={s.selectedColorItem} 
-                onClick={() => handleColorClick(color)}
-              >
-                {color.name}
-              </div>
-            ))}
-          </div>
-
-
+            <input 
+              type="text" 
+              placeholder="Buscar colores..." 
+              value={searchTerm} 
+              onChange={handleSearchChange} 
+              className={s.searchInput}
+            />
+            <div className={s.colorsList}>
+              {filteredColors.map(color => (
+                <div 
+                  key={color.id} 
+                  className={`${s.colorItem} ${selectedColors.includes(color.id) ? s.selected : ''}`} 
+                  onClick={() => handleColorClick(color)}
+                >
+                  {color.name}
+                </div>
+              ))}
+            </div>
+            <div className={s.selectedColors}>
+              <h4>Colores seleccionados:</h4>
+              {selectedColors.map(color => (
+                <div 
+                  key={color.id} 
+                  className={s.selectedColorItem} 
+                  onClick={() => handleColorClick(color)}
+                >
+                  {color.name}
+                </div>
+              ))}
+            </div>
           </div>
           <hr className={s.divider} />
           <div className={s.divBtn}>

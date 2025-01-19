@@ -20,7 +20,8 @@ const ColorModal = ({ onClose, onSave, colors, initialSelectedColors }) => {
   };
 
   const handleSave = () => {
-    onSave(selectedColors);
+    const selectedColorIds = selectedColors.map(color => color.id);
+    onSave(selectedColorIds);
     onClose();
   };
 
@@ -60,6 +61,7 @@ const ColorModal = ({ onClose, onSave, colors, initialSelectedColors }) => {
                   key={color.id} 
                   className={`${s.colorItem} ${selectedColors.includes(color.id) ? s.selected : ''}`} 
                   onClick={() => handleColorClick(color)}
+                  style={{ borderBottom: `5px solid ${color.code}` }}
                 >
                   {color.name}
                 </div>
@@ -67,15 +69,18 @@ const ColorModal = ({ onClose, onSave, colors, initialSelectedColors }) => {
             </div>
             <div className={s.selectedColors}>
               <h4>Colores seleccionados:</h4>
-              {selectedColors.map(color => (
-                <div 
-                  key={color.id} 
-                  className={s.selectedColorItem} 
-                  onClick={() => handleColorClick(color)}
-                >
-                  {color.name}
-                </div>
-              ))}
+              <div className={s.colorsList}>
+                {selectedColors.map(color => (
+                  <div 
+                    key={color.id} 
+                    className={s.selectedColorItem} 
+                    onClick={() => handleColorClick(color)}
+                    style={{ borderBottom: `5px solid ${color.code}` }}
+                  >
+                    {color.name}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
           <hr className={s.divider} />

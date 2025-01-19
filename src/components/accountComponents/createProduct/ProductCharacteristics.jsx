@@ -26,6 +26,7 @@ const ProductCharacteristics = ({ productType, setProductType, categories, onSho
       productType,
       genderProduct,
       selectedCategory,
+      uniqueSize: typeProduct === 'uniqueSize',
     });
   };
 

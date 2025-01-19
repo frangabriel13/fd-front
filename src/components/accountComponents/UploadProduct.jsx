@@ -8,6 +8,7 @@ import ProductCharacteristics from './createProduct/ProductCharacteristics';
 import OtherProductCharacteristics from './createProduct/OtherProductCharacteristics';
 import SimpleProductForm from './createProduct/SimpleProductForm';
 import BisuteriProductForm from './createProduct/BisuteriProductForm';
+import VariableProductForm from './createProduct/VariableProductForm';
 
 const UploadProduct = () => {
   const dispatch = useDispatch();
@@ -76,7 +77,21 @@ const UploadProduct = () => {
           onShowForm={handleShowForm}
         />
       )}
-      {showForm && productType.id === 1 && (
+      {/* {showForm && productType.id === 1 && (
+        <SimpleProductForm
+          productType={formProps.productType}
+          genderProduct={formProps.genderProduct}
+          selectedCategory={formProps.selectedCategory}
+        />
+      )} */}
+      {showForm && productType.id === 1 && formProps.uniqueSize && (
+        <VariableProductForm
+          productType={formProps.productType}
+          genderProduct={formProps.genderProduct}
+          selectedCategory={formProps.selectedCategory}
+        />
+      )}
+      {showForm && productType.id === 1 && !formProps.uniqueSize && (
         <SimpleProductForm
           productType={formProps.productType}
           genderProduct={formProps.genderProduct}
@@ -90,13 +105,6 @@ const UploadProduct = () => {
           selectedCategory={formProps.selectedCategory}
         />
       )}
-      {/* {showForm && (
-        <SimpleProductForm
-          productType={formProps.productType}
-          genderProduct={formProps.genderProduct}
-          selectedCategory={formProps.selectedCategory}
-        />
-      )} */}
     </div>
   )
 };

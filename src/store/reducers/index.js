@@ -7,6 +7,7 @@ import wholesalerReducer from './wholesalerReducer';
 import categoryReducer from './categoryReducer';
 import sizeReducer from './seizeReducer';
 import imageReducer from './imageReducer';
+import colorReducer from './colorReducer';
 
 const rootReducer = combineReducers({
   manufacturer: manufacturerReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   category: categoryReducer,
   size: sizeReducer,
   image: imageReducer,
+  color: colorReducer,
 });
 
 

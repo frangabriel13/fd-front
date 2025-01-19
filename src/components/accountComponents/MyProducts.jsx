@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProductsByUserId } from '../../store/actions/productActions';
+import { getProductsByUserId, deleteProduct } from '../../store/actions/productActions';
 import s from './MyProducts.module.css';
 
 const MyProducts = () => {
@@ -11,16 +11,13 @@ const MyProducts = () => {
     dispatch(getProductsByUserId());
   }, [dispatch]);
 
-  console.log(myProducts);
-
   const handleEdit = (productId) => {
     // Lógica para editar el producto
     console.log(`Edit product with id: ${productId}`);
   };
 
   const handleDelete = (productId) => {
-    // Lógica para eliminar el producto
-    console.log(`Delete product with id: ${productId}`);
+    dispatch(deleteProduct(productId));
   };
 
   return (

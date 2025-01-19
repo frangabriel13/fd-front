@@ -57,3 +57,16 @@ export const getProductsByUserId = () => async (dispatch) => {
     });
   }
 };
+
+export const deleteProduct = (productId) => async (dispatch) => {
+  dispatch({ type: 'DELETE_PRODUCT_REQUEST' });
+  try {
+    await productInstance.delete(`/${productId}`);
+    dispatch({ type: 'DELETE_PRODUCT_SUCCESS', payload: productId });
+  } catch(error) {
+    dispatch({
+      type: 'DELETE_PRODUCT_FAILURE',
+      error: error.message,
+    });
+  }
+};

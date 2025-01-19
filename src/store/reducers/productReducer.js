@@ -41,6 +41,18 @@ const productReducer = (state = initialState, action) => {
       };
     case 'CREATE_PRODUCT_FAILURE':
       return { ...state, loading: false, error: action.error };
+    case 'DELETE_PRODUCT_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'DELETE_PRODUCT_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        products: state.products.filter(product => product.id !== action.payload),
+        myProducts: state.myProducts.filter(product => product.id !== action.payload),
+      };
+    case 'DELETE_PRODUCT_FAILURE':
+      return { ...state, loading: false, error: action.error };
     default:
       return state;
   }

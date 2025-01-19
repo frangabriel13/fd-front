@@ -44,3 +44,7 @@ export const imageInstance = axios.create({
   baseURL: 'http://localhost:3000/api/images',
 });
 imageInstance.interceptors.request.use(addAuthHeader);
+
+export const colorInstance = axios.create({
+  baseURL: 'http://localhost:3000/api/colors',
+});

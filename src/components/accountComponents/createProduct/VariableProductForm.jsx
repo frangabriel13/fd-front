@@ -17,7 +17,7 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
     mainImage: '',
     images: [],
     imgIds: [],
-    sizes: [],
+    sizes: [19],
     colors: [],
   });
   const [tagInput, setTagInput] = useState('');
@@ -29,6 +29,7 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
   }, [dispatch]);
 
   console.log('formData', formData);
+  console.log('colors', colors);
  
   const handleChange = (e) => {
     setFormData({
@@ -71,7 +72,7 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
   };
 
   const handleShowColorModal = () => {
-    setShowColoreModal(true);
+    setShowColorModal(true);
   };
 
   const handleHideColorModal = () => {

@@ -19,6 +19,7 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
     imgIds: [],
     sizes: [19],
     colors: [],
+    isVariable: true,
   });
   const [tagInput, setTagInput] = useState('');
   const [showColorModal, setShowColorModal] = useState(false);
@@ -62,11 +63,19 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const variations = formData.colors.map((colorId) => ({
+      colorId,
+      mainImage: formData.mainImage,
+      images: formData.images,
+    }));
+
     const productData = {
       ...formData,
       type: productType,
       genderId: genderProduct,
       categoryId: parseInt(selectedCategory, 10),
+      variations,
     };
     dispatch(createProduct(productData));
   };

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createProduct } from '../../../store/actions/productActions';
-import { gerColors } from '../../../store/actions/colorActions';
+import { getColors } from '../../../store/actions/colorActions';
 import s from './SimpleProductForm.module.css';
-import ColorModal from './ColorModal';
 import ImageModal from './ImageModal';
+import ColorModal from './ColorModal';
 
 const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => {
   const dispatch = useDispatch();

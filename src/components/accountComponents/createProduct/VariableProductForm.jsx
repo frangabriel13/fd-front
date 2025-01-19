@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createProduct } from '../../../store/actions/productActions';
-import { getSizes } from '../../../store/actions/sizeAction';
+import { gerColors } from '../../../store/actions/colorActions';
 import s from './SimpleProductForm.module.css';
-import SizeModal from './SizeModal';
+import ColorModal from './ColorModal';
 import ImageModal from './ImageModal';
 
 const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => {
   const dispatch = useDispatch();
-  const sizes = useSelector((state) => state.size.sizes);
+  const colors = useSelector((state) => state.color.colors);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -18,13 +18,14 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
     images: [],
     imgIds: [],
     sizes: [],
+    colors: [],
   });
   const [tagInput, setTagInput] = useState('');
-  const [showSizeModal, setShowSizeModal] = useState(false);
+  const [showColorModal, setShowColorModal] = useState(false);
   const [showImageModal, setShowImageModal] = useState(false);
 
   useEffect(() => {
-    dispatch(getSizes());
+    dispatch(getColors());
   }, [dispatch]);
 
   console.log('formData', formData);
@@ -69,18 +70,18 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
     dispatch(createProduct(productData));
   };
 
-  const handleShowSizeModal = () => {
-    setShowSizeModal(true);
+  const handleShowColorModal = () => {
+    setShowColoreModal(true);
   };
 
-  const handleHideSizeModal = () => {
-    setShowSizeModal(false);
+  const handleHideColorModal = () => {
+    setShowColorModal(false);
   };
 
-  const handleSaveSizes = (selectedSizes) => {
+  const handleSaveColors = (selectedColors) => {
     setFormData({
       ...formData,
-      sizes: selectedSizes,
+      colors: selectedColors,
     });
   };
 
@@ -168,7 +169,7 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
               <div className={s.divCategories}>
                 <h4>Colores</h4>
                 <div>
-                  <button type="button" onClick={handleShowSizeModal}>Editar colores</button>
+                  <button type="button" onClick={handleShowColorModal}>Editar colores</button>
                 </div>
               </div>
               <div className={s.divCategories}>
@@ -185,12 +186,12 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
           <button className={s.btnNext} type='submit'>Crear producto</button>
         </div>
       </form>
-      {showSizeModal &&
-        <SizeModal 
-          onClose={handleHideSizeModal} 
-          sizes={sizes} 
-          onSave={handleSaveSizes}
-          initialSelectedSizes={formData.sizes}
+      {showColorModal &&
+        <ColorModal 
+          onClose={handleHideColorModal} 
+          colors={colors} 
+          onSave={handleSaveColors}
+          initialSelectedColors={formData.colors}
         />}
       {showImageModal && 
         <ImageModal 

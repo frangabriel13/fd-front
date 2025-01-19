@@ -41,3 +41,19 @@ export const createProduct = (productData) => async (dispatch) => {
     });
   }
 };
+
+export const getProductsByUserId = () => async (dispatch) => {
+  dispatch({ type: 'GET_PRODUCTS_BY_USER_REQUEST' });
+  try {
+    const response = await productInstance.get('/createdbyMe');
+    dispatch({
+      type: 'GET_PRODUCTS_BY_USER_SUCCESS',
+      payload: response.data
+    });
+  } catch(error) {
+    dispatch({
+      type: 'GET_PRODUCTS_BY_USER_FAILURE',
+      error: error.message,
+    });
+  }
+};

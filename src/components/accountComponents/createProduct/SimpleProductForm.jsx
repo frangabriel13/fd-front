@@ -63,8 +63,8 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
     const productData = {
       ...formData,
       type: productType,
-      genderProduct,
-      categoryId: selectedCategory,
+      genderId: genderProduct,
+      categoryId: parseInt(selectedCategory, 10),
     };
     dispatch(createProduct(productData));
   };

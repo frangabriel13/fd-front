@@ -23,6 +23,7 @@ const UploadProduct = () => {
 
   const handleTypeClick = (type, id) => {
     setProductType({ type, id });
+    setShowForm(false);
   }
 
   const handleShowForm = (props) => {
@@ -77,13 +78,6 @@ const UploadProduct = () => {
           onShowForm={handleShowForm}
         />
       )}
-      {/* {showForm && productType.id === 1 && (
-        <SimpleProductForm
-          productType={formProps.productType}
-          genderProduct={formProps.genderProduct}
-          selectedCategory={formProps.selectedCategory}
-        />
-      )} */}
       {showForm && productType.id === 1 && formProps.uniqueSize && (
         <VariableProductForm
           productType={formProps.productType}

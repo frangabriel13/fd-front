@@ -12,6 +12,7 @@ const ProductCharacteristics = ({ productType, setProductType, categories, onSho
 
   const handleTypeClick = (type) => {
     setTypeProduct(type);
+    onShowForm(null);
   };
 
   const handleGenderClick = (gender) => {

@@ -9,6 +9,7 @@ const ImageModal = ({ onClose, onSave }) => {
   const [selectedImages, setSelectedImages] = useState([]);
   const [uploadedImages, setUploadedImages] = useState([]);
   const [mainImage, setMainImage] = useState('');
+  const [isUploadDisabled, setIsUploadDisabled] = useState(false);
 
   useEffect(() => {
     if (images) {
@@ -28,9 +29,11 @@ const ImageModal = ({ onClose, onSave }) => {
   const handleImageChange = (e) => {
     if (e.target.files.length > 3) {
       alert('Solo puedes seleccionar hasta tres imágenes');
+      setIsUploadDisabled(true);
       return;
     }
     setSelectedImages(Array.from(e.target.files));
+    setIsUploadDisabled(false);
   };
 
   const handleUpload = () => {
@@ -63,7 +66,14 @@ const ImageModal = ({ onClose, onSave }) => {
           </div>
           <div className={s.divImages}>
             <input className={s.inputFile} type="file" multiple onChange={handleImageChange} />
-            <button className={s.btnNext} type='button' onClick={handleUpload}>Subir imágenes</button>
+            <button 
+              className={`${s.btnNext} ${isUploadDisabled ? s.btnDisabled : ''}`}
+              type='button' 
+              onClick={handleUpload} 
+              disabled={isUploadDisabled}
+            >
+              Subir imágenes
+            </button>
           </div>
           <div className={s.uploadImages}>
             <div className={s.divMainImage}>

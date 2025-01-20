@@ -143,3 +143,12 @@
 .btnCancel:hover {
   background-color: var(--red-color-light);
 }
+
+.btnDisabled {
+  background-color: var(--gray-color-light);
+  cursor: not-allowed;
+}
+
+.btnDisabled:hover {
+  background-color: var(--gray-color-light);
+}

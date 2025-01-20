@@ -21,6 +21,7 @@ const ProductCharacteristics = ({ productType, setProductType, categories, onSho
 
   const handleCategoryChange = (e) => {
     setSelectedCategory(e.target.value);
+    onShowForm(null);
   };
 
   const handleNextClick = () => {

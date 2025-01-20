@@ -99,7 +99,7 @@ const UploadProduct = () => {
           selectedCategory={formProps.selectedCategory}
         />
       )}
-      {showForm && (productType.id === 2 || productType.id === 3) && (
+      {showForm && (productType.id === 2 || productType.id === 3) && formProps && (
         <BisuteriProductForm
           productType={formProps.productType}
           genderProduct={formProps.genderProduct}

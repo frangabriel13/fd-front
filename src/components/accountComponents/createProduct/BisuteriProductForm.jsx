@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createProduct } from '../../../store/actions/productActions';
 import s from './SimpleProductForm.module.css';
 import ImageModal from './ImageModal';
+import { createBisuteriProductValidator } from '../../../utils/validations';
 
 const BisuteriProductForm = ({ productType, genderProduct, selectedCategory }) => {
   const dispatch = useDispatch();
@@ -19,13 +20,13 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory }) =
   const [tagInput, setTagInput] = useState('');
   const [showSizeModal, setShowSizeModal] = useState(false);
   const [showImageModal, setShowImageModal] = useState(false);
-
-  console.log('formData', formData);
+  const [errors, setErrors] = useState({});
  
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: name === 'price' ? parseFloat(value) : value,
     });
   };
 
@@ -53,21 +54,21 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory }) =
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const validationErrors = createBisuteriProductValidator(formData);
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
     const productData = {
       ...formData,
       type: productType,
       genderId: genderProduct,
       categoryId: parseInt(selectedCategory, 10),
     };
+
+    setErrors({});
     dispatch(createProduct(productData));
-  };
-
-  const handleShowSizeModal = () => {
-    setShowSizeModal(true);
-  };
-
-  const handleHideSizeModal = () => {
-    setShowSizeModal(false);
   };
 
   const handleShowImageModal = () => {
@@ -105,6 +106,7 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory }) =
                 value={formData.name}
                 onChange={handleChange}
               />
+              {errors.name && <p className={s.error}>{errors.name}</p>}
             </div>
             <div className={s.divInput}>
               <h4 className={s.label}>Precio</h4>
@@ -115,6 +117,7 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory }) =
                 value={formData.price}
                 onChange={handleChange}
               />
+              {errors.price && <p className={s.error}>{errors.price}</p>}
             </div>
           </div>
           <div className={s.divDescription}>
@@ -125,6 +128,7 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory }) =
               value={formData.description}
               onChange={handleChange}
             />
+            {errors.description && <p className={s.error}>{errors.description}</p>}
           </div>
           <div className={s.divInputsTwo}>
             <div className={s.divTags}>
@@ -149,6 +153,7 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory }) =
                   ))}
                 </div>
               </div>
+              {errors.tags && <p className={s.error}>{errors.tags}</p>}
             </div>
             <div className={s.divSubInputs}>
               <div className={s.divCategories}>
@@ -156,6 +161,7 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory }) =
                 <div>
                   <button type="button" onClick={handleShowImageModal}>Editar imágenes</button>
                 </div>
+                {errors.images && <p className={s.error}>{errors.images}</p>}
               </div>
             </div>
           </div>

@@ -84,7 +84,7 @@ const UploadProduct = () => {
           onShowForm={handleShowForm}
         />
       )}
-      {showForm && productType.id === 1 && formProps.uniqueSize && (
+      {showForm && productType.id === 1 && formProps && formProps.uniqueSize && (
         <VariableProductForm
           productType={formProps.productType}
           genderProduct={formProps.genderProduct}
@@ -92,7 +92,7 @@ const UploadProduct = () => {
           onClose={handleFormClose}
         />
       )}
-      {showForm && productType.id === 1 && !formProps.uniqueSize && (
+      {showForm && productType.id === 1 && formProps && !formProps.uniqueSize && (
         <SimpleProductForm
           productType={formProps.productType}
           genderProduct={formProps.genderProduct}

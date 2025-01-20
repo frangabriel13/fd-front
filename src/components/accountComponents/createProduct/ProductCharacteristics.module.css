@@ -155,14 +155,15 @@
   background-color: var(--third-bg-color);
 }
 
-/* .divider {
-  border: 0;
-  height: .1rem;
-  background: #ccc;
-} */
 .divider {
   border: 0;
   height: .1rem;
   background: #ccc;
   width: 100%;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 1.3rem;
+  text-align: center;
 }

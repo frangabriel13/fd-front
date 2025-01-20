@@ -63,15 +63,15 @@ export const resetPasswordValidator = (password, confirmPassword) => {
 export const registerManufacturerValidator = ({ name, owner, phone, minPurchase, pointOfSale, street }) => {
   const errors = {};
 
-  if(!name || typeof name !== 'string' || name.lejgth < 3 || name.length > 100) {  
+  if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
     errors.name = 'El nombre de la tienda debe tener entre 3 y 100 caracteres';
   }
 
-  if(!owner || typeof owner !== 'string' || owner.lejgth < 3 || owner.length > 100) {  
+  if(!owner || typeof owner !== 'string' || owner.length < 3 || owner.length > 100) {  
     errors.owner = 'El nombre del dueño debe tener entre 3 y 100 caracteres';
   }
 
-  if(!phone || typeof phone !== 'string' || phone.lejgth < 10 || phone.length > 15) {  
+  if(!phone || typeof phone !== 'string' || phone.length < 10 || phone.length > 15) {  
     errors.phone = 'El teléfono debe tener entre 10 y 15 caracteres';
   }
 
@@ -93,11 +93,11 @@ export const registerManufacturerValidator = ({ name, owner, phone, minPurchase,
 export const registerWholesalerValidator = ({ name, phone }) => {
   const errors = {};
 
-  if(!name || typeof name !== 'string' || name.lejgth < 3 || name.length > 100) {  
+  if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
     errors.name = 'El nombre de la tienda debe tener entre 3 y 100 caracteres';
   }
 
-  if(!phone || typeof phone !== 'string' || phone.lejgth < 10 || phone.length > 15) {  
+  if(!phone || typeof phone !== 'string' || phone.length < 10 || phone.length > 15) {  
     errors.phone = 'El teléfono debe tener entre 10 y 15 caracteres';
   }
 
@@ -108,15 +108,15 @@ export const editManufacturerValidator = ({ name, owner, phone, minPurchase, poi
   console.log('minPurchase', minPurchase);
   const errors = {};
 
-  if(!name || typeof name !== 'string' || name.lejgth < 3 || name.length > 100) {  
+  if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
     errors.name = 'El nombre de la tienda debe tener entre 3 y 100 caracteres';
   }
 
-  if(!owner || typeof owner !== 'string' || owner.lejgth < 3 || owner.length > 100) {  
+  if(!owner || typeof owner !== 'string' || owner.length < 3 || owner.length > 100) {  
     errors.owner = 'El nombre del dueño debe tener entre 3 y 100 caracteres';
   }
 
-  if(!phone || typeof phone !== 'string' || phone.lejgth < 10 || phone.length > 15) {  
+  if(!phone || typeof phone !== 'string' || phone.length < 10 || phone.length > 15) {  
     errors.phone = 'El teléfono debe tener entre 10 y 15 caracteres';
   }
 
@@ -142,11 +142,11 @@ export const editManufacturerValidator = ({ name, owner, phone, minPurchase, poi
 export const editWholesalerValidator = ({ name, phone, street, city, province, postalCode, country }) => {
   const errors = {};
 
-  if(!name || typeof name !== 'string' || name.lejgth < 3 || name.length > 100) {  
+  if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
     errors.name = 'El nombre de la tienda debe tener entre 3 y 100 caracteres';
   }
 
-  if(!phone || typeof phone !== 'string' || phone.lejgth < 10 || phone.length > 15) {  
+  if(!phone || typeof phone !== 'string' || phone.length < 10 || phone.length > 15) {  
     errors.phone = 'El teléfono debe tener entre 10 y 15 caracteres';
   }
 
@@ -172,3 +172,33 @@ export const editWholesalerValidator = ({ name, phone, street, city, province, p
 
   return errors;
 };
+
+export const createVariableProductValidator = ({ name, price, description, tags, images, colors }) => {
+  const errors = {};
+
+  if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
+    errors.name = 'El nombre del producto debe tener entre 3 y 100 caracteres';
+  }
+
+  if(!description || typeof description !== 'string' || description.length < 3 || description.length > 1000) {
+    errors.description = 'La descripción del producto debe tener entre 3 y 1000 caracteres';
+  }
+
+  if(!price || typeof price !== 'number' || price < 1) {
+    errors.price = 'El precio debe ser un número mayor a 0';
+  }
+
+  if(!Array.isArray(images) || images.length < 1) {
+    errors.images = 'Debes seleccionar al menos una imagen';
+  }
+
+  if(!Array.isArray(colors) || colors.length < 1) {
+    errors.colors = 'Debes seleccionar al menos un color';
+  }
+
+  if(tags && (!Array.isArray(tags) || !tags.every(tag => typeof tag === 'string'))) {
+    errors.tags = 'Las etiquetas deben ser un array de strings';
+  }
+
+  return errors;
+}

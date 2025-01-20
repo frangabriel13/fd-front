@@ -34,6 +34,7 @@ export const createProduct = (productData) => async (dispatch) => {
       type: 'CREATE_PRODUCT_SUCCESS',
       payload: response.data
     });
+    dispatch({ type: 'CLEAR_IMAGES' });
   } catch(error) {
     dispatch({
       type: 'CREATE_PRODUCT_FAILURE',

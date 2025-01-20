@@ -7,7 +7,7 @@ import ImageModal from './ImageModal';
 import ColorModal from './ColorModal';
 import { createVariableProductValidator } from '../../../utils/validations';
 
-const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => {
+const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClose }) => {
   const dispatch = useDispatch();
   const colors = useSelector((state) => state.color.colors);
   const [formData, setFormData] = useState({
@@ -90,7 +90,12 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
     };
 
     setErrors({});
-    dispatch(createProduct(productData));
+    // dispatch(createProduct(productData));
+    dispatch(createProduct(productData)).then(() => {
+      if(onClose) {
+        onClose();
+      }
+    });
   };
 
   const handleShowColorModal = () => {

@@ -23,6 +23,11 @@ const imageReducer = (state = initialState, action) => {
         loading: false,
         error: action.payload,
       };
+    case 'CLEAR_IMAGES':
+      return {
+        ...state,
+        images: [],
+      };
     default:
       return state;
   }

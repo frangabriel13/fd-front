@@ -173,7 +173,7 @@ export const editWholesalerValidator = ({ name, phone, street, city, province, p
   return errors;
 };
 
-export const createVariableProductValidator = ({ name, price, description, tags, images, colors }) => {
+export const createVariableProductValidator = ({ name, price, description, tags, images, mainImage, colors }) => {
   const errors = {};
 
   if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
@@ -188,7 +188,7 @@ export const createVariableProductValidator = ({ name, price, description, tags,
     errors.price = 'El precio debe ser un número mayor a 0';
   }
 
-  if(!Array.isArray(images) || images.length < 1) {
+  if(!Array.isArray(images) || images.length < 1 || !mainImage || typeof mainImage !== 'string' || mainImage.trim() === '') {
     errors.images = 'Debes seleccionar al menos una imagen';
   }
 

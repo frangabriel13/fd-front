@@ -31,6 +31,12 @@ const UploadProduct = () => {
     setShowForm(true);
   };
 
+  const handleFormClose = () => {
+    setShowForm(false);
+    setProductType(null);
+    setFormProps(null);
+  };
+
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
@@ -83,6 +89,7 @@ const UploadProduct = () => {
           productType={formProps.productType}
           genderProduct={formProps.genderProduct}
           selectedCategory={formProps.selectedCategory}
+          onClose={handleFormClose}
         />
       )}
       {showForm && productType.id === 1 && !formProps.uniqueSize && (

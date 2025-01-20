@@ -232,3 +232,29 @@ export const createSimpleProductValidator = ({ name, price, description, tags, i
 
   return errors;
 }
+
+export const createBisuteriProductValidator = ({ name, price, description, tags, images, mainImage }) => {
+  const errors = {};
+
+  if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
+    errors.name = 'El nombre del producto debe tener entre 3 y 100 caracteres';
+  }
+
+  if(!description || typeof description !== 'string' || description.length < 3 || description.length > 1000) {
+    errors.description = 'La descripción del producto debe tener entre 3 y 1000 caracteres';
+  }
+
+  if(!price || typeof price !== 'number' || price < 1) {
+    errors.price = 'El precio debe ser un número mayor a 0';
+  }
+
+  if(!Array.isArray(images) || images.length < 1 || !mainImage || typeof mainImage !== 'string' || mainImage.trim() === '') {
+    errors.images = 'Debes seleccionar al menos una imagen';
+  }
+
+  if(tags && (!Array.isArray(tags) || !tags.every(tag => typeof tag === 'string'))) {
+    errors.tags = 'Las etiquetas deben ser un array de strings';
+  }
+
+  return errors;
+}

@@ -75,8 +75,8 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory }) => 
       return;
     }
 
-    const variations = formData.colors.map((colorId) => ({
-      colorId,
+    const variations = formData.colors.map((color) => ({
+      colorId: color.id,
       mainImage: formData.mainImage,
       images: formData.images,
     }));

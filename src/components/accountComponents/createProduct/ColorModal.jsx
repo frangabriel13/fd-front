@@ -7,8 +7,6 @@ const ColorModal = ({ onClose, onSave, colors, initialSelectedColors }) => {
 
   console.log('selectedColors', selectedColors);
 
-  console.log(colors);
-
   useEffect(() => {
     setSelectedColors(initialSelectedColors);
   }, [initialSelectedColors]);
@@ -19,9 +17,13 @@ const ColorModal = ({ onClose, onSave, colors, initialSelectedColors }) => {
     }
   };
 
+  // const handleSave = () => {
+  //   const selectedColorIds = selectedColors.map(color => color.id);
+  //   onSave(selectedColorIds);
+  //   onClose();
+  // };
   const handleSave = () => {
-    const selectedColorIds = selectedColors.map(color => color.id);
-    onSave(selectedColorIds);
+    onSave(selectedColors);
     onClose();
   };
 

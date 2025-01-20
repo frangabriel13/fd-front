@@ -202,3 +202,33 @@ export const createVariableProductValidator = ({ name, price, description, tags,
 
   return errors;
 }
+
+export const createSimpleProductValidator = ({ name, price, description, tags, images, mainImage, sizes }) => {
+  const errors = {};
+
+  if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
+    errors.name = 'El nombre del producto debe tener entre 3 y 100 caracteres';
+  }
+
+  if(!description || typeof description !== 'string' || description.length < 3 || description.length > 1000) {
+    errors.description = 'La descripción del producto debe tener entre 3 y 1000 caracteres';
+  }
+
+  if(!price || typeof price !== 'number' || price < 1) {
+    errors.price = 'El precio debe ser un número mayor a 0';
+  }
+
+  if(!Array.isArray(images) || images.length < 1 || !mainImage || typeof mainImage !== 'string' || mainImage.trim() === '') {
+    errors.images = 'Debes seleccionar al menos una imagen';
+  }
+
+  if(!Array.isArray(sizes) || sizes.length < 1) {
+    errors.sizes = 'Debes seleccionar al menos un tamaño';
+  }
+
+  if(tags && (!Array.isArray(tags) || !tags.every(tag => typeof tag === 'string'))) {
+    errors.tags = 'Las etiquetas deben ser un array de strings';
+  }
+
+  return errors;
+}

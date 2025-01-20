@@ -70,3 +70,8 @@
   background: #ccc;
   width: 100%;
 }
+
+.errorMessage {
+  color: red;
+  font-size: 1.3rem;
+}

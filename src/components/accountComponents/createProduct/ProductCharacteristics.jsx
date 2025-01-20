@@ -8,6 +8,7 @@ const ProductCharacteristics = ({ productType, setProductType, categories, onSho
   const [typeProduct, setTypeProduct] = useState(null);
   const [genderProduct, setGenderProduct] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleTypeClick = (type) => {
     setTypeProduct(type);
@@ -22,6 +23,11 @@ const ProductCharacteristics = ({ productType, setProductType, categories, onSho
   };
 
   const handleNextClick = () => {
+    if (!typeProduct || !genderProduct || !selectedCategory) {
+      setErrorMessage('Por favor, completa todos los campos antes de continuar.');
+      return;
+    }
+    setErrorMessage('');
     onShowForm({
       productType,
       genderProduct,
@@ -101,7 +107,7 @@ const ProductCharacteristics = ({ productType, setProductType, categories, onSho
         <div className={s.divCategory}>
           <h4>¿A qué categoría pertenece tu producto?</h4>
           <select onChange={handleCategoryChange}>
-            <option>Selecciona una categoría</option>
+            <option value={""}>Selecciona una categoría</option>
             {filteredCategories.map((category) => (
               <option key={category.id} value={category.id}>
                 {category.name}
@@ -109,6 +115,7 @@ const ProductCharacteristics = ({ productType, setProductType, categories, onSho
             ))}
           </select>
         </div>
+        {errorMessage && <p className={s.errorMessage}>{errorMessage}</p>}
         <hr className={s.divider} />
         <div className={s.divBtn}>
           <button className={s.btnNext} onClick={handleNextClick}>Siguiente</button>

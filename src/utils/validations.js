@@ -180,7 +180,7 @@ export const createVariableProductValidator = ({ name, price, description, tags,
     errors.name = 'El nombre del producto debe tener entre 3 y 100 caracteres';
   }
 
-  if(!description || typeof description !== 'string' || description.length < 3 || description.length > 1000) {
+  if(description !== '' && (typeof description !== 'string' || description.length < 3 || description.length > 1000)) {
     errors.description = 'La descripción del producto debe tener entre 3 y 1000 caracteres';
   }
 
@@ -210,7 +210,7 @@ export const createSimpleProductValidator = ({ name, price, description, tags, i
     errors.name = 'El nombre del producto debe tener entre 3 y 100 caracteres';
   }
 
-  if(!description || typeof description !== 'string' || description.length < 3 || description.length > 1000) {
+  if(description !== '' && (typeof description !== 'string' || description.length < 3 || description.length > 1000)) {
     errors.description = 'La descripción del producto debe tener entre 3 y 1000 caracteres';
   }
 

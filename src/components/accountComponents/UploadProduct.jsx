@@ -9,6 +9,7 @@ import OtherProductCharacteristics from './createProduct/OtherProductCharacteris
 import SimpleProductForm from './createProduct/SimpleProductForm';
 import BisuteriProductForm from './createProduct/BisuteriProductForm';
 import VariableProductForm from './createProduct/VariableProductForm';
+import SuccessModal from '../modals/SuccessModal';
 
 const UploadProduct = () => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const UploadProduct = () => {
   const [productType, setProductType] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [formProps, setFormProps] = useState(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
   const characteristicsRef = useRef(null);
   const formRef = useRef(null);
 
@@ -44,6 +46,14 @@ const UploadProduct = () => {
     setProductType(null);
     setFormProps(null);
   };
+
+  const handleProductCreateSuccess = () => {
+    setShowSuccessModal(true);
+  };
+
+  const handleSuccessModalClose = () => {
+    setShowSuccessModal(false);
+  }
 
   return (
     <div className={s.container}>
@@ -103,6 +113,7 @@ const UploadProduct = () => {
             genderProduct={formProps.genderProduct}
             selectedCategory={formProps.selectedCategory}
             onClose={handleFormClose}
+            onSuccess={handleProductCreateSuccess}
           />
         </div>
       )}
@@ -113,6 +124,7 @@ const UploadProduct = () => {
             genderProduct={formProps.genderProduct}
             selectedCategory={formProps.selectedCategory}
             onClose={handleFormClose}
+            onSuccess={handleProductCreateSuccess}
           />
         </div>
       )}
@@ -123,8 +135,16 @@ const UploadProduct = () => {
             genderProduct={formProps.genderProduct}
             selectedCategory={formProps.selectedCategory}
             onClose={handleFormClose}
+            onSuccess={handleProductCreateSuccess}
           />
         </div>
+      )}
+      {showSuccessModal && (
+        <SuccessModal 
+          title="Producto creado con éxito"
+          message='Puedes administrar tus productos desde tu cuenta en la sección "Publicaciones"'
+          onClose={handleSuccessModalClose} 
+        />
       )}
     </div>
   )

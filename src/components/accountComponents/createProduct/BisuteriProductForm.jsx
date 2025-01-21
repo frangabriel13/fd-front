@@ -5,7 +5,7 @@ import s from './SimpleProductForm.module.css';
 import ImageModal from './ImageModal';
 import { createBisuteriProductValidator } from '../../../utils/validations';
 
-const BisuteriProductForm = ({ productType, genderProduct, selectedCategory, onClose }) => {
+const BisuteriProductForm = ({ productType, genderProduct, selectedCategory, onClose, onSuccess }) => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: '',
@@ -68,9 +68,8 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory, onC
 
     setErrors({});
     dispatch(createProduct(productData)).then(() => {
-      if(onClose) {
-        onClose();
-      }
+      onClose();
+      onSuccess();
     });
   };
 

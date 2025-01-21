@@ -40,6 +40,7 @@ export const createProduct = (productData) => async (dispatch) => {
       type: 'CREATE_PRODUCT_FAILURE',
       error: error.message,
     });
+    dispatch({ type: 'CLEAR_IMAGES' });
   }
 };
 

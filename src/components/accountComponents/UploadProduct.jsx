@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCategories } from '../../store/actions/categoryActions';
 import s from './UploadProduct.module.css';
@@ -16,6 +16,8 @@ const UploadProduct = () => {
   const [productType, setProductType] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [formProps, setFormProps] = useState(null);
+  const characteristicsRef = useRef(null);
+  const formRef = useRef(null);
 
   useEffect(() => {
     dispatch(getCategories());
@@ -24,11 +26,17 @@ const UploadProduct = () => {
   const handleTypeClick = (type, id) => {
     setProductType({ type, id });
     setShowForm(false);
+    setTimeout(() => {
+      characteristicsRef.current.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   }
 
   const handleShowForm = (props) => {
     setFormProps(props);
     setShowForm(true);
+    setTimeout(() => {
+      formRef.current.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   };
 
   const handleFormClose = () => {
@@ -69,44 +77,54 @@ const UploadProduct = () => {
         </div>
       </div>
       {productType && productType.id === 1 && (
-        <ProductCharacteristics 
-          productType={productType} 
-          setProductType={setProductType} 
-          categories={categories} 
-          onShowForm={handleShowForm}
-        />
+        <div ref={characteristicsRef}>
+          <ProductCharacteristics 
+            productType={productType} 
+            setProductType={setProductType} 
+            categories={categories} 
+            onShowForm={handleShowForm}
+          />
+        </div>
       )}
       {productType && (productType.id === 2 || productType.id === 3) && (
-        <OtherProductCharacteristics 
-          productType={productType} 
-          setProductType={setProductType} 
-          categories={categories} 
-          onShowForm={handleShowForm}
-        />
+        <div ref={characteristicsRef}>
+          <OtherProductCharacteristics 
+            productType={productType} 
+            setProductType={setProductType} 
+            categories={categories} 
+            onShowForm={handleShowForm}
+          />
+        </div>
       )}
       {showForm && productType.id === 1 && formProps && formProps.uniqueSize && (
-        <VariableProductForm
-          productType={formProps.productType}
-          genderProduct={formProps.genderProduct}
-          selectedCategory={formProps.selectedCategory}
-          onClose={handleFormClose}
-        />
+        <div ref={formRef}>
+          <VariableProductForm
+            productType={formProps.productType}
+            genderProduct={formProps.genderProduct}
+            selectedCategory={formProps.selectedCategory}
+            onClose={handleFormClose}
+          />
+        </div>
       )}
       {showForm && productType.id === 1 && formProps && !formProps.uniqueSize && (
-        <SimpleProductForm
-          productType={formProps.productType}
-          genderProduct={formProps.genderProduct}
-          selectedCategory={formProps.selectedCategory}
-          onClose={handleFormClose}
-        />
+        <div ref={formRef}>
+          <SimpleProductForm
+            productType={formProps.productType}
+            genderProduct={formProps.genderProduct}
+            selectedCategory={formProps.selectedCategory}
+            onClose={handleFormClose}
+          />
+        </div>
       )}
       {showForm && (productType.id === 2 || productType.id === 3) && formProps && (
-        <BisuteriProductForm
-          productType={formProps.productType}
-          genderProduct={formProps.genderProduct}
-          selectedCategory={formProps.selectedCategory}
-          onClose={handleFormClose}
-        />
+        <div ref={formRef}>
+          <BisuteriProductForm
+            productType={formProps.productType}
+            genderProduct={formProps.genderProduct}
+            selectedCategory={formProps.selectedCategory}
+            onClose={handleFormClose}
+          />
+        </div>
       )}
     </div>
   )

@@ -10,18 +10,24 @@
   font-size: 2.2rem;
 }
 
-.divInput {
+.divData {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.divSearch {
   display: flex;
   flex-direction: column;
   gap: .5rem;
 }
 
-.divInput h4 {
+.divSearch h4 {
   font-size: 1.8rem;
   font-weight: 500;
 }
 
-.divInput p {
+.divSearch p {
   font-size: 1.6rem;
   color: var(--gray-color);
 }

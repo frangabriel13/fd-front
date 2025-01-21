@@ -7,7 +7,7 @@ import SizeModal from './SizeModal';
 import ImageModal from './ImageModal';
 import { createSimpleProductValidator } from '../../../utils/validations';
 
-const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClose }) => {
+const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClose, onSuccess }) => {
   const dispatch = useDispatch();
   const sizes = useSelector((state) => state.size.sizes);
   const [formData, setFormData] = useState({
@@ -76,9 +76,8 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
 
     setErrors({});
     dispatch(createProduct(productData)).then(() => {
-      if(onClose) {
-        onClose();
-      }
+      onClose();
+      onSuccess();
     });
   };
 

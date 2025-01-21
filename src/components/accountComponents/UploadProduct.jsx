@@ -97,6 +97,7 @@ const UploadProduct = () => {
           productType={formProps.productType}
           genderProduct={formProps.genderProduct}
           selectedCategory={formProps.selectedCategory}
+          onClose={handleFormClose}
         />
       )}
       {showForm && (productType.id === 2 || productType.id === 3) && formProps && (
@@ -104,6 +105,7 @@ const UploadProduct = () => {
           productType={formProps.productType}
           genderProduct={formProps.genderProduct}
           selectedCategory={formProps.selectedCategory}
+          onClose={handleFormClose}
         />
       )}
     </div>

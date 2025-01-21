@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProductsByUserId, deleteProduct } from '../../store/actions/productActions';
 import s from './MyProducts.module.css';
+import TableMyProducts from './myProducts/TableMyProducts';
 
 const MyProducts = () => {
   const dispatch = useDispatch();
@@ -22,26 +23,7 @@ const MyProducts = () => {
 
   return (
     <div className={s.container}>
-      <h2>My Products</h2>
-      <table className={s.table}>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {myProducts && myProducts.map(product => (
-            <tr key={product.id}>
-              <td>{product.name}</td>
-              <td>
-                <button onClick={() => handleEdit(product.id)}>Edit</button>
-                <button onClick={() => handleDelete(product.id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <TableMyProducts myProducts={myProducts} handleEdit={handleEdit} handleDelete={handleDelete} />
     </div>
   )
 };

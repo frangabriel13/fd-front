@@ -1,0 +1,27 @@
+.container {
+  padding: 3rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.container h3 {
+  font-size: 2.2rem;
+}
+
+.divInput {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.divInput h4 {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.divInput p {
+  font-size: 1.6rem;
+  color: var(--gray-color);
+}

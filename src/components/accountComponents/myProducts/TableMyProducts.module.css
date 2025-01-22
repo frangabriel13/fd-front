@@ -73,17 +73,29 @@
   object-fit: cover;
 }
 
-.table button {
-  padding: 0.5rem 1rem;
-  margin-right: 0.5rem;
-  border: none;
-  background-color: #007bff;
+.btnDelete {
+  background-color: var(--red-color);
   color: white;
+  padding: .5rem 1rem;
+  border: none;
   cursor: pointer;
-  font-size: 1.2rem;
   border-radius: .3rem;
 }
 
-.table button:hover {
-  background-color: #0056b3;
+.btnDelete:hover {
+  background-color: var(--red-color-light);
+}
+
+.btnEdit {
+  background-color: var(--second-bg-color);
+  color: white;
+  padding: .5rem 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: .3rem;
+  margin-right: 1rem;
+}
+
+.btnEdit:hover {
+  background-color: var(--third-bg-color);
 }

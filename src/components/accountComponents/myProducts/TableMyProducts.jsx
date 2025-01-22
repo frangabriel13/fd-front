@@ -37,8 +37,8 @@ const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
                     <td>{product.price}</td>
                     <td>{product.priceDolar}</td>
                     <td className={s.tdActions}>
-                      <button onClick={() => handleEdit(product.id)}>Editar</button>
-                      <button onClick={() => handleDelete(product.id)}>Eliminar</button>
+                      <button className={s.btnEdit} onClick={() => handleEdit(product.id)}>Editar</button>
+                      <button className={s.btnDelete} onClick={() => handleDelete(product.id)}>Eliminar</button>
                     </td>
                   </tr>
                 ))

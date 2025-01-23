@@ -44,13 +44,25 @@ export const createProduct = (productData) => async (dispatch) => {
   }
 };
 
-export const getProductsByUserId = () => async (dispatch) => {
+export const getProductsByUserId = (page = 1, pageSize = 10) => async (dispatch) => {
   dispatch({ type: 'GET_PRODUCTS_BY_USER_REQUEST' });
   try {
-    const response = await productInstance.get('/createdbyMe');
+    const response = await productInstance.get('/createdbyMe', {
+      params: {
+        page,
+        pageSize,
+      }
+    });
+    console.log(response.data);
     dispatch({
       type: 'GET_PRODUCTS_BY_USER_SUCCESS',
-      payload: response.data
+      // payload: response.data
+      payload: {
+        myProducts: response.data.myProducts,
+        currentPage: page,
+        pageSize: pageSize,
+        myTotalProducts: response.data.myTotalProducts,
+      }
     });
   } catch(error) {
     dispatch({

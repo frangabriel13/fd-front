@@ -33,7 +33,7 @@ const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
                     <td>{product.name}</td>
                     <td>{product.type}</td>
                     <td>{product.category.name}</td>
-                    <td>{product.gender.name}</td>
+                    <td>{product.gender ? product.gender.name : 'No'}</td>
                     <td>{product.price}</td>
                     <td>{product.priceDolar}</td>
                     <td className={s.tdActions}>

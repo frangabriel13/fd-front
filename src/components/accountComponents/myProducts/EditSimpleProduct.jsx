@@ -1,9 +1,9 @@
 import s from './EditSimpleProduct.module.css';
 
-const EditSimpleProduct = ({ product, handleEdit, handleDelete }) => {
+const EditSimpleProduct = ({ product, handleEdit, closeModal }) => {
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
-      onClose();
+      closeModal();
     }
   };
 
@@ -82,7 +82,7 @@ const EditSimpleProduct = ({ product, handleEdit, handleDelete }) => {
             </div>
             <hr className={s.divider} />
             <div className={s.divBtn}>
-              <button className={s.btnCancel}>Cerrar</button>
+              <button className={s.btnCancel} onClick={closeModal}>Cerrar</button>
               <button className={s.btnNext} type='submit'>Guardar cambios</button>
             </div>
           </form>

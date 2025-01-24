@@ -50,6 +50,18 @@ const productReducer = (state = initialState, action) => {
         error: null,
         products: [...state.products, action.payload],
       };
+    case 'UPDATE_PRODUCT_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'UPDATE_PRODUCT_SUCCESS':
+      return { 
+        ...state, 
+        loading: false, 
+        error: null,
+        products: state.products.map(product => product.id === action.payload.id ? action.payload : product),
+        myProducts: state.myProducts.map(product => product.id === action.payload.id ? action.payload : product),
+      };
+    case 'UPDATE_PRODUCT_FAILURE':
+      return { ...state, loading: false, error: action.error };
     case 'CREATE_PRODUCT_FAILURE':
       return { ...state, loading: false, error: action.error };
     case 'DELETE_PRODUCT_REQUEST':

@@ -84,3 +84,19 @@ export const deleteProduct = (productId) => async (dispatch) => {
     });
   }
 };
+
+export const updateProduct = (productId, productData) => async (dispatch) => {
+  dispatch({ type: 'UPDATE_PRODUCT_REQUEST' });
+  try {
+    const response = await productInstance.put(`/${productId}`, productData);
+    dispatch({
+      type: 'UPDATE_PRODUCT_SUCCESS',
+      payload: response.data
+    });
+  } catch(error) {
+    dispatch({
+      type: 'UPDATE_PRODUCT_FAILURE',
+      error: error.message,
+    });
+  }
+};

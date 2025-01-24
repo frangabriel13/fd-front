@@ -66,12 +66,6 @@ const EditBisuteriProduct = ({ product, handleEdit, closeModal }) => {
                 </div>
                 <div className={s.divSubInputs}>
                   <div className={s.divCategories}>
-                    <h4>Talles</h4>
-                    <div>
-                      <button type="button">Editar talles</button>
-                    </div>
-                  </div>
-                  <div className={s.divCategories}>
                     <h4>Imágenes</h4>
                     <div>
                       <button type="button">Editar imágenes</button>

@@ -1,5 +1,8 @@
+import { useState } from 'react';
 import s from './TableMyProducts.module.css';
 import { formatPrice } from '../../../utils/utils';
+import EditSimpleProduct from './EditSimpleProduct';
+import EditVariableProduct from './EditVariableProduct';
 
 const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
   console.log(myProducts);
@@ -12,7 +15,6 @@ const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
           <p>Aca va el search</p>
         </div> */}
         <div className={s.divProducts}>
-
           <table className={s.table}>
             <thead>
               <tr>

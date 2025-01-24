@@ -3,6 +3,7 @@ import s from './TableMyProducts.module.css';
 import { formatPrice } from '../../../utils/utils';
 import EditSimpleProduct from './EditSimpleProduct';
 import EditVariableProduct from './EditVariableProduct';
+import EditBisuteriProduct from './EditBisuteriProduct';
 
 const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -22,8 +23,6 @@ const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
   };
 
   console.log(myProducts);
-  console.log(selectedProduct);
-  console.log(isVariable);
   return (
     <div className={s.container}>
       <h3>Mis Productos</h3>
@@ -72,9 +71,13 @@ const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
         isVariable ? (
           <EditVariableProduct product={selectedProduct} handleEdit={handleEdit} closeModal={closeModal} />
         ) : (
-          <EditSimpleProduct product={selectedProduct} handleEdit={handleEdit} closeModal={closeModal} />
-        ))
-      }
+          selectedProduct.category.parent.name === 'Indumentaria' ? (
+            <EditSimpleProduct product={selectedProduct} handleEdit={handleEdit} closeModal={closeModal} />
+          ) : (
+            <EditBisuteriProduct product={selectedProduct} handleEdit={handleEdit} closeModal={closeModal} />
+          )
+        )
+      )}
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import s from './EditSimpleProduct.module.css';
 
-const EditSimpleProduct = ({ product, handleEdit, closeModal }) => {
+const EditBisuteriProduct = ({ product, handleEdit, closeModal }) => {
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       closeModal();
@@ -93,4 +93,4 @@ const EditSimpleProduct = ({ product, handleEdit, closeModal }) => {
 };
 
 
-export default EditSimpleProduct;
+export default EditBisuteriProduct;

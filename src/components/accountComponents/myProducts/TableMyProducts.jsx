@@ -5,7 +5,25 @@ import EditSimpleProduct from './EditSimpleProduct';
 import EditVariableProduct from './EditVariableProduct';
 
 const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
+  const [selectedProduct, setSelectedProduct] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isVariable, setIsVariable] = useState(false);
+
+  const openModal = (product) => {
+    setSelectedProduct(product);
+    setIsVariable(product.isVariable);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedProduct(null);
+    setIsVariable(false);
+  };
+
   console.log(myProducts);
+  console.log(selectedProduct);
+  console.log(isVariable);
   return (
     <div className={s.container}>
       <h3>Mis Productos</h3>
@@ -40,7 +58,7 @@ const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
                     <td>{formatPrice(product.price)}</td>
                     <td>{product.priceDolar}</td>
                     <td className={s.tdActions}>
-                      <button className={s.btnEdit} onClick={() => handleEdit(product.id)}>Editar</button>
+                      <button className={s.btnEdit} onClick={() => openModal(product)}>Editar</button>
                       <button className={s.btnDelete} onClick={() => handleDelete(product.id)}>Eliminar</button>
                     </td>
                   </tr>
@@ -50,6 +68,13 @@ const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
           </table>
         </div>
       </div>
+      {isModalOpen && (
+        isVariable ? (
+          <EditVariableProduct product={selectedProduct} handleEdit={handleEdit} closeModal={closeModal} />
+        ) : (
+          <EditSimpleProduct product={selectedProduct} handleEdit={handleEdit} closeModal={closeModal} />
+        ))
+      }
     </div>
   );
 };

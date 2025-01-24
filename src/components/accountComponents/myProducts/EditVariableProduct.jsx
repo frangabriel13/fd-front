@@ -1,4 +1,4 @@
-import s from './EditVariableProduct.module.scss';
+import s from './EditSimpleProduct.module.css';
 
 const EditVariableProduct = ({ product, handleEdit, handleDelete }) => {
   return (

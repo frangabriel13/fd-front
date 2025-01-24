@@ -1,4 +1,5 @@
 import s from './TableMyProducts.module.css';
+import { formatPrice } from '../../../utils/utils';
 
 const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
   console.log(myProducts);
@@ -6,10 +7,10 @@ const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
     <div className={s.container}>
       <h3>Mis Productos</h3>
       <div className={s.divData}>
-        <div className={s.divSearch}>
+        {/* <div className={s.divSearch}>
           <h4>Search</h4>
           <p>Aca va el search</p>
-        </div>
+        </div> */}
         <div className={s.divProducts}>
 
           <table className={s.table}>
@@ -34,7 +35,7 @@ const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
                     <td>{product.type}</td>
                     <td>{product.category.name}</td>
                     <td>{product.gender ? product.gender.name : 'No'}</td>
-                    <td>{product.price}</td>
+                    <td>{formatPrice(product.price)}</td>
                     <td>{product.priceDolar}</td>
                     <td className={s.tdActions}>
                       <button className={s.btnEdit} onClick={() => handleEdit(product.id)}>Editar</button>

@@ -12,3 +12,7 @@ export const filterCategoriesByParentAndGender = (categories, parentId, genderId
     (genderId == null || category.genders.some(gender => gender.id === genderId))
   );
 };
+
+export const formatPrice = (price) => {
+  return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(price);
+};

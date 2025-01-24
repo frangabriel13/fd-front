@@ -32,7 +32,7 @@ const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
                   <tr key={product.id}>
                     <td><img src={product.mainImage} alt={product.name} /></td>
                     <td>{product.name}</td>
-                    <td>{product.type}</td>
+                    <td>{product.category.parent.name}</td>
                     <td>{product.category.name}</td>
                     <td>{product.gender ? product.gender.name : 'No'}</td>
                     <td>{formatPrice(product.price)}</td>

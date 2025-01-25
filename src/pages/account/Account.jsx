@@ -51,7 +51,7 @@ const Account = () => {
       <div className={s.divAccount}>
         <Routes>
           <Route path="/" element={<Profile user={user} />} />
-          <Route path="subir-producto" element={<UploadProduct />} />
+          <Route path="subir-producto" element={<UploadProduct sizes={sizes} />} />
           <Route path="publicaciones" element={<MyProducts sizes={sizes} />} />
           <Route path="ordenes" element={<MyOrders />} />
         </Routes>

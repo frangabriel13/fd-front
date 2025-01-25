@@ -1,10 +1,38 @@
+import { useState } from 'react';
 import s from './EditSimpleProduct.module.css';
 
 const EditSimpleProduct = ({ product, handleEdit, closeModal }) => {
+  const [formData, setFormData] = useState({
+    name: product.name,
+    price: product.price,
+    description: product.description,
+    tags: product.tags,
+
+    isVariable: product.isVariable,
+    mainImage: product.mainImage,
+    images: product.images,
+    sizes: product.sizes,
+  });
+
+  console.log('formData', formData);
+
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       closeModal();
     }
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleEdit(formData);
+    closeModal();
   };
 
   return (
@@ -24,6 +52,8 @@ const EditSimpleProduct = ({ product, handleEdit, closeModal }) => {
                     className={s.input}
                     type="text"
                     name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className={s.divInput}>
@@ -32,6 +62,8 @@ const EditSimpleProduct = ({ product, handleEdit, closeModal }) => {
                     className={s.input}
                     type="number"
                     name="price"
+                    value={formData.price}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -40,6 +72,8 @@ const EditSimpleProduct = ({ product, handleEdit, closeModal }) => {
                 <textarea
                   className={s.textarea}
                   name="description"
+                  value={formData.description}
+                  onChange={handleChange}
                 />
               </div>
               <div className={s.divInputsTwo}>
@@ -55,7 +89,7 @@ const EditSimpleProduct = ({ product, handleEdit, closeModal }) => {
                       <button className={s.btnAddTag}>Agregar</button>
                     </div>
                     <div className={s.tags}>
-                      {product.tags.map((tag, index) => (
+                      {formData.tags.map((tag, index) => (
                         <span key={index} className={s.tag}>
                           {tag}
                           <button className={s.btnRemoveTag}>x</button>

@@ -4,7 +4,7 @@ import { getProductsByUserId, deleteProduct } from '../../store/actions/productA
 import s from './MyProducts.module.css';
 import TableMyProducts from './myProducts/TableMyProducts';
 
-const MyProducts = () => {
+const MyProducts = ({ sizes }) => {
   const dispatch = useDispatch();
   const myProducts = useSelector(state => state.product.myProducts);
 
@@ -23,7 +23,7 @@ const MyProducts = () => {
 
   return (
     <div className={s.container}>
-      <TableMyProducts myProducts={myProducts} handleEdit={handleEdit} handleDelete={handleDelete} />
+      <TableMyProducts sizes={sizes} myProducts={myProducts} handleEdit={handleEdit} handleDelete={handleDelete} />
     </div>
   )
 };

@@ -8,12 +8,14 @@ import MyProducts from "../../components/accountComponents/MyProducts";
 import MyOrders from "../../components/accountComponents/MyOrders";
 import UploadProduct from "../../components/accountComponents/UploadProduct";
 import s from "./Account.module.css";
+import { getSizes } from '../../store/actions/sizeAction';
 
 const Account = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.user.user);
+  const sizes = useSelector((state) => state.size.sizes);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -35,6 +37,10 @@ const Account = () => {
     }
   }, [loading, isAuthenticated, user, navigate]);
 
+  useEffect(() => {
+    dispatch(getSizes());
+  }, [dispatch]);
+
   if (loading) {
     return <div>Cargando...</div>;
   }
@@ -46,7 +52,7 @@ const Account = () => {
         <Routes>
           <Route path="/" element={<Profile user={user} />} />
           <Route path="subir-producto" element={<UploadProduct />} />
-          <Route path="publicaciones" element={<MyProducts />} />
+          <Route path="publicaciones" element={<MyProducts sizes={sizes} />} />
           <Route path="ordenes" element={<MyOrders />} />
         </Routes>
       </div>

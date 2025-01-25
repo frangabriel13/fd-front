@@ -5,7 +5,7 @@ import EditSimpleProduct from './EditSimpleProduct';
 import EditVariableProduct from './EditVariableProduct';
 import EditBisuteriProduct from './EditBisuteriProduct';
 
-const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
+const TableMyProducts = ({ myProducts, handleEdit, handleDelete, sizes }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVariable, setIsVariable] = useState(false);
@@ -72,7 +72,7 @@ const TableMyProducts = ({ myProducts, handleEdit, handleDelete }) => {
           <EditVariableProduct product={selectedProduct} handleEdit={handleEdit} closeModal={closeModal} />
         ) : (
           selectedProduct.category.parent.name === 'Indumentaria' ? (
-            <EditSimpleProduct product={selectedProduct} handleEdit={handleEdit} closeModal={closeModal} />
+            <EditSimpleProduct product={selectedProduct} handleEdit={handleEdit} closeModal={closeModal} sizes={sizes} />
           ) : (
             <EditBisuteriProduct product={selectedProduct} handleEdit={handleEdit} closeModal={closeModal} />
           )

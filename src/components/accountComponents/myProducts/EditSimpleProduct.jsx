@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import s from './EditSimpleProduct.module.css';
+import sizeModal from '../createProduct/SizeModal';
+import imageModal from '../createProduct/ImageModal';
 
-const EditSimpleProduct = ({ product, handleEdit, closeModal }) => {
+const EditSimpleProduct = ({ product, handleEdit, closeModal, sizes }) => {
   const [formData, setFormData] = useState({
     name: product.name,
     price: product.price,

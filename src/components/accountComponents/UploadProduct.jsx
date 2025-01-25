@@ -11,7 +11,7 @@ import BisuteriProductForm from './createProduct/BisuteriProductForm';
 import VariableProductForm from './createProduct/VariableProductForm';
 import SuccessModal from '../modals/SuccessModal';
 
-const UploadProduct = () => {
+const UploadProduct = ({ sizes }) => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.category.categories);
   const [productType, setProductType] = useState(null);
@@ -125,6 +125,7 @@ const UploadProduct = () => {
             selectedCategory={formProps.selectedCategory}
             onClose={handleFormClose}
             onSuccess={handleProductCreateSuccess}
+            sizes={sizes}
           />
         </div>
       )}

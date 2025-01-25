@@ -1,15 +1,13 @@
-import { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { createProduct } from '../../../store/actions/productActions';
-import { getSizes } from '../../../store/actions/sizeAction';
 import s from './SimpleProductForm.module.css';
 import SizeModal from './SizeModal';
 import ImageModal from './ImageModal';
 import { createSimpleProductValidator } from '../../../utils/validations';
 
-const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClose, onSuccess }) => {
+const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClose, onSuccess, sizes }) => {
   const dispatch = useDispatch();
-  const sizes = useSelector((state) => state.size.sizes);
   const [formData, setFormData] = useState({
     name: '',
     description: '',
@@ -24,10 +22,6 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
   const [showSizeModal, setShowSizeModal] = useState(false);
   const [showImageModal, setShowImageModal] = useState(false);
   const [errors, setErrors] = useState({});
-
-  useEffect(() => {
-    dispatch(getSizes());
-  }, [dispatch]);
  
   const handleChange = (e) => {
     const { name, value } = e.target;

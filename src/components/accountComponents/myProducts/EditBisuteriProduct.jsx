@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { updateProduct } from '../../../store/actions/productActions';
 import s from './EditSimpleProduct.module.css';
 
-const EditBisuteriProduct = ({ product, handleEdit, closeModal }) => {
+const EditBisuteriProduct = ({ product, closeModal }) => {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: product.name,

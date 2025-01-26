@@ -1,10 +1,57 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateProduct } from '../../../store/actions/productActions';
 import s from './EditSimpleProduct.module.css';
 
 const EditBisuteriProduct = ({ product, handleEdit, closeModal }) => {
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    name: product.name,
+    price: product.price,
+    description: product.description,
+    tags: product.tags,
+  });
+  const [tagInput, setTagInput] = useState('');
+
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       closeModal();
     }
+  };
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleTagInputChange = (e) => {
+    setTagInput(e.target.value);
+  };
+
+  const handleAddTag = (e) => {
+    e.preventDefault();
+    if (tagInput.trim() !== '') {
+      setFormData({
+        ...formData,
+        tags: [...formData.tags, tagInput.trim()],
+      });
+      setTagInput('');
+    }
+  };
+
+  const handleRemoveTag = (index) => {
+    setFormData({
+      ...formData,
+      tags: formData.tags.filter((_, i) => i !== index),
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(updateProduct(product.id, formData));
+    closeModal();
   };
 
   return (
@@ -15,7 +62,7 @@ const EditBisuteriProduct = ({ product, handleEdit, closeModal }) => {
             <h3>Editar Producto</h3>
             <p>Completa los campos para editar el producto</p>
           </div>
-          <form className={s.form}>
+          <form className={s.form} onSubmit={handleSubmit}>
             <div className={s.divForm}>
               <div className={s.divInputs}>
                 <div className={s.divInput}>
@@ -24,6 +71,8 @@ const EditBisuteriProduct = ({ product, handleEdit, closeModal }) => {
                     className={s.input}
                     type="text"
                     name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                   />
                 </div>
                 <div className={s.divInput}>
@@ -32,6 +81,8 @@ const EditBisuteriProduct = ({ product, handleEdit, closeModal }) => {
                     className={s.input}
                     type="number"
                     name="price"
+                    value={formData.price}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -40,6 +91,8 @@ const EditBisuteriProduct = ({ product, handleEdit, closeModal }) => {
                 <textarea
                   className={s.textarea}
                   name="description"
+                  value={formData.description}
+                  onChange={handleChange}
                 />
               </div>
               <div className={s.divInputsTwo}>
@@ -51,14 +104,16 @@ const EditBisuteriProduct = ({ product, handleEdit, closeModal }) => {
                         className={s.inputTag}
                         type="text"
                         name="tagInput"
+                        value={tagInput}
+                        onChange={handleTagInputChange}
                       />
-                      <button className={s.btnAddTag}>Agregar</button>
+                      <button className={s.btnAddTag} onClick={handleAddTag}>Agregar</button>
                     </div>
                     <div className={s.tags}>
-                      {product.tags.map((tag, index) => (
+                      {formData.tags.map((tag, index) => (
                         <span key={index} className={s.tag}>
                           {tag}
-                          <button className={s.btnRemoveTag}>x</button>
+                          <button className={s.btnRemoveTag} onClick={() => handleRemoveTag(index)}>x</button>
                         </span>
                       ))}
                     </div>

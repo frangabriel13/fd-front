@@ -5,10 +5,11 @@ import EditSimpleProduct from './EditSimpleProduct';
 import EditVariableProduct from './EditVariableProduct';
 import EditBisuteriProduct from './EditBisuteriProduct';
 
-const TableMyProducts = ({ myProducts, handleEdit, handleDelete, sizes }) => {
+const TableMyProducts = ({ myProducts, handleDelete, sizes }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVariable, setIsVariable] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   const openModal = (product) => {
     setSelectedProduct(product);
@@ -51,8 +52,10 @@ const TableMyProducts = ({ myProducts, handleEdit, handleDelete, sizes }) => {
                   <tr key={product.id}>
                     <td><img src={product.mainImage} alt={product.name} /></td>
                     <td>{product.name}</td>
-                    <td>{product.category.parent.name}</td>
-                    <td>{product.category.name}</td>
+                    {/* <td>{product.category.parent.name}</td> */}
+                    {/* <td>{product.category.name}</td> */}
+                    <td>{product.category?.parent?.name || 'Cargando...'}</td>
+                    <td>{product.category?.name || 'Cargando...'}</td>
                     <td>{product.gender ? product.gender.name : 'No'}</td>
                     <td>{formatPrice(product.price)}</td>
                     <td>{product.priceDolar}</td>
@@ -69,12 +72,12 @@ const TableMyProducts = ({ myProducts, handleEdit, handleDelete, sizes }) => {
       </div>
       {isModalOpen && (
         isVariable ? (
-          <EditVariableProduct product={selectedProduct} handleEdit={handleEdit} closeModal={closeModal} />
+          <EditVariableProduct product={selectedProduct} closeModal={closeModal} />
         ) : (
           selectedProduct.category.parent.name === 'Indumentaria' ? (
-            <EditSimpleProduct product={selectedProduct} handleEdit={handleEdit} closeModal={closeModal} sizes={sizes} />
+            <EditSimpleProduct product={selectedProduct} closeModal={closeModal} sizes={sizes} />
           ) : (
-            <EditBisuteriProduct product={selectedProduct} handleEdit={handleEdit} closeModal={closeModal} />
+            <EditBisuteriProduct product={selectedProduct} closeModal={closeModal} />
           )
         )
       )}

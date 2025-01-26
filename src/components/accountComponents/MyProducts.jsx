@@ -12,18 +12,13 @@ const MyProducts = ({ sizes }) => {
     dispatch(getProductsByUserId());
   }, [dispatch]);
 
-  const handleEdit = (productId) => {
-    // Lógica para editar el producto
-    console.log(`Edit product with id: ${productId}`);
-  };
-
   const handleDelete = (productId) => {
     dispatch(deleteProduct(productId));
   };
 
   return (
     <div className={s.container}>
-      <TableMyProducts sizes={sizes} myProducts={myProducts} handleEdit={handleEdit} handleDelete={handleDelete} />
+      <TableMyProducts sizes={sizes} myProducts={myProducts} handleDelete={handleDelete} />
     </div>
   )
 };

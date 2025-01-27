@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/actions/authActions';
 import s from './SidebarAccount.module.css';
-import { BsUpload, BsBoxSeam, BsTag, BsHeart, BsCart } from "react-icons/bs";
+import { BsUpload, BsBoxSeam, BsTag, BsHeart, BsCart, BsClipboardCheck } from "react-icons/bs";
 import { PiUserCircle } from "react-icons/pi";
 import { CiLogout } from "react-icons/ci";
 
@@ -23,25 +23,19 @@ const SidebarAccount = ({ role }) => {
         <h3 className={s.title}>Mi cuenta</h3>
       </div>
       <div className={s.menu}>
-        {/* <Link to="/mi-cuenta/subir-producto" className={s.link}>
-          <BsUpload className={s.icon} /> Subir producto
-        </Link>
-        <Link to="/mi-cuenta/publicaciones" className={s.link}>
-          <BsBoxSeam className={s.icon} /> Publicaciones
-        </Link>
-        <Link to="/mi-cuenta/ordenes" className={s.link}>
-          <BsTag className={s.icon} /> Mis ordenes
-        </Link> */}
         {role === "manufacturer" && (
           <>
             <Link to="/mi-cuenta/subir-producto" className={s.link}>
               <BsUpload className={s.icon} /> Subir producto
             </Link>
             <Link to="/mi-cuenta/publicaciones" className={s.link}>
-              <BsBoxSeam className={s.icon} /> Publicaciones
+              <BsTag className={s.icon} /> Publicaciones
+            </Link>
+            <Link to="/mi-cuenta/packs" className={s.link}>
+              <BsBoxSeam className={s.icon} /> Packs
             </Link>
             <Link to="/mi-cuenta/ordenes" className={s.link}>
-              <BsTag className={s.icon} /> Mis ordenes
+              <BsClipboardCheck className={s.icon} /> Mis ordenes
             </Link>
           </>
         )}

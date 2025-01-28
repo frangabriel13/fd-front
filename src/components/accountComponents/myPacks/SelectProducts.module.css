@@ -81,6 +81,15 @@
   color: var(--gray-color);
 }
 
+.check {
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  accent-color: var(--second-bg-color);
+  border-radius: .3rem;
+  border: 0.1rem solid var(--gray-color);
+}
+
 .divDivider {
   display: flex;
   flex-direction: column;

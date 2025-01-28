@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import s from './SelectProducts.module.css';
 import { formatPrice } from '../../../utils/utils';
 
 const SelectProducts = ({ myProducts, selectedProducts, onClose, onSelect }) => {
+  const [tempSelectedProducts, setTempSelectedProducts] = useState(selectedProducts);
+  
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -9,19 +12,20 @@ const SelectProducts = ({ myProducts, selectedProducts, onClose, onSelect }) => 
   };
 
   const handleCheckboxChange = (product) => {
-    const isSelected = selectedProducts.some(selected => selected.id === product.id);
+    const isSelected = tempSelectedProducts.some(selected => selected.id === product.id);
     let updatedSelectedProducts;
 
     if(isSelected) {
-      updatedSelectedProducts = selectedProducts.filter(selected => selected.id !== product.id);
+      updatedSelectedProducts = tempSelectedProducts.filter(selected => selected.id !== product.id);
     } else {
-      updatedSelectedProducts = [...selectedProducts, product];
+      updatedSelectedProducts = [...tempSelectedProducts, product];
     }
 
-    onSelect(updatedSelectedProducts);
+    setTempSelectedProducts(updatedSelectedProducts);
   };
 
   const handleSave = () => {
+    onSelect(tempSelectedProducts);
     onClose();
   };
 
@@ -45,7 +49,7 @@ const SelectProducts = ({ myProducts, selectedProducts, onClose, onSelect }) => 
                 </div>
                 <input
                   type="checkbox"
-                  checked={selectedProducts.some(selected => selected.id === product.id)}
+                  checked={tempSelectedProducts.some(selected => selected.id === product.id)}
                   onChange={() => handleCheckboxChange(product)}
                   className={s.check}
                 />

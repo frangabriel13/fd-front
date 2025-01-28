@@ -15,7 +15,7 @@ const MyPacks = () => {
   console.log('myPacks', myPacks);
   return (
     <div className={s.container}>
-      <h1>My Packs</h1>
+      <TableMyPacks myPacks={myPacks} />
     </div>
   );
 };

@@ -21,6 +21,10 @@ const SelectProducts = ({ myProducts, selectedProducts, onClose, onSelect }) => 
     onSelect(updatedSelectedProducts);
   };
 
+  const handleSave = () => {
+    onClose();
+  };
+
   return (
     <div className={s.modal} onClick={handleClickOutside}>
       <div className={s.modalContent}>
@@ -43,6 +47,7 @@ const SelectProducts = ({ myProducts, selectedProducts, onClose, onSelect }) => 
                   type="checkbox"
                   checked={selectedProducts.some(selected => selected.id === product.id)}
                   onChange={() => handleCheckboxChange(product)}
+                  className={s.check}
                 />
               </div>
             ))}
@@ -52,7 +57,7 @@ const SelectProducts = ({ myProducts, selectedProducts, onClose, onSelect }) => 
           <hr className={s.divider} />
           <div className={s.divBtn}>
             <button className={s.btnCancel} onClick={onClose}>Cerrar</button>
-            <button className={s.btnNext} type='submit'>Guardar</button>
+            <button className={s.btnNext} onClick={handleSave}>Guardar</button>
           </div>
         </div>
       </div>

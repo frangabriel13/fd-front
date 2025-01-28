@@ -25,8 +25,7 @@
   align-items: center;
   gap: 5rem;
   background-color: white;
-  box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
-  padding: 3rem;
+  padding: 3rem 3rem .5rem 3rem;
 }
 
 .divTitle {
@@ -42,4 +41,90 @@
 .divTitle p {
   font-size: 1.6rem;
   color: var(--gray-color);
+}
+
+.divList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.productItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: .5rem 2rem;
+  border-radius: .4rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+}
+
+.dataProduct {
+  display: flex;
+  gap: 2rem;
+}
+
+.productImage {
+  width: 4.5rem;
+  height: 6rem;
+  object-fit: cover;
+  border-radius: .3rem;
+}
+
+.productInfo h4 {
+  font-size: 1.8rem;
+  font-weight: 500;
+}
+
+.productInfo p {
+  font-size: 1.6rem;
+  color: var(--gray-color);
+}
+
+.divDivider {
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+  gap: 3rem;
+}
+
+.divider {
+  border: 0;
+  height: .1rem;
+  background: #ccc;
+  width: 100%;
+}
+
+.divBtn {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+}
+
+.btnNext {
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: var(--second-bg-color);
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btnNext:hover {
+  background-color: var(--third-bg-color);
+}
+
+.btnCancel {
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: var(--red-color);
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btnCancel:hover {
+  background-color: var(--red-color-light);
 }

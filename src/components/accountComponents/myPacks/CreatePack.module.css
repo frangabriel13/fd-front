@@ -1,0 +1,143 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  align-items: center;
+  flex-direction: column;
+}
+
+.modalContent {
+  background-color: white;
+  border-radius: .4rem;
+  overflow-y: auto;
+  width: 40%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+  padding: 3rem;
+}
+
+.divTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divTitle h3 {
+  font-size: 2.2rem;
+}
+
+.divTitle p {
+  font-size: 1.6rem;
+  color: var(--gray-color);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  width: 100%;
+}
+
+.divForm {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.divInputs {
+  display: flex;
+  gap: 3rem;
+}
+
+.divInput {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: 50%;
+}
+
+.label {
+  font-size: 1.5rem;
+}
+
+.input {
+  padding: 1rem;
+  border: .1rem solid var(--gray-color-light);
+  border-radius: .3rem;
+  font-size: 1.5rem;
+}
+
+.divDescription {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.textarea {
+  padding: 1rem;
+  border: .1rem solid var(--gray-color-light);
+  border-radius: .3rem;
+  font-size: 1.5rem;
+  width: 100%;
+  height: 10rem;
+  resize: vertical;
+}
+
+.divider {
+  border: 0;
+  height: .1rem;
+  background: #ccc;
+  width: 100%;
+}
+
+.divBtn {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+}
+
+.btnNext {
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: var(--second-bg-color);
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btnNext:hover {
+  background-color: var(--third-bg-color);
+}
+
+.btnCancel {
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: var(--red-color);
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btnCancel:hover {
+  background-color: var(--red-color-light);
+}
+
+.error {
+  color: red;
+  font-size: 1.2rem;
+}

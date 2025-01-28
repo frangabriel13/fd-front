@@ -10,6 +10,7 @@ import UploadProduct from "../../components/accountComponents/UploadProduct";
 import MyPacks from "../../components/accountComponents/MyPacks";
 import s from "./Account.module.css";
 import { getSizes } from '../../store/actions/sizeAction';
+import { getProductsByUserId } from '../../store/actions/productActions';
 
 const Account = () => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Account = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const user = useSelector((state) => state.user.user);
   const sizes = useSelector((state) => state.size.sizes);
+  const myProducts = useSelector((state) => state.product.myProducts);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -40,6 +42,7 @@ const Account = () => {
 
   useEffect(() => {
     dispatch(getSizes());
+    dispatch(getProductsByUserId());
   }, [dispatch]);
 
   if (loading) {
@@ -55,7 +58,7 @@ const Account = () => {
           <Route path="subir-producto" element={<UploadProduct sizes={sizes} />} />
           <Route path="publicaciones" element={<MyProducts sizes={sizes} />} />
           <Route path="ordenes" element={<MyOrders />} />
-          <Route path="packs" element={<MyPacks />} />
+          <Route path="packs" element={<MyPacks myProducts={myProducts} />} />
         </Routes>
       </div>
     </div>

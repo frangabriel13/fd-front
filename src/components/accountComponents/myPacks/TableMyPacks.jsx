@@ -4,7 +4,7 @@ import { formatPrice } from '../../../utils/utils';
 import EditPack from './EditPack';
 import CreatePack from './CreatePack';
 
-const TableMyPacks = ({ myPacks }) => {
+const TableMyPacks = ({ myPacks, myProducts }) => {
   const [selectedPack, setSelectedPack] = useState(null);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [createModalOpen, setCreateModalOpen] = useState(false);
@@ -23,6 +23,9 @@ const TableMyPacks = ({ myPacks }) => {
     setCreateModalOpen(false);
     setSelectedPack(null);
   }
+
+  console.log('myPacks', myPacks);
+  console.log('myProducts', myProducts);
 
   return (
     <div className={s.container}>
@@ -64,7 +67,7 @@ const TableMyPacks = ({ myPacks }) => {
         </div>
       </div>
       {editModalOpen && <EditPack pack={selectedPack} closeModal={closeModal} />}
-      {createModalOpen && <CreatePack closeModal={closeModal} />}
+      {createModalOpen && <CreatePack onClose={closeModal} myProducts={myProducts} />}
     </div>
   );
 };

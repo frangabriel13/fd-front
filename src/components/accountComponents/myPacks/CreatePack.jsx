@@ -3,6 +3,7 @@ import s from './CreatePack.module.css';
 import SelectProducts from './SelectProducts';
 
 const CreatePack = ({ onClose, myProducts }) => {
+  const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectProductsModal, setSelectProductsModal] = useState(false);
 
   const handleClickOutside = (e) => {
@@ -18,6 +19,11 @@ const CreatePack = ({ onClose, myProducts }) => {
   const closeSelectProduct = () => {
     setSelectProductsModal(false);
   }
+
+  const handleSelectProducts = (products) => {
+    setSelectedProducts(products);
+    closeSelectProduct();
+  };
 
   return (
     <div className={s.modal} onClick={handleClickOutside}>
@@ -66,7 +72,13 @@ const CreatePack = ({ onClose, myProducts }) => {
           </form>
         </div>
       </div>
-      {selectProductsModal && <SelectProducts onClose={closeSelectProduct} myProducts={myProducts} />}
+      {selectProductsModal && 
+        <SelectProducts 
+          onClose={closeSelectProduct} 
+          myProducts={myProducts}
+          selectedProducts={selectedProducts}
+          onSelect={handleSelectProducts}
+        />}
     </div>
   )
 };

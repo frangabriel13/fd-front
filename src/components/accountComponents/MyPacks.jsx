@@ -4,7 +4,7 @@ import { getPacksByUserId } from '../../store/actions/packActions';
 import s from './MyPacks.module.css';
 import TableMyPacks from './myPacks/TableMyPacks';
 
-const MyPacks = () => {
+const MyPacks = ({ myProducts }) => {
   const dispatch = useDispatch();
   const myPacks = useSelector(state => state.pack.myPacks);
 
@@ -12,10 +12,9 @@ const MyPacks = () => {
     dispatch(getPacksByUserId());
   }, [dispatch]);
   
-  console.log('myPacks', myPacks);
   return (
     <div className={s.container}>
-      <TableMyPacks myPacks={myPacks} />
+      <TableMyPacks myPacks={myPacks} myProducts={myProducts} />
     </div>
   );
 };

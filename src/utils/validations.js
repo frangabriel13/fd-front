@@ -258,3 +258,31 @@ export const createBisuteriProductValidator = ({ name, price, description, tags,
 
   return errors;
 }
+
+export const createPackValidator = ({ name, price, description, selectedProducts }) => {
+  const errors = {};
+
+  if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
+    errors.name = 'El nombre del pack debe tener entre 3 y 100 caracteres';
+  }
+
+  if(description !== '' && (typeof description !== 'string' || description.length < 3 || description.length > 1000)) {
+    errors.description = 'La descripción del producto debe tener entre 3 y 1000 caracteres';
+  }
+
+  if(!price || typeof price !== 'number' || price < 1) {
+    errors.price = 'El precio debe ser un número mayor a 0';
+  }
+
+  // if(!Array.isArray(selectedProducts) || selectedProducts.length < 1) {
+  //   errors.products = 'Debes seleccionar al menos un producto';
+  // }
+
+  // for(const product of selectedProducts) {
+  //   if(!product.quantity || typeof product.quantity !== 'number' || product.quantity < 1) {
+  //     errors.products = 'La cantidad de cada producto debe ser un número mayor a 0';
+  //   }
+  // }
+
+  return errors;
+}

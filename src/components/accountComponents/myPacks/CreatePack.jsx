@@ -32,8 +32,18 @@ const CreatePack = ({ onClose, myProducts }) => {
   }
 
   const handleSelectProducts = (products) => {
-    setSelectedProducts(products);
+    const productsWithQuantity = products.map(product => ({ ...product, quantity: 1 }));
+    setSelectedProducts(productsWithQuantity);
     closeSelectProduct();
+  };
+
+  const handleQuantityChange = (id, quantity) => {
+    setSelectedProducts(selectedProducts.map(product => {
+      if(product.id === id) {
+        return { ...product, quantity: parseInt(quantity) };
+      }
+      return product;
+    }));
   };
 
   const handleDeleteProduct = (id) => {
@@ -47,23 +57,24 @@ const CreatePack = ({ onClose, myProducts }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const validationErrors = createPackValidator(formData);
+    const packData = {
+      ...formData,
+      price: parseInt(formData.price),
+      products: selectedProducts.map(product => ({ id: product.id, quantity: product.quantity })),
+    };
+
+    const validationErrors = createPackValidator(packData);
     if(Object.keys(validationErrors).length) {
       setErrors(validationErrors);
       return;
     }
-
-    const packData = {
-      ...formData,
-      products: selectedProducts.map(product => ({ id: product.id, quantity: product.quantity })),
-    };
 
     setErrors({});
     dispatch(createPack(packData));
     onClose();
   };
 
-  console.log(selectedProducts);
+  console.log('formData', formData);
 
   return (
     <div className={s.modal} onClick={handleClickOutside}>
@@ -111,6 +122,7 @@ const CreatePack = ({ onClose, myProducts }) => {
               </div>
               <div className={s.divProducts}>
                 <button type='button' className={s.btnAdd} onClick={openSelectProducts}>Seleccionar productos</button>
+                {errors.products && <p className={s.error}>{errors.products}</p>}
                 <div className={s.list}>
                   {selectedProducts.map(product => (
                     <div key={product.id} className={s.productItem}>
@@ -124,19 +136,24 @@ const CreatePack = ({ onClose, myProducts }) => {
                       <div className={s.divActions}>
                         <div className={s.quantity}>
                           <h5>Cantidad:</h5>
-                          <input type="number" />
+                          <input 
+                            type="number"
+                            value={product.quantity}
+                            onChange={(e) => handleQuantityChange(product.id, e.target.value)} 
+                          />
                         </div>
                         <button className={s.btnDelete} onClick={() => handleDeleteProduct(product.id)}>X</button>
                       </div>
                     </div>
                   ))}
+                  {errors.quantity && <p className={s.error}>{errors.quantity}</p>}
                 </div>
               </div>
             </div>
             <hr className={s.divider} />
             <div className={s.divBtn}>
               <button className={s.btnCancel} onClick={onClose}>Cerrar</button>
-              <button className={s.btnNext} type='submit'>Guardar</button>
+              <button className={s.btnNext} type='submit'>Crear Pack</button>
             </div>
           </form>
         </div>

@@ -259,7 +259,7 @@ export const createBisuteriProductValidator = ({ name, price, description, tags,
   return errors;
 }
 
-export const createPackValidator = ({ name, price, description, selectedProducts }) => {
+export const createPackValidator = ({ name, price, description, products }) => {
   const errors = {};
 
   if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
@@ -274,15 +274,15 @@ export const createPackValidator = ({ name, price, description, selectedProducts
     errors.price = 'El precio debe ser un número mayor a 0';
   }
 
-  // if(!Array.isArray(selectedProducts) || selectedProducts.length < 1) {
-  //   errors.products = 'Debes seleccionar al menos un producto';
-  // }
+  if(!Array.isArray(products) || products.length < 1) {
+    errors.products = 'Debes seleccionar al menos un producto';
+  }
 
-  // for(const product of selectedProducts) {
-  //   if(!product.quantity || typeof product.quantity !== 'number' || product.quantity < 1) {
-  //     errors.products = 'La cantidad de cada producto debe ser un número mayor a 0';
-  //   }
-  // }
+  for(const product of products) {
+    if(!product.quantity || typeof product.quantity !== 'number' || product.quantity < 1) {
+      errors.quantity = 'La cantidad de cada producto debe ser un número mayor a 0';
+    }
+  }
 
   return errors;
 }

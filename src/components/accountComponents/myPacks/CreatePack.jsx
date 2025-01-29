@@ -1,12 +1,21 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { createPack } from '../../../store/actions/packActions';
 import s from './CreatePack.module.css';
 import SelectProducts from './SelectProducts';
 import { formatPrice } from '../../../utils/utils';
+import { createPackValidator } from '../../../utils/validations';
 
 const CreatePack = ({ onClose, myProducts }) => {
+  const dispatch = useDispatch();
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [selectProductsModal, setSelectProductsModal] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    price: '',
+    description: '',
+  });
+  const [errors, setErrors] = useState({});
 
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
@@ -31,6 +40,31 @@ const CreatePack = ({ onClose, myProducts }) => {
     setSelectedProducts(selectedProducts.filter(product => product.id !== id));
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const validationErrors = createPackValidator(formData);
+    if(Object.keys(validationErrors).length) {
+      setErrors(validationErrors);
+      return;
+    }
+
+    const packData = {
+      ...formData,
+      products: selectedProducts.map(product => ({ id: product.id, quantity: product.quantity })),
+    };
+
+    setErrors({});
+    dispatch(createPack(packData));
+    onClose();
+  };
+
+  console.log(selectedProducts);
+
   return (
     <div className={s.modal} onClick={handleClickOutside}>
       <div className={s.modalContent}>
@@ -39,7 +73,7 @@ const CreatePack = ({ onClose, myProducts }) => {
             <h3>Crear pack</h3>
             <p>Completa los campos para crear el pack de emprendedores</p>
           </div>
-          <form className={s.form}>
+          <form className={s.form} onSubmit={handleSubmit}>
             <div className={s.divForm}>
               <div className={s.divInputs}>
                 <div className={s.divInput}>
@@ -48,7 +82,10 @@ const CreatePack = ({ onClose, myProducts }) => {
                     className={s.input}
                     type="text"
                     name="name"
+                    value={formData.name}
+                    onChange={handleChange}
                   />
+                  {errors.name && <p className={s.error}>{errors.name}</p>}
                 </div>
                 <div className={s.divInput}>
                   <h4 className={s.label}>Precio</h4>
@@ -56,7 +93,10 @@ const CreatePack = ({ onClose, myProducts }) => {
                     className={s.input}
                     type="number"
                     name="price"
+                    value={formData.price}
+                    onChange={handleChange}
                   />
+                  {errors.price && <p className={s.error}>{errors.price}</p>}
                 </div>
               </div>
               <div className={s.divDescription}>
@@ -64,7 +104,10 @@ const CreatePack = ({ onClose, myProducts }) => {
                 <textarea
                   className={s.textarea}
                   name="description"
+                  value={formData.description}
+                  onChange={handleChange}
                 />
+                {errors.description && <p className={s.error}>{errors.description}</p>}
               </div>
               <div className={s.divProducts}>
                 <button type='button' className={s.btnAdd} onClick={openSelectProducts}>Seleccionar productos</button>

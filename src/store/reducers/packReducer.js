@@ -52,7 +52,8 @@ const packReducer = (state = initialState, action) => {
         ...state, 
         loading: false, 
         error: null,
-        packs: [...state.packs, action.payload],
+        // packs: [...state.packs, action.payload],
+        myPacks: [...state.myPacks, action.payload],
       };
     case 'CREATE_PACK_FAILURE':
       return { 
@@ -72,6 +73,7 @@ const packReducer = (state = initialState, action) => {
         loading: false, 
         error: null,
         packs: state.packs.filter(pack => pack.id !== action.payload),
+        myPacks: state.myPacks.filter(pack => pack.id !== action.payload),
       };
     case 'DELETE_PACK_FAILURE':
       return { 

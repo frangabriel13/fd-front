@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { createPack } from '../../../store/actions/packActions';
 import s from './CreatePack.module.css';
@@ -14,8 +14,14 @@ const CreatePack = ({ onClose, myProducts }) => {
     name: '',
     price: '',
     description: '',
+    quantityTotal: 0,
   });
   const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const totalQuantity = selectedProducts.reduce((total, product) => total + parseInt(product.quantity), 0);
+    setFormData(prevFormData => ({ ...prevFormData, quantityTotal: totalQuantity }));
+  }, [selectedProducts]);
 
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
@@ -75,6 +81,7 @@ const CreatePack = ({ onClose, myProducts }) => {
   };
 
   console.log('formData', formData);
+  console.log('quantityTotal', formData.quantityTotal);
 
   return (
     <div className={s.modal} onClick={handleClickOutside}>

@@ -51,8 +51,9 @@ const TableMyPacks = ({ myPacks, myProducts, onDelete }) => {
               {
                 myPacks.map(pack => (
                   <tr key={pack.id}>
-                    <td><img src={pack.mainImage} alt={pack.name} /></td>
+                    <td><img src={pack.products[0].mainImage} alt={pack.name} /></td>
                     <td>{pack.name}</td>
+                    <td>{pack.quantityTotal}</td>
                     <td>{formatPrice(pack.price)}</td>
                     <td>{pack.priceDolar}</td>
                     <td className={s.tdActions}>

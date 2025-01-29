@@ -4,7 +4,7 @@ import { formatPrice } from '../../../utils/utils';
 import EditPack from './EditPack';
 import CreatePack from './CreatePack';
 
-const TableMyPacks = ({ myPacks, myProducts }) => {
+const TableMyPacks = ({ myPacks, myProducts, onDelete }) => {
   const [selectedPack, setSelectedPack] = useState(null);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [createModalOpen, setCreateModalOpen] = useState(false);
@@ -57,7 +57,7 @@ const TableMyPacks = ({ myPacks, myProducts }) => {
                     <td>{pack.priceDolar}</td>
                     <td className={s.tdActions}>
                       <button className={s.btnEdit} onClick={() => openModal(pack)}>Editar</button>
-                      <button className={s.btnDelete}>Eliminar</button>
+                      <button className={s.btnDelete} onClick={() => onDelete(pack.id)}>Eliminar</button>
                     </td>
                   </tr>
                 ))

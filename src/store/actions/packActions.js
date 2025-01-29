@@ -69,3 +69,19 @@ export const createPack = (packData) => async (dispatch) => {
     dispatch({ type: 'CLEAR_IMAGES' });
   }
 };
+
+export const deletePack = (packId) => async (dispatch) => {
+  dispatch({ type: 'DELETE_PACK_REQUEST' });
+  try {
+    await packInstance.delete(`/${packId}`);
+    dispatch({
+      type: 'DELETE_PACK_SUCCESS',
+      payload: packId
+    });
+  } catch(error) {
+    dispatch({
+      type: 'DELETE_PACK_FAILURE',
+      error: error.message,
+    });
+  }
+};

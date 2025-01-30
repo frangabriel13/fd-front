@@ -61,6 +61,26 @@ const packReducer = (state = initialState, action) => {
         loading: false, 
         error: action.error,
       };
+    case 'UPDATE_PACK_REQUEST':
+      return { 
+        ...state, 
+        loading: true, 
+        error: null,
+      };
+    case 'UPDATE_PACK_SUCCESS':
+      return { 
+        ...state, 
+        loading: false, 
+        error: null,
+        packs: state.packs.map(pack => pack.id === action.payload.id ? action.payload : pack),
+        myPacks: state.myPacks.map(pack => pack.id === action.payload.id ? action.payload : pack),
+      };
+    case 'UPDATE_PACK_FAILURE':
+      return { 
+        ...state, 
+        loading: false, 
+        error: action.error,
+      };
     case 'DELETE_PACK_REQUEST':
       return { 
         ...state, 

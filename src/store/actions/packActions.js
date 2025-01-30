@@ -85,3 +85,19 @@ export const deletePack = (packId) => async (dispatch) => {
     });
   }
 };
+
+export const updatePack = (packData) => async (dispatch) => {
+  dispatch({ type: 'UPDATE_PACK_REQUEST' });
+  try {
+    const response = await packInstance.put(`/${packData.id}`, packData);
+    dispatch({
+      type: 'UPDATE_PACK_SUCCESS',
+      payload: response.data
+    });
+  } catch(error) {
+    dispatch({
+      type: 'UPDATE_PACK_FAILURE',
+      error: error.message,
+    });
+  }
+};

@@ -8,10 +8,10 @@ import { createPackValidator } from '../../../utils/validations';
 
 const EditPack = ({ pack, closeModal, myProducts }) => {
   const dispatch = useDispatch();
+  console.log('quant', pack);
   const [selectedProducts, setSelectedProducts] = useState(
     pack.products.map(product => ({ ...product, quantity: product.productpack.quantity || 1 }))
   );
-  console.log('quant', pack.products);
   const [selectProductsModal, setSelectProductsModal] = useState(false);
   const [formData, setFormData] = useState({
     name: pack.name,
@@ -80,8 +80,9 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
     }
 
     setErrors({})
-    dispatch(updatePack(packData));
-    closeModal();
+    dispatch(updatePack(packData)).then(() => {
+      closeModal();
+    });
   }
 
   return (

@@ -39,6 +39,7 @@ const TableMyPacks = ({ myPacks, myProducts, onDelete }) => {
           <table className={s.table}>
             <thead>
               <tr>
+                <th>Imagen</th>
                 <th>Nombre</th>
                 <th>Unidades</th>
                 <th>ARS</th>
@@ -50,6 +51,9 @@ const TableMyPacks = ({ myPacks, myProducts, onDelete }) => {
               {
                 myPacks.map(pack => (
                   <tr key={pack.id}>
+                    <td>
+                      <img src={pack.products[0].mainImage} alt={pack.name} className={s.productImage} />
+                    </td>
                     <td>{pack.name}</td>
                     <td>{pack.quantityTotal}</td>
                     <td>{formatPrice(pack.price)}</td>

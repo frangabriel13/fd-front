@@ -8,7 +8,10 @@ import { createPackValidator } from '../../../utils/validations';
 
 const EditPack = ({ pack, closeModal, myProducts }) => {
   const dispatch = useDispatch();
-  const [selectedProducts, setSelectedProducts] = useState(pack.products);
+  const [selectedProducts, setSelectedProducts] = useState(
+    pack.products.map(product => ({ ...product, quantity: product.productpack.quantity || 1 }))
+  );
+  console.log('quant', pack.products);
   const [selectProductsModal, setSelectProductsModal] = useState(false);
   const [formData, setFormData] = useState({
     name: pack.name,
@@ -158,7 +161,7 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
             <hr className={s.divider} />
             <div className={s.divBtn}>
               <button className={s.btnCancel} onClick={closeModal}>Cerrar</button>
-              <button className={s.btnNext} type='submit'>Crear Pack</button>
+              <button className={s.btnNext} type='submit'>Guardar cambios</button>
             </div>
           </form>
         </div>

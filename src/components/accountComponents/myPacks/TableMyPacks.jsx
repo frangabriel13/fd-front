@@ -57,7 +57,7 @@ const TableMyPacks = ({ myPacks, myProducts, onDelete }) => {
                     <td>{formatPrice(pack.price)}</td>
                     <td>{pack.priceDolar}</td>
                     <td className={s.tdActions}>
-                      <button className={s.btnEdit} onClick={() => openModal(pack)}>Editar</button>
+                      <button className={s.btnEdit} onClick={() => openEditModal(pack)}>Editar</button>
                       <button className={s.btnDelete} onClick={() => onDelete(pack.id)}>Eliminar</button>
                     </td>
                   </tr>
@@ -67,7 +67,7 @@ const TableMyPacks = ({ myPacks, myProducts, onDelete }) => {
           </table>
         </div>
       </div>
-      {editModalOpen && <EditPack pack={selectedPack} closeModal={closeModal} />}
+      {editModalOpen && <EditPack pack={selectedPack} closeModal={closeModal} myProducts={myProducts} />}
       {createModalOpen && <CreatePack onClose={closeModal} myProducts={myProducts} />}
     </div>
   );

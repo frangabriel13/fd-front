@@ -8,7 +8,6 @@ import { createPackValidator } from '../../../utils/validations';
 
 const EditPack = ({ pack, closeModal, myProducts }) => {
   const dispatch = useDispatch();
-  console.log('quant', pack);
   const [selectedProducts, setSelectedProducts] = useState(
     pack.products.map(product => ({ ...product, quantity: product.productpack.quantity || 1 }))
   );
@@ -40,11 +39,19 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
     setSelectProductsModal(false);
   }
 
+  // const handleSelectProducts = (products) => {
+  //   const productsWithQuantity = products.map(product => ({ ...product, quantity: 1 }));
+  //   setSelectedProducts(productsWithQuantity);
+  //   closeSelectProduct();
+  // }
   const handleSelectProducts = (products) => {
-    const productsWithQuantity = products.map(product => ({ ...product, quantity: 1 }));
-    setSelectedProducts(productsWithQuantity);
+    const updatedProducts = products.map(product => {
+      const existingProduct = selectedProducts.find(p => p.id === product.id);
+      return existingProduct ? existingProduct : { ...product, quantity: 1 };
+    });
+    setSelectedProducts(updatedProducts);
     closeSelectProduct();
-  }
+  };
 
   const handleQuantityChange = (id, quantity) => {
     setSelectedProducts(selectedProducts.map(product => {

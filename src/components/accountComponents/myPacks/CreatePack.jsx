@@ -38,8 +38,11 @@ const CreatePack = ({ onClose, myProducts }) => {
   }
 
   const handleSelectProducts = (products) => {
-    const productsWithQuantity = products.map(product => ({ ...product, quantity: 1 }));
-    setSelectedProducts(productsWithQuantity);
+    const updatedProducts = products.map(product => {
+      const existingProduct = selectedProducts.find(p => p.id === product.id);
+      return existingProduct ? existingProduct : { ...product, quantity: 1 };
+    });
+    setSelectedProducts(updatedProducts);
     closeSelectProduct();
   };
 

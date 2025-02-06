@@ -81,3 +81,24 @@ export const updateManufacturer = (id, manufacturerData) => async (dispatch) => 
     console.error(error);
   }
 };
+
+export const addLogoToManufacturer = (id, formData) => async (dispatch) => {
+  dispatch({ type: 'ADD_LOGO_TO_MANUFACTURER_REQUEST' });
+  try {
+    const response = await manufacturerInstance.post(`/logo/${id}`, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+    dispatch({
+      type: 'ADD_LOGO_TO_MANUFACTURER_SUCCESS',
+      payload: response.data.logo,
+    });
+  } catch(error) {
+    dispatch({
+      type: 'ADD_LOGO_TO_MANUFACTURER_FAILURE',
+      error: error.message,
+    });
+    console.error(error);
+  }
+};

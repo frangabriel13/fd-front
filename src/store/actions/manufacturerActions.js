@@ -85,7 +85,7 @@ export const updateManufacturer = (id, manufacturerData) => async (dispatch) => 
 export const addLogoToManufacturer = (id, formData) => async (dispatch) => {
   dispatch({ type: 'ADD_LOGO_TO_MANUFACTURER_REQUEST' });
   try {
-    const response = await manufacturerInstance.post(`/logo/${id}`, formData, {
+    const response = await manufacturerInstance.put(`/logo/${id}`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },

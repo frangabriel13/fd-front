@@ -84,6 +84,29 @@ const manufacturerReducer = (state = initialState, action) => {
           manufacturer.id === action.payload.id ? action.payload : manufacturer
         ),
       };
+    case 'ADD_LOGO_TO_MANUFACTURER_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case 'ADD_LOGO_TO_MANUFACTURER_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        manufacturers: state.manufacturers.map(manufacturer =>
+          // manufacturer.id === action.payload.id ? action.payload : manufacturer
+          manufacturer.id === action.payload.id
+            ? { ...manufacturer, image: action.payload.image }
+            : manufacturer
+        ),
+      };
+    case 'ADD_LOGO_TO_MANUFACTURER_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
     default:
       return state;
   }

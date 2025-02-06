@@ -22,6 +22,19 @@ const UserData = ({ user }) => {
 
   return (
     <div className={s.container}>
+      {
+        user.role === 'manufacturer' && (
+          <div className={s.imageContainer} onClick={handleImageClick}>
+            <img src={user.manufacturer.image} alt="user" />
+            <input
+              type="file"
+              ref={inputRef}
+              style={{ display: 'none' }}
+              onChange={handleImageChange}
+            />
+          </div>
+        )
+      }
       <div className={s.userContainer}>
         <h3>Mis datos</h3>
         <div className={s.divData}>
@@ -30,15 +43,6 @@ const UserData = ({ user }) => {
             <p>{user.email}</p>
           </div>
         </div>
-      </div>
-      <div className={s.imageContainer} onClick={handleImageClick}>
-        <img src={user.manufacturer.image} alt="user" />
-        <input
-          type="file"
-          ref={inputRef}
-          style={{ display: 'none' }}
-          onChange={handleImageChange}
-        />
       </div>
     </div>
   )

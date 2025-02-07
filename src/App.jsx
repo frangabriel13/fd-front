@@ -12,6 +12,7 @@ import ResetPassword from './pages/resetPassword/ResetPassword';
 import Account from './pages/account/Account';
 import CompleteRegistration from './pages/completeRegistration/CompleteRegistration';
 import VerifyAccount from './pages/verifyAccount/VerifyAccount';
+import Store from './pages/store/Store';
 
 function App() {
   const location = useLocation();
@@ -59,6 +60,7 @@ function App() {
         <Route path='/mi-cuenta/*' element={<Account />} />
         <Route path='/completar-registro' element={<CompleteRegistration />} />
         <Route path='/verificar-cuenta' element={<VerifyAccount />} />
+        <Route path='/store/:manufacturerId' element={<Store />} />
       </Routes>
     </>
   );

@@ -1,6 +1,7 @@
 const initialState = {
   liveManufacturers: [],
   manufacturers: [],
+  manufacturer: {},
   loading: false,
   error: null,
   uploadedImages: {},
@@ -22,6 +23,25 @@ const manufacturerReducer = (state = initialState, action) => {
         error: null,
       };
     case 'GET_LIVE_MANUFACTURERS_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    case 'GET_MANUFACTURER_BY_USER_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case 'GET_MANUFACTURER_BY_USER_SUCCESS':
+      return {
+        ...state,
+        manufacturer: action.payload,
+        loading: false,
+        error: null,
+      };
+    case 'GET_MANUFACTURER_BY_USER_FAILURE':
       return {
         ...state,
         loading: false,

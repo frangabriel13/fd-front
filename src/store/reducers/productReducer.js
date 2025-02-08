@@ -1,12 +1,16 @@
 const initialState = {
   products: [],
   myProducts: [],
+  manufacturerProducts: [],
   currentPage: 1,
   pageSize: 20,
   myCurrentPage: 1,
   myPageSize: 10,
+  manufacturerCurrentPage: 1,
+  manufacturerPageSize: 15,
   totalProducts: 0,
   myTotalProducts: 0,
+  manufacturerTotalProducts: 0,
   loading: false,
   error: null,
 };
@@ -40,6 +44,20 @@ const productReducer = (state = initialState, action) => {
         myTotalProducts: action.payload.totalProducts,
       };
     case 'GET_PRODUCTS_BY_USER_FAILURE':
+      return { ...state, loading: false, error: action.error };
+    case 'GET_PRODUCTS_BY_MANUFACTURER_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'GET_PRODUCTS_BY_MANUFACTURER_SUCCESS':
+      return { 
+        ...state, 
+        loading: false, 
+        error: null, 
+        manufacturerProducts: action.payload.products,
+        manufacturerCurrentPage: action.payload.currentPage,
+        manufacturerPageSize: action.payload.pageSize,
+        manufacturerTotalProducts: action.payload.totalProducts,
+      };
+    case 'GET_PRODUCTS_BY_MANUFACTURER_FAILURE':
       return { ...state, loading: false, error: action.error };
     case 'CREATE_PRODUCT_REQUEST':
       return { ...state, loading: true, error: null };

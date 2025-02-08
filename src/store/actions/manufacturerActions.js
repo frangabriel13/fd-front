@@ -102,3 +102,20 @@ export const addLogoToManufacturer = (id, formData) => async (dispatch) => {
     console.error(error);
   }
 };
+
+export const getManufacturerByUserId = (userId) => async (dispatch) => {
+  dispatch({ type: 'GET_MANUFACTURER_BY_USER_REQUEST' });
+  try {
+    const response = await manufacturerInstance.get(`/${userId}`);
+    dispatch({
+      type: 'GET_MANUFACTURER_BY_USER_SUCCESS',
+      payload: response.data,
+    });
+  } catch(error) {
+    dispatch({
+      type: 'GET_MANUFACTURER_BY_USER_FAILURE',
+      error: error.message,
+    });
+    console.error(error);
+  }
+};

@@ -18,8 +18,21 @@ const Store = () => {
   }, [dispatch, userId]);
 
   return (
-    <div className={s.store}>
-      <h1>Tienda del fabricante {userId}</h1>
+    <div className={s.container}>
+      <div className={s.divHeader}>
+        <div className={s.divTitle}>
+          <img 
+            src={manufacturer.image} 
+            alt={manufacturer.name} 
+            className={s.imgLogo}
+          />
+          <h2 className={s.name}>{manufacturer.name}</h2>
+        </div>
+        <div className={s.divData}>
+          <p className={s.followers}>1.123 seguidores</p>
+          <button className={s.btnFollow}>Seguir</button>
+        </div>
+      </div>
     </div>
   );
 };

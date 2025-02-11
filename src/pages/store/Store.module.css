@@ -1,0 +1,62 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-bottom: 4rem;
+  margin-top: 7.8rem;
+}
+
+.divHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 30rem;
+  background-color: var(--main-color);
+}
+
+.divTitle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: aqua;
+  border-radius: .3rem;
+  background-color: var(--other-gray-light);
+}
+
+.imgLogo {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+
+.name {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.divData {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.followers {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--other-gray-light);
+}
+
+.btnFollow {
+  padding: .5rem 1rem;
+  border-radius: .3rem;
+  background-color: var(--second-bg-color);
+  color: white;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+.btnFollow:hover {
+  background-color: var(--third-bg-color);
+}
+

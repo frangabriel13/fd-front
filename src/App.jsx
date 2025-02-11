@@ -60,7 +60,7 @@ function App() {
         <Route path='/mi-cuenta/*' element={<Account />} />
         <Route path='/completar-registro' element={<CompleteRegistration />} />
         <Route path='/verificar-cuenta' element={<VerifyAccount />} />
-        <Route path='/store/:manufacturerId' element={<Store />} />
+        <Route path='/store/:userId' element={<Store />} />
       </Routes>
     </>
   );

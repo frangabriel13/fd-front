@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getUserData } from '../../store/actions/storeActions';
 import s from './Store.module.css';
+import Products from '../../components/productStore/Products';
 
 const Store = () => {
   const { userId } = useParams();
@@ -11,7 +12,6 @@ const Store = () => {
   const { manufacturerProducts } = useSelector(state => state.product);
 
   console.log(manufacturer);
-  console.log(manufacturerProducts);
 
   useEffect(() => {
     dispatch(getUserData(userId));
@@ -32,6 +32,9 @@ const Store = () => {
           <p className={s.followers}>1.123 seguidores</p>
           <button className={s.btnFollow}>Seguir</button>
         </div>
+      </div>
+      <div className={s.divProducts}>
+        <Products products={manufacturerProducts} />
       </div>
     </div>
   );

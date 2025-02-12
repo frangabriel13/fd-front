@@ -1,6 +1,35 @@
 .container {
   padding: 0 30rem;
-  background-color: aquamarine;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.divHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.divHeader h3 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.divSelect {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.divSelect label {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.select {
+  font-size: 1.4rem;
+  background-color: transparent;
 }
 
 .divProducts {

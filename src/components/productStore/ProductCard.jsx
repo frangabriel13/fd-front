@@ -1,9 +1,10 @@
 import s from './ProductCard.module.css';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ name, image, price }) => {
   return (
     <div className={s.container}>
-      <h4>Name product</h4>
+      <h4>{name}</h4>
+      <p>{price}</p>
     </div>
   );
 };

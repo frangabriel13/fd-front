@@ -11,8 +11,6 @@ const Store = () => {
   const { manufacturer } = useSelector(state => state.manufacturer);
   const { manufacturerProducts } = useSelector(state => state.product);
 
-  console.log(manufacturer);
-
   useEffect(() => {
     dispatch(getUserData(userId));
   }, [dispatch, userId]);

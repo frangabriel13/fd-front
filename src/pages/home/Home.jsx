@@ -2,6 +2,7 @@ import Banner from '../../components/banner/Banner';
 import Features from '../../components/features/Features';
 import LiveShopping from '../../components/liveShopping/LiveShopping';
 import NewArrivals from '../../components/productRow/NewArrivals';
+import PacksRow from '../../components/productRow/PacksRow';
 import s from './Home.module.css';
 
 const Home = () => {
@@ -12,6 +13,7 @@ const Home = () => {
         <Features />
         <LiveShopping />
         <NewArrivals />
+        <PacksRow />
       </div>
     </div>
   );

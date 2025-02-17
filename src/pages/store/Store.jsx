@@ -4,16 +4,22 @@ import { useParams } from 'react-router-dom';
 import { getUserData } from '../../store/actions/storeActions';
 import s from './Store.module.css';
 import Products from '../../components/productStore/Products';
+import Pagination from '../../components/pagination/Pagination';
 
 const Store = () => {
   const { userId } = useParams();
   const dispatch = useDispatch();
   const { manufacturer } = useSelector(state => state.manufacturer);
-  const { manufacturerProducts } = useSelector(state => state.product);
+  const { manufacturerProducts, manufacturerCurrentPage, manufacturerTotalProducts } = useSelector(state => state.product);
+  const pageSize = 18; // Tamaño de la página fijo
 
   useEffect(() => {
-    dispatch(getUserData(userId));
-  }, [dispatch, userId]);
+    dispatch(getUserData(userId, manufacturerCurrentPage, pageSize));
+  }, [dispatch, userId, manufacturerCurrentPage, pageSize]);
+
+  const handlePageChange = (page) => {
+    dispatch(getUserData(userId, page, pageSize));
+  };
 
   return (
     <div className={s.container}>
@@ -33,6 +39,12 @@ const Store = () => {
       </div>
       <div className={s.divProducts}>
         <Products products={manufacturerProducts} />
+        <Pagination 
+          currentPage={manufacturerCurrentPage} 
+          totalProducts={manufacturerTotalProducts} 
+          pageSize={pageSize} 
+          onPageChange={handlePageChange}
+        />
       </div>
     </div>
   );

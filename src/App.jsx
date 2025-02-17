@@ -13,6 +13,7 @@ import Account from './pages/account/Account';
 import CompleteRegistration from './pages/completeRegistration/CompleteRegistration';
 import VerifyAccount from './pages/verifyAccount/VerifyAccount';
 import Store from './pages/store/Store';
+import Footer from './components/footer/Footer';
 
 function App() {
   const location = useLocation();
@@ -48,21 +49,24 @@ function App() {
   }, [isAuthenticated, user, location.pathname, navigate]);
 
   return (
-    <>
+    <div className="App">
       {isLoginPage ? <HeaderLogin /> : <Header />}
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/ingresar' element={<Login />} />
-        <Route path='/recuperar-password' element={<ForgotPassword />} />
-        <Route path='/registro' element={<Register />} />
-        <Route path='/verify-email' element={<VerifyEmail />} />
-        <Route path='/reset-password/:token' element={<ResetPassword />} />
-        <Route path='/mi-cuenta/*' element={<Account />} />
-        <Route path='/completar-registro' element={<CompleteRegistration />} />
-        <Route path='/verificar-cuenta' element={<VerifyAccount />} />
-        <Route path='/store/:userId' element={<Store />} />
-      </Routes>
-    </>
+      <div className="App-content">
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/ingresar' element={<Login />} />
+          <Route path='/recuperar-password' element={<ForgotPassword />} />
+          <Route path='/registro' element={<Register />} />
+          <Route path='/verify-email' element={<VerifyEmail />} />
+          <Route path='/reset-password/:token' element={<ResetPassword />} />
+          <Route path='/mi-cuenta/*' element={<Account />} />
+          <Route path='/completar-registro' element={<CompleteRegistration />} />
+          <Route path='/verificar-cuenta' element={<VerifyAccount />} />
+          <Route path='/store/:userId' element={<Store />} />
+        </Routes>
+      </div>
+      <Footer />
+    </div>
   );
 }
 

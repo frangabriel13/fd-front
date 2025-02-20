@@ -8,9 +8,9 @@ const Navbar = () => {
       <Link to="/" className={s.link}>
         Categorías <BsChevronDown className={s.icon} />
       </Link>
-      <Link to="/productos" className={s.link}>Tienda</Link>
-      <Link to="/contacto" className={s.link}>Fabricantes</Link>
-      <Link to="/nosotros" className={s.link}>Cómo Comprar</Link>
+      <Link to="/tienda" className={s.link}>Tienda</Link>
+      <Link to="/fabricantes" className={s.link}>Fabricantes</Link>
+      <Link to="/como-comprar" className={s.link}>Cómo Comprar</Link>
     </div>
   )
 };

@@ -19,6 +19,16 @@
   font-size: 3rem;
 }
 
+.divFilters {
+  display: flex;
+  gap: 1rem;
+  margin: 0 30rem;
+  padding: 1rem;
+  justify-content: space-between;
+  background-color: white;
+  border-radius: .3rem;
+}
+
 .divProducts {
   display: grid;
   /* grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));

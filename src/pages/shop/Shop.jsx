@@ -8,6 +8,7 @@ const Shop = () => {
   const dispatch = useDispatch();
   // pageSize no es un estado global
   const { products, currentPage, totalProducts } = useSelector(state => state.product);
+  console.log('products', products);
 
   useEffect(() => {
     dispatch(getProducts(currentPage));
@@ -17,6 +18,37 @@ const Shop = () => {
     <div className={s.container}>
       <div className={s.divHeader}>
         <h2 className={s.title}>Tienda</h2>
+      </div>
+      <div className={s.divFilters}>
+        <div>
+          <label>Tipo:</label>
+          <select>
+            <option>Productos</option>
+            <option>Packs</option>
+          </select>
+        </div>
+        <div>
+          <label>Sexo:</label>
+          <select>
+            <option>Todos</option>
+            <option>Hombre</option>
+            <option>Mujer</option>
+          </select>
+        </div>
+        <div>
+          <label>Categoría</label>
+          <button>
+            Ver categorías
+          </button>
+        </div>
+        <div>
+          <label>Ordenar por:</label>
+          <select>
+            <option>Más nuevos</option>
+            <option>Menor precio</option>
+            <option>Mayor precio</option>
+          </select>
+        </div>
       </div>
       <div className={s.divProducts}>
         {products.map(product => (

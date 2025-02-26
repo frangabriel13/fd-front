@@ -26,6 +26,33 @@ export const getProducts = (page = 1, pageSize = 18) => async (dispatch) => {
   }
 };
 
+export const searchProducts = (page = 1, pageSize = 18, searchTerm) => async (dispatch) => {
+  dispatch({ type: 'SEARCH_PRODUCTS_REQUEST' });
+  try {
+    const response = await productInstance.get('/search', {
+      params: {
+        page,
+        pageSize,
+        searchTerm,
+      }
+    });
+    dispatch({
+      type: 'SEARCH_PRODUCTS_SUCCESS',
+      payload: {
+        products: response.data.products,
+        currentPage: page,
+        pageSize: pageSize,
+        totalProducts: response.data.totalProducts,
+      }
+    });
+  } catch(error) {
+    dispatch({
+      type: 'SEARCH_PRODUCTS_FAILURE',
+      error: error.message,
+    })
+  }
+};
+
 export const createProduct = (productData) => async (dispatch) => {
   dispatch({ type: 'CREATE_PRODUCT_REQUEST' });
   try {

@@ -26,14 +26,14 @@ export const getProducts = (page = 1, pageSize = 18) => async (dispatch) => {
   }
 };
 
-export const searchProducts = (page = 1, pageSize = 18, searchTerm) => async (dispatch) => {
+export const searchProducts = (page = 1, pageSize = 18, search) => async (dispatch) => {
   dispatch({ type: 'SEARCH_PRODUCTS_REQUEST' });
   try {
     const response = await productInstance.get('/search', {
       params: {
         page,
         pageSize,
-        searchTerm,
+        search,
       }
     });
     dispatch({

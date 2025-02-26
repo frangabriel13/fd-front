@@ -31,6 +31,20 @@ const productReducer = (state = initialState, action) => {
       };
     case 'GET_PRODUCTS_FAILURE':
       return { ...state, loading: false, error: action.error };
+    case 'SEARCH_PRODUCTS_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'SEARCH_PRODUCTS_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        products: action.payload.products,
+        currentPage: action.payload.currentPage,
+        pageSize: action.payload.pageSize,
+        totalProducts: action.payload.totalProducts,
+      };
+    case 'SEARCH_PRODUCTS_FAILURE':
+      return { ...state, loading: false, error: action.error };
     case 'GET_PRODUCTS_BY_USER_REQUEST':
       return { ...state, loading: true, error: null };
     case 'GET_PRODUCTS_BY_USER_SUCCESS':

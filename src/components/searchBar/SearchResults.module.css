@@ -1,0 +1,32 @@
+.container {
+  position: absolute;
+  top: 100%;
+  /* width: 100%; */
+  left: 0;
+  right: 0;
+  background-color: white;
+  border-radius: 0 0 .3rem .3rem;
+  padding: 1rem;
+  border: .1rem solid var(--gray-color);
+  overflow-y: auto;
+  z-index: 100;
+}
+
+.divResults {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.divResults p {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: black;
+}
+
+.divResults li {
+  list-style: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: var(--gray-color);
+}

@@ -1,16 +1,20 @@
 const initialState = {
   products: [],
+  searchProducts: [],
   myProducts: [],
   manufacturerProducts: [],
   currentPage: 1,
+  searchCurrentPage: 1,
   pageSize: 20,
   myCurrentPage: 1,
   myPageSize: 10,
+  searchPageSize: 18,
   manufacturerCurrentPage: 1,
   manufacturerPageSize: 15,
   totalProducts: 0,
   myTotalProducts: 0,
   manufacturerTotalProducts: 0,
+  totalSearchProducts: 0,
   loading: false,
   error: null,
 };
@@ -38,10 +42,10 @@ const productReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: null,
-        products: action.payload.products,
-        currentPage: action.payload.currentPage,
-        pageSize: action.payload.pageSize,
-        totalProducts: action.payload.totalProducts,
+        searchProducts: action.payload.products,
+        searchCurrentPage: action.payload.currentPage,
+        searchPageSize: action.payload.pageSize,
+        totalSearchProducts: action.payload.totalProducts
       };
     case 'SEARCH_PRODUCTS_FAILURE':
       return { ...state, loading: false, error: action.error };

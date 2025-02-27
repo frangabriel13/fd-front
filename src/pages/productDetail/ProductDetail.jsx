@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import s from './ProductDetail.module.css';
 import { getProductById } from '../../store/actions/productActions';
+import { getManufacturerByUserId } from '../../store/actions/manufacturerActions';
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -13,10 +14,17 @@ const ProductDetail = () => {
   const manufacturer = useSelector((state) => state.manufacturer.manufacturer);
 
   console.log('product:', product);
+  console.log('manufacturer:', manufacturer);
 
   useEffect(() => {
     dispatch(getProductById(productId));
   }, [dispatch, productId]);
+
+  useEffect(() => {
+    if(product) {
+      dispatch(getManufacturerByUserId(product.userId));
+    }
+  }, [dispatch, product]);
 
   if(loading) {
     return <div>Loading...</div>;

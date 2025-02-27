@@ -1,8 +1,15 @@
+import { useState } from 'react';
 import s from './Products.module.css';
 import ProductCard from './ProductCard';
 
-const Products = ({ products }) => {
-  console.log(products);
+const Products = ({ products, onSortChange }) => {
+  const [sortOrder, setSortOrder] = useState('newest');
+
+  const handleSortChange = (event) => {
+    const newSortOrder = event.target.value;
+    setSortOrder(newSortOrder);
+    onSortChange(newSortOrder);
+  };
 
   return (
     <div className={s.container}>
@@ -10,10 +17,10 @@ const Products = ({ products }) => {
         <h3>Todos los productos</h3>
         <div className={s.divSelect}>
           <label>Ordenar por:</label>
-          <select className={s.select}>
-            <option>Más nuevos</option>
-            <option>Menor precio</option>
-            <option>Mayor precio</option>
+          <select className={s.select} value={sortOrder} onChange={handleSortChange}>
+            <option value="newest">Más nuevos</option>
+            <option value="lowestPrice">Menor precio</option>
+            <option value="highestPrice">Mayor precio</option>
           </select>
         </div>
       </div>

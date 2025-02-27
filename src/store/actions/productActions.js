@@ -99,13 +99,14 @@ export const getProductsByUserId = (page = 1, pageSize = 10) => async (dispatch)
   }
 };
 
-export const getProductsByManufacturer = (userId, page = 1, pageSize = 18) => async (dispatch) => {
+export const getProductsByManufacturer = (userId, page = 1, pageSize = 18, sortOrder = 'newest') => async (dispatch) => {
   dispatch({ type: 'GET_PRODUCTS_BY_MANUFACTURER_REQUEST' });
   try {
     const response = await productInstance.get(`/manufacturer/${userId}`, {
       params: {
         page,
         pageSize,
+        sortOrder,
       }
     });
     dispatch({

@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getUserData } from '../../store/actions/storeActions';
@@ -12,13 +12,19 @@ const Store = () => {
   const { manufacturer } = useSelector(state => state.manufacturer);
   const { manufacturerProducts, manufacturerCurrentPage, manufacturerTotalProducts } = useSelector(state => state.product);
   const pageSize = 18; // Tamaño de la página fijo
+  const [sortOrder, setSortOrder] = useState('newest');
 
   useEffect(() => {
-    dispatch(getUserData(userId, 1, pageSize));
-  }, [dispatch, userId, pageSize]);
+    dispatch(getUserData(userId, 1, pageSize, sortOrder));
+  }, [dispatch, userId, pageSize, sortOrder]);
 
   const handlePageChange = (page) => {
-    dispatch(getUserData(userId, page, pageSize));
+    dispatch(getUserData(userId, page, pageSize, sortOrder));
+  };
+
+  const handleSortChange = (newSortOrder) => {
+    setSortOrder(newSortOrder);
+    dispatch(getUserData(userId, 1, pageSize, newSortOrder));
   };
 
   return (
@@ -38,7 +44,7 @@ const Store = () => {
         </div>
       </div>
       <div className={s.divProducts}>
-        <Products products={manufacturerProducts} />
+        <Products products={manufacturerProducts} onSortChange={handleSortChange} />
         <Pagination 
           currentPage={manufacturerCurrentPage} 
           totalProducts={manufacturerTotalProducts} 

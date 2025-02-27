@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import s from './ProductDetail.module.css';
 import { getProductById } from '../../store/actions/productActions';
 import { getManufacturerByUserId } from '../../store/actions/manufacturerActions';
+import { formatPrice } from '../../utils/utils';
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -36,7 +37,7 @@ const ProductDetail = () => {
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
-        <p>Compra mínima de {manufacturer.minPurchase} por mayor en el mismo fabricante</p>
+        <p>Compra mínima de {formatPrice(manufacturer.minPurchase)} por mayor en el mismo fabricante</p>
       </div>
       <div className={s.divDetail}>
         {product && (

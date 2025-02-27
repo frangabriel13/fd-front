@@ -1,9 +1,16 @@
+import { useNavigate } from 'react-router-dom';
 import s from './ProductCard.module.css';
 import { formatPrice } from '../../utils/utils';
 
-const ProductCard = ({ name, image, price }) => {
+const ProductCard = ({ id, name, image, price }) => {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/producto/${id}`);
+  };
+
   return (
-    <div className={s.container}>
+    <div className={s.container} onClick={handleClick}>
       <div className={s.divImage}>
         <img src={image} alt={name} className={s.image} />
       </div>

@@ -15,6 +15,7 @@ import VerifyAccount from './pages/verifyAccount/VerifyAccount';
 import Store from './pages/store/Store';
 import Footer from './components/footer/Footer';
 import Shop from './pages/shop/Shop';
+import ProductDetail from './pages/productDetail/ProductDetail';
 
 function App() {
   const location = useLocation();
@@ -65,6 +66,7 @@ function App() {
           <Route path='/verificar-cuenta' element={<VerifyAccount />} />
           <Route path='/store/:userId' element={<Store />} />
           <Route path='/tienda' element={<Shop />} />
+          <Route path='/producto/:productId' element={<ProductDetail />} />
         </Routes>
       </div>
       <Footer />

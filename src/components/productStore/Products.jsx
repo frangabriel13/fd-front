@@ -2,7 +2,7 @@ import { useState } from 'react';
 import s from './Products.module.css';
 import ProductCard from './ProductCard';
 
-const Products = ({ products, onSortChange }) => {
+const Products = ({ products, onSortChange, manufacturerId, minPurchase, image }) => {
   const [sortOrder, setSortOrder] = useState('newest');
 
   const handleSortChange = (event) => {
@@ -32,6 +32,9 @@ const Products = ({ products, onSortChange }) => {
               name={product.name}
               image={product.mainImage}
               price={product.price}
+              manufacturerId={manufacturerId}
+              minPurchase={minPurchase}
+              logo={image}
             />
         ))}
       </div>

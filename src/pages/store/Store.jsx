@@ -14,6 +14,8 @@ const Store = () => {
   const pageSize = 18; // Tamaño de la página fijo
   const [sortOrder, setSortOrder] = useState('newest');
 
+  console.log(manufacturer);
+
   useEffect(() => {
     dispatch(getUserData(userId, 1, pageSize, sortOrder));
   }, [dispatch, userId, pageSize, sortOrder]);
@@ -44,7 +46,13 @@ const Store = () => {
         </div>
       </div>
       <div className={s.divProducts}>
-        <Products products={manufacturerProducts} onSortChange={handleSortChange} />
+        <Products 
+          products={manufacturerProducts} 
+          onSortChange={handleSortChange}
+          manufacturerId={manufacturer.id}
+          minPurchase={manufacturer.minPurchase}
+          image={manufacturer.image}
+        />
         <Pagination 
           currentPage={manufacturerCurrentPage} 
           totalProducts={manufacturerTotalProducts} 

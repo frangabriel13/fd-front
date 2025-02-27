@@ -33,18 +33,23 @@ const ProductDetail = () => {
     return <div>{error}</div>;
   }
 
-  console.log(product);
-
   return (
     <div className={s.container}>
-      <h1>Product Detail</h1>
-      {product && (
-        <div>
-          <h2>{product.name}</h2>
-          <p>{product.description}</p>
-          <p>{product.price}</p>
-        </div>
-      )}
+      <div className={s.divHeader}>
+        <p>Compra mínima de {manufacturer.minPurchase} por mayor en el mismo fabricante</p>
+      </div>
+      <div className={s.divDetail}>
+        {product && (
+          <div className={s.divProduct}>
+            <div className={s.divImage}>
+              <img className={s.image} src={product.mainImage} alt={product.name} />
+            </div>
+            <div className={s.divData}>
+              <h2>{product.name}</h2>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

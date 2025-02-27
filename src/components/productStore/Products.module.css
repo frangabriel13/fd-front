@@ -30,6 +30,7 @@
 .select {
   font-size: 1.4rem;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .divProducts {

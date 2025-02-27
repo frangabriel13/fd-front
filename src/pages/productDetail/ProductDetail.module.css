@@ -1,3 +1,48 @@
 .container {
-  padding: 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-bottom: 4rem;
+  margin-top: 7.8rem;
+}
+
+.divHeader {
+  display: flex;
+  align-items: center;
+  padding: .5rem 30rem;
+  background-color: var(--second-color);
+  justify-content: center;
+}
+
+.divHeader p {
+  font-size: 1.3rem;
+  color: white;
+  font-weight: 500;
+}
+
+.divDetail {
+  display: flex;
+  margin: 0rem 30rem;
+  background-color: white;
+  border-radius: .3rem;
+}
+
+.divProduct {
+  display: flex;
+  width: 100%;
+}
+
+.divImage {
+  width: 50%;
+  background-color: blueviolet;
+}
+
+.divData {
+  background-color: aqua;
+  width: 50%;
+}
+
+.image {
+  width: 40rem;
+  height: 50rem;
 }

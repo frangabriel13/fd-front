@@ -126,6 +126,22 @@ export const getProductsByManufacturer = (userId, page = 1, pageSize = 18, sortO
   }
 };
 
+export const getProductById = (productId) => async (dispatch) => {
+  dispatch({ type: 'GET_PRODUCT_BY_ID_REQUEST' });
+  try {
+    const response = await productInstance.get(`/${productId}`);
+    dispatch({
+      type: 'GET_PRODUCT_BY_ID_SUCCESS',
+      payload: response.data
+    });
+  } catch(error) {
+    dispatch({
+      type: 'GET_PRODUCT_BY_ID_FAILURE',
+      error: error.message,
+    });
+  }
+};
+
 export const deleteProduct = (productId) => async (dispatch) => {
   dispatch({ type: 'DELETE_PRODUCT_REQUEST' });
   try {

@@ -27,7 +27,8 @@ const Products = ({ products, onSortChange }) => {
       <div className={s.divProducts}>
         {products.map(product => (
             <ProductCard 
-              key={product.id} 
+              key={product.id}
+              id={product.id}
               name={product.name}
               image={product.mainImage}
               price={product.price}

@@ -1,20 +1,25 @@
 const initialState = {
   products: [],
-  searchProducts: [],
-  myProducts: [],
-  manufacturerProducts: [],
   currentPage: 1,
-  searchCurrentPage: 1,
   pageSize: 20,
+  totalProducts: 0,
+
+  searchProducts: [],
+  searchCurrentPage: 1,
+  searchPageSize: 18,
+  totalSearchProducts: 0,
+  
+  myProducts: [],
   myCurrentPage: 1,
   myPageSize: 10,
-  searchPageSize: 18,
+  myTotalProducts: 0,
+  
+  manufacturerProducts: [],
   manufacturerCurrentPage: 1,
   manufacturerPageSize: 15,
-  totalProducts: 0,
-  myTotalProducts: 0,
   manufacturerTotalProducts: 0,
-  totalSearchProducts: 0,
+
+  product: null,
   loading: false,
   error: null,
 };
@@ -76,6 +81,12 @@ const productReducer = (state = initialState, action) => {
         manufacturerTotalProducts: action.payload.totalProducts,
       };
     case 'GET_PRODUCTS_BY_MANUFACTURER_FAILURE':
+      return { ...state, loading: false, error: action.error };
+    case 'GET_PRODUCT_BY_ID_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'GET_PRODUCT_BY_ID_SUCCESS':
+      return { ...state, loading: false, error: null, product: action.payload };
+    case 'GET_PRODUCT_BY_ID_FAILURE':
       return { ...state, loading: false, error: action.error };
     case 'CREATE_PRODUCT_REQUEST':
       return { ...state, loading: true, error: null };

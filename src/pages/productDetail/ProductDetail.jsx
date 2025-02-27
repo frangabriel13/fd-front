@@ -41,8 +41,15 @@ const ProductDetail = () => {
       <div className={s.divDetail}>
         {product && (
           <div className={s.divProduct}>
-            <div className={s.divImage}>
-              <img className={s.image} src={product.mainImage} alt={product.name} />
+            <div className={s.gallery}>
+              <div className={s.divImages}>
+                {product.images && product.images.map((image, index) => (
+                  <img key={index} className={s.otherImage} src={image} alt={product.name} />
+                ))}
+              </div>
+              <div className={s.imageMain}>
+                <img className={s.image} src={product.mainImage} alt={product.name} />
+              </div>
             </div>
             <div className={s.divData}>
               <h2>{product.name}</h2>

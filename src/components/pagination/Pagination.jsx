@@ -11,8 +11,12 @@ const Pagination = ({ currentPage, totalProducts, pageSize, onPageChange }) => {
   };
 
   const getPageNumbers = () => {
-    const startPage = Math.max(1, currentPage - Math.floor(pageRange / 2));
-    const endPage = Math.min(totalPages, startPage + pageRange - 1);
+    let startPage = Math.max(1, currentPage - Math.floor(pageRange / 2));
+    let endPage = Math.min(totalPages, startPage + pageRange - 1);
+
+    if (endPage - startPage + 1 < pageRange) {
+      startPage = Math.max(1, endPage - pageRange + 1);
+    }
     const pages = [];
 
     for(let i = startPage; i <= endPage; i++) {
@@ -31,7 +35,17 @@ const Pagination = ({ currentPage, totalProducts, pageSize, onPageChange }) => {
       >
         Anterior
       </button>
-      {currentPage > Math.floor(pageRange / 2) + 1 && <span className={s.span}>...</span>}
+      {currentPage > Math.floor(pageRange / 2) + 1 && (
+        <>
+          <button 
+            onClick={() => handlePageChange(1)} 
+            className={s.btn}
+          >
+            1
+          </button>
+          <span className={s.span}>...</span>
+        </>
+      )}
       {getPageNumbers().map(page => (
         <button 
           key={page} 
@@ -41,7 +55,17 @@ const Pagination = ({ currentPage, totalProducts, pageSize, onPageChange }) => {
           {page}
         </button>
       ))}
-      {currentPage < totalPages - Math.floor(pageRange / 2) && <span className={s.span}>...</span>}
+      {currentPage < totalPages - Math.floor(pageRange / 2) && (
+        <>
+          <span className={s.span}>...</span>
+          <button 
+            onClick={() => handlePageChange(totalPages)} 
+            className={s.btn}
+          >
+            {totalPages}
+          </button>
+        </>
+      )}
       <button 
         onClick={() => handlePageChange(currentPage + 1)} 
         disabled={currentPage === totalPages}

@@ -11,7 +11,7 @@ const Store = () => {
   const dispatch = useDispatch();
   const { manufacturer } = useSelector(state => state.manufacturer);
   const { manufacturerProducts, manufacturerCurrentPage, manufacturerTotalProducts } = useSelector(state => state.product);
-  const pageSize = 18; // Tamaño de la página fijo
+  const pageSize = 1; // Tamaño de la página fijo
 
   useEffect(() => {
     dispatch(getUserData(userId, manufacturerCurrentPage, pageSize));

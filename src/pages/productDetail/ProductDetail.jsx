@@ -33,7 +33,7 @@ const ProductDetail = () => {
     return <div>{error}</div>;
   }
 
-  console.log('product', product);
+  console.log('product detail', product);
 
   return (
     <div className={s.container}>

@@ -14,9 +14,6 @@ const Store = () => {
   const pageSize = 18; // Tamaño de la página fijo
   const [sortOrder, setSortOrder] = useState('newest');
 
-  console.log('manufacturer', manufacturer);
-  console.log('manufacturerProducts', manufacturerProducts);
-
   useEffect(() => {
     dispatch(getUserData(userId, 1, pageSize, sortOrder));
   }, [dispatch, userId, pageSize, sortOrder]);

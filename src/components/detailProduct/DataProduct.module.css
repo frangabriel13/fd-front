@@ -1,3 +1,38 @@
 .container {
   width: 50%;
 }
+
+.divHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.divCategory p {
+  font-size: 1.4rem;
+  color: var(--gray-color);
+}
+
+.divName {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.divTitle {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 600;
+}
+
+.iconHeart {
+  font-size: 3rem;
+  color: var(--main-color);
+  cursor: pointer;
+}

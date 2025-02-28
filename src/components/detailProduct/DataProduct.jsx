@@ -8,7 +8,6 @@ import {
 } from "react-icons/bs";
 
 const DataProduct = ({ product, manufacturer }) => {
-  console.log(product, manufacturer);
 
   return (
     <div className={s.container}>
@@ -23,13 +22,13 @@ const DataProduct = ({ product, manufacturer }) => {
             <BsHeart className={s.iconHeart} />
           </div>
           <div className={s.divCalification}>
-            <div className={s.points}>3.5</div>
+            <p>3.5</p>
             <div className={s.stars}>
-              <BsStarFill />
-              <BsStarFill />
-              <BsStarFill />
-              <BsStarHalf />
-              <BsStar />
+              <BsStarFill className={s.iconStar} />
+              <BsStarFill className={s.iconStar} />
+              <BsStarFill className={s.iconStar} />
+              <BsStarHalf className={s.iconStar} />
+              <BsStar className={s.iconStar} />
             </div>
           </div>
         </div>

@@ -36,3 +36,19 @@
   color: var(--main-color);
   cursor: pointer;
 }
+
+.divCalification {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.divCalification p {
+  font-size: 1.5rem;
+  color: var(--gray-color);
+}
+
+.iconStar {
+  font-size: 1.5rem;
+  color: var(--other-blue);
+}

@@ -1,5 +1,8 @@
 .container {
   width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
 }
 
 .divHeader {
@@ -51,4 +54,26 @@
 .iconStar {
   font-size: 1.5rem;
   color: var(--other-blue);
+}
+
+.divPrice {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 5rem;
+}
+
+.wholePrice {
+  display: flex;
+  flex-direction: column;
+  /* gap: .5rem; */
+}
+
+.price {
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+.whole {
+  font-size: 1.8rem;
+  color: var(--gray-color);
 }

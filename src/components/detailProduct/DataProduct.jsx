@@ -6,15 +6,14 @@ import {
   BsStarHalf,
   BsStarFill,
 } from "react-icons/bs";
+import { formatPrice } from '../../utils/utils';
 
 const DataProduct = ({ product, manufacturer }) => {
-
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
         <div className={s.divCategory}>
           <p>{product.category.name} | {product.category.parent.name} | {product.gender.name}</p>
-          {/* <p>{product.category.name} | {product.category.parent.name}</p> */}
         </div>
         <div className={s.divName}>
           <div className={s.divTitle}>
@@ -31,6 +30,16 @@ const DataProduct = ({ product, manufacturer }) => {
               <BsStar className={s.iconStar} />
             </div>
           </div>
+        </div>
+      </div>
+      <div className={s.divPrice}>
+        <div className={s.wholePrice}>
+          <p className={s.price}>{formatPrice(product.price)}</p>
+          <p className={s.whole}>Comprando al por mayor</p>
+        </div>
+        <div className={s.wholePrice}>
+          <p className={s.price}>U$D 10,00</p>
+          <p className={s.whole}>Comprando en dólares</p>
         </div>
       </div>
     </div>

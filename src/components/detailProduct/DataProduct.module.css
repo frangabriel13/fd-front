@@ -13,6 +13,12 @@
   color: var(--gray-color);
 }
 
+.divName {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
 .divTitle {
   display: flex;
   gap: 1rem;

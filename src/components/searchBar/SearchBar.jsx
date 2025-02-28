@@ -24,8 +24,6 @@ const SearchBar = () => {
     return () => clearTimeout(delayDebunceFn);
   }, [searchTerm, dispatch]);
 
-  console.log(products);
-
   return (
     <div className={s.container}>
       <div className={s.divSearch}>

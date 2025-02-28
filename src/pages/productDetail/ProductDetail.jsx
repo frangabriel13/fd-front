@@ -26,12 +26,14 @@ const ProductDetail = () => {
     }
   }, [dispatch, product]);
 
-  if(loading) {
+  if(loading || !product || !manufacturer) {
     return <div>Loading...</div>;
   }
   if(error) {
     return <div>{error}</div>;
   }
+
+  console.log('product', product);
 
   return (
     <div className={s.container}>

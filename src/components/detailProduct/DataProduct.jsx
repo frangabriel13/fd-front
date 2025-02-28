@@ -13,7 +13,7 @@ const DataProduct = ({ product, manufacturer }) => {
     <div className={s.container}>
       <div className={s.divHeader}>
         <div className={s.divCategory}>
-          <p>{product.category.name} | {product.category.parent.name} | {product.gender.name}</p>
+          <p>{product.category.name} | {product.category.parent.name}</p>
         </div>
         <div className={s.divName}>
           <div className={s.divTitle}>

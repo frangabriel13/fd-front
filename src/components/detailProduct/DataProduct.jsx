@@ -42,6 +42,15 @@ const DataProduct = ({ product, manufacturer }) => {
           <p className={s.whole}>Comprando en dólares</p>
         </div>
       </div>
+      {product.isVariable ? (
+          <div className={s.divVariable}>
+            <p>El producto viene en los siguientes colores:</p>
+          </div>
+        ) : (
+          <div className={s.divSimple}>
+            <p>El producto viene en los siguiente talles:</p>
+          </div>
+      )}
     </div>
   );
 };

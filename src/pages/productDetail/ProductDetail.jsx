@@ -5,6 +5,8 @@ import s from './ProductDetail.module.css';
 import { getProductById } from '../../store/actions/productActions';
 import { getManufacturerByUserId } from '../../store/actions/manufacturerActions';
 import { formatPrice } from '../../utils/utils';
+import Gallery from '../../components/detailProduct/Gallery';
+import DataProduct from '../../components/detailProduct/DataProduct';
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -40,7 +42,9 @@ const ProductDetail = () => {
         <p>Compra mínima de {formatPrice(manufacturer.minPurchase)} por mayor en el mismo fabricante</p>
       </div>
       <div className={s.divDetail}>
-        {product && (
+        <Gallery images={product.images} name={product.name} />
+        <DataProduct product={product} manufacturer={manufacturer} />
+        {/* {product && (
           <div className={s.divProduct}>
             <div className={s.gallery}>
               <div className={s.divImages}>
@@ -49,14 +53,14 @@ const ProductDetail = () => {
                 ))}
               </div>
               <div className={s.imageMain}>
-                <img className={s.image} src={product.mainImage} alt={product.name} />
+                <img className={s.image} src={product.images[0]} alt={product.name} />
               </div>
             </div>
             <div className={s.divData}>
               <h2>{product.name}</h2>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );

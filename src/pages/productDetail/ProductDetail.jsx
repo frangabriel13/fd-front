@@ -16,9 +16,6 @@ const ProductDetail = () => {
   const error = useSelector((state) => state.product.error);
   const manufacturer = useSelector((state) => state.manufacturer.manufacturer);
 
-  console.log('product:', product);
-  console.log('manufacturer:', manufacturer);
-
   useEffect(() => {
     dispatch(getProductById(productId));
   }, [dispatch, productId]);

@@ -42,25 +42,8 @@ const ProductDetail = () => {
         <p>Compra mínima de {formatPrice(manufacturer.minPurchase)} por mayor en el mismo fabricante</p>
       </div>
       <div className={s.divDetail}>
-        <Gallery images={product.images} name={product.name} />
+        <Gallery images={product.images} mainImage={product.mainImage} name={product.name} />
         <DataProduct product={product} manufacturer={manufacturer} />
-        {/* {product && (
-          <div className={s.divProduct}>
-            <div className={s.gallery}>
-              <div className={s.divImages}>
-                {product.images && product.images.map((image, index) => (
-                  <img key={index} className={s.otherImage} src={image} alt={product.name} />
-                ))}
-              </div>
-              <div className={s.imageMain}>
-                <img className={s.image} src={product.images[0]} alt={product.name} />
-              </div>
-            </div>
-            <div className={s.divData}>
-              <h2>{product.name}</h2>
-            </div>
-          </div>
-        )} */}
       </div>
     </div>
   );

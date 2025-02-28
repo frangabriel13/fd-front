@@ -13,6 +13,7 @@
 
 .otherImage {
   width: 10rem;
+  cursor: pointer;
 }
 
 .selected {

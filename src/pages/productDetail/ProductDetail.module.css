@@ -25,13 +25,13 @@
   margin: 0rem 30rem;
   background-color: white;
   border-radius: .3rem;
-  padding: 2rem;
+  padding: 3rem;
 }
 
-.divProduct {
+/* .divProduct {
   display: flex;
   width: 100%;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 .gallery {
@@ -60,7 +60,5 @@
 
 .image {
   border-radius: .3rem;
-  /* width: 40rem; */
   width: 100%;
-  /* height: 50rem; */
-}
+} */

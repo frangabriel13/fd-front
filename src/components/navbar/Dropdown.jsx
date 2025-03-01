@@ -16,18 +16,18 @@ const Dropdown = ({ categories }) => {
   }
 
   return (
-    <div className={s.dropdown}>
+    <div className={s.dropdown} onMouseLeave={handleMouseLeave}>
       <div className={s.container}>
         <div className={s.divCategories}>
-          <div className={s.divCategory} onMouseEnter={() => handleMouseEnter(1)} onMouseLeave={handleMouseLeave}>
+          <div className={s.divCategory} onMouseEnter={() => handleMouseEnter(1)}>
             Indumentaria
             <GrNext className={s.icon} />
           </div>
-          <div className={s.divCategory} onMouseEnter={() => handleMouseEnter(2)} onMouseLeave={handleMouseLeave}>
+          <div className={s.divCategory} onMouseEnter={() => handleMouseEnter(2)}>
             Bisutería
             <GrNext className={s.icon} />
           </div>
-          <div className={s.divCategory} onMouseEnter={() => handleMouseEnter(3)} onMouseLeave={handleMouseLeave}>
+          <div className={s.divCategory} onMouseEnter={() => handleMouseEnter(3)}>
             Blanquería
             <GrNext className={s.icon} />
           </div>

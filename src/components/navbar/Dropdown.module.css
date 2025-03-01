@@ -4,6 +4,7 @@
   z-index: 1000;
   display: flex;
   cursor: default;
+  align-items: flex-start;
 }
 
 .container {

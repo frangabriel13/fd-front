@@ -19,15 +19,24 @@ const Dropdown = ({ categories }) => {
     <div className={s.dropdown} onMouseLeave={handleMouseLeave}>
       <div className={s.container}>
         <div className={s.divCategories}>
-          <div className={s.divCategory} onMouseEnter={() => handleMouseEnter(1)}>
+          <div 
+            className={`${s.divCategory} ${hoveredCategory === 1 ? s.active : ''}`} 
+            onMouseEnter={() => handleMouseEnter(1)}
+          >
             Indumentaria
             <GrNext className={s.icon} />
           </div>
-          <div className={s.divCategory} onMouseEnter={() => handleMouseEnter(2)}>
+          <div 
+            className={`${s.divCategory} ${hoveredCategory === 2 ? s.active : ''}`} 
+            onMouseEnter={() => handleMouseEnter(2)}
+          >
             Blanquería
             <GrNext className={s.icon} />
           </div>
-          <div className={s.divCategory} onMouseEnter={() => handleMouseEnter(3)}>
+          <div 
+            className={`${s.divCategory} ${hoveredCategory === 3 ? s.active : ''}`} 
+            onMouseEnter={() => handleMouseEnter(3)}
+          >
             Bisutería
             <GrNext className={s.icon} />
           </div>

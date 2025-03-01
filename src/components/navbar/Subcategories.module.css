@@ -3,6 +3,8 @@
   padding: 3rem;
   display: flex;
   flex-direction: column;
+  width: 30rem;
+  border-radius: .3rem;
 }
 
 .title {

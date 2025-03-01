@@ -1,0 +1,32 @@
+.container {
+  position: absolute;
+  top: 100%;
+  background-color: var(--third-bg-color);
+  padding: 2rem 0;
+  border-radius: .3rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  /* gap: 2rem; */
+}
+
+.divCategories {
+  display: flex;
+  flex-direction: column;
+}
+
+.divCategory {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: 1rem 3rem;
+}
+
+.divCategory:hover {
+  background-color: var(--main-color);
+}
+
+.icon {
+  /* margin-left: 8px; */
+}

@@ -29,7 +29,8 @@
   cursor: pointer;
 }
 
-.divCategory:hover {
+.divCategory:hover,
+.divCategory.active {
   background-color: var(--main-color);
 }
 

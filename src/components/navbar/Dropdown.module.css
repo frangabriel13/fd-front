@@ -3,6 +3,7 @@
   top: 100%;
   z-index: 1000;
   display: flex;
+  cursor: default;
 }
 
 .container {
@@ -24,6 +25,7 @@
   justify-content: space-between;
   gap: .5rem;
   padding: 1rem 3rem;
+  cursor: pointer;
 }
 
 .divCategory:hover {

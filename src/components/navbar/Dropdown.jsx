@@ -24,11 +24,11 @@ const Dropdown = ({ categories }) => {
             <GrNext className={s.icon} />
           </div>
           <div className={s.divCategory} onMouseEnter={() => handleMouseEnter(2)}>
-            Bisutería
+            Blanquería
             <GrNext className={s.icon} />
           </div>
           <div className={s.divCategory} onMouseEnter={() => handleMouseEnter(3)}>
-            Blanquería
+            Bisutería
             <GrNext className={s.icon} />
           </div>
         </div>

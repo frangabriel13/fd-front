@@ -1,5 +1,32 @@
 import { manufacturerInstance } from "../../utils/axiosConfig";
 
+export const getManufacturers = (page = 1, pageSize = 18) => async (dispatch) => {
+  dispatch({ type: 'GET_MANUFACTURERS_REQUEST' });
+  try {
+    const response = await manufacturerInstance.get('/', {
+      params: {
+        page,
+        pageSize,
+      },
+    });
+    dispatch({
+      type: 'GET_MANUFACTURERS',
+      payload: {
+        manufacturers: response.data.manufacturers,
+        currentPage: page,
+        pageSize,
+        totalManufacturers: response.data.totalManufacturers,
+      },
+    });
+  } catch (error) {
+    dispatch({
+      type: 'GET_MANUFACTURERS_FAILURE',
+      error: error.message,
+    });
+    console.error(error);
+  };
+};
+
 export const getLiveManufacturers = (limit = 24, offset = 0) => async (dispatch) => {
   dispatch({ type: 'GET_LIVE_MANUFACTURERS_REQUEST' });
   try {

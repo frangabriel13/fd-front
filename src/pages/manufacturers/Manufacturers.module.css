@@ -18,3 +18,9 @@
   padding: .5rem 0;
   font-size: 3rem;
 }
+
+.divManufacturers {
+  margin: 0 30rem;
+  padding: 3rem;
+  background-color: white;
+}

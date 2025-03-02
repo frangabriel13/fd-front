@@ -33,7 +33,7 @@ const Navbar = () => {
       </div>
       <Link to="/tienda" className={s.link}>Tienda</Link>
       <Link to="/fabricantes" className={s.link}>Fabricantes</Link>
-      <Link to="/como-comprar" className={s.link}>Cómo Comprar</Link>
+      <Link to="/preguntas-frecuentes" className={s.link}>Ayuda</Link>
     </div>
   )
 };

@@ -17,6 +17,7 @@ import Footer from './components/footer/Footer';
 import Shop from './pages/shop/Shop';
 import ProductDetail from './pages/productDetail/ProductDetail';
 import Manufacturers from './pages/manufacturers/Manufacturers';
+import Help from './pages/help/Help';
 
 function App() {
   const location = useLocation();
@@ -69,6 +70,7 @@ function App() {
           <Route path='/tienda' element={<Shop />} />
           <Route path='/producto/:productId' element={<ProductDetail />} />
           <Route path='/fabricantes' element={<Manufacturers />} />
+          <Route path='/preguntas-frecuentes' element={<Help />} />
         </Routes>
       </div>
       <Footer />

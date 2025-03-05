@@ -1,7 +1,43 @@
 .container {
   width: 100%;
   background-color: var(--second-bg-color);
-  padding: 5rem;
+  padding: 3rem;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.divApp {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.logo {
+  max-width: 15rem;
+  height: auto;
+  cursor: pointer;
+  border: .1rem solid var(--main-color);
+  padding: .2rem;
+  border-radius: .3rem;
+}
+
+.divApp p {
+  color: white;
+  font-size: 2rem;
+  font-weight: 300;
+}
+
+.divNav {
+  display: flex;
+  gap: 2rem;
+}
+
+.link {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 300;
 }

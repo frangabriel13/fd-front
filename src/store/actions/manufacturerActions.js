@@ -27,11 +27,11 @@ export const getManufacturers = (page = 1, pageSize = 18) => async (dispatch) =>
   };
 };
 
-export const getLiveManufacturers = (limit = 24, offset = 0) => async (dispatch) => {
+export const getLiveManufacturers = (page = 1, pageSize = 24) => async (dispatch) => {
   dispatch({ type: 'GET_LIVE_MANUFACTURERS_REQUEST' });
   try {
     const response = await manufacturerInstance.get('/live', {
-      params: { limit, offset },
+      params: { page, pageSize },
     });
     dispatch({
       type: 'GET_LIVE_MANUFACTURERS',

@@ -22,6 +22,8 @@
 
 .image {
   width: 100%;
+  /* width: 26rem; */
+  max-width: 26rem;
   height: auto;
   object-fit: cover;
   aspect-ratio: 3 / 4;

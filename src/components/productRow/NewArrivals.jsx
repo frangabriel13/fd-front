@@ -1,17 +1,19 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../../store/actions/productActions';
+import { getNewProducts } from '../../store/actions/productActions';
 import s from './ProductRow.module.css';
 import { GrNext, GrPrevious } from "react-icons/gr";
 import ProductCard from '../productStore/ProductCard';
 
 const NewArrivals = () => {
   const dispatch = useDispatch();
-  const { products, loading, error } = useSelector((state) => state.product);
+  const { newProducts, loading, error } = useSelector((state) => state.product);
 
   useEffect(() => {
-    dispatch(getProducts());
+    dispatch(getNewProducts());
   }, [dispatch]);
+
+  console.log('products', newProducts);
   
   return (
     <div className={s.container}>
@@ -24,13 +26,7 @@ const NewArrivals = () => {
           <GrPrevious />
         </button>
         <div className={s.divProducts}>
-          {products.map((product, index) => (
-            // <ProductCard 
-            //   key={`${product.id}-${index}`}
-            //   name={product.name}
-            //   image={product.mainImage}
-            //   price={product.price}
-            // />
+          {newProducts.map((product, index) => (
             <div className={s.productCard} key={`${product.id}-${index}`}>
                 <ProductCard 
                   name={product.name}

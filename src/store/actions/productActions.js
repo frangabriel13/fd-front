@@ -170,3 +170,19 @@ export const updateProduct = (productId, productData) => async (dispatch) => {
     });
   }
 };
+
+export const getNewProducts = () => async (dispatch) => {
+  dispatch({ type: 'GET_NEW_PRODUCTS_REQUEST' });
+  try {
+    const response = await productInstance.get('/new');
+    dispatch({
+      type: 'GET_NEW_PRODUCTS_SUCCESS',
+      payload: response.data
+    });
+  } catch(error) {
+    dispatch({
+      type: 'GET_NEW_PRODUCTS_FAILURE',
+      error: error.message,
+    });
+  }
+};

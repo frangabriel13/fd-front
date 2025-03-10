@@ -175,6 +175,7 @@ export const getNewProducts = () => async (dispatch) => {
   dispatch({ type: 'GET_NEW_PRODUCTS_REQUEST' });
   try {
     const response = await productInstance.get('/new');
+    console.log('new products', response.data);
     dispatch({
       type: 'GET_NEW_PRODUCTS_SUCCESS',
       payload: response.data

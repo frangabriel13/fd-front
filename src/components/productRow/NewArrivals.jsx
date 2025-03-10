@@ -32,6 +32,7 @@ const NewArrivals = () => {
                   name={product.name}
                   image={product.mainImage}
                   price={product.price}
+                  logo={product.logo}
                 />
               </div>
           ))}

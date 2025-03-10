@@ -52,8 +52,9 @@
   overflow-x: auto;
   flex-grow: 1;
   gap: 1rem;
-  justify-content: center;
+  justify-content: flex-start;
   padding-top: 1rem;
+  scroll-snap-type: x mandatory;
 }
 
 .prevButton, .nextButton {
@@ -86,6 +87,7 @@
 }
 
 .productCard {
-  min-width: 20%;
+  min-width: 19.40%;
   box-sizing: border-box;
+  scroll-snap-align: start;
 }

@@ -1,7 +1,7 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 2rem;
   background-color: white;
   box-shadow: 0 .2rem .4rem rgba(0, 0, 0, 0.1);
   border-radius: .3rem;
@@ -53,8 +53,12 @@
   flex-grow: 1;
   gap: 1rem;
   justify-content: flex-start;
-  padding-top: 1rem;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Para Firefox */
+  -ms-overflow-style: none;  /* Para Internet Explorer y Edge */
+}
+.divProducts::-webkit-scrollbar {
+  display: none; /* Para Chrome, Safari y Opera */
 }
 
 .prevButton, .nextButton {

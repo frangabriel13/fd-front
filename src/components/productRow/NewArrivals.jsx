@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { getNewProducts } from '../../store/actions/productActions';
@@ -10,6 +10,7 @@ const NewArrivals = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { newProducts, loading, error } = useSelector((state) => state.product);
+  const productsContainerRef = useRef(null);
 
   useEffect(() => {
     dispatch(getNewProducts());
@@ -17,6 +18,18 @@ const NewArrivals = () => {
 
   const handleViewMore = () => {
     navigate('/tienda');
+  };
+
+  const handleNext = () => {
+    if (productsContainerRef.current) {
+      productsContainerRef.current.scrollLeft += productsContainerRef.current.offsetWidth;
+    }
+  };
+
+  const handlePrev = () => {
+    if (productsContainerRef.current) {
+      productsContainerRef.current.scrollLeft -= productsContainerRef.current.offsetWidth;
+    }
   };
 
   console.log(newProducts);
@@ -28,10 +41,10 @@ const NewArrivals = () => {
         <button className={s.btnMore} onClick={handleViewMore}>Ver más</button>
       </div>
       <div className={s.navigation}>
-        <button className={s.prevButton}>
+        <button className={s.prevButton} onClick={handlePrev}>
           <GrPrevious />
         </button>
-        <div className={s.divProducts}>
+        <div className={s.divProducts} ref={productsContainerRef}>
           {newProducts.map((product, index) => (
             <div className={s.productCard} key={`${product.id}-${index}`}>
                 <ProductCard 
@@ -44,7 +57,7 @@ const NewArrivals = () => {
               </div>
           ))}
         </div>
-        <button className={s.nextButton}>
+        <button className={s.nextButton} onClick={handleNext}>
           <GrNext />
         </button>
       </div>

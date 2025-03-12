@@ -138,16 +138,16 @@ const productReducer = (state = initialState, action) => {
       };
     case 'GET_NEW_PRODUCTS_FAILURE':
       return { ...state, loading: false, error: action.error };
-    case 'GET_ON_SALE_PRODUCTS_REQUEST':
+    case 'GET_PRODUCTS_ON_SALE_PRODUCTS_REQUEST':
       return { ...state, loading: true, error: null };
-    case 'GET_ON_SALE_PRODUCTS_SUCCESS':
+    case 'GET_PRODUCTS_ON_SALE_SUCCESS':
       return {
         ...state,
         loading: false,
         error: null,
         onSaleProducts: action.payload,
       };
-    case 'GET_ON_SALE_PRODUCTS_FAILURE':
+    case 'GET_PRODUCTS_ON_SALE_PRODUCTS_FAILURE':
       return { ...state, loading: false, error: action.error };
     case 'GET_BISUTERIA_OR_BLANQUERIA_REQUEST':
       return { ...state, loading: true, error: null };

@@ -206,7 +206,7 @@ export const getProductsOnSale = () => async (dispatch) => {
 export const getBisuteriaOrBlanqueria = () => async (dispatch) => {
   dispatch({ type: 'GET_BISUTERIA_OR_BLANQUERIA_REQUEST' });
   try {
-    const response = await productInstance.get('/bisuteriaorblanqueria');
+    const response = await productInstance.get('/bisuteria-or-blanqueria');
     dispatch({
       type: 'GET_BISUTERIA_OR_BLANQUERIA_SUCCESS',
       payload: response.data

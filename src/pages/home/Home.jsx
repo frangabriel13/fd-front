@@ -5,6 +5,7 @@ import NewArrivals from '../../components/productRow/NewArrivals';
 import PacksRow from '../../components/productRow/PacksRow';
 import GenederList from '../../components/genderList/GenderList';
 import ProductsOnSale from '../../components/productRow/ProductsOnSale';
+import BisBlanProducts from '../../components/productRow/BisBlanProducts';
 import s from './Home.module.css';
 
 const Home = () => {
@@ -17,6 +18,7 @@ const Home = () => {
         <GenederList />
         <NewArrivals />
         <ProductsOnSale />
+        <BisBlanProducts />
         <PacksRow />
       </div>
     </div>

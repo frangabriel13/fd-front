@@ -175,7 +175,6 @@ export const getNewProducts = () => async (dispatch) => {
   dispatch({ type: 'GET_NEW_PRODUCTS_REQUEST' });
   try {
     const response = await productInstance.get('/new');
-    console.log('new products', response.data);
     dispatch({
       type: 'GET_NEW_PRODUCTS_SUCCESS',
       payload: response.data
@@ -183,6 +182,38 @@ export const getNewProducts = () => async (dispatch) => {
   } catch(error) {
     dispatch({
       type: 'GET_NEW_PRODUCTS_FAILURE',
+      error: error.message,
+    });
+  }
+};
+
+export const getProductsOnSale = () => async (dispatch) => {
+  dispatch({ type: 'GET_PRODUCTS_ON_SALE_REQUEST' });
+  try {
+    const response = await productInstance.get('/onsale');
+    dispatch({
+      type: 'GET_PRODUCTS_ON_SALE_SUCCESS',
+      payload: response.data
+    });
+  } catch(error) {
+    dispatch({
+      type: 'GET_PRODUCTS_ON_SALE_FAILURE',
+      error: error.message,
+    });
+  }
+};
+
+export const getBisuteriaOrBlanqueria = () => async (dispatch) => {
+  dispatch({ type: 'GET_BISUTERIA_OR_BLANQUERIA_REQUEST' });
+  try {
+    const response = await productInstance.get('/bisuteriaorblanqueria');
+    dispatch({
+      type: 'GET_BISUTERIA_OR_BLANQUERIA_SUCCESS',
+      payload: response.data
+    });
+  } catch(error) {
+    dispatch({
+      type: 'GET_BISUTERIA_OR_BLANQUERIA_FAILURE',
       error: error.message,
     });
   }

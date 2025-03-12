@@ -1,0 +1,29 @@
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.btnIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 2rem;
+  width: 12rem;
+  height: 12rem;
+  cursor: pointer;
+  background-color: var(--main-color);
+  border-radius: .3rem;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.btnIcon:hover {
+  transform: scale(1.1); /* Agrandar el contenido al hacer hover */
+}
+
+.icon {
+  font-size: 5rem;
+}

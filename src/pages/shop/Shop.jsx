@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../store/actions/productActions';
 import s from './Shop.module.css';
 import ProductCard from '../../components/productStore/ProductCard';
+import FiltersShop from './FiltersShop';
 
 const Shop = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,8 @@ const Shop = () => {
       <div className={s.divHeader}>
         <h2 className={s.title}>Tienda</h2>
       </div>
-      <div className={s.divFilters}>
+      <FiltersShop />
+      {/* <div className={s.divFilters}>
         <div>
           <label>Tipo:</label>
           <select>
@@ -54,14 +56,15 @@ const Shop = () => {
             <option>Mayor precio</option>
           </select>
         </div>
-      </div>
+      </div> */}
       <div className={s.divProducts}>
         {loading ? (
           <p>Cargando productos...</p>
         ) : (
           products.map(product => (
             <ProductCard 
-              key={product.id} 
+              key={product.id}
+              id={product.id}
               name={product.name}
               image={product.mainImage}
               price={product.price}

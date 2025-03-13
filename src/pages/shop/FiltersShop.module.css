@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  margin: 0rem 30rem;
+  justify-content: space-between;
+  background-color: white;
+  padding: 1rem;
+  border-radius: .3rem;
+}
+
+.divFilter {
+  display: flex;
+  align-items: center;
+}
+
+.label {
+  font-size: 1.4rem;
+}
+
+.select {
+  font-size: 1.4rem;
+}

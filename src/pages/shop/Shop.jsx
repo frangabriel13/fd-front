@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../store/actions/productActions';
 import s from './Shop.module.css';
@@ -6,12 +6,17 @@ import ProductCard from '../../components/productStore/ProductCard';
 
 const Shop = () => {
   const dispatch = useDispatch();
-  // pageSize no es un estado global
   const { products, currentPage, totalProducts } = useSelector(state => state.product);
-  console.log('products', products);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(getProducts(currentPage));
+    const fetchProducts = async () => {
+      setLoading(true);
+      await dispatch(getProducts(currentPage));
+      setLoading(false);
+    };
+
+    fetchProducts();
   }, [dispatch, currentPage]);
 
   return (
@@ -51,14 +56,19 @@ const Shop = () => {
         </div>
       </div>
       <div className={s.divProducts}>
-        {products.map(product => (
-          <ProductCard 
-            key={product.id} 
-            name={product.name}
-            image={product.mainImage}
-            price={product.price}
-          />
-        ))}
+        {loading ? (
+          <p>Cargando productos...</p>
+        ) : (
+          products.map(product => (
+            <ProductCard 
+              key={product.id} 
+              name={product.name}
+              image={product.mainImage}
+              price={product.price}
+              logo={product.logo}
+            />
+          ))
+        )}
       </div>
     </div>
   );

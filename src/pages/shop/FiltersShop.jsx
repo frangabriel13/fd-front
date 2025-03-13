@@ -1,6 +1,14 @@
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 import s from './FiltersShop.module.css';
 
 const FiltersShop = () => {
+  const categories = useSelector((state) => state.category.categories);
+  const [ category, setCategory ] = useState(1);
+  const mainCategories = categories.filter(category => !category.parentId);
+  const subCategories = categories.filter(subCategory => subCategory.parentId === category);
+
+  console.log('subCategories', subCategories);
   return (
     <div className={s.container}>
       <div className={s.divFilter}>
@@ -12,18 +20,27 @@ const FiltersShop = () => {
       </div>
       <div className={s.divFilter}>
         <label className={s.label}>Categoría:</label>
-        <select className={s.select}>
-          <option>Indumentaria</option>
-          <option>Blanquería</option>
-          <option>Bisutería</option>
+        <select 
+          className={s.select}
+          value={category}
+          onChange={(e) => setCategory(parseInt(e.target.value))}
+        >
+          {
+            mainCategories.map(category => (
+              <option key={category.id} value={category.id}>{category.name}</option>
+            ))
+          }
         </select>
       </div>
       <div className={s.divFilter}>
         <label className={s.label}>Subcategoría:</label>
         <select className={s.select}>
-          <option>Indumentaria</option>
-          <option>Blanquería</option>
-          <option>Bisutería</option>
+          <option value="">Todos</option>
+          {
+            subCategories.map(subCategory => (
+              <option key={subCategory.id} value={subCategory.id}>{subCategory.name}</option>
+            ))
+          }
         </select>
       </div>
       <div className={s.divFilter}>

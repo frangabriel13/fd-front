@@ -26,37 +26,6 @@ const Shop = () => {
         <h2 className={s.title}>Tienda</h2>
       </div>
       <FiltersShop />
-      {/* <div className={s.divFilters}>
-        <div>
-          <label>Tipo:</label>
-          <select>
-            <option>Productos</option>
-            <option>Packs</option>
-          </select>
-        </div>
-        <div>
-          <label>Sexo:</label>
-          <select>
-            <option>Todos</option>
-            <option>Hombre</option>
-            <option>Mujer</option>
-          </select>
-        </div>
-        <div>
-          <label>Categoría</label>
-          <button>
-            Ver categorías
-          </button>
-        </div>
-        <div>
-          <label>Ordenar por:</label>
-          <select>
-            <option>Más nuevos</option>
-            <option>Menor precio</option>
-            <option>Mayor precio</option>
-          </select>
-        </div>
-      </div> */}
       <div className={s.divProducts}>
         {loading ? (
           <p>Cargando productos...</p>

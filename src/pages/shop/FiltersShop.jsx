@@ -35,7 +35,7 @@ const FiltersShop = () => {
       <div className={s.divFilter}>
         <label className={s.label}>Subcategoría:</label>
         <select className={s.select}>
-          <option value="">Todos</option>
+          <option value="All">Todos</option>
           {
             subCategories.map(subCategory => (
               <option key={subCategory.id} value={subCategory.id}>{subCategory.name}</option>
@@ -46,12 +46,12 @@ const FiltersShop = () => {
       <div className={s.divFilter}>
         <label className={s.label}>Género:</label>
         <select className={s.select}>
-          <option>Todos</option>
-          <option>Hombre</option>
-          <option>Mujer</option>
-          <option>Niño</option>
-          <option>Niña</option>
-          <option>Bebés</option>
+          <option value='All'>Todos</option>
+          <option value='1'>Hombre</option>
+          <option value='2'>Mujer</option>
+          <option value='3'>Niño</option>
+          <option value='4'>Niña</option>
+          <option value='5'>Bebés</option>
         </select>
       </div>
       <div className={s.divFilter}>

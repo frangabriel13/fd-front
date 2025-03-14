@@ -5,11 +5,14 @@ import s from './FiltersShop.module.css';
 const FiltersShop = ({ onFilterChange }) => {
   const categories = useSelector((state) => state.category.categories);
   const [ category, setCategory ] = useState(1);
+  const [type, setType] = useState('product');
   const mainCategories = categories.filter(category => !category.parentId);
   const subCategories = categories.filter(subCategory => subCategory.parentId === category);
 
   const handleTypeChange = (e) => {
-    onFilterChange({ type: e.target.value });
+    const value = e.target.value;
+    setType(value);
+    onFilterChange({ type: value });
   };
 
   const handleCategoryChange = (e) => {
@@ -39,42 +42,46 @@ const FiltersShop = ({ onFilterChange }) => {
           <option value="pack">Packs</option>
         </select>
       </div>
-      <div className={s.divFilter}>
-        <label className={s.label}>Categoría:</label>
-        <select 
-          className={s.select}
-          value={category}
-          onChange={handleCategoryChange}
-        >
-          {
-            mainCategories.map(category => (
-              <option key={category.id} value={category.id}>{category.name}</option>
-            ))
-          }
-        </select>
-      </div>
-      <div className={s.divFilter}>
-        <label className={s.label}>Subcategoría:</label>
-        <select className={s.select} onChange={handleSubcategoryChange}>
-          <option value="">Todos</option>
-          {
-            subCategories.map(subCategory => (
-              <option key={subCategory.id} value={subCategory.id}>{subCategory.name}</option>
-            ))
-          }
-        </select>
-      </div>
-      <div className={s.divFilter}>
-        <label className={s.label}>Género:</label>
-        <select className={s.select} onChange={handleGenderChange}>
-          <option value=''>Todos</option>
-          <option value='1'>Hombre</option>
-          <option value='2'>Mujer</option>
-          <option value='3'>Niño</option>
-          <option value='4'>Niña</option>
-          <option value='5'>Bebés</option>
-        </select>
-      </div>
+      {type !== 'pack' && (
+        <>
+          <div className={s.divFilter}>
+            <label className={s.label}>Categoría:</label>
+            <select 
+              className={s.select}
+              value={category}
+              onChange={handleCategoryChange}
+            >
+              {
+                mainCategories.map(category => (
+                  <option key={category.id} value={category.id}>{category.name}</option>
+                ))
+              }
+            </select>
+          </div>
+          <div className={s.divFilter}>
+            <label className={s.label}>Subcategoría:</label>
+            <select className={s.select} onChange={handleSubcategoryChange}>
+              <option value="">Todos</option>
+              {
+                subCategories.map(subCategory => (
+                  <option key={subCategory.id} value={subCategory.id}>{subCategory.name}</option>
+                ))
+              }
+            </select>
+          </div>
+          <div className={s.divFilter}>
+            <label className={s.label}>Género:</label>
+            <select className={s.select} onChange={handleGenderChange}>
+              <option value=''>Todos</option>
+              <option value='1'>Hombre</option>
+              <option value='2'>Mujer</option>
+              <option value='3'>Niño</option>
+              <option value='4'>Niña</option>
+              <option value='5'>Bebés</option>
+            </select>
+          </div>
+        </>
+      )}
       <div className={s.divFilter}>
         <label className={s.label}>Ordenar por:</label>
         <select className={s.select} onChange={handleSortByChange}>

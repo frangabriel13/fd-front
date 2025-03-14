@@ -33,8 +33,8 @@ const FiltersShop = ({ onFilterChange }) => {
   return (
     <div className={s.container}>
       <div className={s.divFilter}>
-        <label className={s.label} onChange={handleTypeChange}>Tipo:</label>
-        <select className={s.select}>
+        <label className={s.label}>Tipo:</label>
+        <select className={s.select} onChange={handleTypeChange}>
           <option value="product">Productos</option>
           <option value="pack">Packs</option>
         </select>

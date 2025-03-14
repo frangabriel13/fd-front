@@ -18,6 +18,7 @@ const Shop = () => {
     gender: '',
     sortBy: '',
   });
+  console.log('filters: ', filters);
 
   useEffect(() => {
     const fetchProducts = async () => {

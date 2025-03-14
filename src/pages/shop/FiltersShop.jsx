@@ -18,7 +18,7 @@ const FiltersShop = ({ onFilterChange }) => {
   const handleCategoryChange = (e) => {
     const value = parseInt(e.target.value);
     setCategory(value);
-    onFilterChange({ category: value });
+    onFilterChange({ category: value, subcategory: '' });
   };
 
   const handleSubcategoryChange = (e) => {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../store/actions/productActions';
 import { getPacks } from '../../store/actions/packActions';
+import { getGenders } from '../../store/actions/genderActions';
 import s from './Shop.module.css';
 import ProductCard from '../../components/productStore/ProductCard';
 import FiltersShop from './FiltersShop';
@@ -10,6 +11,7 @@ const Shop = () => {
   const dispatch = useDispatch();
   const { products, currentPage, totalProducts } = useSelector(state => state.product);
   const { packs } = useSelector(state => state.pack);
+  const { genders } = useSelector(state => state.gender);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
     type: 'product',
@@ -34,12 +36,18 @@ const Shop = () => {
     fetchProducts();
   }, [dispatch, currentPage, filters]);
 
+  useEffect(() => {
+    dispatch(getGenders());
+  }, [dispatch]);
+
   const handleFilterChange = (newFilters) => {
     setFilters(prevFilters => ({
       ...prevFilters,
       ...newFilters,
     }));
   };
+
+  console.log('genders', genders);
 
   return (
     <div className={s.container}>

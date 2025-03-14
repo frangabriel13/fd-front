@@ -2,20 +2,41 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import s from './FiltersShop.module.css';
 
-const FiltersShop = () => {
+const FiltersShop = ({ onFilterChange }) => {
   const categories = useSelector((state) => state.category.categories);
   const [ category, setCategory ] = useState(1);
   const mainCategories = categories.filter(category => !category.parentId);
   const subCategories = categories.filter(subCategory => subCategory.parentId === category);
 
-  console.log('subCategories', subCategories);
+  const handleTypeChange = (e) => {
+    onFilterChange({ type: e.target.value });
+  };
+
+  const handleCategoryChange = (e) => {
+    const value = parseInt(e.target.value);
+    setCategory(value);
+    onFilterChange({ category: value });
+  };
+
+  const handleSubcategoryChange = (e) => {
+    onFilterChange({ subcategory: e.target.value });
+  };
+
+  const handleGenderChange = (e) => {
+    onFilterChange({ gender: e.target.value });
+  };
+
+  const handleSortByChange = (e) => {
+    onFilterChange({ sortBy: e.target.value });
+  };
+
   return (
     <div className={s.container}>
       <div className={s.divFilter}>
-        <label className={s.label}>Tipo:</label>
+        <label className={s.label} onChange={handleTypeChange}>Tipo:</label>
         <select className={s.select}>
-          <option>Productos</option>
-          <option>Packs</option>
+          <option value="product">Productos</option>
+          <option value="pack">Packs</option>
         </select>
       </div>
       <div className={s.divFilter}>
@@ -23,7 +44,7 @@ const FiltersShop = () => {
         <select 
           className={s.select}
           value={category}
-          onChange={(e) => setCategory(parseInt(e.target.value))}
+          onChange={handleCategoryChange}
         >
           {
             mainCategories.map(category => (
@@ -34,8 +55,8 @@ const FiltersShop = () => {
       </div>
       <div className={s.divFilter}>
         <label className={s.label}>Subcategoría:</label>
-        <select className={s.select}>
-          <option value="All">Todos</option>
+        <select className={s.select} onChange={handleSubcategoryChange}>
+          <option value="">Todos</option>
           {
             subCategories.map(subCategory => (
               <option key={subCategory.id} value={subCategory.id}>{subCategory.name}</option>
@@ -45,8 +66,8 @@ const FiltersShop = () => {
       </div>
       <div className={s.divFilter}>
         <label className={s.label}>Género:</label>
-        <select className={s.select}>
-          <option value='All'>Todos</option>
+        <select className={s.select} onChange={handleGenderChange}>
+          <option value=''>Todos</option>
           <option value='1'>Hombre</option>
           <option value='2'>Mujer</option>
           <option value='3'>Niño</option>
@@ -56,10 +77,10 @@ const FiltersShop = () => {
       </div>
       <div className={s.divFilter}>
         <label className={s.label}>Ordenar por:</label>
-        <select className={s.select}>
-          <option>Más nuevos</option>
-          <option>Menor precio</option>
-          <option>Mayor precio</option>
+        <select className={s.select} onChange={handleSortByChange}>
+          <option value="newest">Más nuevos</option>
+          <option value="lowestPrice">Menor precio</option>
+          <option value="highestPrice">Mayor precio</option>
         </select>
       </div>
     </div>

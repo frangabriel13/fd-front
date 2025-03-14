@@ -9,23 +9,37 @@ const Shop = () => {
   const dispatch = useDispatch();
   const { products, currentPage, totalProducts } = useSelector(state => state.product);
   const [loading, setLoading] = useState(true);
+  const [filters, setFilters] = useState({
+    type: '',
+    category: '',
+    subcategory: '',
+    gender: '',
+    sortBy: '',
+  });
 
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
-      await dispatch(getProducts(currentPage));
+      await dispatch(getProducts(currentPage, filters));
       setLoading(false);
     };
 
     fetchProducts();
-  }, [dispatch, currentPage]);
+  }, [dispatch, currentPage, filters]);
+
+  const handleFilterChange = (newFilters) => {
+    setFilters(prevFilters => ({
+      ...prevFilters,
+      ...newFilters,
+    }));
+  };
 
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
         <h2 className={s.title}>Tienda</h2>
       </div>
-      <FiltersShop />
+      <FiltersShop onFilterChange={handleFilterChange} />
       <div className={s.divProducts}>
         {loading ? (
           <p>Cargando productos...</p>

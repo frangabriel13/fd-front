@@ -6,7 +6,7 @@ const initialState = {
 
 const genderReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "GET_GENDER":
+    case "GET_GENDERS":
       return {
         ...state,
         genders: action.payload,

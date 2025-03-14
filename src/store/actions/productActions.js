@@ -2,7 +2,6 @@ import { productInstance } from "../../utils/axiosConfig";
 
 export const getProducts = (page = 1, pageSize = 24, filters = {}) => async (dispatch) => {
   dispatch({ type: 'GET_PRODUCTS_REQUEST' });
-  console.log('filters: ', filters);
   try {
     const response = await productInstance.get('/', {
       params: {

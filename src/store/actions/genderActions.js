@@ -1,9 +1,10 @@
 import { genderInstance } from "../../utils/axiosConfig";
 
-export const fethGenders = () => async (dispatch) => {
+export const getGenders = () => async (dispatch) => {
   try {
     const response = await genderInstance.get("/");
     const genders = response.data;
+    console.log('genders action: ', genders);
     dispatch({
       type: "GET_GENDERS",
       payload: genders,

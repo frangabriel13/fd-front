@@ -13,7 +13,7 @@ const Shop = () => {
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
     type: 'product',
-    category: '',
+    category: '1',
     subcategory: '',
     gender: '',
     sortBy: '',

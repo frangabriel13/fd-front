@@ -22,7 +22,8 @@ const FiltersShop = ({ onFilterChange }) => {
   };
 
   const handleSubcategoryChange = (e) => {
-    onFilterChange({ subcategory: e.target.value });
+    const value = e.target.value;
+    onFilterChange({ subcategory: value });
   };
 
   const handleGenderChange = (e) => {

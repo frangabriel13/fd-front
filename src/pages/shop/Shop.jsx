@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getProducts } from '../../store/actions/productActions';
+import { getPacks } from '../../store/actions/packActions';
 import s from './Shop.module.css';
 import ProductCard from '../../components/productStore/ProductCard';
 import FiltersShop from './FiltersShop';
@@ -8,9 +9,10 @@ import FiltersShop from './FiltersShop';
 const Shop = () => {
   const dispatch = useDispatch();
   const { products, currentPage, totalProducts } = useSelector(state => state.product);
+  const { packs } = useSelector(state => state.pack);
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
-    type: '',
+    type: 'product',
     category: '',
     subcategory: '',
     gender: '',
@@ -20,7 +22,11 @@ const Shop = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
-      await dispatch(getProducts(currentPage, 24, filters));
+      if (filters.type === 'product') {
+        await dispatch(getProducts(currentPage, 24, filters));
+      } else if (filters.type === 'pack') {
+        await dispatch(getPacks(currentPage, 24));
+      }
       setLoading(false);
     };
 
@@ -44,16 +50,29 @@ const Shop = () => {
         {loading ? (
           <p>Cargando productos...</p>
         ) : (
-          products.map(product => (
-            <ProductCard 
-              key={product.id}
-              id={product.id}
-              name={product.name}
-              image={product.mainImage}
-              price={product.price}
-              logo={product.logo}
-            />
-          ))
+          filters.type === 'product' ? (
+            products.map(product => (
+              <ProductCard 
+                key={product.id}
+                id={product.id}
+                name={product.name}
+                image={product.mainImage}
+                price={product.price}
+                logo={product.logo}
+              />
+            ))
+          ) : (
+            packs.map(pack => (
+              <ProductCard 
+                key={pack.id}
+                id={pack.id}
+                name={pack.name}
+                image={pack.mainImage}
+                price={pack.price}
+                logo={pack.logo}
+              />
+            ))
+          )
         )}
       </div>
     </div>

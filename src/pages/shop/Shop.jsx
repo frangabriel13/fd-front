@@ -20,7 +20,7 @@ const Shop = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       setLoading(true);
-      await dispatch(getProducts(currentPage, filters));
+      await dispatch(getProducts(currentPage, 24, filters));
       setLoading(false);
     };
 

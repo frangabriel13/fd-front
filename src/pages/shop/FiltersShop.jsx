@@ -10,6 +10,7 @@ const FiltersShop = ({ onFilterChange, genders }) => {
   const subcategories = useMemo(() => categories.filter(subcategory => subcategory.parentId === category), [categories, category]);
   const [subcategory, setSubcategory] = useState('');
   const [filteredGenders, setFilteredGenders] = useState(genders);
+  const [gender, setGender] = useState('');
 
   useEffect(() => {
     if (subcategory) {
@@ -33,6 +34,7 @@ const FiltersShop = ({ onFilterChange, genders }) => {
     const value = parseInt(e.target.value);
     setCategory(value);
     setSubcategory('');
+    setGender('');
     onFilterChange({ category: value, subcategory: '', gender: '' });
   };
 
@@ -90,7 +92,7 @@ const FiltersShop = ({ onFilterChange, genders }) => {
           </div>
           <div className={s.divFilter}>
             <label className={s.label}>Género:</label>
-            <select className={s.select} onChange={handleGenderChange}>
+            <select className={s.select} value={gender} onChange={handleGenderChange}>
               <option value=''>Todos</option>
               {
                 filteredGenders.map(gender => (

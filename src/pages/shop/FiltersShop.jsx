@@ -1,13 +1,27 @@
-import { useState } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import s from './FiltersShop.module.css';
 
 const FiltersShop = ({ onFilterChange, genders }) => {
   const categories = useSelector((state) => state.category.categories);
-  const [ category, setCategory ] = useState(1);
+  const [category, setCategory] = useState(1);
   const [type, setType] = useState('product');
   const mainCategories = categories.filter(category => !category.parentId);
-  const subCategories = categories.filter(subCategory => subCategory.parentId === category);
+  const subcategories = useMemo(() => categories.filter(subcategory => subcategory.parentId === category), [categories, category]);
+  const [subcategory, setSubcategory] = useState('');
+  const [filteredGenders, setFilteredGenders] = useState(genders);
+
+  useEffect(() => {
+    if (subcategory) {
+      const selectedSubcategory = subcategories.find(sub => sub.id === parseInt(subcategory));
+      if (selectedSubcategory) {
+        const newFilteredGenders = genders.filter(gender => selectedSubcategory.genders.some(subGender => subGender.id === gender.id));
+        setFilteredGenders(newFilteredGenders.length > 0 ? newFilteredGenders : genders);
+      }
+    } else {
+      setFilteredGenders(genders);
+    }
+  }, [subcategory, subcategories, genders]);
 
   const handleTypeChange = (e) => {
     const value = e.target.value;
@@ -18,11 +32,13 @@ const FiltersShop = ({ onFilterChange, genders }) => {
   const handleCategoryChange = (e) => {
     const value = parseInt(e.target.value);
     setCategory(value);
+    setSubcategory('');
     onFilterChange({ category: value, subcategory: '' });
   };
 
   const handleSubcategoryChange = (e) => {
     const value = e.target.value;
+    setSubcategory(value);
     onFilterChange({ subcategory: value });
   };
 
@@ -61,11 +77,11 @@ const FiltersShop = ({ onFilterChange, genders }) => {
           </div>
           <div className={s.divFilter}>
             <label className={s.label}>Subcategoría:</label>
-            <select className={s.select} onChange={handleSubcategoryChange}>
+            <select className={s.select} value={subcategory} onChange={handleSubcategoryChange}>
               <option value="">Todos</option>
               {
-                subCategories.map(subCategory => (
-                  <option key={subCategory.id} value={subCategory.id}>{subCategory.name}</option>
+                subcategories.map(subcategory => (
+                  <option key={subcategory.id} value={subcategory.id}>{subcategory.name}</option>
                 ))
               }
             </select>
@@ -75,7 +91,7 @@ const FiltersShop = ({ onFilterChange, genders }) => {
             <select className={s.select} onChange={handleGenderChange}>
               <option value=''>Todos</option>
               {
-                genders.map(gender => (
+                filteredGenders.map(gender => (
                   <option key={gender.id} value={gender.id}>{gender.name}</option>
                 ))
               }
@@ -94,6 +110,5 @@ const FiltersShop = ({ onFilterChange, genders }) => {
     </div>
   );
 };
-
 
 export default FiltersShop;

@@ -7,10 +7,18 @@ const FiltersShop = ({ onFilterChange, genders }) => {
   const [category, setCategory] = useState(1);
   const [type, setType] = useState('product');
   const mainCategories = categories.filter(category => !category.parentId);
-  const subcategories = useMemo(() => categories.filter(subcategory => subcategory.parentId === category), [categories, category]);
+  // const subcategories = useMemo(() => categories.filter(subcategory => subcategory.parentId === category), [categories, category]);
   const [subcategory, setSubcategory] = useState('');
   const [filteredGenders, setFilteredGenders] = useState(genders);
   const [gender, setGender] = useState('');
+
+  const subcategories = useMemo(() => {
+    const filteredSubcategories = categories.filter(subcategory => subcategory.parentId === category);
+    if (gender) {
+      return filteredSubcategories.filter(subcategory => subcategory.genders.some(subGender => subGender.id === parseInt(gender)));
+    }
+    return filteredSubcategories;
+  }, [categories, category, gender]);
 
   useEffect(() => {
     if (subcategory) {
@@ -52,8 +60,6 @@ const FiltersShop = ({ onFilterChange, genders }) => {
   const handleSortByChange = (e) => {
     onFilterChange({ sortBy: e.target.value });
   };
-
-  console.log('genders: ', genders)
 
   return (
     <div className={s.container}>

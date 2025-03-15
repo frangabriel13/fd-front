@@ -45,6 +45,7 @@ const FiltersShop = ({ onFilterChange, genders }) => {
   };
 
   const handleGenderChange = (e) => {
+    setGender(e.target.value);
     onFilterChange({ gender: e.target.value });
   };
 

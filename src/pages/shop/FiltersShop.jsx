@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import s from './FiltersShop.module.css';
 
-const FiltersShop = ({ onFilterChange }) => {
+const FiltersShop = ({ onFilterChange, genders }) => {
   const categories = useSelector((state) => state.category.categories);
   const [ category, setCategory ] = useState(1);
   const [type, setType] = useState('product');
@@ -74,11 +74,11 @@ const FiltersShop = ({ onFilterChange }) => {
             <label className={s.label}>Género:</label>
             <select className={s.select} onChange={handleGenderChange}>
               <option value=''>Todos</option>
-              <option value='1'>Hombre</option>
-              <option value='2'>Mujer</option>
-              <option value='3'>Niño</option>
-              <option value='4'>Niña</option>
-              <option value='5'>Bebés</option>
+              {
+                genders.map(gender => (
+                  <option key={gender.id} value={gender.id}>{gender.name}</option>
+                ))
+              }
             </select>
           </div>
         </>

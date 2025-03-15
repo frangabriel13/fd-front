@@ -23,8 +23,6 @@ const Navbar = () => {
     setShowCategories(false);
   }
 
-  console.log(categories);
-
   return (
     <div className={s.container}>
       <div className={s.link} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>

@@ -10,7 +10,6 @@ export const getProducts = (page = 1, pageSize = 24, filters = {}) => async (dis
         ...filters,
       }
     });
-    console.log('response: ', response.data);
     dispatch({
       type: 'GET_PRODUCTS_SUCCESS',
       payload: {

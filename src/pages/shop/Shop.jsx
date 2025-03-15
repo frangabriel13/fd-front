@@ -47,14 +47,12 @@ const Shop = () => {
     }));
   };
 
-  console.log('genders', genders);
-
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
         <h2 className={s.title}>Tienda</h2>
       </div>
-      <FiltersShop onFilterChange={handleFilterChange} />
+      <FiltersShop onFilterChange={handleFilterChange} genders={genders} />
       <div className={s.divProducts}>
         {loading ? (
           <p>Cargando productos...</p>

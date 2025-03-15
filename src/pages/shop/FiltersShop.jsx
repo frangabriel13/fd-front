@@ -33,7 +33,7 @@ const FiltersShop = ({ onFilterChange, genders }) => {
     const value = parseInt(e.target.value);
     setCategory(value);
     setSubcategory('');
-    onFilterChange({ category: value, subcategory: '' });
+    onFilterChange({ category: value, subcategory: '', gender: '' });
   };
 
   const handleSubcategoryChange = (e) => {
@@ -49,6 +49,8 @@ const FiltersShop = ({ onFilterChange, genders }) => {
   const handleSortByChange = (e) => {
     onFilterChange({ sortBy: e.target.value });
   };
+
+  console.log('genders: ', genders)
 
   return (
     <div className={s.container}>

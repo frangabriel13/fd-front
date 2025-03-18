@@ -6,6 +6,7 @@ import { getGenders } from '../../store/actions/genderActions';
 import s from './Shop.module.css';
 import ProductCard from '../../components/productStore/ProductCard';
 import FiltersShop from './FiltersShop';
+import Pagination from '../../components/pagination/Pagination';
 
 const Shop = () => {
   const dispatch = useDispatch();
@@ -46,6 +47,10 @@ const Shop = () => {
     }));
   };
 
+  const handlePageChange = (page) => {
+    dispatch(getProducts(page, 24, filters));
+  };
+
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
@@ -81,6 +86,12 @@ const Shop = () => {
           )
         )}
       </div>
+      <Pagination 
+        currentPage={currentPage} 
+        totalProducts={totalProducts}
+        pageSize={24}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };

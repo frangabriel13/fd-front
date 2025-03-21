@@ -2,19 +2,19 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './SearchBar.module.css';
 import { FaSearch } from 'react-icons/fa';
-import { searchProducts } from '../../store/actions/productActions';
+import { searchResults } from '../../store/actions/productActions';
 import SearchResults from './SearchResults';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
   const [searchTerm, setSearchTerm] = useState('');
   const [showResults, setShowResults] = useState(false);
-  const products = useSelector((state) => state.product.searchProducts);
+  const results = useSelector((state) => state.product.results);
 
   useEffect(() => {
     const delayDebunceFn = setTimeout(() => {
       if(searchTerm) {
-        dispatch(searchProducts(1, 18, searchTerm));
+        dispatch(searchResults(searchTerm));
         setShowResults(true);
       } else {
         setShowResults(false);
@@ -38,7 +38,7 @@ const SearchBar = () => {
           <FaSearch className={s.icon} />
         </button>
       </div>
-      {showResults && <SearchResults products={products} />}
+      {showResults && <SearchResults results={results} />}
     </div>
   );
 };

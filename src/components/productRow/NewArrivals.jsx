@@ -31,8 +31,6 @@ const NewArrivals = () => {
       productsContainerRef.current.scrollLeft -= productsContainerRef.current.offsetWidth;
     }
   };
-
-  console.log(newProducts);
   
   return (
     <div className={s.container}>

@@ -31,8 +31,6 @@ const ProductsOnSale = () => {
       productsContainerRef.current.scrollLeft -= productsContainerRef.current.offsetWidth;
     }
   };
-
-  console.log('onSaleProducts', onSaleProducts);
   
   return (
     <div className={s.container}>

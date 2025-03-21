@@ -56,12 +56,15 @@ export const searchProducts = (page = 1, pageSize = 18, search) => async (dispat
 
 export const searchResults = (search) => async (dispatch) => {
   dispatch({ type: 'SEARCH_RESULTS_REQUEST' });
+  // console.log('searchResults', search);
   try {
     const response = await productInstance.get('/results-search', {
       params: {
         search,
       }
     });
+
+    console.log('searchResults', response.data);
     dispatch({
       type: 'SEARCH_RESULTS_SUCCESS',
       payload: response.data

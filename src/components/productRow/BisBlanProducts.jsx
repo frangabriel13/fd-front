@@ -31,8 +31,6 @@ const BisBlanProducts = () => {
       productsContainerRef.current.scrollLeft -= productsContainerRef.current.offsetWidth;
     }
   };
-
-  console.log('bisBlanProducts', bisBlanProducts);
   
   return (
     <div className={s.container}>

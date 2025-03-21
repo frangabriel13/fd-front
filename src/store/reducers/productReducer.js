@@ -22,6 +22,7 @@ const initialState = {
   newProducts: [],
   onSaleProducts: [],
   bisBlanProducts: [],
+  results: [],
 
   product: null,
   loading: false,
@@ -159,6 +160,17 @@ const productReducer = (state = initialState, action) => {
         bisBlanProducts: action.payload,
       };
     case 'GET_BISUTERIA_OR_BLANQUERIA_FAILURE':
+      return { ...state, loading: false, error: action.error };
+    case 'SEARCH_RESULTS_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'SEARCH_RESULTS_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        results: action.payload,
+      };
+    case 'SEARCH_RESULTS_FAILURE':
       return { ...state, loading: false, error: action.error };
     default:
       return state;

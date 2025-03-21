@@ -54,6 +54,26 @@ export const searchProducts = (page = 1, pageSize = 18, search) => async (dispat
   }
 };
 
+export const searchResults = (search) => async (dispatch) => {
+  dispatch({ type: 'SEARCH_RESULTS_REQUEST' });
+  try {
+    const response = await productInstance.get('/results-search', {
+      params: {
+        search,
+      }
+    });
+    dispatch({
+      type: 'SEARCH_RESULTS_SUCCESS',
+      payload: response.data
+    });
+  } catch(error) {
+    dispatch({
+      type: 'SEARCH_RESULTS_FAILURE',
+      error: error.message,
+    })
+  }
+};
+
 export const createProduct = (productData) => async (dispatch) => {
   dispatch({ type: 'CREATE_PRODUCT_REQUEST' });
   try {

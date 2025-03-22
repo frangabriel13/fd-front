@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './SearchBar.module.css';
 import { FaSearch } from 'react-icons/fa';
@@ -10,6 +10,7 @@ const SearchBar = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [showResults, setShowResults] = useState(false);
   const results = useSelector((state) => state.product.results);
+  const searchRef = useRef(null);
 
   useEffect(() => {
     const delayDebunceFn = setTimeout(() => {
@@ -24,8 +25,20 @@ const SearchBar = () => {
     return () => clearTimeout(delayDebunceFn);
   }, [searchTerm, dispatch]);
 
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if(searchRef.current && !searchRef.current.contains(e.target)) {
+        setShowResults(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
   return (
-    <div className={s.container}>
+    <div className={s.container} ref={searchRef}>
       <div className={s.divSearch}>
         <input 
           type="text" 

@@ -2,9 +2,13 @@ import { Link } from 'react-router-dom';
 import s from './SearchResults.module.css';
 
 const SearchResults = ({ results }) => {
+  const hasProducts = results.product.products.length > 0;
+  const hasCategories = results.product.categories && results.product.categories.length > 0;
+  const hasUsers = results.user && results.user.length > 0;
+
   return (
     <div className={s.container}>
-      {results.product.products.length > 0 && (
+      {hasProducts && (
         <div className={s.divResults}>
           <p>Productos</p>
           <ul>
@@ -16,7 +20,7 @@ const SearchResults = ({ results }) => {
           </ul>
         </div>
       )}
-      {results.product.categories && results.product.categories.length > 0 && (
+      {hasCategories && (
         <div className={s.divResults}>
           <p>Categorías</p>
           <ul>
@@ -28,7 +32,7 @@ const SearchResults = ({ results }) => {
           </ul>
         </div>
       )}
-      {results.user && results.user.length > 0 && (
+      {hasUsers && (
         <div className={s.divResults}>
           <p>Fabricante</p>
           <ul>
@@ -38,9 +42,13 @@ const SearchResults = ({ results }) => {
           </ul>
         </div>
       )}
+      {!hasProducts && !hasCategories && !hasUsers && (
+        <div className={s.noResults}>
+          <p>No se encontraron resultados</p>
+        </div>
+      )}
     </div>
   );
 };
-
 
 export default SearchResults;

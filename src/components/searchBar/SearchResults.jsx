@@ -1,27 +1,40 @@
+import { Link } from 'react-router-dom';
 import s from './SearchResults.module.css';
 
 const SearchResults = ({ results }) => {
-  console.log('results', results);
-
   return (
     <div className={s.container}>
-      {results.products.length > 0 && (
+      {results.product.products.length > 0 && (
         <div className={s.divResults}>
           <p>Productos</p>
           <ul>
-            {results.products.slice(0, 3).map((product) => (
-              <li key={product.id}>{product.name}</li>
+            {results.product.products.slice(0, 3).map((product) => (
+              <li key={product.id}>
+                <Link className={s.link} to={`/producto/${product.id}`}>{product.name}</Link>
+              </li>
             ))}
           </ul>
         </div>
       )}
-      {results.categories && results.categories.length > 0 && (
+      {results.product.categories && results.product.categories.length > 0 && (
         <div className={s.divResults}>
           <p>Categorías</p>
           <ul>
-            {results.categories.slice(0, 3).map((category) => (
-              <li key={category.id}>{category.name}</li>
+            {results.product.categories.slice(0, 3).map((category) => (
+              <li key={category.id}>
+                <Link className={s.link} to={`/categoria/${category.id}`}>{category.name}</Link>
+              </li>
             ))}
+          </ul>
+        </div>
+      )}
+      {results.user && results.user.length > 0 && (
+        <div className={s.divResults}>
+          <p>Fabricante</p>
+          <ul>
+            <li key={results.user[0].id}>
+              <Link className={s.link} to={`/store/${results.user[0].id}`}>{results.user[0].name}</Link>
+            </li>
           </ul>
         </div>
       )}

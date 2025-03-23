@@ -2,15 +2,25 @@ import { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import s from './FiltersShop.module.css';
 
-const FiltersShop = ({ onFilterChange, genders }) => {
+const FiltersShop = ({ onFilterChange, genders, filters }) => {
   const categories = useSelector((state) => state.category.categories);
   const [category, setCategory] = useState(1);
-  const [type, setType] = useState('product');
+  const [type, setType] = useState(filters.type);
   const mainCategories = categories.filter(category => !category.parentId);
   // const subcategories = useMemo(() => categories.filter(subcategory => subcategory.parentId === category), [categories, category]);
   const [subcategory, setSubcategory] = useState('');
   const [filteredGenders, setFilteredGenders] = useState(genders);
   const [gender, setGender] = useState('');
+
+  console.log('filters', filters);
+  console.log('type', type);
+
+  useEffect(() => {
+    setType(filters.type || 'product');
+    setCategory(filters.category || 1);
+    setSubcategory(filters.subcategory || '');
+    setGender(filters.gender || '');
+  }, [filters]);
 
   const subcategories = useMemo(() => {
     const filteredSubcategories = categories.filter(subcategory => subcategory.parentId === category);
@@ -65,7 +75,11 @@ const FiltersShop = ({ onFilterChange, genders }) => {
     <div className={s.container}>
       <div className={s.divFilter}>
         <label className={s.label}>Tipo:</label>
-        <select className={s.select} onChange={handleTypeChange}>
+        <select 
+          className={s.select} 
+          onChange={handleTypeChange}
+          value={type}
+        >
           <option value="product">Productos</option>
           <option value="pack">Packs</option>
         </select>

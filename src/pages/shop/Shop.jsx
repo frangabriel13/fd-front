@@ -69,8 +69,6 @@ const Shop = () => {
     dispatch(getProducts(page, 24, filters));
   };
 
-  console.log(filters);
-
   return (
     <div className={s.container}>
       <div className={s.divHeader}>

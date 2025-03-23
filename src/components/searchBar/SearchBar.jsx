@@ -37,6 +37,10 @@ const SearchBar = () => {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
+  const handleResultSelect = () => {
+    setShowResults(false);
+  };
+
   return (
     <div className={s.container} ref={searchRef}>
       <div className={s.divSearch}>
@@ -51,7 +55,7 @@ const SearchBar = () => {
           <FaSearch className={s.icon} />
         </button>
       </div>
-      {showResults && <SearchResults results={results} />}
+      {showResults && <SearchResults results={results} onResultSelect={handleResultSelect} />}
     </div>
   );
 };

@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
 import s from './SearchResults.module.css';
 
-const SearchResults = ({ results }) => {
+const SearchResults = ({ results, onResultSelect }) => {
   const hasProducts = results.product.products.length > 0;
   const hasCategories = results.product.categories && results.product.categories.length > 0;
   const hasUsers = results.user && results.user.length > 0;
+
+  const handleSelect = () => {
+    onResultSelect();
+  };
 
   return (
     <div className={s.container}>
@@ -14,7 +18,13 @@ const SearchResults = ({ results }) => {
           <ul>
             {results.product.products.slice(0, 3).map((product) => (
               <li key={product.id}>
-                <Link className={s.link} to={`/producto/${product.id}`}>{product.name}</Link>
+                <Link 
+                  className={s.link} 
+                  to={`/producto/${product.id}`}
+                  onClick={handleSelect}
+                >
+                  {product.name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -26,7 +36,13 @@ const SearchResults = ({ results }) => {
           <ul>
             {results.product.categories.slice(0, 3).map((category) => (
               <li key={category.id}>
-                <Link className={s.link} to={`/categoria/${category.id}`}>{category.name}</Link>
+                <Link 
+                  className={s.link} 
+                  to={`/categoria/${category.id}`}
+                  onClick={handleSelect}
+                >
+                  {category.name}
+                </Link>
               </li>
             ))}
           </ul>
@@ -37,7 +53,13 @@ const SearchResults = ({ results }) => {
           <p>Fabricante</p>
           <ul>
             <li key={results.user[0].id}>
-              <Link className={s.link} to={`/store/${results.user[0].id}`}>{results.user[0].name}</Link>
+              <Link 
+              className={s.link} 
+              to={`/store/${results.user[0].id}`}
+              onClick={handleSelect}
+              >
+                {results.user[0].name}
+              </Link>a
             </li>
           </ul>
         </div>
@@ -50,5 +72,6 @@ const SearchResults = ({ results }) => {
     </div>
   );
 };
+
 
 export default SearchResults;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { getProducts } from '../../store/actions/productActions';
 import { getPacks } from '../../store/actions/packActions';
 import { getGenders } from '../../store/actions/genderActions';
@@ -12,6 +12,7 @@ import Pagination from '../../components/pagination/Pagination';
 const Shop = () => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
   const { products, currentPage, totalProducts } = useSelector(state => state.product);
   const { packs } = useSelector(state => state.pack);
   const { genders } = useSelector(state => state.gender);
@@ -58,11 +59,22 @@ const Shop = () => {
     dispatch(getGenders());
   }, [dispatch]);
 
+  // const handleFilterChange = (newFilters) => {
+  //   setFilters(prevFilters => ({
+  //     ...prevFilters,
+  //     ...newFilters,
+  //   }));
+  // };
   const handleFilterChange = (newFilters) => {
-    setFilters(prevFilters => ({
-      ...prevFilters,
+    const updatedFilters = {
+      ...filters,
       ...newFilters,
-    }));
+    };
+    setFilters(updatedFilters);
+
+    // Actualizar la URL con los nuevos filtros
+    const queryParams = new URLSearchParams(updatedFilters);
+    navigate(`?${queryParams.toString()}`);
   };
 
   const handlePageChange = (page) => {

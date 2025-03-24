@@ -17,7 +17,7 @@ const BisBlanProducts = () => {
   }, [dispatch]);
 
   const handleViewMore = () => {
-    navigate('/tienda');
+    navigate('/tienda?type=product&category=3');
   };
 
   const handleNext = () => {

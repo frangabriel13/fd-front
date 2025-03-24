@@ -17,7 +17,7 @@ const NewArrivals = () => {
   }, [dispatch]);
 
   const handleViewMore = () => {
-    navigate('/tienda');
+    navigate('/tienda?sortBy=newest');
   };
 
   const handleNext = () => {

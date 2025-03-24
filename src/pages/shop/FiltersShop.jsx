@@ -4,16 +4,12 @@ import s from './FiltersShop.module.css';
 
 const FiltersShop = ({ onFilterChange, genders, filters }) => {
   const categories = useSelector((state) => state.category.categories);
-  const [category, setCategory] = useState(1);
+  const [category, setCategory] = useState(filters.category || 1);
   const [type, setType] = useState(filters.type);
   const mainCategories = categories.filter(category => !category.parentId);
-  // const subcategories = useMemo(() => categories.filter(subcategory => subcategory.parentId === category), [categories, category]);
   const [subcategory, setSubcategory] = useState('');
   const [filteredGenders, setFilteredGenders] = useState(genders);
   const [gender, setGender] = useState('');
-
-  console.log('filters', filters);
-  console.log('type', type);
 
   useEffect(() => {
     setType(filters.type || 'product');
@@ -23,8 +19,8 @@ const FiltersShop = ({ onFilterChange, genders, filters }) => {
   }, [filters]);
 
   const subcategories = useMemo(() => {
-    const filteredSubcategories = categories.filter(subcategory => subcategory.parentId === category);
-    if (gender) {
+    const filteredSubcategories = categories.filter(subcategory => subcategory.parentId === parseInt(category));
+    if(gender) {
       return filteredSubcategories.filter(subcategory => subcategory.genders.some(subGender => subGender.id === parseInt(gender)));
     }
     return filteredSubcategories;

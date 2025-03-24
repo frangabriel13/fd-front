@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import s from './SearchBar.module.css';
 import { FaSearch } from 'react-icons/fa';
 import { searchResults } from '../../store/actions/productActions';
@@ -7,6 +8,7 @@ import SearchResults from './SearchResults';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [showResults, setShowResults] = useState(false);
   const results = useSelector((state) => state.product.results);
@@ -41,6 +43,12 @@ const SearchBar = () => {
     setShowResults(false);
   };
 
+  const handleSearch = () => {
+    if(searchTerm) {
+      navigate(`/tienda?searchTerm=${encodeURIComponent(searchTerm)}`);
+    }
+  };
+
   return (
     <div className={s.container} ref={searchRef}>
       <div className={s.divSearch}>
@@ -51,7 +59,7 @@ const SearchBar = () => {
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}   
         />
-        <button className={s.searchBtn}>
+        <button className={s.searchBtn} onClick={handleSearch}>
           <FaSearch className={s.icon} />
         </button>
       </div>

@@ -19,7 +19,7 @@ const Shop = () => {
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
     type: 'product',
-    category: '1',
+    category: '',
     subcategory: '',
     gender: '',
     sortBy: 'newest',
@@ -29,13 +29,39 @@ const Shop = () => {
     const params = new URLSearchParams(search);
     return {
       type: params.get('type') || 'product',
-      category: params.get('category') || '1',
+      category: params.get('category') || '',
       subcategory: params.get('subcategory') || '',
       gender: params.get('gender') || '',
       sortBy: params.get('sortBy') || '',
+      searchTerm: params.get('searchTerm') || '',
     };
   };
 
+  // useEffect(() => {
+  //   const queryFilters = parseQueryParams(location.search);
+  //   setFilters((prevFilters) => ({
+  //     ...prevFilters,
+  //     ...queryFilters,
+  //   }));
+  // }, [location.search]);
+  
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     if (!filters.searchTerm && location.search.includes('searchTerm')) {
+  //       return; // Evitar llamada innecesaria si los filtros aún no están sincronizados
+  //     }
+      
+  //     setLoading(true);
+  //     if (filters.type === 'product') {
+  //       await dispatch(getProducts(currentPage, 24, filters, filters.searchTerm));
+  //     } else if (filters.type === 'pack') {
+  //       await dispatch(getPacks(currentPage, 24));
+  //     }
+  //     setLoading(false);
+  //   };
+    
+  //   fetchProducts();
+  // }, [dispatch, currentPage, filters, location.search]);
   useEffect(() => {
     const queryFilters = parseQueryParams(location.search);
     setFilters(queryFilters);
@@ -45,7 +71,7 @@ const Shop = () => {
     const fetchProducts = async () => {
       setLoading(true);
       if (filters.type === 'product') {
-        await dispatch(getProducts(currentPage, 24, filters));
+        await dispatch(getProducts(currentPage, 24, filters, filters.searchTerm));
       } else if (filters.type === 'pack') {
         await dispatch(getPacks(currentPage, 24));
       }
@@ -59,12 +85,6 @@ const Shop = () => {
     dispatch(getGenders());
   }, [dispatch]);
 
-  // const handleFilterChange = (newFilters) => {
-  //   setFilters(prevFilters => ({
-  //     ...prevFilters,
-  //     ...newFilters,
-  //   }));
-  // };
   const handleFilterChange = (newFilters) => {
     const updatedFilters = {
       ...filters,

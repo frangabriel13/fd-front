@@ -37,6 +37,7 @@ const Shop = () => {
     };
   };
 
+  // No se renderiza nuevamente si hay cambio en los filtros
   // useEffect(() => {
   //   const queryFilters = parseQueryParams(location.search);
   //   setFilters((prevFilters) => ({
@@ -62,6 +63,8 @@ const Shop = () => {
     
   //   fetchProducts();
   // }, [dispatch, currentPage, filters, location.search]);
+
+  // Llama a getProducts 2 veces
   useEffect(() => {
     const queryFilters = parseQueryParams(location.search);
     setFilters(queryFilters);

@@ -4,7 +4,7 @@ import s from './FiltersShop.module.css';
 
 const FiltersShop = ({ onFilterChange, genders, filters }) => {
   const categories = useSelector((state) => state.category.categories);
-  const [category, setCategory] = useState(filters.category || '1');
+  const [category, setCategory] = useState(filters.category || '');
   const [type, setType] = useState(filters.type);
   const mainCategories = categories.filter(category => !category.parentId);
   const [subcategory, setSubcategory] = useState('');
@@ -13,7 +13,7 @@ const FiltersShop = ({ onFilterChange, genders, filters }) => {
 
   useEffect(() => {
     setType(filters.type || 'product');
-    setCategory(filters.category || 1);
+    setCategory(filters.category || '');
     setSubcategory(filters.subcategory || '');
     setGender(filters.gender || '');
   }, [filters]);

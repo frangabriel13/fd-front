@@ -4,7 +4,7 @@ import s from './FiltersShop.module.css';
 
 const FiltersShop = ({ onFilterChange, genders, filters }) => {
   const categories = useSelector((state) => state.category.categories);
-  const [category, setCategory] = useState(filters.category || 1);
+  const [category, setCategory] = useState(filters.category || '1');
   const [type, setType] = useState(filters.type);
   const mainCategories = categories.filter(category => !category.parentId);
   const [subcategory, setSubcategory] = useState('');
@@ -89,6 +89,7 @@ const FiltersShop = ({ onFilterChange, genders, filters }) => {
               value={category}
               onChange={handleCategoryChange}
             >
+              <option value="">Todas</option>
               {
                 mainCategories.map(category => (
                   <option key={category.id} value={category.id}>{category.name}</option>
@@ -99,7 +100,7 @@ const FiltersShop = ({ onFilterChange, genders, filters }) => {
           <div className={s.divFilter}>
             <label className={s.label}>Subcategoría:</label>
             <select className={s.select} value={subcategory} onChange={handleSubcategoryChange}>
-              <option value="">Todos</option>
+              <option value="">Todas</option>
               {
                 subcategories.map(subcategory => (
                   <option key={subcategory.id} value={subcategory.id}>{subcategory.name}</option>

@@ -10,6 +10,8 @@ const SearchResults = ({ results, onResultSelect }) => {
     onResultSelect();
   };
 
+  console.log('results', results);
+
   return (
     <div className={s.container}>
       {hasProducts && (
@@ -38,7 +40,7 @@ const SearchResults = ({ results, onResultSelect }) => {
               <li key={category.id}>
                 <Link 
                   className={s.link} 
-                  to={`/tienda?type=product&category=1&subcategory=${category.id}&gender=all&sortBy=newest`}
+                  to={`/tienda?type=product&category=${category.parentId}&subcategory=${category.id}&gender=&sortBy=newest`}
                   onClick={handleSelect}
                 >
                   {category.name}

@@ -12,6 +12,7 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
     name: '',
     description: '',
     price: '',
+    priceUSD: '',
     tags: [],
     mainImage: '',
     images: [],
@@ -27,7 +28,8 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: name === 'price' ? parseFloat(value) : value,
+      // [name]: name === 'price' ? parseFloat(value) : value,
+      [name]: name === 'price' || name === 'priceUSD' ? parseFloat(value) : value,
     });
   };
 
@@ -127,16 +129,29 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
               />
               {errors.name && <p className={s.error}>{errors.name}</p>}
             </div>
-            <div className={s.divInput}>
-              <h4 className={s.label}>Precio</h4>
-              <input
-                className={s.input}
-                type="number"
-                name="price"
-                value={formData.price}
-                onChange={handleChange}
-              />
-              {errors.price && <p className={s.error}>{errors.price}</p>}
+            <div className={s.divPrices}>
+              <div className={s.divInput}>
+                <h4 className={s.label}>Precio</h4>
+                <input
+                  className={s.input}
+                  type="number"
+                  name="price"
+                  value={formData.price}
+                  onChange={handleChange}
+                />
+                {errors.price && <p className={s.error}>{errors.price}</p>}
+              </div>
+              <div className={s.divInput}>
+                <h4 className={s.label}>Precio en USD</h4>
+                <input
+                  className={s.input}
+                  type="number"
+                  name="priceUSD"
+                  value={formData.priceUSD}
+                  onChange={handleChange}
+                />
+                {errors.priceUSD && <p className={s.error}>{errors.priceUSD}</p>}
+              </div>
             </div>
           </div>
           <div className={s.divDescription}>

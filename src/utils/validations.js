@@ -173,7 +173,7 @@ export const editWholesalerValidator = ({ name, phone, street, city, province, p
   return errors;
 };
 
-export const createVariableProductValidator = ({ name, price, description, tags, images, mainImage, colors }) => {
+export const createVariableProductValidator = ({ name, price, description, tags, images, mainImage, colors, priceUSD }) => {
   const errors = {};
 
   if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
@@ -186,6 +186,10 @@ export const createVariableProductValidator = ({ name, price, description, tags,
 
   if(!price || typeof price !== 'number' || price < 1) {
     errors.price = 'El precio debe ser un número mayor a 0';
+  }
+
+  if(priceUSD !== undefined && priceUSD !== '' && (isNaN(priceUSD) || Number(priceUSD) <= 0)) {
+    errors.priceUSD = 'El precio en USD debe ser un número mayor a 0';
   }
 
   if(!Array.isArray(images) || images.length < 1 || !mainImage || typeof mainImage !== 'string' || mainImage.trim() === '') {
@@ -203,7 +207,7 @@ export const createVariableProductValidator = ({ name, price, description, tags,
   return errors;
 }
 
-export const createSimpleProductValidator = ({ name, price, description, tags, images, mainImage, sizes }) => {
+export const createSimpleProductValidator = ({ name, price, description, tags, images, mainImage, sizes, priceUSD }) => {
   const errors = {};
 
   if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
@@ -216,6 +220,10 @@ export const createSimpleProductValidator = ({ name, price, description, tags, i
 
   if(!price || typeof price !== 'number' || price < 1) {
     errors.price = 'El precio debe ser un número mayor a 0';
+  }
+
+  if(priceUSD !== undefined && priceUSD !== '' && (isNaN(priceUSD) || Number(priceUSD) <= 0)) {
+    errors.priceUSD = 'El precio en USD debe ser un número mayor a 0';
   }
 
   if(!Array.isArray(images) || images.length < 1 || !mainImage || typeof mainImage !== 'string' || mainImage.trim() === '') {
@@ -233,7 +241,7 @@ export const createSimpleProductValidator = ({ name, price, description, tags, i
   return errors;
 }
 
-export const createBisuteriProductValidator = ({ name, price, description, tags, images, mainImage }) => {
+export const createBisuteriProductValidator = ({ name, price, description, tags, images, mainImage, priceUSD }) => {
   const errors = {};
 
   if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
@@ -246,6 +254,10 @@ export const createBisuteriProductValidator = ({ name, price, description, tags,
 
   if(!price || typeof price !== 'number' || price < 1) {
     errors.price = 'El precio debe ser un número mayor a 0';
+  }
+
+  if(priceUSD !== undefined && priceUSD !== '' && (isNaN(priceUSD) || Number(priceUSD) <= 0)) {
+    errors.priceUSD = 'El precio en USD debe ser un número mayor a 0';
   }
 
   if(!Array.isArray(images) || images.length < 1 || !mainImage || typeof mainImage !== 'string' || mainImage.trim() === '') {

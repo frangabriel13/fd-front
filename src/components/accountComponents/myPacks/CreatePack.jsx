@@ -5,6 +5,7 @@ import s from './CreatePack.module.css';
 import SelectProducts from './SelectProducts';
 import { formatPrice } from '../../../utils/utils';
 import { createPackValidator } from '../../../utils/validations';
+import SelectQuantities from './SelectQuantities';
 
 const CreatePack = ({ onClose, myProducts }) => {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ const CreatePack = ({ onClose, myProducts }) => {
     quantityTotal: 0,
   });
   const [errors, setErrors] = useState({});
+  const [quantityModal, setQuantityModal] = useState(false);
 
   useEffect(() => {
     const totalQuantity = selectedProducts.reduce((total, product) => total + parseInt(product.quantity), 0);
@@ -44,6 +46,14 @@ const CreatePack = ({ onClose, myProducts }) => {
     });
     setSelectedProducts(updatedProducts);
     closeSelectProduct();
+  };
+
+  const openSelectQuantities = () => {
+    setQuantityModal(true);
+  };
+
+  const closeSelectQuantities = () => {
+    setQuantityModal(false);
   };
 
   const handleQuantityChange = (id, quantity) => {
@@ -82,9 +92,6 @@ const CreatePack = ({ onClose, myProducts }) => {
     dispatch(createPack(packData));
     onClose();
   };
-
-  console.log('formData', formData);
-  console.log('quantityTotal', formData.quantityTotal);
 
   return (
     <div className={s.modal} onClick={handleClickOutside}>
@@ -158,6 +165,9 @@ const CreatePack = ({ onClose, myProducts }) => {
                   ))}
                   {errors.quantity && <p className={s.error}>{errors.quantity}</p>}
                 </div>
+                {selectedProducts.length > 0 &&
+                  <button type='button' className={s.btnAdd} onClick={openSelectQuantities}>Editar cantidades</button>
+                }
               </div>
             </div>
             <hr className={s.divider} />
@@ -174,7 +184,14 @@ const CreatePack = ({ onClose, myProducts }) => {
           myProducts={myProducts}
           selectedProducts={selectedProducts}
           onSelect={handleSelectProducts}
-        />}
+        />
+      }
+      {quantityModal &&
+        <SelectQuantities 
+          products={selectedProducts} 
+          onClose={closeSelectQuantities} 
+        />
+      }
     </div>
   )
 };

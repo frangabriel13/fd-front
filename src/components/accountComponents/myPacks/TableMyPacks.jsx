@@ -52,7 +52,11 @@ const TableMyPacks = ({ myPacks, myProducts, onDelete }) => {
                 myPacks.map(pack => (
                   <tr key={pack.id}>
                     <td>
-                      <img src={pack.products[0].mainImage} alt={pack.name} className={s.productImage} />
+                      {pack.products[0]?.mainImage ? (
+                        <img src={pack.products[0].mainImage} alt={pack.name} className={s.productImage} />
+                      ) : (
+                        <span className={s.noImage}>Sin imagen</span>
+                      )}
                     </td>
                     <td>{pack.name}</td>
                     <td>{pack.quantityTotal}</td>

@@ -92,7 +92,7 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
     const packData = {
       ...formData,
       price: parseInt(formData.price),
-      products: selectedProducts.map(product => ({ id: product.id, quantity: product.quantity, quantities: product.quantities })),
+      products: selectedProducts.map(product => ({ id: product.id, quantity: product.quantity, quantities: product.productpack.quantities })),
       id: pack.id,
     };
 

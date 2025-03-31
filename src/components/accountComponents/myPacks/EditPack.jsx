@@ -10,7 +10,7 @@ import SelectQuantities from './SelectQuantities';
 const EditPack = ({ pack, closeModal, myProducts }) => {
   const dispatch = useDispatch();
   const [selectedProducts, setSelectedProducts] = useState(
-    pack.products.map(product => ({ ...product, quantity: product.productpack.quantity || 1 }))
+    pack.products.map(product => ({ ...product, quantity: product.productpack.quantity || 1, quantities: product.productpack.quantities }))
   );
   const [selectProductsModal, setSelectProductsModal] = useState(false);
   const [formData, setFormData] = useState({
@@ -92,7 +92,7 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
     const packData = {
       ...formData,
       price: parseInt(formData.price),
-      products: selectedProducts.map(product => ({ id: product.id, quantity: product.quantity })),
+      products: selectedProducts.map(product => ({ id: product.id, quantity: product.quantity, quantities: product.quantities })),
       id: pack.id,
     };
 

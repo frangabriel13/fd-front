@@ -40,11 +40,6 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
     setSelectProductsModal(false);
   }
 
-  // const handleSelectProducts = (products) => {
-  //   const productsWithQuantity = products.map(product => ({ ...product, quantity: 1 }));
-  //   setSelectedProducts(productsWithQuantity);
-  //   closeSelectProduct();
-  // }
   const handleSelectProducts = (products) => {
     const updatedProducts = products.map(product => {
       const existingProduct = selectedProducts.find(p => p.id === product.id);
@@ -92,6 +87,8 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
       closeModal();
     });
   }
+
+  console.log('selectedProducts', selectedProducts);
 
   return (
     <div className={s.modal} onClick={handleClickOutside}>
@@ -153,11 +150,9 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
                       <div className={s.divActions}>
                         <div className={s.quantity}>
                           <h5>Cantidad:</h5>
-                          <input 
-                            type="number"
-                            value={product.quantity}
-                            onChange={(e) => handleQuantityChange(product.id, e.target.value)} 
-                          />
+                          <span className={s.quantityValue}>
+                            {product.productpack.quantities.reduce((total, q) => total + q.quantity, 0)}
+                          </span>
                         </div>
                         <button className={s.btnDelete} onClick={() => handleDeleteProduct(product.id)}>X</button>
                       </div>

@@ -89,24 +89,36 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+  
+    // Recalcular quantityTotal antes de enviar
+    const totalQuantity = selectedProducts.reduce((total, product) => 
+      total + product.productpack.quantities.reduce((sum, q) => sum + q.quantity, 0), 
+      0
+    );
+  
     const packData = {
       ...formData,
+      quantityTotal: totalQuantity, // Asegurarse de que esté actualizado
       price: parseInt(formData.price),
-      products: selectedProducts.map(product => ({ id: product.id, quantity: product.quantity, quantities: product.productpack.quantities })),
+      products: selectedProducts.map(product => ({
+        id: product.id,
+        quantity: product.quantity,
+        quantities: product.productpack.quantities,
+      })),
       id: pack.id,
     };
-
+  
     const validationErrors = createPackValidator(packData);
-    if(Object.keys(validationErrors).length > 0) {
+    if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
     }
-
-    setErrors({})
+  
+    setErrors({});
     dispatch(updatePack(packData)).then(() => {
       closeModal();
     });
-  }
+  };
 
   const handleSaveQuantities = (updatedProducts) => {
     const recalculatedProducts = updatedProducts.map(product => ({

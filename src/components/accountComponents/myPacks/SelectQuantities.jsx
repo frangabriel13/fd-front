@@ -2,6 +2,7 @@ import { useState } from 'react';
 import s from './SelectQuantities.module.css';
 
 const SelectQuantities = ({ products, onClose, onSave }) => {
+  console.log('products', products);
   const [updatedProducts, setUpdatedProducts] = useState(products);
 
   const handleClickOutside = (e) => {
@@ -45,9 +46,11 @@ const SelectQuantities = ({ products, onClose, onSave }) => {
               <div key={product.id} className={s.productItem}>
                 <h4>{product.name}</h4>
                 <div className={s.list}>
-                {product.inventories.map(inv => {
-                    // Buscar la cantidad correspondiente en product.quantities
-                    const quantityObj = product.quantities.find(q => q.id === inv.id) || { quantity: 0 };
+                  {product.inventories.map(inv => {
+                    // Determinar si usar product.quantities o product.productpack.quantities
+                    const quantities = product.productpack?.quantities || product.quantities;
+                    const quantityObj = quantities.find(q => q.id === inv.id) || { quantity: 0 };
+
                     return (
                       <div key={inv.id} className={s.variantItem}>
                         <h5>{product.isVariable ? inv.color : inv.size}</h5>

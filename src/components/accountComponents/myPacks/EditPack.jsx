@@ -20,6 +20,7 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
     quantityTotal: pack.quantityTotal,
   });
   const [errors, setErrors] = useState({});
+  const [quantityModal, setQuantityModal] = useState(false);
 
   useEffect(() => {
     const totalQuantity = selectedProducts.reduce((total, product) => total + parseInt(product.quantity), 0);
@@ -49,14 +50,13 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
     closeSelectProduct();
   };
 
-  const handleQuantityChange = (id, quantity) => {
-    setSelectedProducts(selectedProducts.map(product => {
-      if(product.id === id) {
-        return { ...product, quantity: parseInt(quantity) };
-      }
-      return product;
-    }));
-  }
+  const openSelectQuantities = () => {
+    setQuantityModal(true);
+  };
+
+  const closeSelectQuantities = () => {
+    setQuantityModal(false);
+  };
 
   const handleDeleteProduct = (id) => {
     setSelectedProducts(selectedProducts.filter(product => product.id !== id));
@@ -87,6 +87,16 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
       closeModal();
     });
   }
+
+  const handleSaveQuantities = (updatedProducts) => {
+    const recalculatedProducts = updatedProducts.map(product => ({
+      ...product,
+      quantity: product.productpack.quantities.reduce((total, q) => total + q.quantity, 0), // Recalcular la suma de quantities.quantity
+    }));
+  
+    setSelectedProducts(recalculatedProducts);
+    closeSelectQuantities();
+  };
 
   console.log('selectedProducts', selectedProducts);
 
@@ -160,6 +170,9 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
                   ))}
                   {errors.quantity && <p className={s.error}>{errors.quantity}</p>}
                 </div>
+                {selectedProducts.length > 0 &&
+                  <button type='button' className={s.btnAdd} onClick={openSelectQuantities}>Editar cantidades</button>
+                }
               </div>
             </div>
             <hr className={s.divider} />
@@ -175,6 +188,13 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
             myProducts={myProducts}
             selectedProducts={selectedProducts}
             onSelect={handleSelectProducts}
+          />
+        }
+        {quantityModal &&
+          <SelectQuantities 
+            products={selectedProducts} 
+            onClose={closeSelectQuantities}
+            onSave={handleSaveQuantities}
           />
         }
       </div>

@@ -14,17 +14,32 @@ const SelectQuantities = ({ products, onClose, onSave }) => {
   const handleQuantityChange = (productId, inventoryId, value) => {
     const newProducts = updatedProducts.map(product => {
       if (product.id === productId) {
-        return {
-          ...product,
-          quantities: product.quantities.map(quantity =>
-            quantity.id === inventoryId
-              ? { ...quantity, quantity: parseInt(value) || 0 }
-              : quantity
-          ),
-        };
+        // Determinar si usar product.productpack.quantities o product.quantities
+        const updatedQuantities = (product.productpack?.quantities || product.quantities).map(quantity =>
+          quantity.id === inventoryId
+            ? { ...quantity, quantity: parseInt(value) || 0 }
+            : quantity
+        );
+  
+        // Actualizar la propiedad correcta
+        if (product.productpack) {
+          return {
+            ...product,
+            productpack: {
+              ...product.productpack,
+              quantities: updatedQuantities,
+            },
+          };
+        } else {
+          return {
+            ...product,
+            quantities: updatedQuantities,
+          };
+        }
       }
       return product;
     });
+  
     setUpdatedProducts(newProducts); // Actualizar el estado local
   };
 

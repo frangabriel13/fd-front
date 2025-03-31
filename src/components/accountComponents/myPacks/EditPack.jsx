@@ -5,6 +5,7 @@ import SelectProducts from './SelectProducts';
 import { formatPrice } from '../../../utils/utils';
 import s from './CreatePack.module.css';
 import { createPackValidator } from '../../../utils/validations';
+import SelectQuantities from './SelectQuantities';
 
 const EditPack = ({ pack, closeModal, myProducts }) => {
   const dispatch = useDispatch();

@@ -42,8 +42,28 @@ const CreatePack = ({ onClose, myProducts }) => {
   const handleSelectProducts = (products) => {
     const updatedProducts = products.map(product => {
       const existingProduct = selectedProducts.find(p => p.id === product.id);
-      return existingProduct ? existingProduct : { ...product, quantity: 1, quantities: product.inventories.map(inv => ({ id: inv.id, size: inv.size, color: inv.color, quantity: 0 })) };
+  
+      if (existingProduct) {
+        return existingProduct;
+      }
+  
+      const quantities = product.inventories.map(inv => ({
+        id: inv.id,
+        size: inv.size,
+        color: inv.color,
+        quantity: 0, // Inicialmente en 0, pero puede ser actualizado más adelante
+      }));
+  
+      // Calcular la suma de quantities.quantity
+      const totalQuantity = quantities.reduce((sum, q) => sum + q.quantity, 0);
+  
+      return { 
+        ...product, 
+        quantity: totalQuantity, 
+        quantities 
+      };
     });
+  
     setSelectedProducts(updatedProducts);
     closeSelectProduct();
   };
@@ -54,15 +74,6 @@ const CreatePack = ({ onClose, myProducts }) => {
 
   const closeSelectQuantities = () => {
     setQuantityModal(false);
-  };
-
-  const handleQuantityChange = (id, quantity) => {
-    setSelectedProducts(selectedProducts.map(product => {
-      if(product.id === id) {
-        return { ...product, quantity: parseInt(quantity) };
-      }
-      return product;
-    }));
   };
 
   const handleDeleteProduct = (id) => {
@@ -94,7 +105,12 @@ const CreatePack = ({ onClose, myProducts }) => {
   };
 
   const handleSaveQuantities = (updatedProducts) => {
-    setSelectedProducts(updatedProducts);
+    const recalculatedProducts = updatedProducts.map(product => ({
+      ...product,
+      quantity: product.quantities.reduce((total, q) => total + q.quantity, 0), // Recalcular la suma de quantities.quantity
+    }));
+  
+    setSelectedProducts(recalculatedProducts);
     closeSelectQuantities();
   };
 
@@ -160,11 +176,9 @@ const CreatePack = ({ onClose, myProducts }) => {
                       <div className={s.divActions}>
                         <div className={s.quantity}>
                           <h5>Cantidad:</h5>
-                          <input 
-                            type="number"
-                            value={product.quantity}
-                            onChange={(e) => handleQuantityChange(product.id, e.target.value)} 
-                          />
+                          <span className={s.quantityValue}>
+                            {product.quantities.reduce((total, q) => total + q.quantity, 0)}
+                          </span>
                         </div>
                         <button className={s.btnDelete} onClick={() => handleDeleteProduct(product.id)}>X</button>
                       </div>

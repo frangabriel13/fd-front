@@ -23,7 +23,7 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
   const [quantityModal, setQuantityModal] = useState(false);
 
   useEffect(() => {
-    const totalQuantity = selectedProducts.reduce((total, product) => total + parseInt(product.quantity), 0);
+    const totalQuantity = selectedProducts.reduce((total, product) => total + parseInt(product.productpack.quantity), 0);
     setFormData(prevFormData => ({ ...prevFormData, quantityTotal: totalQuantity }));
   }, [selectedProducts]);
 
@@ -44,8 +44,28 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
   const handleSelectProducts = (products) => {
     const updatedProducts = products.map(product => {
       const existingProduct = selectedProducts.find(p => p.id === product.id);
-      return existingProduct ? existingProduct : { ...product, quantity: 1 };
+  
+      if (existingProduct) {
+        return existingProduct;
+      }
+  
+      const quantities = product.inventories.map(inv => ({
+        id: inv.id,
+        size: inv.size,
+        color: inv.color,
+        quantity: 0, // Inicialmente en 0, pero puede ser actualizado más adelante
+      }));
+  
+      // Calcular la suma de quantities.quantity
+      const totalQuantity = quantities.reduce((sum, q) => sum + q.quantity, 0);
+  
+      return { 
+        ...product, 
+        quantity: totalQuantity, 
+        quantities 
+      };
     });
+  
     setSelectedProducts(updatedProducts);
     closeSelectProduct();
   };

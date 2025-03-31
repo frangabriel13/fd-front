@@ -53,23 +53,22 @@ export const getPacksByUserId = (page = 1, pageSize = 10) => async (dispatch) =>
 };
 
 export const createPack = (packData) => async (dispatch) => {
-  console.log('packData', packData);
-  // dispatch({ type: 'CREATE_PACK_REQUEST' });
-  // try {
-  //   console.log('packData', packData);
-  //   const response = await packInstance.post('/', packData);
-  //   dispatch({
-  //     type: 'CREATE_PACK_SUCCESS',
-  //     payload: response.data
-  //   });
-  //   dispatch({ type: 'CLEAR_IMAGES' });
-  // } catch(error) {
-  //   dispatch({
-  //     type: 'CREATE_PACK_FAILURE',
-  //     error: error.message,
-  //   });
-  //   dispatch({ type: 'CLEAR_IMAGES' });
-  // }
+  dispatch({ type: 'CREATE_PACK_REQUEST' });
+  try {
+    console.log('packData', packData);
+    const response = await packInstance.post('/', packData);
+    dispatch({
+      type: 'CREATE_PACK_SUCCESS',
+      payload: response.data
+    });
+    dispatch({ type: 'CLEAR_IMAGES' });
+  } catch(error) {
+    dispatch({
+      type: 'CREATE_PACK_FAILURE',
+      error: error.message,
+    });
+    dispatch({ type: 'CLEAR_IMAGES' });
+  }
 };
 
 export const deletePack = (packId) => async (dispatch) => {
@@ -89,18 +88,17 @@ export const deletePack = (packId) => async (dispatch) => {
 };
 
 export const updatePack = (packData) => async (dispatch) => {
-  console.log('packData', packData);
-  // dispatch({ type: 'UPDATE_PACK_REQUEST' });
-  // try {
-  //   const response = await packInstance.put(`/${packData.id}`, packData);
-  //   dispatch({
-  //     type: 'UPDATE_PACK_SUCCESS',
-  //     payload: response.data
-  //   });
-  // } catch(error) {
-  //   dispatch({
-  //     type: 'UPDATE_PACK_FAILURE',
-  //     error: error.message,
-  //   });
-  // }
+  dispatch({ type: 'UPDATE_PACK_REQUEST' });
+  try {
+    const response = await packInstance.put(`/${packData.id}`, packData);
+    dispatch({
+      type: 'UPDATE_PACK_SUCCESS',
+      payload: response.data
+    });
+  } catch(error) {
+    dispatch({
+      type: 'UPDATE_PACK_FAILURE',
+      error: error.message,
+    });
+  }
 };

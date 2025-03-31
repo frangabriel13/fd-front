@@ -55,6 +55,7 @@ export const getPacksByUserId = (page = 1, pageSize = 10) => async (dispatch) =>
 export const createPack = (packData) => async (dispatch) => {
   dispatch({ type: 'CREATE_PACK_REQUEST' });
   try {
+    console.log('packData', packData);
     const response = await packInstance.post('/', packData);
     dispatch({
       type: 'CREATE_PACK_SUCCESS',

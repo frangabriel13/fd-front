@@ -29,8 +29,6 @@ const SelectProducts = ({ myProducts, selectedProducts, onClose, onSelect }) => 
     onClose();
   };
 
-  console.log('myProducts', myProducts);
-
   return (
     <div className={s.modal} onClick={handleClickOutside}>
       <div className={s.modalContent}>

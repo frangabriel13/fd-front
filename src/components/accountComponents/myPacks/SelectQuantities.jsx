@@ -1,11 +1,35 @@
 import { useState } from 'react';
 import s from './SelectQuantities.module.css';
 
-const SelectQuantities = ({ products, onClose }) => {
+const SelectQuantities = ({ products, onClose, onSave }) => {
+  const [updatedProducts, setUpdatedProducts] = useState(products);
+
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
+  };
+
+  const handleQuantityChange = (productId, inventoryId, value) => {
+    const newProducts = updatedProducts.map(product => {
+      if (product.id === productId) {
+        return {
+          ...product,
+          quantities: product.quantities.map(quantity =>
+            quantity.id === inventoryId
+              ? { ...quantity, quantity: parseInt(value) || 0 }
+              : quantity
+          ),
+        };
+      }
+      return product;
+    });
+    setUpdatedProducts(newProducts); // Actualizar el estado local
+  };
+
+  const handleSave = () => {
+    onSave(updatedProducts); // Llamar a onSave con los productos actualizados
+    onClose(); // Cerrar el modal
   };
 
   return (
@@ -14,51 +38,48 @@ const SelectQuantities = ({ products, onClose }) => {
         <div className={s.container}>
           <div className={s.divTitle}>
             <h3>Seleccionar cantidades</h3>
-            <p>Selecciona los cantidades que deseas agregar de cada producto</p>
+            <p>Selecciona las cantidades que deseas agregar de cada producto</p>
           </div>
           <div className={s.divList}>
-            {
-              products.map(product => (
-                <div key={product.id} className={s.productItem}>
-                  <h4>{product.name}</h4>
-                  <div className={s.list}>
-                    {
-                      product.isVariable ? (
-                        product.inventories.map(inv => (
-                          <div key={inv.id} className={s.variantItem}>
-                            <h5>{inv.color}</h5>
-                            <div className={s.quantity}>
-                              <h5>Cantidad:</h5>
-                              <input 
-                                type="number"
-                              />
-                            </div>
-                          </div>
-                        ))
-                      ) : (
-                        product.inventories.map(inv => (
-                          <div key={inv.id} className={s.variantItem}>
-                            <h5>{inv.size}</h5>
-                            <div className={s.quantity}>
-                              <h5>Cantidad:</h5>
-                              <input 
-                                type="number"
-                              />
-                            </div>
-                          </div>
-                        ))
-                      )
-                    }
-                  </div>
+            {updatedProducts.map(product => (
+              <div key={product.id} className={s.productItem}>
+                <h4>{product.name}</h4>
+                <div className={s.list}>
+                {product.inventories.map(inv => {
+                    // Buscar la cantidad correspondiente en product.quantities
+                    const quantityObj = product.quantities.find(q => q.id === inv.id) || { quantity: 0 };
+                    return (
+                      <div key={inv.id} className={s.variantItem}>
+                        <h5>{product.isVariable ? inv.color : inv.size}</h5>
+                        <div className={s.quantity}>
+                          <h5>Cantidad:</h5>
+                          <input
+                            type="number"
+                            value={quantityObj.quantity}
+                            onChange={(e) =>
+                              handleQuantityChange(product.id, inv.id, e.target.value)
+                            }
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
                 </div>
-              ))
-            }
+              </div>
+            ))}
+          </div>
+          <div className={s.divBtn}>
+            <button className={s.btnCancel} onClick={onClose}>
+              Cancelar
+            </button>
+            <button className={s.btnSave} onClick={handleSave}>
+              Guardar
+            </button>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 };
-
 
 export default SelectQuantities;

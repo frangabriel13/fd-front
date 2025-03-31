@@ -68,15 +68,14 @@ const SelectQuantities = ({ products, onClose, onSave }) => {
               </div>
             ))}
           </div>
-          <div className={s.divBtn}>
-            <button className={s.btnCancel} onClick={onClose}>
-              Cancelar
-            </button>
-            <button className={s.btnSave} onClick={handleSave}>
-              Guardar
-            </button>
-          </div>
         </div>
+          <div className={s.divDivider}>
+            <hr className={s.divider} />
+            <div className={s.divBtn}>
+              <button className={s.btnCancel} onClick={onClose}>Cerrar</button>
+              <button className={s.btnNext} onClick={handleSave}>Guardar</button>
+            </div>
+          </div>
       </div>
     </div>
   );

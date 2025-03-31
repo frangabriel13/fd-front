@@ -42,7 +42,7 @@ const CreatePack = ({ onClose, myProducts }) => {
   const handleSelectProducts = (products) => {
     const updatedProducts = products.map(product => {
       const existingProduct = selectedProducts.find(p => p.id === product.id);
-      return existingProduct ? existingProduct : { ...product, quantity: 1 };
+      return existingProduct ? existingProduct : { ...product, quantity: 1, quantities: product.inventories.map(inv => ({ id: inv.id, size: inv.size, color: inv.color, quantity: 0 })) };
     });
     setSelectedProducts(updatedProducts);
     closeSelectProduct();
@@ -79,7 +79,7 @@ const CreatePack = ({ onClose, myProducts }) => {
     const packData = {
       ...formData,
       price: parseInt(formData.price),
-      products: selectedProducts.map(product => ({ id: product.id, quantity: product.quantity })),
+      products: selectedProducts.map(product => ({ id: product.id, quantity: product.quantity, quantities: product.quantities })),
     };
 
     const validationErrors = createPackValidator(packData);
@@ -92,6 +92,13 @@ const CreatePack = ({ onClose, myProducts }) => {
     dispatch(createPack(packData));
     onClose();
   };
+
+  const handleSaveQuantities = (updatedProducts) => {
+    setSelectedProducts(updatedProducts);
+    closeSelectQuantities();
+  };
+
+  console.log('selectedProducts', selectedProducts);
 
   return (
     <div className={s.modal} onClick={handleClickOutside}>
@@ -189,7 +196,8 @@ const CreatePack = ({ onClose, myProducts }) => {
       {quantityModal &&
         <SelectQuantities 
           products={selectedProducts} 
-          onClose={closeSelectQuantities} 
+          onClose={closeSelectQuantities}
+          onSave={handleSaveQuantities}
         />
       }
     </div>

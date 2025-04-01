@@ -47,13 +47,14 @@ const PacksRow = () => {
         <div className={s.divProducts} ref={packsContainerRef}>
           {newPacks.map((pack, index) => (
             <div className={s.productCard} key={`${pack.id}-${index}`}>
-                <PackCard 
-                  name={pack.name}
-                  price={pack.price}
-                  logo={pack.logo}
-                  id={pack.id}
-                />
-              </div>
+              <PackCard 
+                name={pack.name}
+                price={pack.price}
+                logo={pack.logo}
+                id={pack.id}
+                products={pack.products}
+              />
+            </div>
           ))}
         </div>
         <button className={s.nextButton} onClick={handleNext}>

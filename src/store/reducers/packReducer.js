@@ -3,6 +3,7 @@ const initialState = {
   error: null,
   packs: [],
   myPacks: [],
+  newPacks: [],
   currentPage: 1,
   pageSize: 20,
   myCurrentPage: 1,
@@ -41,6 +42,21 @@ const packReducer = (state = initialState, action) => {
       };
     case 'GET_PACKS_BY_USER_FAILURE':
       return { ...state, loading: false, error: action.error };
+    case 'GET_NEW_PACKS_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'GET_NEW_PACKS_SUCCESS':
+      return { 
+        ...state, 
+        loading: false, 
+        error: null,
+        newPacks: action.payload,
+      };
+    case 'GET_NEW_PACKS_FAILURE':
+      return { 
+        ...state, 
+        loading: false, 
+        error: action.error,
+      };
     case 'CREATE_PACK_REQUEST':
       return { 
         ...state, 

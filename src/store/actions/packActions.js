@@ -52,6 +52,22 @@ export const getPacksByUserId = (page = 1, pageSize = 10) => async (dispatch) =>
   }
 };
 
+export const getNewPacks = () => async (dispatch) => {
+  dispatch({ type: 'GET_NEW_PACKS_REQUEST' });
+  try {
+    const response = await packInstance.get('/new');
+    dispatch({
+      type: 'GET_NEW_PACKS_SUCCESS',
+      payload: response.data
+    });
+  } catch(error) {
+    dispatch({
+      type: 'GET_NEW_PACKS_FAILURE',
+      error: error.message,
+    });
+  }
+};
+
 export const createPack = (packData) => async (dispatch) => {
   dispatch({ type: 'CREATE_PACK_REQUEST' });
   try {

@@ -20,6 +20,12 @@
   position: relative;
 }
 
+.divImages {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 2 columnas de igual tamaño */
+  grid-template-rows: repeat(2, auto); /* 2 filas automáticas */
+}
+
 .image {
   width: 100%;
   /* width: 26rem; */

@@ -23,7 +23,7 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
   const [quantityModal, setQuantityModal] = useState(false);
 
   useEffect(() => {
-    const totalQuantity = selectedProducts.reduce((total, product) => total + parseInt(product.productpack.quantity), 0);
+    const totalQuantity = selectedProducts.reduce((total, product) => total + parseInt(product.quantity), 0);
     setFormData(prevFormData => ({ ...prevFormData, quantityTotal: totalQuantity }));
   }, [selectedProducts]);
 
@@ -92,7 +92,7 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
   
     // Recalcular quantityTotal antes de enviar
     const totalQuantity = selectedProducts.reduce((total, product) => 
-      total + product.productpack.quantities.reduce((sum, q) => sum + q.quantity, 0), 
+      total + product.quantities.reduce((sum, q) => sum + q.quantity, 0), 
       0
     );
   
@@ -103,7 +103,7 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
       products: selectedProducts.map(product => ({
         id: product.id,
         quantity: product.quantity,
-        quantities: product.productpack.quantities,
+        quantities: product.quantities,
       })),
       id: pack.id,
     };
@@ -123,7 +123,7 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
   const handleSaveQuantities = (updatedProducts) => {
     const recalculatedProducts = updatedProducts.map(product => ({
       ...product,
-      quantity: product.productpack.quantities.reduce((total, q) => total + q.quantity, 0), // Recalcular la suma de quantities.quantity
+      quantity: product.quantities.reduce((total, q) => total + q.quantity, 0), // Recalcular la suma de quantities.quantity
     }));
   
     setSelectedProducts(recalculatedProducts);
@@ -193,7 +193,7 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
                         <div className={s.quantity}>
                           <h5>Cantidad:</h5>
                           <span className={s.quantityValue}>
-                            {product.productpack.quantities.reduce((total, q) => total + q.quantity, 0)}
+                            {product.quantities.reduce((total, q) => total + q.quantity, 0)}
                           </span>
                         </div>
                         <button className={s.btnDelete} onClick={() => handleDeleteProduct(product.id)}>X</button>

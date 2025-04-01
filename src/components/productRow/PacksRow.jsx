@@ -1,6 +1,7 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getProducts } from '../../store/actions/productActions';
+import { useNavigate } from 'react-router-dom';
+import { getPacks } from '../../store/actions/packActions';
 import s from './ProductRow.module.css';
 import { GrNext, GrPrevious } from "react-icons/gr";
 import ProductCard from '../productStore/ProductCard';

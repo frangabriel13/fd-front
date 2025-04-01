@@ -6,7 +6,7 @@ const ProductCard = ({ id, name, image, price, logo, products }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/producto/${id}`);
+    navigate(`/pack/${id}`);
   };
 
   const displayedProducts = products.length >= 4 

@@ -19,6 +19,7 @@ import ProductDetail from './pages/productDetail/ProductDetail';
 import Manufacturers from './pages/manufacturers/Manufacturers';
 import Help from './pages/help/Help';
 import Cart from './pages/cart/Cart';
+import PackDetail from './pages/packDetail/PackDetail';
 
 function App() {
   const location = useLocation();
@@ -73,6 +74,7 @@ function App() {
           <Route path='/fabricantes' element={<Manufacturers />} />
           <Route path='/preguntas-frecuentes' element={<Help />} />
           <Route path='/mi-carrito' element={<Cart />} />
+          <Route path='/pack/:packId' element={<PackDetail />} />
         </Routes>
       </div>
       <Footer />

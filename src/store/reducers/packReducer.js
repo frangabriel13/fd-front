@@ -2,6 +2,7 @@ const initialState = {
   loading: false,
   error: null,
   packs: [],
+  pack: null,
   myPacks: [],
   newPacks: [],
   currentPage: 1,
@@ -57,6 +58,12 @@ const packReducer = (state = initialState, action) => {
         loading: false, 
         error: action.error,
       };
+    case 'GET_PACK_BY_ID_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'GET_PACK_BY_ID_SUCCESS':
+      return { ...state, loading: false, error: null, pack: action.payload };
+    case 'GET_PACK_BY_ID_FAILURE':
+      return { ...state, loading: false, error: action.error };
     case 'CREATE_PACK_REQUEST':
       return { 
         ...state, 

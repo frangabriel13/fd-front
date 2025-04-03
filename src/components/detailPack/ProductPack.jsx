@@ -1,12 +1,39 @@
 import s from './ProductPack.module.css';
+import { formatPrice } from '../../utils/utils';
 
 const ProductPack = ({ product }) => {
   console.log(product);
   return(
     <div className={s.container}>
-      <div className={s.divImage}>
-        <img src={product.mainImage} alt={product.name} className={s.image} />
+      <div className={s.divData}>
+        <div className={s.divImage}>
+          <img src={product.mainImage} alt={product.name} className={s.image} />
+        </div>
+        <div className={s.dataProduct}>
+          <h3 className={s.title}>{product.name}</h3>
+          <p className={s.price}>{formatPrice(product.price)}</p>
+        </div>
+        <div className={s.variants}>
+          <p>Lista de variantes:</p>
+          <table className={s.table}>
+            <thead>
+              <tr>
+                <th>{product.isVariable ? 'Color' : 'Talle'}</th>
+                <th>Cantidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              {product.productpack.quantities.map((variant, index) => (
+                <tr key={index}>
+                  <td>{product.isVariable ? variant.color : variant.size}</td>
+                  <td>{variant.quantity}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
+      
     </div>
   )
 };

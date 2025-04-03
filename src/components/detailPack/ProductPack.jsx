@@ -23,12 +23,14 @@ const ProductPack = ({ product }) => {
               </tr>
             </thead>
             <tbody>
-              {product.productpack.quantities.map((variant, index) => (
-                <tr key={index}>
-                  <td>{product.isVariable ? variant.color : variant.size}</td>
-                  <td>{variant.quantity}</td>
-                </tr>
-              ))}
+              {product.productpack.quantities
+                .filter(variant => variant.quantity > 0)
+                .map((variant, index) => (
+                  <tr key={index}>
+                    <td>{product.isVariable ? variant.color : variant.size}</td>
+                    <td>{variant.quantity}</td>
+                  </tr>
+                ))}
             </tbody>
           </table>
         </div>

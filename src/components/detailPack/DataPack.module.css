@@ -88,3 +88,9 @@
   color: black;
   font-weight: 600;
 }
+
+.divProducts {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}

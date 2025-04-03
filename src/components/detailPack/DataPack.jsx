@@ -7,8 +7,10 @@ import {
   BsStarFill,
 } from "react-icons/bs";
 import { formatPrice } from '../../utils/utils';
+import ProductPack from './ProductPack';
 
 const DataPack = ({ pack }) => {
+  console.log(pack);
   return(
     <div className={s.container}>
       <div className={s.divHeader}>
@@ -42,6 +44,9 @@ const DataPack = ({ pack }) => {
           <p className={s.whole}>Comprando en dólares</p>
         </div>
       </div>
+      {pack.products.map((product) => (
+        <ProductPack key={product.id} product={product} />
+      ))}
     </div>
   )
 };

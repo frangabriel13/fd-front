@@ -10,6 +10,7 @@ import FiltersShop from './FiltersShop';
 import Pagination from '../../components/pagination/Pagination';
 import PackCard from '../../components/packStore/PackCard';
 
+// Arreglar el hecho que llame dos veces a la API para obtener los productos y packs.
 const Shop = () => {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -49,7 +50,7 @@ const Shop = () => {
       if (filters.type === 'product') {
         await dispatch(getProducts(currentPage, 24, filters, filters.searchTerm));
       } else if (filters.type === 'pack') {
-        await dispatch(getPacks(currentPage, 24));
+        await dispatch(getPacks(currentPage, 24, filters));
       }
       setLoading(false);
     };

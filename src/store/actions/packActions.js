@@ -1,12 +1,13 @@
 import { packInstance } from "../../utils/axiosConfig";
 
-export const getPacks = (page = 1, pageSize = 20) => async (dispatch) => {
+export const getPacks = (page = 1, pageSize = 24, filters = {}) => async (dispatch) => {
   dispatch({ type: 'GET_PACKS_REQUEST' });
   try {
     const response = await packInstance.get('/', {
       params: {
         page,
         pageSize,
+        ...filters,
       }
     });
     dispatch({

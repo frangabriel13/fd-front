@@ -8,6 +8,7 @@ import s from './Shop.module.css';
 import ProductCard from '../../components/productStore/ProductCard';
 import FiltersShop from './FiltersShop';
 import Pagination from '../../components/pagination/Pagination';
+import PackCard from '../../components/packStore/PackCard';
 
 const Shop = () => {
   const dispatch = useDispatch();
@@ -37,34 +38,6 @@ const Shop = () => {
     };
   };
 
-  // No se renderiza nuevamente si hay cambio en los filtros
-  // useEffect(() => {
-  //   const queryFilters = parseQueryParams(location.search);
-  //   setFilters((prevFilters) => ({
-  //     ...prevFilters,
-  //     ...queryFilters,
-  //   }));
-  // }, [location.search]);
-  
-  // useEffect(() => {
-  //   const fetchProducts = async () => {
-  //     if (!filters.searchTerm && location.search.includes('searchTerm')) {
-  //       return; // Evitar llamada innecesaria si los filtros aún no están sincronizados
-  //     }
-      
-  //     setLoading(true);
-  //     if (filters.type === 'product') {
-  //       await dispatch(getProducts(currentPage, 24, filters, filters.searchTerm));
-  //     } else if (filters.type === 'pack') {
-  //       await dispatch(getPacks(currentPage, 24));
-  //     }
-  //     setLoading(false);
-  //   };
-    
-  //   fetchProducts();
-  // }, [dispatch, currentPage, filters, location.search]);
-
-  // Llama a getProducts 2 veces
   useEffect(() => {
     const queryFilters = parseQueryParams(location.search);
     setFilters(queryFilters);
@@ -130,15 +103,16 @@ const Shop = () => {
               />
             ))
           ) : (
-            packs.map(pack => (
-              <ProductCard 
-                key={pack.id}
-                id={pack.id}
-                name={pack.name}
-                image={pack.mainImage}
-                price={pack.price}
-                logo={pack.logo}
-              />
+            packs.map((pack, index) => (
+              <div className={s.productCard} key={`${pack.id}-${index}`}>
+                <PackCard 
+                  name={pack.name}
+                  price={pack.price}
+                  logo={pack.logo}
+                  id={pack.id}
+                  products={pack.products}
+                />
+              </div>
             ))
           )
         )}

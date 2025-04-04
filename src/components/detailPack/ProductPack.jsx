@@ -39,7 +39,13 @@ const ProductPack = ({ product }) => {
           </div>
         </div>
       </div>
-      
+      <div className={s.divTotal}>
+        <div className={s.total}>
+          <p className={s.totalText}>Total</p>
+          <p className={s.totalQuantity}>{product.productpack.quantity} unidades</p>
+        </div>
+        <button className={s.btnMore}>Ver</button>
+      </div>
     </div>
   )
 };

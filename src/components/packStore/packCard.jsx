@@ -13,8 +13,6 @@ const ProductCard = ({ id, name, image, price, logo, products }) => {
     ? products.slice(0, 4)
     : [...products, ...Array(4 - products.length).fill(products[0])].slice(0, 4);
 
-  console.log('products', products);
-
   return (
     <div className={s.container} onClick={handleClick}>
       <div className={s.divImage}>

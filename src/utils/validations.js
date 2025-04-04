@@ -248,7 +248,7 @@ export const createBisuteriProductValidator = ({ name, price, description, tags,
     errors.name = 'El nombre del producto debe tener entre 3 y 100 caracteres';
   }
 
-  if(!description || typeof description !== 'string' || description.length < 3 || description.length > 1000) {
+  if(description !== '' && (typeof description !== 'string' || description.length < 3 || description.length > 1000)) {
     errors.description = 'La descripción del producto debe tener entre 3 y 1000 caracteres';
   }
 
@@ -273,7 +273,7 @@ export const createBisuteriProductValidator = ({ name, price, description, tags,
 
 export const createPackValidator = ({ name, price, description, products }) => {
   const errors = {};
-
+  console.log('description', description);
   if(!name || typeof name !== 'string' || name.length < 3 || name.length > 100) {  
     errors.name = 'El nombre del pack debe tener entre 3 y 100 caracteres';
   }

@@ -16,7 +16,7 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
   const [formData, setFormData] = useState({
     name: pack.name,
     price: pack.price,
-    description: pack.description,
+    description: pack.description || '',
     quantityTotal: pack.quantityTotal,
   });
   const [errors, setErrors] = useState({});

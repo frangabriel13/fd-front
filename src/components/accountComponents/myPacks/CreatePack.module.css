@@ -60,12 +60,19 @@
 .divInputs {
   display: flex;
   gap: 3rem;
+  width: 100%;
 }
 
 .divInput {
   display: flex;
   flex-direction: column;
   gap: .5rem;
+  width: 50%;
+}
+
+.divPrices {
+  display: flex;
+  gap: 3rem;
   width: 50%;
 }
 
@@ -78,6 +85,7 @@
   border: .1rem solid var(--gray-color-light);
   border-radius: .3rem;
   font-size: 1.5rem;
+  width: 100%;
 }
 
 .divDescription {

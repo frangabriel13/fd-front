@@ -24,9 +24,6 @@ const TableMyPacks = ({ myPacks, myProducts, onDelete }) => {
     setSelectedPack(null);
   }
 
-  console.log('myPacks', myPacks);
-  console.log('myProducts', myProducts);
-
   return (
     <div className={s.container}>
       <h2>Mis packs</h2>

@@ -14,6 +14,7 @@ const CreatePack = ({ onClose, myProducts }) => {
   const [formData, setFormData] = useState({
     name: '',
     price: '',
+    priceUSD: '',
     description: '',
     quantityTotal: 0,
   });
@@ -90,6 +91,7 @@ const CreatePack = ({ onClose, myProducts }) => {
     const packData = {
       ...formData,
       price: parseInt(formData.price),
+      priceUSD: parseInt(formData.priceUSD),
       products: selectedProducts.map(product => ({ id: product.id, quantity: product.quantity, quantities: product.quantities })),
     };
 
@@ -138,16 +140,29 @@ const CreatePack = ({ onClose, myProducts }) => {
                   />
                   {errors.name && <p className={s.error}>{errors.name}</p>}
                 </div>
-                <div className={s.divInput}>
-                  <h4 className={s.label}>Precio</h4>
-                  <input
-                    className={s.input}
-                    type="number"
-                    name="price"
-                    value={formData.price}
-                    onChange={handleChange}
-                  />
-                  {errors.price && <p className={s.error}>{errors.price}</p>}
+                <div className={s.divPrices}>
+                  <div className={s.divInput}>
+                    <h4 className={s.label}>Precio</h4>
+                    <input
+                      className={s.input}
+                      type="number"
+                      name="price"
+                      value={formData.price}
+                      onChange={handleChange}
+                    />
+                    {errors.price && <p className={s.error}>{errors.price}</p>}
+                  </div>
+                  <div className={s.divInput}>
+                    <h4 className={s.label}>Precio en USD</h4>
+                    <input
+                      className={s.input}
+                      type="number"
+                      name="priceUSD"
+                      value={formData.priceUSD}
+                      onChange={handleChange}
+                    />
+                    {errors.priceUSD && <p className={s.error}>{errors.priceUSD}</p>}
+                  </div>
                 </div>
               </div>
               <div className={s.divDescription}>

@@ -103,6 +103,17 @@ const EditVariableProduct = ({ product, closeModal }) => {
                   </div>
                 </div>
               </div>
+              <div className={s.divCheckbox}>
+                <input
+                  type="checkbox"
+                  name="onSale"
+                  checked={formData.onSale}
+                  onChange={handleChange}
+                  />
+                <label>
+                  Marcar ésta casilla si el producto se encuentra en oferta o liquidación
+                </label>
+              </div>
               <div className={s.divDescription}>
                 <h4 className={s.label}>Descripción</h4>
                 <textarea

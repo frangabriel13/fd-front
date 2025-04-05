@@ -16,6 +16,7 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
   const [formData, setFormData] = useState({
     name: pack.name,
     price: pack.price,
+    priceUSD: pack.priceUSD,
     description: pack.description || '',
     quantityTotal: pack.quantityTotal,
   });
@@ -100,6 +101,7 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
       ...formData,
       quantityTotal: totalQuantity, // Asegurarse de que esté actualizado
       price: parseInt(formData.price),
+      priceUSD: parseInt(formData.priceUSD),
       products: selectedProducts.map(product => ({
         id: product.id,
         quantity: product.quantity,
@@ -154,16 +156,29 @@ const EditPack = ({ pack, closeModal, myProducts }) => {
                   />
                   {errors.name && <p className={s.error}>{errors.name}</p>}
                 </div>
-                <div className={s.divInput}>
-                  <h4 className={s.label}>Precio</h4>
-                  <input
-                    className={s.input}
-                    type="number"
-                    name="price"
-                    value={formData.price}
-                    onChange={handleChange}
-                  />
-                  {errors.price && <p className={s.error}>{errors.price}</p>}
+                <div className={s.divPrices}>
+                  <div className={s.divInput}>
+                    <h4 className={s.label}>Precio</h4>
+                    <input
+                      className={s.input}
+                      type="number"
+                      name="price"
+                      value={formData.price}
+                      onChange={handleChange}
+                    />
+                    {errors.price && <p className={s.error}>{errors.price}</p>}
+                  </div>
+                  <div className={s.divInput}>
+                    <h4 className={s.label}>Precio en USD</h4>
+                    <input
+                      className={s.input}
+                      type="number"
+                      name="priceUSD"
+                      value={formData.priceUSD}
+                      onChange={handleChange}
+                    />
+                    {errors.priceUSD && <p className={s.error}>{errors.priceUSD}</p>}
+                  </div>
                 </div>
               </div>
               <div className={s.divDescription}>

@@ -58,7 +58,7 @@ const TableMyProducts = ({ myProducts, handleDelete, sizes }) => {
                     <td>{product.category?.name || 'Cargando...'}</td>
                     <td>{product.gender ? product.gender.name : 'No'}</td>
                     <td>{formatPrice(product.price)}</td>
-                    <td>{product.priceDolar}</td>
+                    <td>{product.priceUSD}</td>
                     <td className={s.tdActions}>
                       <button className={s.btnEdit} onClick={() => openModal(product)}>Editar</button>
                       <button className={s.btnDelete} onClick={() => handleDelete(product.id)}>Eliminar</button>

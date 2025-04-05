@@ -118,14 +118,14 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
                       />
                       <button className={s.btnAddTag} onClick={handleAddTag}>Agregar</button>
                     </div>
-                    <div className={s.tags}>
+                    {/* <div className={s.tags}>
                       {formData.tags.map((tag, index) => (
                         <span key={index} className={s.tag}>
                           {tag}
                           <button type="button" className={s.btnRemoveTag} onClick={() => handleRemoveTag(index)}>x</button>
                         </span>
                       ))}
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className={s.divSubInputs}>

@@ -10,6 +10,8 @@ const EditVariableProduct = ({ product, closeModal }) => {
     price: product.price,
     description: product.description,
     tags: product.tags,
+    priceUSD: product.priceUSD,
+    onSale: product.onSale,
   });
   const [tagInput, setTagInput] = useState('');
 
@@ -20,9 +22,11 @@ const EditVariableProduct = ({ product, closeModal }) => {
   };
 
   const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: type === 'checkbox' ? checked : (name === 'price' || name === 'priceUSD' ? parseFloat(value) : value),
     });
   };
 
@@ -76,15 +80,27 @@ const EditVariableProduct = ({ product, closeModal }) => {
                     onChange={handleChange}
                   />
                 </div>
-                <div className={s.divInput}>
-                  <h4 className={s.label}>Precio</h4>
-                  <input
-                    className={s.input}
-                    type="number"
-                    name="price"
-                    value={formData.price}
-                    onChange={handleChange}
-                  />
+                <div className={s.divPrices}>
+                  <div className={s.divInput}>
+                    <h4 className={s.label}>Precio</h4>
+                    <input
+                      className={s.inputPrice}
+                      type="number"
+                      name="price"
+                      value={formData.price}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className={s.divInput}>
+                    <h4 className={s.label}>Precio en USD</h4>
+                    <input
+                      className={s.inputPrice}
+                      type="number"
+                      name="priceUSD"
+                      value={formData.priceUSD}
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
               </div>
               <div className={s.divDescription}>

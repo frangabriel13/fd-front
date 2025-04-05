@@ -12,15 +12,14 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
     price: product.price,
     description: product.description,
     tags: product.tags,
-
+    priceUSD: product.priceUSD,
+    onSale: product.onSale,
     isVariable: product.isVariable,
     // mainImage: product.mainImage,
     // images: product.images,
     // sizes: product.sizes,
   });
   const [tagInput, setTagInput] = useState('');
-
-  console.log('formData', formData);
 
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
@@ -29,9 +28,11 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
   };
 
   const handleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: type === 'checkbox' ? checked : (name === 'price' || name === 'priceUSD' ? parseFloat(value) : value),
     });
   };
 
@@ -84,15 +85,27 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
                     onChange={handleChange}
                   />
                 </div>
-                <div className={s.divInput}>
-                  <h4 className={s.label}>Precio</h4>
-                  <input
-                    className={s.input}
-                    type="number"
-                    name="price"
-                    value={formData.price}
-                    onChange={handleChange}
-                  />
+                <div className={s.divPrices}>
+                  <div className={s.divInput}>
+                    <h4 className={s.label}>Precio</h4>
+                    <input
+                      className={s.inputPrice}
+                      type="number"
+                      name="price"
+                      value={formData.price}
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className={s.divInput}>
+                    <h4 className={s.label}>Precio en USD</h4>
+                    <input
+                      className={s.inputPrice}
+                      type="number"
+                      name="priceUSD"
+                      value={formData.priceUSD}
+                      onChange={handleChange}
+                    />
+                  </div>
                 </div>
               </div>
               <div className={s.divDescription}>
@@ -118,14 +131,14 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
                       />
                       <button className={s.btnAddTag} onClick={handleAddTag}>Agregar</button>
                     </div>
-                    {/* <div className={s.tags}>
+                    <div className={s.tags}>
                       {formData.tags.map((tag, index) => (
                         <span key={index} className={s.tag}>
                           {tag}
                           <button type="button" className={s.btnRemoveTag} onClick={() => handleRemoveTag(index)}>x</button>
                         </span>
                       ))}
-                    </div> */}
+                    </div>
                   </div>
                 </div>
                 <div className={s.divSubInputs}>

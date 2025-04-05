@@ -54,6 +54,22 @@
   width: 50%;
 }
 
+.divCheckbox {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.divCheckbox input {
+  width: 1.8rem;
+  height: 1.8rem;
+  cursor: pointer;
+}
+
+.divCheckbox label {
+  font-size: 1.5rem;
+}
+
 .label {
   font-size: 1.5rem;
 }

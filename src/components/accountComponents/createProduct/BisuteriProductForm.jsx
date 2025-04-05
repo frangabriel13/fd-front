@@ -17,16 +17,17 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory, onC
     images: [],
     imgIds: [],
     sizes: [19],
+    onSale: false,
   });
   const [tagInput, setTagInput] = useState('');
   const [showImageModal, setShowImageModal] = useState(false);
   const [errors, setErrors] = useState({});
  
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: name === 'price' || name === 'priceUSD' ? parseFloat(value) : value,
+      [name]: type === 'checkbox' ? checked : (name === 'price' || name === 'priceUSD' ? parseFloat(value) : value),
     });
   };
 
@@ -135,6 +136,17 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory, onC
                 {errors.priceUSD && <p className={s.error}>{errors.priceUSD}</p>}
               </div>
             </div>
+          </div>
+          <div className={s.divCheckbox}>
+            <input
+              type="checkbox"
+              name="onSale"
+              checked={formData.onSale}
+              onChange={handleChange}
+              />
+            <label>
+              Marcar ésta casilla si el producto se encuentra en oferta o liquidación
+            </label>
           </div>
           <div className={s.divDescription}>
             <h4 className={s.label}>Descripción</h4>

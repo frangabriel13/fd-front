@@ -22,6 +22,7 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
     sizes: [19],
     colors: [],
     isVariable: true,
+    onSale: false,
   });
   const [tagInput, setTagInput] = useState('');
   const [showColorModal, setShowColorModal] = useState(false);
@@ -39,10 +40,10 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
   //   });
   // };
   const handleChange = (e) => {
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     setFormData({
       ...formData,
-      [name]: name === 'price' || name === 'priceUSD' ? parseFloat(value) : value,
+      [name]: type === 'checkbox' ? checked : (name === 'price' || name === 'priceUSD' ? parseFloat(value) : value),
     });
   };
 
@@ -177,6 +178,17 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
                 {errors.priceUSD && <p className={s.error}>{errors.priceUSD}</p>}
               </div>
             </div>
+          </div>
+          <div className={s.divCheckbox}>
+            <input
+              type="checkbox"
+              name="onSale"
+              checked={formData.onSale}
+              onChange={handleChange}
+              />
+            <label>
+              Marcar ésta casilla si el producto se encuentra en oferta o liquidación
+            </label>
           </div>
           <div className={s.divDescription}>
             <h4 className={s.label}>Descripción</h4>

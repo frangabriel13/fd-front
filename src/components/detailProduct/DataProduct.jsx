@@ -79,7 +79,18 @@ const DataProduct = ({ product, manufacturer }) => {
             return (
               <div key={inv.id} className={s.divInventory}>
                 {product.isVariable ? (
-                  <p>{inv.color}</p>
+                  <div className={s.divColor}>
+                    <div
+                      className={s.color}
+                      style={{
+                        backgroundColor: inv.code, 
+                        // width: '20px', 
+                        // height: '20px', 
+                        // border: '1px solid #000'
+                      }}>
+                    </div>
+                    <p>{inv.color}</p>
+                  </div>
                 ) : (
                   <p>{inv.size}</p>
                 )}

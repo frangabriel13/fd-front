@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import s from './DataProduct.module.css';
 import { 
   BsHeart, 
@@ -9,6 +10,35 @@ import {
 import { formatPrice } from '../../utils/utils';
 
 const DataProduct = ({ product, manufacturer }) => {
+  const [quantities, setQuantities] = useState(
+    product.inventories.map((inv) => ({ id: inv.id, quantity: inv.quantity || 0 }))
+  );
+
+  const handleDecrement = (id) => {
+    setQuantities((prevQuantities) => 
+      prevQuantities.map((inv) => 
+        inv.id === id ? { ...inv, quantity: Math.max(0, inv.quantity - 1) } : inv
+      )
+    );
+  };
+  
+  const handleIncrement = (id) => {
+    setQuantities((prevQuantities) => 
+      prevQuantities.map((inv) => 
+        inv.id === id ? { ...inv, quantity: inv.quantity + 1 } : inv
+      )
+    );
+  }
+
+  const handleChange = (id, value) => {
+    const newValue = Math.max(0, parseInt(value) || 0);
+    setQuantities((prevQuantities) => 
+      prevQuantities.map((inv) => 
+        inv.id === id ? { ...inv, quantity: newValue } : inv
+      )
+    );
+  }
+  
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
@@ -42,15 +72,38 @@ const DataProduct = ({ product, manufacturer }) => {
           <p className={s.whole}>Comprando en dólares</p>
         </div>
       </div>
-      {product.isVariable ? (
-          <div className={s.divVariable}>
-            <p>El producto viene en los siguientes colores:</p>
-          </div>
-        ) : (
-          <div className={s.divSimple}>
-            <p>El producto viene en los siguiente talles:</p>
-          </div>
-      )}
+      <div className={s.divQuantities}>
+        <p>Selecciona las cantidades:</p>
+        {
+          product.inventories.map((inv) => {
+            return (
+              <div key={inv.id} className={s.divInventory}>
+                {product.isVariable ? (
+                  <p>{inv.color}</p>
+                ) : (
+                  <p>{inv.size}</p>
+                )}
+                <div className={s.divQuant}>
+                  <button 
+                    className={s.buttonQuant}
+                    onClick={() => handleDecrement(inv.id)}
+                  >-</button>
+                  <input 
+                    type="number" 
+                    className={s.inputQuant}
+                    value={quantities.find((q) => q.id === inv.id).quantity}
+                    onChange={(e) => handleChange(inv.id, e.target.value)}
+                  />
+                  <button 
+                    className={s.buttonQuant}
+                    onClick={() => handleIncrement(inv.id)}
+                  >+</button>
+                </div>
+              </div>
+            )
+          })
+        }
+      </div>
     </div>
   );
 };

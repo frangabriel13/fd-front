@@ -83,10 +83,7 @@ const DataProduct = ({ product, manufacturer }) => {
                     <div
                       className={s.color}
                       style={{
-                        backgroundColor: inv.code, 
-                        // width: '20px', 
-                        // height: '20px', 
-                        // border: '1px solid #000'
+                        backgroundColor: inv.code,
                       }}>
                     </div>
                     <p>{inv.color}</p>
@@ -114,6 +111,9 @@ const DataProduct = ({ product, manufacturer }) => {
             )
           })
         }
+      </div>
+      <div className={s.divCart}>
+        <button className={s.btnCart}>Añadir al carrito</button>
       </div>
     </div>
   );

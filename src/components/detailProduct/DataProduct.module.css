@@ -157,3 +157,24 @@
 .inputQuant[type="number"] {
   -moz-appearance: textfield;
 }
+
+.divCart {
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+}
+
+.btnCart {
+  padding: 1rem 2rem;
+  background-color: var(--main-color);
+  color: white;
+  font-size: 2rem;
+  font-weight: 500;
+  border-radius: .3rem;
+  cursor: pointer;
+}
+
+.btnCart:hover {
+  background-color: var(--second-color);
+  transition: all .3s ease-in-out;
+}

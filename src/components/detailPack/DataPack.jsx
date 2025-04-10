@@ -9,7 +9,7 @@ import {
 import { formatPrice } from '../../utils/utils';
 import ProductPack from './ProductPack';
 
-const DataPack = ({ pack }) => {
+const DataPack = ({ pack, onAddToCart }) => {
   return(
     <div className={s.container}>
       <div className={s.divHeader}>
@@ -49,7 +49,7 @@ const DataPack = ({ pack }) => {
         ))}
       </div>
       <div className={s.divCart}>
-        <button className={s.btnCart}>Añadir al carrito</button>
+        <button className={s.btnCart} onClick={onAddToCart}>Añadir al carrito</button>
       </div>
     </div>
   )

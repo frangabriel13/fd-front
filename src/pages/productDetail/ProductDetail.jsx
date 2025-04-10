@@ -32,7 +32,7 @@ const ProductDetail = () => {
       productId: product.id,
       variations,
     };
-    dispatch(addToCart(item, manufacturer.id, 'product'));
+    dispatch(addToCart(item, product.userId, 'product'));
   };
 
   if(loading || !product || !manufacturer) {

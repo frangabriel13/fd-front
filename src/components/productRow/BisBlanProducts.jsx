@@ -31,6 +31,18 @@ const BisBlanProducts = () => {
       productsContainerRef.current.scrollLeft -= productsContainerRef.current.offsetWidth;
     }
   };
+
+  if(loading) {
+    return <div className={s.loading}>Cargando productos...</div>;
+  }
+
+  if(error) {
+    return <div className={s.error}>Error al cargar los productos: {error}</div>;
+  }
+
+  if(!bisBlanProducts || bisBlanProducts.length === 0) {
+    return <div className={s.noProducts}>No hay productos disponibles.</div>;
+  }
   
   return (
     <div className={s.container}>

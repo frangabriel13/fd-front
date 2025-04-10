@@ -20,6 +20,18 @@ const ProductsOnSale = () => {
     navigate('/tienda');
   };
 
+  if(loading) {
+    return <div className={s.loading}>Cargando productos en oferta...</div>;
+  }
+  
+  if(error) {
+    return <div className={s.error}>Error al cargar los productos: {error}</div>;
+  }
+
+  if(!onSaleProducts || onSaleProducts.length === 0) {
+    return <div className={s.noProducts}>No hay productos en oferta disponibles.</div>;
+  }
+
   const handleNext = () => {
     if (productsContainerRef.current) {
       productsContainerRef.current.scrollLeft += productsContainerRef.current.offsetWidth;

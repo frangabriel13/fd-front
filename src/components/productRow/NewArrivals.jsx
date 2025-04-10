@@ -31,7 +31,19 @@ const NewArrivals = () => {
       productsContainerRef.current.scrollLeft -= productsContainerRef.current.offsetWidth;
     }
   };
-  
+
+  if(loading) {
+    return <div className={s.loading}>Cargando nuevos productos...</div>;
+  }
+
+  if(error) {
+    return <div className={s.error}>Error al cargar los productos: {error}</div>;
+  }
+
+  if(!newProducts || newProducts.length === 0) {
+    return <div className={s.noProducts}>No hay nuevos productos disponibles.</div>;
+  }
+
   return (
     <div className={s.container}>
       <div className={s.divTitle}>
@@ -45,14 +57,14 @@ const NewArrivals = () => {
         <div className={s.divProducts} ref={productsContainerRef}>
           {newProducts.map((product, index) => (
             <div className={s.productCard} key={`${product.id}-${index}`}>
-                <ProductCard 
-                  name={product.name}
-                  image={product.mainImage}
-                  price={product.price}
-                  logo={product.logo}
-                  id={product.id}
-                />
-              </div>
+              <ProductCard 
+                name={product.name}
+                image={product.mainImage}
+                price={product.price}
+                logo={product.logo}
+                id={product.id}
+              />
+            </div>
           ))}
         </div>
         <button className={s.nextButton} onClick={handleNext}>
@@ -62,6 +74,5 @@ const NewArrivals = () => {
     </div>
   );
 };
-
 
 export default NewArrivals;

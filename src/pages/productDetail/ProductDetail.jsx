@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import s from './ProductDetail.module.css';
 import { getProductById } from '../../store/actions/productActions';
 import { getManufacturerByUserId } from '../../store/actions/manufacturerActions';
+import { addToCart } from '../../store/actions/cartActions';
 import { formatPrice } from '../../utils/utils';
 import Gallery from '../../components/detailProduct/Gallery';
 import DataProduct from '../../components/detailProduct/DataProduct';
@@ -26,6 +27,14 @@ const ProductDetail = () => {
     }
   }, [dispatch, product]);
 
+  const handleAddToCart = (variations) => {
+    const item = {
+      productId: product.id,
+      variations,
+    };
+    dispatch(addToCart(item, manufacturer.id, 'product'));
+  };
+
   if(loading || !product || !manufacturer) {
     return <div>Loading...</div>;
   }
@@ -42,7 +51,11 @@ const ProductDetail = () => {
       </div>
       <div className={s.divDetail}>
         <Gallery images={product.images} mainImage={product.mainImage} name={product.name} />
-        <DataProduct product={product} manufacturer={manufacturer} />
+        <DataProduct 
+          product={product} 
+          manufacturer={manufacturer}
+          onAddToCart={handleAddToCart} 
+        />
       </div>
     </div>
   );

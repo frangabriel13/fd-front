@@ -48,6 +48,9 @@ const DataPack = ({ pack }) => {
           <ProductPack key={product.id} product={product} />
         ))}
       </div>
+      <div className={s.divCart}>
+        <button className={s.btnCart}>Añadir al carrito</button>
+      </div>
     </div>
   )
 };

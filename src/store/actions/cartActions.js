@@ -24,25 +24,27 @@ export const addToCart = (item, manufacturerId, type) => (dispatch, getState) =>
   }
 
   if (type === 'pack') {
-    // Si es un pack, agregar o actualizar el pack en el carrito
-    const existingPack = manufacturerCart.packs.find(pack => pack.packId === item.packId);
-    if (existingPack) {
-      existingPack.quantity += item.quantity;
+    const existingPackIndex = manufacturerCart.packs.findIndex(pack => pack.packId === item.packId);
+    if (existingPackIndex !== -1) {
+      manufacturerCart.packs[existingPackIndex] = {
+        ...manufacturerCart.packs[existingPackIndex],
+        quantity: manufacturerCart.packs[existingPackIndex].quantity + item.quantity,
+      };
     } else {
       manufacturerCart.packs.push({ packId: item.packId, quantity: item.quantity });
     }
   } else if (type === 'product') {
-    // Si es un producto con múltiples variantes, iterar sobre las variantes
     item.variations.forEach(variation => {
-      const existingProduct = manufacturerCart.products.find(
+      const existingProductIndex = manufacturerCart.products.findIndex(
         product => product.productId === item.productId && product.variationId === variation.variationId
       );
 
-      if (existingProduct) {
-        // Si ya existe la variante, actualizar la cantidad
-        existingProduct.quantity += variation.quantity;
+      if (existingProductIndex !== -1) {
+        manufacturerCart.products[existingProductIndex] = {
+          ...manufacturerCart.products[existingProductIndex],
+          quantity: manufacturerCart.products[existingProductIndex].quantity + variation.quantity,
+        };
       } else {
-        // Si no existe, agregar la nueva variante
         manufacturerCart.products.push({
           productId: item.productId,
           variationId: variation.variationId,

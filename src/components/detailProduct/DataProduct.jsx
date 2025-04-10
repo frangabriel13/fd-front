@@ -9,7 +9,7 @@ import {
 } from "react-icons/bs";
 import { formatPrice } from '../../utils/utils';
 
-const DataProduct = ({ product, manufacturer }) => {
+const DataProduct = ({ product, manufacturer, onAddToCart }) => {
   const [quantities, setQuantities] = useState(
     product.inventories.map((inv) => ({ id: inv.id, quantity: inv.quantity || 0 }))
   );
@@ -38,6 +38,19 @@ const DataProduct = ({ product, manufacturer }) => {
       )
     );
   }
+
+  const handleAddToCartClick = () => {
+    const variations = quantities
+      .filter((q) => q.quantity > 0)
+      .map((q) => ({
+        variationId: q.id,
+        quantity: q.quantity,
+      }));
+
+    if (variations.length > 0) {
+      onAddToCart(variations);
+    }
+  };
   
   return (
     <div className={s.container}>
@@ -113,7 +126,7 @@ const DataProduct = ({ product, manufacturer }) => {
         }
       </div>
       <div className={s.divCart}>
-        <button className={s.btnCart}>Añadir al carrito</button>
+        <button className={s.btnCart} onClick={handleAddToCartClick}>Añadir al carrito</button>
       </div>
     </div>
   );

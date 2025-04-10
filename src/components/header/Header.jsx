@@ -48,7 +48,9 @@ const Header = () => {
             <Link to="/registro" className={s.link}>Registrarse</Link>
           </>
         )}
-        <BsCart2 className={s.link} />
+        <Link to="/mi-carrito" className={s.link}>
+          <BsCart2 />
+        </Link>
       </div>
     </div>
   );

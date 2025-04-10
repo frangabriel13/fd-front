@@ -32,7 +32,17 @@ const PacksRow = () => {
     }
   };
 
-  console.log(newPacks);
+  if(loading) {
+    return <div className={s.loading}>Cargando nuevos packs...</div>;
+  }
+
+  if(error) {
+    return <div className={s.error}>Error al cargar los packs: {error}</div>;
+  }
+
+  if(!newPacks || newPacks.length === 0) {
+    return <div className={s.noProducts}>No hay nuevos packs disponibles.</div>;
+  }
   
   return (
     <div className={s.container}>

@@ -97,3 +97,13 @@ export const getCart = () => async (dispatch, getState) => {
     });
   }
 };
+
+export const clearCart = () => (dispatch) => {
+  // Limpiar el carrito en el estado global
+  dispatch({
+    type: 'CART_CLEAR',
+  });
+
+  // Limpiar el carrito en localStorage
+  localStorage.removeItem('cartItems');
+};

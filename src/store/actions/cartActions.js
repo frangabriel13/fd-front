@@ -1,4 +1,7 @@
+import { productInstance } from "../../utils/axiosConfig";
+
 export const addToCart = (item, manufacturerId, type) => (dispatch, getState) => {
+  //manufacturerId es en realidad el userId del fabricante
   // Obtener el estado actual del carrito
   const { cart: { items } } = getState();
 
@@ -62,4 +65,35 @@ export const addToCart = (item, manufacturerId, type) => (dispatch, getState) =>
 
   // Guardar los elementos del carrito en localStorage
   localStorage.setItem('cartItems', JSON.stringify(updatedItems));
+};
+
+export const getCart = () => async (dispatch, getState) => {
+  try{
+    // Obtener los elementos del carrito del localStorage
+    // const cartItems = JSON.parse(localStorage.getItem('items')) || [];
+
+    // Obtener el estado actual del carrito
+    const { cart: { items } } = getState();
+
+    // Construir el payload para enviar al backend
+    const payload = items.map(item => ({
+      manufacturerId: item.manufacturerId,
+      packIds: [...new Set(item.packs.map(pack => pack.packId))], // Eliminar duplicados en packIds
+      productIds: [...new Set(item.products.map(product => product.productId))], // Eliminar duplicados en productIds
+    }));
+
+    console.log('Payload para el carrito:', payload);
+    // const response = await productInstance.post('/cart', payload);
+
+    // dispatch({
+    //   type: 'CART_GET_ITEMS',
+    //   payload: response.data,
+    // });
+  } catch(error) {
+    console.error('Error al obtener el carrito:', error);
+    dispatch({
+      type: 'CART_ERROR',
+      payload: error.message,
+    });
+  }
 };

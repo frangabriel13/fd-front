@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCart } from "../../store/actions/cartActions";
+import { getCart, clearCart } from "../../store/actions/cartActions";
 import s from "./Cart.module.css"
 
 const Cart = () => {
@@ -17,12 +17,16 @@ const Cart = () => {
     if (cartItems.length > 0) {
       dispatch(getCart(cartItems));
     }
-  }
-  , [dispatch]);
+  }, [dispatch]);
+
+  const handleClearCart = () => {
+    dispatch(clearCart());
+  };
 
   return(
     <div className={s.container}>
-      Este es mi carrito de compras
+      <h2>Este es mi carrito</h2>
+      <button onClick={handleClearCart}>Limpiar carrito</button>
     </div>
   );
 };

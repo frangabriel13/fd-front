@@ -83,12 +83,12 @@ export const getCart = () => async (dispatch, getState) => {
     }));
 
     console.log('Payload para el carrito:', payload);
-    // const response = await productInstance.post('/cart', payload);
+    const response = await productInstance.post('/cart', payload);
 
-    // dispatch({
-    //   type: 'CART_GET_ITEMS',
-    //   payload: response.data,
-    // });
+    dispatch({
+      type: 'CART_GET_ITEMS',
+      payload: response.data,
+    });
   } catch(error) {
     console.error('Error al obtener el carrito:', error);
     dispatch({

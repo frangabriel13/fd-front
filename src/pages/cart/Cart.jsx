@@ -36,16 +36,6 @@ const Cart = () => {
             items.map((item) => (
               <div key={item.manufacturerId} className={s.cartItem}>
                 <h3>{item.manufacturerName}</h3>
-                {item.packs.map((pack) => (
-                  <div key={pack.packId} className={s.packItem}>
-                    <h4>{pack.packName}</h4>
-                    {pack.products.map((product) => (
-                      <div key={product.productId} className={s.productItem}>
-                        <p>{product.productName}</p>
-                      </div>
-                    ))}
-                  </div>
-                ))}
               </div>
             ))
           ) : (

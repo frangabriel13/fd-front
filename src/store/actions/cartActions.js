@@ -82,7 +82,6 @@ export const getCart = () => async (dispatch, getState) => {
       productIds: [...new Set(item.products.map(product => product.productId))], // Eliminar duplicados en productIds
     }));
 
-    console.log('Payload para el carrito:', payload);
     const response = await productInstance.post('/cart', payload);
 
     dispatch({

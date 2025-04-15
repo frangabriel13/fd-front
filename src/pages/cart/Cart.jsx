@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCart, clearCart } from "../../store/actions/cartActions";
 import s from "./Cart.module.css"
-import { groupedItems } from "../../utils/utils";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -21,9 +20,9 @@ const Cart = () => {
   const handleClearCart = () => {
     dispatch(clearCart());
   };
-
-  const grouped = groupedItems(items, products);
-  console.log('grouped', grouped);
+  
+  console.log('items', items);
+  console.log('products', products);
 
   return(
     <div className={s.container}>
@@ -43,7 +42,7 @@ const Cart = () => {
           )
         }
       </div>
-      {/* <button onClick={handleClearCart}>Limpiar carrito</button> */}
+      <button onClick={handleClearCart}>Limpiar carrito</button>
     </div>
   );
 };

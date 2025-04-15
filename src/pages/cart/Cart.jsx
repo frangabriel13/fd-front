@@ -30,17 +30,29 @@ const Cart = () => {
         <h2 className={s.title}>Carrito de compras</h2>
       </div>
       <div className={s.divCart}>
-        {
-          items.length > 0 ? (
-            items.map((item) => (
-              <div key={item.manufacturerId} className={s.cartItem}>
-                <h3>{item.manufacturerName}</h3>
+        {products.map((product) => (
+          <div key={product.manufacturer.userId} className={s.cartCard}>
+            <div className={s.cartInfo}>
+              <div className={s.divManufacturer}>
+                <img
+                  src={product.manufacturer.image}
+                  alt={product.manufacturer.name}
+                  className={s.logo}
+                />
+                <h3 className={s.name}>{product.manufacturer.name}</h3>
               </div>
-            ))
-          ) : (
-            <p>No hay productos en el carrito.</p>
-          )
-        }
+              <div className={s.divManufacturer}>
+                <p>Total:</p>
+                <p>Mínimo de compra:</p>
+              </div>
+            </div>
+            <div className={s.divActions}>
+              <button>Eliminar</button>
+              <button>Enviar pedido</button>
+              <button>Ver detalle</button>
+            </div>
+          </div>
+        ))}
       </div>
       <button onClick={handleClearCart}>Limpiar carrito</button>
     </div>

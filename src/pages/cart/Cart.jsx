@@ -42,8 +42,12 @@ const Cart = () => {
                 <h3 className={s.name}>{product.manufacturer.name}</h3>
               </div>
               <div className={s.divManufacturer}>
-                <p>Total:</p>
-                <p>Mínimo de compra:</p>
+                <p className={s.total}>Total:</p>
+                <p className={s.priceTotal}>$50.000</p>
+              </div>
+              <div className={s.divManufacturer}>
+                <p className={s.minPurchase}>Mínimo de compra: $60.000</p>
+                <p className={s.priceUSD}>Consulta con el fabricante para abonar de dólares</p>
               </div>
             </div>
             <div className={s.divActions}>

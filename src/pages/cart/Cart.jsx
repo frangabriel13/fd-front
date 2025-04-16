@@ -47,9 +47,9 @@ const Cart = () => {
               </div>
             </div>
             <div className={s.divActions}>
-              <button>Eliminar</button>
-              <button>Enviar pedido</button>
-              <button>Ver detalle</button>
+              <button className={s.btnDelete}>Eliminar</button>
+              <button className={s.btnSend}>Enviar pedido</button>
+              <button className={s.btnDetail}>Ver detalle</button>
             </div>
           </div>
         ))}

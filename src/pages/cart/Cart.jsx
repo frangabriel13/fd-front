@@ -57,8 +57,12 @@ const Cart = () => {
             </div>
           </div>
         ))}
+      <div className={s.divBtns}>
+        <button className={s.btnBuy}>Unificar pedido</button>
+        <button className={s.btnClean} onClick={handleClearCart}>Vaciar carrito</button>
       </div>
-      <button onClick={handleClearCart}>Limpiar carrito</button>
+      <p className={s.pUnifique}>Unifica el pedido y nostros nos ocuparemos de la gestión del mismo</p>
+      </div>
     </div>
   );
 };

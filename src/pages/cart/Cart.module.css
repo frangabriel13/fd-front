@@ -131,6 +131,49 @@
   cursor: pointer;
   transition: all .3s ease-in-out;
 }
+
 .btnDetail:hover {
   background-color: var(--gray-color-light);
+}
+
+.divBtns {
+  padding-top: 1rem;
+  display: flex;
+  gap: 3rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnBuy {
+  background-color: var(--main-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: .3rem;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.btnBuy:hover {
+  background-color: var(--second-color);
+}
+
+.btnClean {
+  background-color: var(--red-color-light);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: .3rem;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+}
+
+.btnClean:hover {
+  background-color: var(--red-color);
+}
+
+.pUnifique {
+  font-size: 1.5rem;
+  color: var(--gray-color);
+  text-align: center;
 }

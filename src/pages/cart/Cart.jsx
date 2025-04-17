@@ -1,17 +1,17 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCart, clearCart } from "../../store/actions/cartActions";
-import s from "./Cart.module.css"
+import s from "./Cart.module.css";
+import DetailCart from "./DetailCart";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const { items, products } = useSelector((state) => state.cart);
+  const [showDetail, setShowDetail] = useState(false);
+  const [selectedCart, setSelectedCart] = useState(null);
 
   useEffect(() => {
-    // Obtener los elementos del carrito del localStorage
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-
-    // Si hay elementos en el carrito, despachar la acción para obtener el carrito
     if (cartItems.length > 0) {
       dispatch(getCart(cartItems));
     }
@@ -19,6 +19,16 @@ const Cart = () => {
 
   const handleClearCart = () => {
     dispatch(clearCart());
+  };
+
+  const handleShowDetail = (product) => {
+    setSelectedCart(product);
+    setShowDetail(true);
+  };
+
+  const handleCloseDetail = () => {
+    setShowDetail(false);
+    setSelectedCart(null);
   };
   
   console.log('items', items);
@@ -53,7 +63,7 @@ const Cart = () => {
             <div className={s.divActions}>
               <button className={s.btnDelete}>Eliminar</button>
               <button className={s.btnSend}>Enviar pedido</button>
-              <button className={s.btnDetail}>Ver detalle</button>
+              <button className={s.btnDetail} onClick={() => handleShowDetail(product)}>Ver detalle</button>
             </div>
           </div>
         ))}
@@ -63,6 +73,7 @@ const Cart = () => {
       </div>
       <p className={s.pUnifique}>Unifica el pedido y nostros nos ocuparemos de la gestión del mismo</p>
       </div>
+      {showDetail && <DetailCart cart={selectedCart} onClose={handleCloseDetail} />}
     </div>
   );
 };

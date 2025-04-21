@@ -34,25 +34,55 @@ const DetailCart = ({ cart, onClose }) => {
                       <h6>Talles</h6>
                       {product.inventories
                         .map((inventory, index) => (
-                          <div key={index}>
+                          <div key={index} className={s.divInventory}>
                             <p className={s.inventoryDetail}>{inventory.size}</p>
-                            <div className={s.divActions}></div>
+                            <div className={s.divQuant}>
+                              <button 
+                                className={s.buttonQuant}
+                              >-</button>
+                              <input 
+                                type="number" 
+                                className={s.inputQuant}
+                              />
+                              <button 
+                                className={s.buttonQuant}
+                              >+</button>
+                              <button className={s.buttonDelete}>x</button>
+                            </div>
                           </div>
                         ))}
                     </div>
                   )}
                   {product.inventories.some((inventory) => inventory.size === 'Único') && (
                     <div className={s.divList}>
-                      <h5>Colores</h5>
+                      <h6>Colores</h6>
                       {product.inventories
                         .map((inventory, index) => (
-                          <p key={index} className={s.inventoryDetail}>{inventory.color}</p>
+                          <div key={index} className={s.divInventory}>
+                            <p className={s.inventoryDetail}>{inventory.color}</p>
+                            <div className={s.divQuant}>
+                              <button 
+                                className={s.buttonQuant}
+                              >-</button>
+                              <input 
+                                type="number" 
+                                className={s.inputQuant}
+                              />
+                              <button 
+                                className={s.buttonQuant}
+                              >+</button>
+                              <button className={s.buttonDelete}>x</button>
+                            </div>
+                          </div>
                         ))}
                     </div>
                   )}
                 </div>
               </div>
             ))}
+          </div>
+          <div className={s.divPacks}>
+            <h4>Packs</h4>
           </div>
         </div>
       </div>

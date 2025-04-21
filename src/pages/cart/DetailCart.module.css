@@ -21,9 +21,64 @@
 .container {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 5rem;
+  /* align-items: center; */
+  gap: 1rem;
   background-color: white;
   box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
-  padding: 3rem;
+  padding: 1.5rem 1.5rem;
+}
+
+.divTitle {
+  background-color: var(--main-color);
+  padding: .2rem .5rem;
+}
+
+.divTitle h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.divProducts {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: 100%;
+}
+
+.divProducts h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.productCard {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: .1rem solid var(--gray-color-light);
+  padding-bottom: .2rem;
+}
+
+.productInfo {
+  display: flex;
+  gap: 2rem;
+}
+
+.productImage {
+  object-fit: cover;
+  border-radius: .3rem;
+  width: 12rem;
+}
+
+.divName {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.productName {
+  font-size: 1.4rem;
+}
+
+.productPrice {
+  font-size: 2rem;
+  color: var(--main-color);
 }

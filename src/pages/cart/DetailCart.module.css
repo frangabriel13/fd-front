@@ -166,3 +166,23 @@
   background-color: var(--red-color-light);
   transition: all .3s ease-in-out;
 }
+
+.packInfo {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.divBtn button {
+  border-radius: .3rem;
+  background-color: var(--main-color);
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: .5rem 1rem;
+}
+
+.divBtn button:hover {
+  background-color: var(--second-color);
+  transition: all .3s ease-in-out;
+}

@@ -81,8 +81,36 @@ const DetailCart = ({ cart, onClose }) => {
               </div>
             ))}
           </div>
-          <div className={s.divPacks}>
+          <div className={s.divProducts}>
             <h4>Packs</h4>
+            {cart.packs.map((pack) => (
+              <div key={pack.id} className={s.productCard}>
+                <div className={s.packInfo}>
+                  <div className={s.divName}>
+                    <h5 className={s.productName}>{pack.name}</h5>
+                    <p className={s.productPrice}>{formatPrice(pack.price)}</p>
+                  </div>
+                  <div className={s.divBtn}>
+                    <button>Ver pack</button>
+                  </div>
+                </div>
+                <div className={s.divInventory}>
+                  <div className={s.divQuant}>
+                    <button 
+                      className={s.buttonQuant}
+                    >-</button>
+                    <input 
+                      type="number" 
+                      className={s.inputQuant}
+                    />
+                    <button 
+                      className={s.buttonQuant}
+                    >+</button>
+                    <button className={s.buttonDelete}>x</button>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>

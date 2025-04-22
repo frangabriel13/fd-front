@@ -186,3 +186,39 @@
   background-color: var(--second-color);
   transition: all .3s ease-in-out;
 }
+
+.divActions {
+  display: flex;
+  justify-content: end;
+  gap: 2rem;
+  padding: 0rem 1.5rem 1.5rem 1.5rem;
+  background-color: white;
+}
+
+.btnCancel {
+  background-color: var(--red-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: .3rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btnCancel:hover {
+  background-color: var(--red-color-light);
+  transition: all .3s ease-in-out;
+}
+
+.btnSave {
+  background-color: var(--second-bg-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: .3rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btnSave:hover {
+  background-color: var(--third-bg-color);
+  transition: all .3s ease-in-out;
+}

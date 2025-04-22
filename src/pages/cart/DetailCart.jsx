@@ -114,7 +114,7 @@ const DetailCart = ({ cart, onClose }) => {
           </div>
         </div>
         <div className={s.divActions}>
-          <button className={s.btnCancel}>Cancelar</button>
+          <button className={s.btnCancel} onClick={onClose}>Cancelar</button>
           <button className={s.btnSave}>Guardar cambios</button>
         </div>
       </div>

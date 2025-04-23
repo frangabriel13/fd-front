@@ -2,9 +2,9 @@ import { productInstance } from "../../utils/axiosConfig";
 
 export const addToCart = (item, manufacturerId, type) => (dispatch, getState) => {
   const { cart: { items } } = getState();
-
+  
   const updatedItems = [...items];
-
+  
   let manufacturerCart = updatedItems.find(cart => cart.manufacturerId === manufacturerId);
 
   if (!manufacturerCart) {
@@ -32,7 +32,7 @@ export const addToCart = (item, manufacturerId, type) => (dispatch, getState) =>
     }
   } else if (type === 'product') {
     const existingProductIndex = manufacturerCart.products.findIndex(product => product.productId === item.productId);
-
+    
     if (existingProductIndex !== -1) {
       // Si el producto ya existe, actualizar las variaciones
       const existingProduct = manufacturerCart.products[existingProductIndex];
@@ -53,7 +53,7 @@ export const addToCart = (item, manufacturerId, type) => (dispatch, getState) =>
           updatedVariations.push({ variationId: variation.variationId, quantity: variation.quantity });
         }
       });
-
+      
       manufacturerCart.products[existingProductIndex] = {
         ...existingProduct,
         variations: updatedVariations,
@@ -69,13 +69,21 @@ export const addToCart = (item, manufacturerId, type) => (dispatch, getState) =>
       });
     }
   }
-
+  
   dispatch({
     type: 'CART_UPDATE_ITEMS',
     payload: updatedItems,
   });
-
+  
   localStorage.setItem('cartItems', JSON.stringify(updatedItems));
+};
+
+export const updateCart = (payload) => (dispatch) => {
+  console.log('Pasa por la action');
+  dispatch({
+    type: 'CART_UPDATE_MANUFACTURER',
+    payload,
+  });
 };
 
 export const getCart = () => async (dispatch, getState) => {
@@ -108,73 +116,4 @@ export const clearCart = () => (dispatch) => {
 
   // Limpiar el carrito en localStorage
   localStorage.removeItem('cartItems');
-};
-
-export const updateCart = (payload) => (dispatch, getState) => {
-  console.log('payload: ', payload);
-  // const { cart: { items } } = getState();
-
-  // const updatedItems = [...items];
-  // // const manufacturerCart = updatedItems.find(cart => cart.manufacturerId === manufacturerId);
-  // const manufacturerCartIndex = updatedItems.findIndex(cart => cart.manufacturerId === manufacturerId);
-
-  // if (manufacturerCartIndex === -1) {
-  //   console.error(`Manufacturer with ID ${manufacturerId} not found in the cart.`);
-  //   return;
-  // }
-
-  // const manufacturerCart = { ...updatedItems[manufacturerCartIndex] };
-
-  // if (updates.packs) {
-  //   updates.packs.forEach(update => {
-  //     const packIndex = manufacturerCart.packs.findIndex(pack => pack.packId === update.packId);
-
-  //     if (packIndex !== -1) {
-  //       if (update.quantity !== undefined) {
-  //         // Actualizar cantidad del pack
-  //         manufacturerCart.packs[packIndex].quantity = update.quantity;
-  //       } else if (update.remove) {
-  //         // Eliminar el pack
-  //         manufacturerCart.packs.splice(packIndex, 1);
-  //       }
-  //     }
-  //   });
-  // }
-
-  // if (updates.products) {
-  //   updates.products.forEach(update => {
-  //     const productIndex = manufacturerCart.products.findIndex(product => product.productId === update.productId);
-
-  //     if (productIndex !== -1) {
-  //       if (update.variations) {
-  //         const product = { ...manufacturerCart.products[productIndex] };
-  //         product.variations = product.variations.filter(variation => {
-  //           const variationUpdate = update.variations.find(v => v.variationId === variation.variationId);
-  //           if (variationUpdate) {
-  //             if (variationUpdate.quantity !== undefined) {
-  //               variation.quantity = variationUpdate.quantity;
-  //             }
-  //             return !variationUpdate.remove;
-  //           }
-  //           return true;
-  //         });
-  //         manufacturerCart.products[productIndex] = product;
-  //       }
-
-  //       if (update.remove) {
-  //         // Eliminar el producto
-  //         manufacturerCart.products.splice(productIndex, 1);
-  //       }
-  //     }
-  //   });
-  // }
-
-  // updatedItems[manufacturerCartIndex] = manufacturerCart;
-
-  // dispatch({
-  //   type: 'CART_UPDATE_ITEMS',
-  //   payload: updatedItems,
-  // });
-  
-  // localStorage.setItem('cartItems', JSON.stringify(updatedItems));
 };

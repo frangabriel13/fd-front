@@ -11,6 +11,28 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         items: action.payload,
       };
+    case 'CART_UPDATE_MANUFACTURER': {
+      console.log('pasa por el reducer');
+      const { manufacturerId, packs, products } = action.payload;
+      console.log('manufacturerId: ', manufacturerId);
+
+      const updatedItems = state.items.map((cart) => {
+        if(cart.manufacturerId === manufacturerId) {
+          // Actualizar packs y products del manufacturer correspondiente
+          return {
+            ...cart,
+            packs,
+            products,
+          };
+        }
+        return cart; // Dejar los demás manufacturers sin cambios
+      });
+
+      return {
+        ...state,
+        items: updatedItems,
+      };
+    }
     case 'CART_CLEAR':
       return {
         ...state,

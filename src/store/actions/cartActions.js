@@ -99,36 +99,6 @@ export const getCart = () => async (dispatch, getState) => {
     });
   }
 };
-// export const getCart = () => async (dispatch, getState) => {
-//   try{
-//     // Obtener los elementos del carrito del localStorage
-//     // const cartItems = JSON.parse(localStorage.getItem('items')) || [];
-
-//     // Obtener el estado actual del carrito
-//     const { cart: { items } } = getState();
-
-//     console.log('items', items);
-//     // Construir el payload para enviar al backend
-//     const payload = items.map(item => ({
-//       manufacturerId: item.manufacturerId,
-//       packIds: [...new Set(item.packs.map(pack => pack.packId))], // Eliminar duplicados en packIds
-//       productIds: [...new Set(item.products.map(product => product.productId))], // Eliminar duplicados en productIds
-//     }));
-
-//     const response = await productInstance.post('/cart', payload);
-
-//     dispatch({
-//       type: 'CART_GET_ITEMS',
-//       payload: response.data,
-//     });
-//   } catch(error) {
-//     console.error('Error al obtener el carrito:', error);
-//     dispatch({
-//       type: 'CART_ERROR',
-//       payload: error.message,
-//     });
-//   }
-// };
 
 export const clearCart = () => (dispatch) => {
   // Limpiar el carrito en el estado global
@@ -138,4 +108,72 @@ export const clearCart = () => (dispatch) => {
 
   // Limpiar el carrito en localStorage
   localStorage.removeItem('cartItems');
+};
+
+export const updateCart = (manufacturerId, updates) => (dispatch, getState) => {
+  const { cart: { items } } = getState();
+
+  const updatedItems = [...items];
+  // const manufacturerCart = updatedItems.find(cart => cart.manufacturerId === manufacturerId);
+  const manufacturerCartIndex = updatedItems.findIndex(cart => cart.manufacturerId === manufacturerId);
+
+  if (manufacturerCartIndex === -1) {
+    console.error(`Manufacturer with ID ${manufacturerId} not found in the cart.`);
+    return;
+  }
+
+  const manufacturerCart = { ...updatedItems[manufacturerCartIndex] };
+
+  if (updates.packs) {
+    updates.packs.forEach(update => {
+      const packIndex = manufacturerCart.packs.findIndex(pack => pack.packId === update.packId);
+
+      if (packIndex !== -1) {
+        if (update.quantity !== undefined) {
+          // Actualizar cantidad del pack
+          manufacturerCart.packs[packIndex].quantity = update.quantity;
+        } else if (update.remove) {
+          // Eliminar el pack
+          manufacturerCart.packs.splice(packIndex, 1);
+        }
+      }
+    });
+  }
+
+  if (updates.products) {
+    updates.products.forEach(update => {
+      const productIndex = manufacturerCart.products.findIndex(product => product.productId === update.productId);
+
+      if (productIndex !== -1) {
+        if (update.variations) {
+          const product = { ...manufacturerCart.products[productIndex] };
+          product.variations = product.variations.filter(variation => {
+            const variationUpdate = update.variations.find(v => v.variationId === variation.variationId);
+            if (variationUpdate) {
+              if (variationUpdate.quantity !== undefined) {
+                variation.quantity = variationUpdate.quantity;
+              }
+              return !variationUpdate.remove;
+            }
+            return true;
+          });
+          manufacturerCart.products[productIndex] = product;
+        }
+
+        if (update.remove) {
+          // Eliminar el producto
+          manufacturerCart.products.splice(productIndex, 1);
+        }
+      }
+    });
+  }
+
+  updatedItems[manufacturerCartIndex] = manufacturerCart;
+
+  dispatch({
+    type: 'CART_UPDATE_ITEMS',
+    payload: updatedItems,
+  });
+  
+  localStorage.setItem('cartItems', JSON.stringify(updatedItems));
 };

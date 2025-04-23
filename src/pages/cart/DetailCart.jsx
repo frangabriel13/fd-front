@@ -4,7 +4,7 @@ import { updateCart } from '../../store/actions/cartActions';
 import s from './DetailCart.module.css';
 import { formatPrice } from '../../utils/utils';
 
-const DetailCart = ({ cart, onClose }) => {
+const DetailCart = ({ cart, onClose, refreshCart }) => {
   const dispatch = useDispatch();
   const [localCart, setLocalCart] = useState(cart);
 
@@ -78,6 +78,7 @@ const DetailCart = ({ cart, onClose }) => {
     };
   
     dispatch(updateCart(payload)); // Despacha la acción con el payload
+    refreshCart();
     onClose(); // Cierra el modal después de guardar
   };
 

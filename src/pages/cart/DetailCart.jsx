@@ -28,6 +28,36 @@ const DetailCart = ({ cart, onClose }) => {
     });
   };
 
+  const handleUpdateInventoryTotal = (productId, inventoryIndex, newTotal) => {
+    setLocalCart((prevCart) => {
+      const updatedProducts = prevCart.products.map((product) => {
+        if (product.id === productId) {
+          const updatedInventories = product.inventories.map((inventory, index) => {
+            if (index === inventoryIndex) {
+              return { ...inventory, totalItem: newTotal };
+            }
+            return inventory;
+          });
+          return { ...product, inventories: updatedInventories };
+        }
+        return product;
+      });
+      return { ...prevCart, products: updatedProducts };
+    });
+  };
+  
+  const handleUpdatePackTotal = (packId, newTotal) => {
+    setLocalCart((prevCart) => {
+      const updatedPacks = prevCart.packs.map((pack) => {
+        if (pack.id === packId) {
+          return { ...pack, totalItem: newTotal };
+        }
+        return pack;
+      });
+      return { ...prevCart, packs: updatedPacks };
+    });
+  };
+
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -65,14 +95,18 @@ const DetailCart = ({ cart, onClose }) => {
                             <div className={s.divQuant}>
                               <button 
                                 className={s.buttonQuant}
+                                onClick={() => handleUpdateInventoryTotal(product.id, index, inventory.totalItem - 1)}
+                                disabled={inventory.totalItem <= 0}
                               >-</button>
                               <input 
                                 type="number" 
                                 className={s.inputQuant}
                                 value={inventory.totalItem}
+                                onChange={(e) => handleUpdateInventoryTotal(product.id, index, parseInt(e.target.value, 10) || 0)}
                               />
                               <button 
                                 className={s.buttonQuant}
+                                onClick={() => handleUpdateInventoryTotal(product.id, index, inventory.totalItem + 1)}
                               >+</button>
                               <button className={s.buttonDelete} onClick={() => handleDeleteInventory(product.id, index)}>x</button>
                             </div>
@@ -90,14 +124,18 @@ const DetailCart = ({ cart, onClose }) => {
                             <div className={s.divQuant}>
                               <button 
                                 className={s.buttonQuant}
+                                onClick={() => handleUpdateInventoryTotal(product.id, index, inventory.totalItem - 1)}
+                                disabled={inventory.totalItem <= 0}
                               >-</button>
                               <input 
                                 type="number" 
                                 className={s.inputQuant}
                                 value={inventory.totalItem}
+                                onChange={(e) => handleUpdateInventoryTotal(product.id, index, parseInt(e.target.value, 10) || 0)}
                               />
                               <button 
                                 className={s.buttonQuant}
+                                onClick={() => handleUpdateInventoryTotal(product.id, index, inventory.totalItem + 1)}
                               >+</button>
                               <button className={s.buttonDelete} onClick={() => handleDeleteInventory(product.id, index)}>x</button>
                             </div>
@@ -126,14 +164,18 @@ const DetailCart = ({ cart, onClose }) => {
                   <div className={s.divQuant}>
                     <button 
                       className={s.buttonQuant}
+                      onClick={() => handleUpdatePackTotal(pack.id, pack.totalItem - 1)}
+                      disabled={pack.totalItem <= 0}
                     >-</button>
                     <input 
                       type="number" 
                       className={s.inputQuant}
                       value={pack.totalItem}
+                      onChange={(e) => handleUpdatePackTotal(pack.id, parseInt(e.target.value, 10) || 0)}
                     />
                     <button 
                       className={s.buttonQuant}
+                      onClick={() => handleUpdatePackTotal(pack.id, pack.totalItem + 1)}
                     >+</button>
                     <button className={s.buttonDelete} onClick={() => handleDeletePack(pack.id)}>x</button>
                   </div>

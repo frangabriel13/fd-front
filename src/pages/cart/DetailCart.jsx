@@ -21,6 +21,13 @@ const DetailCart = ({ cart, onClose }) => {
     });
   };
 
+  const handleDeletePack = (packId) => {
+    setLocalCart((prevCart) => {
+      const updatedPacks = prevCart.packs.filter((pack) => pack.id !== packId); // Filtra el pack eliminado
+      return { ...prevCart, packs: updatedPacks };
+    });
+  };
+
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -128,7 +135,7 @@ const DetailCart = ({ cart, onClose }) => {
                     <button 
                       className={s.buttonQuant}
                     >+</button>
-                    <button className={s.buttonDelete}>x</button>
+                    <button className={s.buttonDelete} onClick={() => handleDeletePack(pack.id)}>x</button>
                   </div>
                 </div>
               </div>

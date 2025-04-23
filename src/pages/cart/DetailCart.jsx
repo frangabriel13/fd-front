@@ -1,7 +1,10 @@
+import { useState } from 'react';
 import s from './DetailCart.module.css';
 import { formatPrice } from '../../utils/utils';
 
 const DetailCart = ({ cart, onClose }) => {
+  const [localCart, setLocalCart] = useState(cart);
+
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -19,7 +22,7 @@ const DetailCart = ({ cart, onClose }) => {
           </div>
           <div className={s.divProducts}>
             <h4>Productos</h4>
-            {cart.products.map((product) => (
+            {localCart.products.map((product) => (
               <div key={product.id} className={s.productCard}>
                 <div className={s.productInfo}>
                   <img src={product.mainImage} alt={product.name} className={s.productImage} />
@@ -85,7 +88,7 @@ const DetailCart = ({ cart, onClose }) => {
           </div>
           <div className={s.divProducts}>
             <h4>Packs</h4>
-            {cart.packs.map((pack) => (
+            {localCart.packs.map((pack) => (
               <div key={pack.id} className={s.productCard}>
                 <div className={s.packInfo}>
                   <div className={s.divName}>

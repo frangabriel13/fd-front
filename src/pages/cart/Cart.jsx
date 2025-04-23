@@ -30,6 +30,11 @@ const Cart = () => {
     setShowDetail(false);
     setSelectedCart(null);
   };
+
+  const refreshCart = () => {
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    dispatch(getCart(cartItems)); // Refresca el carrito después de guardar cambios
+  };
   
   console.log('items', items);
   console.log('products', products);
@@ -73,7 +78,7 @@ const Cart = () => {
       </div>
       <p className={s.pUnifique}>Unifica el pedido y nostros nos ocuparemos de la gestión del mismo</p>
       </div>
-      {showDetail && <DetailCart cart={selectedCart} onClose={handleCloseDetail} />}
+      {showDetail && <DetailCart cart={selectedCart} onClose={handleCloseDetail} refreshCart={refreshCart} />}
     </div>
   );
 };

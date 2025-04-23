@@ -43,6 +43,7 @@ const DetailCart = ({ cart, onClose }) => {
                               <input 
                                 type="number" 
                                 className={s.inputQuant}
+                                value={inventory.totalItem}
                               />
                               <button 
                                 className={s.buttonQuant}
@@ -67,6 +68,7 @@ const DetailCart = ({ cart, onClose }) => {
                               <input 
                                 type="number" 
                                 className={s.inputQuant}
+                                value={inventory.totalItem}
                               />
                               <button 
                                 className={s.buttonQuant}
@@ -102,6 +104,7 @@ const DetailCart = ({ cart, onClose }) => {
                     <input 
                       type="number" 
                       className={s.inputQuant}
+                      value={pack.totalItem}
                     />
                     <button 
                       className={s.buttonQuant}

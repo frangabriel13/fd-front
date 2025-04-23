@@ -5,13 +5,29 @@ import { formatPrice } from '../../utils/utils';
 const DetailCart = ({ cart, onClose }) => {
   const [localCart, setLocalCart] = useState(cart);
 
+  const handleDeleteInventory = (productId, inventoryIndex) => {
+    setLocalCart((prevCart) => {
+      const updatedProducts = prevCart.products
+        .map((product) => {
+          if (product.id === productId) {
+            const updatedInventories = product.inventories.filter((_, index) => index !== inventoryIndex);
+            return { ...product, inventories: updatedInventories };
+          }
+          return product;
+        })
+        .filter((product) => product.inventories.length > 0); // Elimina productos sin inventarios
+
+      return { ...prevCart, products: updatedProducts };
+    });
+  };
+
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   }
 
-  console.log('cart', cart);
+  console.log('localCart', localCart);
 
   return (
     <div className={s.modal} onClick={handleClickOutside}>
@@ -51,7 +67,7 @@ const DetailCart = ({ cart, onClose }) => {
                               <button 
                                 className={s.buttonQuant}
                               >+</button>
-                              <button className={s.buttonDelete}>x</button>
+                              <button className={s.buttonDelete} onClick={() => handleDeleteInventory(product.id, index)}>x</button>
                             </div>
                           </div>
                         ))}
@@ -76,7 +92,7 @@ const DetailCart = ({ cart, onClose }) => {
                               <button 
                                 className={s.buttonQuant}
                               >+</button>
-                              <button className={s.buttonDelete}>x</button>
+                              <button className={s.buttonDelete} onClick={() => handleDeleteInventory(product.id, index)}>x</button>
                             </div>
                           </div>
                         ))}

@@ -110,70 +110,71 @@ export const clearCart = () => (dispatch) => {
   localStorage.removeItem('cartItems');
 };
 
-export const updateCart = (manufacturerId, updates) => (dispatch, getState) => {
-  const { cart: { items } } = getState();
+export const updateCart = (payload) => (dispatch, getState) => {
+  console.log('payload: ', payload);
+  // const { cart: { items } } = getState();
 
-  const updatedItems = [...items];
-  // const manufacturerCart = updatedItems.find(cart => cart.manufacturerId === manufacturerId);
-  const manufacturerCartIndex = updatedItems.findIndex(cart => cart.manufacturerId === manufacturerId);
+  // const updatedItems = [...items];
+  // // const manufacturerCart = updatedItems.find(cart => cart.manufacturerId === manufacturerId);
+  // const manufacturerCartIndex = updatedItems.findIndex(cart => cart.manufacturerId === manufacturerId);
 
-  if (manufacturerCartIndex === -1) {
-    console.error(`Manufacturer with ID ${manufacturerId} not found in the cart.`);
-    return;
-  }
+  // if (manufacturerCartIndex === -1) {
+  //   console.error(`Manufacturer with ID ${manufacturerId} not found in the cart.`);
+  //   return;
+  // }
 
-  const manufacturerCart = { ...updatedItems[manufacturerCartIndex] };
+  // const manufacturerCart = { ...updatedItems[manufacturerCartIndex] };
 
-  if (updates.packs) {
-    updates.packs.forEach(update => {
-      const packIndex = manufacturerCart.packs.findIndex(pack => pack.packId === update.packId);
+  // if (updates.packs) {
+  //   updates.packs.forEach(update => {
+  //     const packIndex = manufacturerCart.packs.findIndex(pack => pack.packId === update.packId);
 
-      if (packIndex !== -1) {
-        if (update.quantity !== undefined) {
-          // Actualizar cantidad del pack
-          manufacturerCart.packs[packIndex].quantity = update.quantity;
-        } else if (update.remove) {
-          // Eliminar el pack
-          manufacturerCart.packs.splice(packIndex, 1);
-        }
-      }
-    });
-  }
+  //     if (packIndex !== -1) {
+  //       if (update.quantity !== undefined) {
+  //         // Actualizar cantidad del pack
+  //         manufacturerCart.packs[packIndex].quantity = update.quantity;
+  //       } else if (update.remove) {
+  //         // Eliminar el pack
+  //         manufacturerCart.packs.splice(packIndex, 1);
+  //       }
+  //     }
+  //   });
+  // }
 
-  if (updates.products) {
-    updates.products.forEach(update => {
-      const productIndex = manufacturerCart.products.findIndex(product => product.productId === update.productId);
+  // if (updates.products) {
+  //   updates.products.forEach(update => {
+  //     const productIndex = manufacturerCart.products.findIndex(product => product.productId === update.productId);
 
-      if (productIndex !== -1) {
-        if (update.variations) {
-          const product = { ...manufacturerCart.products[productIndex] };
-          product.variations = product.variations.filter(variation => {
-            const variationUpdate = update.variations.find(v => v.variationId === variation.variationId);
-            if (variationUpdate) {
-              if (variationUpdate.quantity !== undefined) {
-                variation.quantity = variationUpdate.quantity;
-              }
-              return !variationUpdate.remove;
-            }
-            return true;
-          });
-          manufacturerCart.products[productIndex] = product;
-        }
+  //     if (productIndex !== -1) {
+  //       if (update.variations) {
+  //         const product = { ...manufacturerCart.products[productIndex] };
+  //         product.variations = product.variations.filter(variation => {
+  //           const variationUpdate = update.variations.find(v => v.variationId === variation.variationId);
+  //           if (variationUpdate) {
+  //             if (variationUpdate.quantity !== undefined) {
+  //               variation.quantity = variationUpdate.quantity;
+  //             }
+  //             return !variationUpdate.remove;
+  //           }
+  //           return true;
+  //         });
+  //         manufacturerCart.products[productIndex] = product;
+  //       }
 
-        if (update.remove) {
-          // Eliminar el producto
-          manufacturerCart.products.splice(productIndex, 1);
-        }
-      }
-    });
-  }
+  //       if (update.remove) {
+  //         // Eliminar el producto
+  //         manufacturerCart.products.splice(productIndex, 1);
+  //       }
+  //     }
+  //   });
+  // }
 
-  updatedItems[manufacturerCartIndex] = manufacturerCart;
+  // updatedItems[manufacturerCartIndex] = manufacturerCart;
 
-  dispatch({
-    type: 'CART_UPDATE_ITEMS',
-    payload: updatedItems,
-  });
+  // dispatch({
+  //   type: 'CART_UPDATE_ITEMS',
+  //   payload: updatedItems,
+  // });
   
-  localStorage.setItem('cartItems', JSON.stringify(updatedItems));
+  // localStorage.setItem('cartItems', JSON.stringify(updatedItems));
 };

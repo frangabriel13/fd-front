@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { updateCart } from '../../store/actions/cartActions';
 import s from './DetailCart.module.css';
 import { formatPrice } from '../../utils/utils';
 
 const DetailCart = ({ cart, onClose }) => {
+  const dispatch = useDispatch();
   const [localCart, setLocalCart] = useState(cart);
 
   const handleDeleteInventory = (productId, inventoryIndex) => {
@@ -56,6 +59,26 @@ const DetailCart = ({ cart, onClose }) => {
       });
       return { ...prevCart, packs: updatedPacks };
     });
+  };
+
+  const handleSaveChanges = () => {
+    const payload = {
+      manufacturerId: localCart.manufacturer.userId, // Asegúrate de que `manufacturerId` esté disponible en `localCart`
+      packs: localCart.packs.map((pack) => ({
+        packId: pack.id,
+        quantity: pack.totalItem,
+      })),
+      products: localCart.products.map((product) => ({
+        productId: product.id,
+        variations: product.inventories.map((inventory) => ({
+          variationId: inventory.id,
+          quantity: inventory.totalItem,
+        })),
+      })),
+    };
+  
+    dispatch(updateCart(payload)); // Despacha la acción con el payload
+    onClose(); // Cierra el modal después de guardar
   };
 
   const handleClickOutside = (e) => {
@@ -186,7 +209,7 @@ const DetailCart = ({ cart, onClose }) => {
         </div>
         <div className={s.divActions}>
           <button className={s.btnCancel} onClick={onClose}>Cancelar</button>
-          <button className={s.btnSave}>Guardar cambios</button>
+          <button className={s.btnSave} onClick={handleSaveChanges}>Guardar cambios</button>
         </div>
       </div>
     </div>

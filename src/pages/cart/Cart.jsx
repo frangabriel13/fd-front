@@ -21,6 +21,7 @@ const Cart = () => {
 
   const handleClearCart = () => {
     dispatch(clearCart());
+    refreshCart();
   };
 
   const handleShowDetail = (product) => {

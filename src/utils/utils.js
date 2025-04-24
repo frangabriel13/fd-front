@@ -16,3 +16,25 @@ export const filterCategoriesByParentAndGender = (categories, parentId, genderId
 export const formatPrice = (price) => {
   return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(price);
 };
+
+export const calculateTotalCart = (cart) => {
+  if (!cart) return 0;
+
+  // Calcular el total de los packs
+  const packsTotal = cart.packs?.reduce((sum, pack) => {
+    const packTotal = pack.price * pack.totalItem;
+    return sum + packTotal;
+  }, 0) || 0;
+
+  // Calcular el total de los productos
+  const productsTotal = cart.products?.reduce((sum, product) => {
+    const totalItemsInInventories = product.inventories.reduce((inventorySum, inventory) => {
+      return inventorySum + inventory.totalItem;
+    }, 0);
+
+    return sum + (product.price * totalItemsInInventories);
+  }, 0) || 0;
+
+  // Sumar ambos totales
+  return packsTotal + productsTotal;
+};

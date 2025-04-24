@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { getCart, clearCart } from "../../store/actions/cartActions";
 import s from "./Cart.module.css";
 import DetailCart from "./DetailCart";
+import { calculateTotalCart, formatPrice } from "../../utils/utils";
+
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -58,7 +60,7 @@ const Cart = () => {
               </div>
               <div className={s.divManufacturer}>
                 <p className={s.total}>Total:</p>
-                <p className={s.priceTotal}>$50.000</p>
+                <p className={s.priceTotal}>{formatPrice(calculateTotalCart(product))}</p>
               </div>
               <div className={s.divManufacturer}>
                 <p className={s.minPurchase}>Mínimo de compra: $60.000</p>

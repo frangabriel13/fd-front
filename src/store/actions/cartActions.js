@@ -79,7 +79,6 @@ export const addToCart = (item, manufacturerId, type) => (dispatch, getState) =>
 };
 
 export const updateCart = (payload) => (dispatch) => {
-  console.log('Pasa por la action');
   dispatch({
     type: 'CART_UPDATE_MANUFACTURER',
     payload,
@@ -116,4 +115,17 @@ export const clearCart = () => (dispatch) => {
 
   // Limpiar el carrito en localStorage
   localStorage.removeItem('cartItems');
+};
+
+export const deleteCart = (manufacturerId) => (dispatch, getState) => {
+  const { cart: { items } } = getState();
+  
+  const updatedItems = items.filter(cart => cart.manufacturerId !== manufacturerId);
+  
+  dispatch({
+    type: 'CART_UPDATE_ITEMS',
+    payload: updatedItems,
+  });
+  
+  localStorage.setItem('cartItems', JSON.stringify(updatedItems));
 };

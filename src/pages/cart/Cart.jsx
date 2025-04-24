@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getCart, clearCart } from "../../store/actions/cartActions";
+import { getCart, clearCart, deleteCart } from "../../store/actions/cartActions";
 import s from "./Cart.module.css";
 import DetailCart from "./DetailCart";
 import { calculateTotalCart, formatPrice } from "../../utils/utils";
@@ -31,6 +31,11 @@ const Cart = () => {
   const handleCloseDetail = () => {
     setShowDetail(false);
     setSelectedCart(null);
+  };
+
+  const handleDeleteCart = (manufacturerId) => {
+    dispatch(deleteCart(manufacturerId));
+    refreshCart(); // Refresca el carrito después de eliminar un manufacturer
   };
 
   const refreshCart = () => {
@@ -70,7 +75,7 @@ const Cart = () => {
               </div>
             </div>
             <div className={s.divActions}>
-              <button className={s.btnDelete}>Eliminar</button>
+              <button className={s.btnDelete} onClick={() => handleDeleteCart(product.manufacturer.userId)}>Eliminar</button>
               <button className={s.btnSend}>Enviar pedido</button>
               <button className={s.btnDetail} onClick={() => handleShowDetail(product)}>Ver detalle</button>
             </div>

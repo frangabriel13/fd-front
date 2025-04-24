@@ -41,6 +41,8 @@ const Cart = () => {
   console.log('items', items);
   console.log('products', products);
 
+  const unifiedTotal = products.reduce((acc, product) => acc + calculateTotalCart(product), 0);
+
   return(
     <div className={s.container}>
       <div className={s.divHeader}>
@@ -74,9 +76,12 @@ const Cart = () => {
             </div>
           </div>
         ))}
-      <div className={s.divBtns}>
-        <button className={s.btnBuy}>Unificar pedido</button>
-        <button className={s.btnClean} onClick={handleClearCart}>Vaciar carrito</button>
+      <div className={s.divUnified}>
+        <p className={s.textUnified}>Total unificado: <span className={s.totalUnified}>{formatPrice(unifiedTotal)}</span></p>
+        <div className={s.divBtns}>
+          <button className={s.btnBuy}>Unificar pedido</button>
+          <button className={s.btnClean} onClick={handleClearCart}>Vaciar carrito</button>
+        </div>
       </div>
       <p className={s.pUnifique}>Unifica el pedido y nostros nos ocuparemos de la gestión del mismo</p>
       </div>

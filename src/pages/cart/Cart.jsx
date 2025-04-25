@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getCart, clearCart, deleteCart } from "../../store/actions/cartActions";
+import { createOrder } from "../../store/actions/orderActions";
 import s from "./Cart.module.css";
 import DetailCart from "./DetailCart";
 import { calculateTotalCart, formatPrice } from "../../utils/utils";
-
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -43,6 +43,30 @@ const Cart = () => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     dispatch(getCart(cartItems)); // Refresca el carrito después de guardar cambios
   };
+
+  const handleSendOrder = (product) => {
+    const order = {
+      manufacturer: {
+        userId: product.manufacturer.userId,
+        name: product.manufacturer.name,
+      },
+      packs: product.packs.map((pack) => ({
+        id: pack.id,
+        totalItem: pack.totalItem,
+      })),
+      products: product.products.map((prod) => ({
+        id: prod.id,
+        inventories: prod.inventories.map((inventory) => ({
+          color: inventory.color,
+          size: inventory.size,
+          totalItem: inventory.totalItem,
+        })),
+      })),
+      totalCart: calculateTotalCart(product),
+    };
+  
+    dispatch(createOrder([order]));
+  };
   
   console.log('items', items);
   console.log('products', products);
@@ -77,7 +101,7 @@ const Cart = () => {
             </div>
             <div className={s.divActions}>
               <button className={s.btnDelete} onClick={() => handleDeleteCart(product.manufacturer.userId)}>Eliminar</button>
-              <button className={s.btnSend}>Enviar pedido</button>
+              <button className={s.btnSend} onClick={() => handleSendOrder(product)}>Enviar pedido</button>
               <button className={s.btnDetail} onClick={() => handleShowDetail(product)}>Ver detalle</button>
             </div>
           </div>

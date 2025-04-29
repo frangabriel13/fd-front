@@ -4,6 +4,7 @@ import { getCart, clearCart, deleteCart } from "../../store/actions/cartActions"
 import { createOrder } from "../../store/actions/orderActions";
 import s from "./Cart.module.css";
 import DetailCart from "./DetailCart";
+import EditData from "../../components/modals/EditData";
 import { calculateTotalCart, formatPrice } from "../../utils/utils";
 import { FaEdit } from "react-icons/fa";
 
@@ -13,6 +14,7 @@ const Cart = () => {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const [showDetail, setShowDetail] = useState(false);
   const [selectedCart, setSelectedCart] = useState(null);
+  const [showEditData, setShowEditData] = useState(false);
 
   useEffect(() => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -39,6 +41,14 @@ const Cart = () => {
   const handleDeleteCart = (manufacturerId) => {
     dispatch(deleteCart(manufacturerId));
     refreshCart(); // Refresca el carrito después de eliminar un manufacturer
+  };
+
+  const handleOpenEditModal = () => {
+    setShowEditData(true);
+  };
+
+  const handleCloseEditModal = () => {
+    setShowEditData(false);
   };
 
   const refreshCart = () => {
@@ -85,7 +95,7 @@ const Cart = () => {
             {dataUser && dataUser.name && (
               <p className={s.userName}>{dataUser.name}</p>
             )}
-            <FaEdit className={s.editIcon} title="Editar datos" />
+            <FaEdit className={s.editIcon} title="Editar datos" onClick={handleOpenEditModal} />
           </div>
         )}
       </div>
@@ -127,6 +137,7 @@ const Cart = () => {
       <p className={s.pUnifique}>Unifica el pedido y nostros nos ocuparemos de la gestión del mismo</p>
       </div>
       {showDetail && <DetailCart cart={selectedCart} onClose={handleCloseDetail} refreshCart={refreshCart} />}
+      {showEditData && <EditData dataUser={dataUser} onClose={handleCloseEditModal} />}
     </div>
   );
 };

@@ -129,3 +129,10 @@ export const deleteCart = (manufacturerId) => (dispatch, getState) => {
   
   localStorage.setItem('cartItems', JSON.stringify(updatedItems));
 };
+
+export const editDataCart = (dataUser) => (dispatch) => {
+  dispatch({
+    type: 'CART_EDIT_DATA',
+    payload: dataUser,
+  });
+};

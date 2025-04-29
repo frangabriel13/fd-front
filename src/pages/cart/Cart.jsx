@@ -5,10 +5,12 @@ import { createOrder } from "../../store/actions/orderActions";
 import s from "./Cart.module.css";
 import DetailCart from "./DetailCart";
 import { calculateTotalCart, formatPrice } from "../../utils/utils";
+import { FaEdit } from "react-icons/fa";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const { items, products } = useSelector((state) => state.cart);
+  const { items, products, dataUser } = useSelector((state) => state.cart);
+  const { isAuthenticated } = useSelector((state) => state.auth);
   const [showDetail, setShowDetail] = useState(false);
   const [selectedCart, setSelectedCart] = useState(null);
 
@@ -70,6 +72,7 @@ const Cart = () => {
   
   console.log('items', items);
   console.log('products', products);
+  console.log('dataUser', dataUser);
 
   const unifiedTotal = products.reduce((acc, product) => acc + calculateTotalCart(product), 0);
 
@@ -77,6 +80,14 @@ const Cart = () => {
     <div className={s.container}>
       <div className={s.divHeader}>
         <h2 className={s.title}>Carrito de compras</h2>
+        {!isAuthenticated && (
+          <div>
+            {dataUser && dataUser.name && (
+              <p className={s.userName}>{dataUser.name}</p>
+            )}
+            <FaEdit className={s.editIcon} title="Editar datos" />
+          </div>
+        )}
       </div>
       <div className={s.divCart}>
         {products.map((product) => (

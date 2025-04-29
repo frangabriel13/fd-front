@@ -2,6 +2,7 @@ const initialState = {
   items: [],
   products: [],
   total: 0,
+  dataUser: {},
 }
 
 const cartReducer = (state = initialState, action) => {
@@ -42,6 +43,11 @@ const cartReducer = (state = initialState, action) => {
       return {
         ...state,
         products: action.payload,
+      };
+    case 'EDIT_DATA_CART':
+      return {
+        ...state,
+        dataUser: action.payload,
       };
     default:
       return state;

@@ -59,6 +59,6 @@ export const genderInstance = axios.create({
 });
 
 export const orderInstance = axios.create({
-  baseURL: 'http://localhost:3000/api/orders',
+  baseURL: 'http://localhost:3001/api/orders',
 });
 orderInstance.interceptors.request.use(addAuthHeader);

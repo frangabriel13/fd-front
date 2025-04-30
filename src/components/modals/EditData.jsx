@@ -13,22 +13,37 @@ const EditData = ({ dataUser = {}, onClose }) => {
         <div className={s.container}>
           <div className={s.divTitle}>
             <h3>Editar Datos</h3>
+            <p>Rellena los siguientes datos para que puedan ser usados al generar la orden.</p>
           </div>
-          <form>
-            <div className={s.divInput}>
-              <label htmlFor="name">Nombre:</label>
-              <input type="text" id="name" defaultValue={dataUser.name || ""} />
+          <form className={s.form}>
+            <div className={s.divInputs}>
+              <div className={s.divInput}>
+                <h4>Nombre</h4>
+                <input
+                  className={s.input}
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={dataUser.name || ""}
+                />
+              </div>
+              <div className={s.divInput}>
+                <h4>Número de teléfono</h4>
+                <input 
+                  className={s.input}
+                  type="text" 
+                  id="phone"
+                  name="phone"
+                  value={dataUser.phone || ""} 
+                />
+              </div>
             </div>
-            <div className={s.divInput}>
-              <label htmlFor="phone">Teléfono:</label>
-              <input type="tel" id="phone" defaultValue={dataUser.phone || ""} />
+            <hr className={s.divider} />
+            <div className={s.divBtn}>
+              <button className={s.btnCancel}>Cancelar</button>
+              <button className={s.btnForm} type='submit'>Guardar cambios</button>
             </div>
-            <button type="submit" className={s.btnSave}>Guardar</button>
           </form>
-          <hr className={s.divider} />
-          <div className={s.divBtn}>
-            <button className={s.btnCancel} onClick={onClose}>Cerrar</button>
-          </div>
         </div>
       </div>
     </div>

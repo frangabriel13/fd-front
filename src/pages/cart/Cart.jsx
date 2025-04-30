@@ -79,6 +79,30 @@ const Cart = () => {
   
     dispatch(createOrder([order]));
   };
+
+  const handleUnifiedOrder = () => {
+    const unifiedOrder = products.map((product) => ({
+      manufacturer: {
+        userId: product.manufacturer.userId,
+        name: product.manufacturer.name,
+      },
+      packs: product.packs.map((pack) => ({
+        id: pack.id,
+        totalItem: pack.totalItem,
+      })),
+      products: product.products.map((prod) => ({
+        id: prod.id,
+        inventories: prod.inventories.map((inventory) => ({
+          color: inventory.color,
+          size: inventory.size,
+          totalItem: inventory.totalItem,
+        })),
+      })),
+      totalCart: calculateTotalCart(product),
+    }));
+  
+    dispatch(createOrder(unifiedOrder));
+  };
   
   console.log('items', items);
   console.log('products', products);
@@ -130,7 +154,7 @@ const Cart = () => {
       <div className={s.divUnified}>
         <p className={s.textUnified}>Total unificado: <span className={s.totalUnified}>{formatPrice(unifiedTotal)}</span></p>
         <div className={s.divBtns}>
-          <button className={s.btnBuy}>Unificar pedido</button>
+          <button className={s.btnBuy} onClick={handleUnifiedOrder}>Unificar pedido</button>
           <button className={s.btnClean} onClick={handleClearCart}>Vaciar carrito</button>
         </div>
       </div>

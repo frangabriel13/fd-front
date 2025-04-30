@@ -33,7 +33,7 @@
   text-align: center;
 }
 
-.container p {
+.divTitle p {
   font-size: 1.6rem;
   text-align: center;
   color: var(--gray-color);
@@ -130,4 +130,9 @@
 
 .btnCancel:hover {
   background-color: var(--red-color-light);
+}
+
+.error {
+  color: var(--red-color);
+  font-size: 1.2rem;
 }

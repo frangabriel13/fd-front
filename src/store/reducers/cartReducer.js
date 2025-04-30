@@ -44,7 +44,7 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         products: action.payload,
       };
-    case 'EDIT_DATA_CART':
+    case 'CART_EDIT_DATA':
       return {
         ...state,
         dataUser: action.payload,

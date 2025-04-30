@@ -19,6 +19,30 @@
   font-size: 3rem;
 }
 
+.divUserData {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.userName {
+  font-size: 2rem;
+  font-weight: 500;
+  color: white;
+}
+
+.editIcon {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  color: white;
+  transition: all .3s ease-in-out;
+}
+
+.editIcon:hover {
+  transform: scale(1.2);
+}
+
 .divCart {
   display: flex;
   flex-direction: column;

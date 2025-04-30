@@ -91,7 +91,7 @@ const Cart = () => {
       <div className={s.divHeader}>
         <h2 className={s.title}>Carrito de compras</h2>
         {!isAuthenticated && (
-          <div>
+          <div className={s.divUserData}>
             {dataUser && dataUser.name && (
               <p className={s.userName}>{dataUser.name}</p>
             )}

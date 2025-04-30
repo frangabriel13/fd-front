@@ -77,29 +77,37 @@ const Cart = () => {
       totalCart: calculateTotalCart(product),
     };
   
-    dispatch(createOrder([order]));
+    const payload = {
+      userData: dataUser,
+      carts: [order],
+    };
+  
+    dispatch(createOrder(payload));
   };
 
   const handleUnifiedOrder = () => {
-    const unifiedOrder = products.map((product) => ({
-      manufacturer: {
-        userId: product.manufacturer.userId,
-        name: product.manufacturer.name,
-      },
-      packs: product.packs.map((pack) => ({
-        id: pack.id,
-        totalItem: pack.totalItem,
-      })),
-      products: product.products.map((prod) => ({
-        id: prod.id,
-        inventories: prod.inventories.map((inventory) => ({
-          color: inventory.color,
-          size: inventory.size,
-          totalItem: inventory.totalItem,
+    const unifiedOrder = {
+      userData: dataUser,
+      carts: products.map((product) => ({
+        manufacturer: {
+          userId: product.manufacturer.userId,
+          name: product.manufacturer.name,
+        },
+        packs: product.packs.map((pack) => ({
+          id: pack.id,
+          totalItem: pack.totalItem,
         })),
+        products: product.products.map((prod) => ({
+          id: prod.id,
+          inventories: prod.inventories.map((inventory) => ({
+            color: inventory.color,
+            size: inventory.size,
+            totalItem: inventory.totalItem,
+          })),
+        })),
+        totalCart: calculateTotalCart(product),
       })),
-      totalCart: calculateTotalCart(product),
-    }));
+    };
   
     dispatch(createOrder(unifiedOrder));
   };

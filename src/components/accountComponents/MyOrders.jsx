@@ -22,7 +22,7 @@ const MyOrders = () => {
 
   return (
     <div className={s.container}>
-      <TableMyOrders />
+      <TableMyOrders mySubOrders={mySubOrders} />
     </div>
   )
 };

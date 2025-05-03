@@ -6,10 +6,10 @@ export const createOrder = (orderData) => async (dispatch) => {
   try {
     const response = await orderInstance.post('/', orderData);
     console.log('Order created successfully:', response.data);
-    // dispatch({
-    //   type: 'CREATE_ORDER_SUCCESS',
-    //   payload: response.data,
-    // });
+    dispatch({
+      type: 'CREATE_ORDER_SUCCESS',
+      payload: response.data,
+    });
   } catch (error) {
     dispatch({
       type: 'CREATE_ORDER_FAILURE',
@@ -35,3 +35,20 @@ export const getMySubOrders = () => async (dispatch) => {
     });
   }
 };
+
+export const getMyOrders = () => async (dispatch) => {
+  dispatch({ type: 'GET_MY_ORDERS_REQUEST' });
+  try {
+    const response = await orderInstance.get('/my-orders');
+    console.log('My orders fetched successfully:', response.data);
+    dispatch({
+      type: 'GET_MY_ORDERS_SUCCESS',
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'GET_MY_ORDERS_FAILURE',
+      error: error.message,
+    });
+  }
+}

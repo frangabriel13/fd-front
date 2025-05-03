@@ -1,10 +1,14 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import s from './MyOrders.module.css';
+import TableMyOrders from './myOrders/TableMyOrders';
 
 const MyOrders = () => {
+  const dispatch = useDispatch();
+
   return (
     <div className={s.container}>
-      <h2>My Orders</h2>
-      <p>Here you can see your orders</p>
+      <TableMyOrders />
     </div>
   )
 };

@@ -11,6 +11,7 @@ import colorReducer from './colorReducer';
 import packReducer from './packReducer';
 import genderReducer from './genderReducer';
 import cartReducer from './cartReducer';
+import orderReducer from './orderReducer';
 
 const rootReducer = combineReducers({
   manufacturer: manufacturerReducer,
@@ -25,6 +26,7 @@ const rootReducer = combineReducers({
   pack: packReducer,
   gender: genderReducer,
   cart: cartReducer,
+  order: orderReducer,
 });
 
 

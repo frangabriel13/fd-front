@@ -38,3 +38,10 @@ export const calculateTotalCart = (cart) => {
   // Sumar ambos totales
   return packsTotal + productsTotal;
 };
+
+export const formatDateAndTime = (isoString) => {
+  const date = new Date(isoString);
+  const formattedDate = date.toLocaleDateString('es-AR');
+  const formattedTime = date.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false });
+  return { formattedDate, formattedTime };
+};

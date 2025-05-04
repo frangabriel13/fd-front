@@ -17,9 +17,6 @@ const MyOrders = () => {
     dispatch(getMyOrders());
   }, [dispatch]);
 
-  console.log('My SubOrders:', mySubOrders);
-  console.log('My Orders:', myOrders);
-
   return (
     <div className={s.container}>
       <TableMyOrders mySubOrders={mySubOrders} />

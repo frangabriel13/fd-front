@@ -1,8 +1,22 @@
 import { useState } from 'react';
 import s from './TableMyOrders.module.css';
 import { formatPrice, formatDateAndTime } from '../../../utils/utils';
+import SubOrderDetail from './SubOrderDetail';
 
 const TableMyOrders = ({ mySubOrders }) => {
+  const [selectedOrder, setSelectedOrder] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = (order) => {
+    setSelectedOrder(order);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedOrder(null);
+  };
+
   console.log('My SubOrders:', mySubOrders);
   return (
     <div className={s.container}>
@@ -40,8 +54,8 @@ const TableMyOrders = ({ mySubOrders }) => {
                       <td>{buyerName}</td>
                       <td>{buyerPhone}</td>
                       <td className={s.tdActions}>
-                        <button className={s.btnEdit}>Ver</button>
-                        <button className={s.btnDelete}>Eliminar</button>
+                        <button className={s.btnEdit} onClick={() => openModal(order)}>Ver</button>
+                        <button className={s.btnDelete}>Contactar</button>
                       </td>
                     </tr>
                   );
@@ -51,6 +65,7 @@ const TableMyOrders = ({ mySubOrders }) => {
           </table>
         </div>
       </div>
+      {isModalOpen && <SubOrderDetail subOrder={selectedOrder} onClose={closeModal} />}
     </div>
   )
 };

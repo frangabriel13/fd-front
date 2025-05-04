@@ -17,7 +17,6 @@ const TableMyOrders = ({ mySubOrders }) => {
     setSelectedOrder(null);
   };
 
-  console.log('My SubOrders:', mySubOrders);
   return (
     <div className={s.container}>
       <h3>Mis Ordenes</h3>

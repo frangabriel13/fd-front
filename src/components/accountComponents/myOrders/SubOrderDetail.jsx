@@ -31,26 +31,26 @@ const SubOrderDetail = ({ subOrder, onClose }) => {
                     </tr>
                   </thead>
                   <tbody>
-        {subOrder.products.map((product, index) => (
-          product.inventories && product.inventories.length > 0 ? (
-            product.inventories.map((inventory, invIndex) => (
-              <tr key={`${index}-${invIndex}`}>
-                <td>{product.name}</td>
-                <td>{inventory.size}</td>
-                <td>{inventory.color}</td>
-                <td>{inventory.totalItem}</td>
-                <td>{formatPrice(product.price)}</td>
-              </tr>
-            ))
-          ) : (
-            <tr key={index}>
-              <td>{product.name}</td>
-              <td colSpan="3">Sin inventarios</td>
-              <td>{formatPrice(product.price)}</td>
-            </tr>
-          )
-        ))}
-      </tbody>
+                    {subOrder.products.map((product, index) => (
+                      product.inventories && product.inventories.length > 0 ? (
+                        product.inventories.map((inventory, invIndex) => (
+                          <tr key={`${index}-${invIndex}`}>
+                            <td>{product.name}</td>
+                            <td>{inventory.size}</td>
+                            <td>{inventory.color}</td>
+                            <td>{inventory.totalItem}</td>
+                            <td>{formatPrice(product.price)}</td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr key={index}>
+                          <td>{product.name}</td>
+                          <td colSpan="3">Sin inventarios</td>
+                          <td>{formatPrice(product.price)}</td>
+                        </tr>
+                      )
+                    ))}
+                  </tbody>
                 </table>
               </div>
             )}
@@ -77,6 +77,9 @@ const SubOrderDetail = ({ subOrder, onClose }) => {
                 </table>
               </div>
             )}
+          </div>
+          <div className={s.divTotal}>
+            <h4>Total: {formatPrice(subOrder.subtotal)}</h4>
           </div>
         </div>
         <div className={s.divActions}>

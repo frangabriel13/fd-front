@@ -41,12 +41,12 @@
 .divTable {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 2rem;
 }
 
 .tableSection h4 {
-  margin-bottom: 10px;
-  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
   color: #555;
 }
 
@@ -58,9 +58,10 @@
 
 .table th,
 .table td {
-  border: 1px solid #ddd;
-  padding: 8px;
+  border: .1rem solid #ddd;
+  padding: .8rem;
   text-align: left;
+  font-size: 1.2rem;
 }
 
 .table th {
@@ -74,6 +75,17 @@
 
 .table tr:hover {
   background-color: #f1f1f1;
+}
+
+
+.divTotal {
+  display: flex;
+  justify-content: end;
+}
+
+.divTotal h4 {
+  font-size: 2rem;
+  font-weight: 500;
 }
 
 .divActions {

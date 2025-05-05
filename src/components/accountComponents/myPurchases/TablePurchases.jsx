@@ -17,14 +17,12 @@ const TablePurchases = ({ myOrders }) => {
     setSelectedOrder(null);
   };
 
-  console.log(myOrders);
-
   return (
     <div className={s.container}>
       <h3>Mis compras</h3>
       <div className={s.divData}>
         <div className={s.divPurchases}>
-        <table className={s.table}>
+          <table className={s.table}>
             <thead>
               <tr>
                 <th>ID</th>
@@ -50,6 +48,8 @@ const TablePurchases = ({ myOrders }) => {
                     <td>{formattedTime}</td>
                     <td className={s.tdActions}>
                       <button className={s.btnEdit} onClick={() => openModal(order)}>Ver</button>
+                      <button className={s.btnEdit}>Contactar</button>
+                      <button className={s.btnDelete}>Eliminar</button>
                     </td>
                   </tr>
                 );
@@ -59,7 +59,7 @@ const TablePurchases = ({ myOrders }) => {
         </div>
       </div>
       {isModalOpen && selectedOrder && (
-        <OrderDetail order={selectedOrder} closeModal={closeModal} />
+        <OrderDetail order={selectedOrder} onClose={closeModal} />
       )}
     </div>
   )

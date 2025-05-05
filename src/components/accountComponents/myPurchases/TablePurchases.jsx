@@ -17,6 +17,8 @@ const TablePurchases = ({ myOrders }) => {
     setSelectedOrder(null);
   };
 
+  console.log(myOrders);
+
   return (
     <div className={s.container}>
       <h3>Mis compras</h3>
@@ -29,16 +31,36 @@ const TablePurchases = ({ myOrders }) => {
                 <th>ARS</th>
                 <th>Fecha</th>
                 <th>Hora</th>
-                <th>Comprador</th>
-                <th>Teléfono</th>
                 <th className={s.thActions}>Acciones</th>
               </tr>
             </thead>
             <tbody>
+              {myOrders.map(order => {
+                if (!order || !order.subOrders) {
+                  return null; // Ignorar órdenes inválidas
+                }
+
+                const { formattedDate, formattedTime } = formatDateAndTime(order.createdAt);
+
+                return (
+                  <tr key={order.id}>
+                    <td>{order.id}</td>
+                    <td>{formatPrice(order.total)}</td>
+                    <td>{formattedDate}</td>
+                    <td>{formattedTime}</td>
+                    <td className={s.tdActions}>
+                      <button className={s.btnEdit} onClick={() => openModal(order)}>Ver</button>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
       </div>
+      {isModalOpen && selectedOrder && (
+        <OrderDetail order={selectedOrder} closeModal={closeModal} />
+      )}
     </div>
   )
 };

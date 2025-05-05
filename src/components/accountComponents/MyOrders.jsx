@@ -9,7 +9,6 @@ const MyOrders = () => {
   const mySubOrders = useSelector(state => state.order.mySubOrders);
 
   useEffect(() => {
-    console.log('Fetching my suborders...');
     dispatch(getMySubOrders());
   }, [dispatch]);
 

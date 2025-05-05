@@ -7,14 +7,10 @@ import TableMyOrders from './myOrders/TableMyOrders';
 const MyOrders = () => {
   const dispatch = useDispatch();
   const mySubOrders = useSelector(state => state.order.mySubOrders);
-  const myOrders = useSelector(state => state.order.myOrders);
 
   useEffect(() => {
+    console.log('Fetching my suborders...');
     dispatch(getMySubOrders());
-  }, [dispatch]);
-
-  useEffect(() => {
-    dispatch(getMyOrders());
   }, [dispatch]);
 
   return (

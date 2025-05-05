@@ -19,6 +19,7 @@ export const createOrder = (orderData) => async (dispatch) => {
 };
 
 export const getMySubOrders = () => async (dispatch) => {
+  console.log('Fetching my suborders...');
   dispatch({ type: 'GET_MY_SUBORDERS_REQUEST' });
   try {
     const response = await orderInstance.get('/my-suborders');

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getMySubOrders, getMyOrders } from '../../../store/actions/orderActions';
+import { getMyOrders, deleteOrder } from '../../../store/actions/orderActions';
 import s from './MyPurchases.module.css';
 import TablePurchases from './TablePurchases';
 
@@ -12,9 +12,13 @@ const MyPurchases = () => {
     dispatch(getMyOrders());
   }, [dispatch]);
 
+  const handleDeleteOrder = (orderId) => {
+    dispatch(deleteOrder(orderId));
+  };
+
   return (
     <div className={s.container}>
-      <TablePurchases myOrders={myOrders} />
+      <TablePurchases myOrders={myOrders} onDeleteOrder={handleDeleteOrder} />
     </div>
   )
 };

@@ -47,6 +47,7 @@
 .divSuborder {
   display: flex;
   flex-direction: column;
+  gap: 1rem;
   border-bottom: .1rem solid #ddd;
   padding-bottom: 2rem;
 }
@@ -107,6 +108,16 @@
 }
 
 .divTotal h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.divTotalOrder {
+  display: flex;
+  justify-content: end;
+}
+
+.divTotalOrder h4 {
   font-size: 2rem;
   font-weight: 500;
 }

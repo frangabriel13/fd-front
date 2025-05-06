@@ -1,7 +1,6 @@
 import { orderInstance } from "../../utils/axiosConfig";
 
 export const createOrder = (orderData) => async (dispatch) => {
-  console.log('Creating order with data:', orderData);
   dispatch({ type: 'CREATE_ORDER_REQUEST' });
   try {
     const response = await orderInstance.post('/', orderData);

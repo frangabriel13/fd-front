@@ -99,10 +99,14 @@ const Cart = () => {
         },
         packs: product.packs.map((pack) => ({
           id: pack.id,
+          name: pack.name,
+          price: pack.price,
           totalItem: pack.totalItem,
         })),
         products: product.products.map((prod) => ({
           id: prod.id,
+          price: prod.price,
+          name: prod.name,
           inventories: prod.inventories.map((inventory) => ({
             color: inventory.color,
             size: inventory.size,

@@ -82,8 +82,14 @@ const OrderDetail = ({ order, onClose }) => {
                     </div>
                   )}
                 </div>
+                <div className={s.divTotal}>
+                  <h4>Subtotal: {formatPrice(subOrder.subtotal)}</h4>
+                </div>
               </div>
             ))}
+          </div>
+          <div className={s.divTotalOrder}>
+            <h4>Total: {formatPrice(order.total)}</h4>
           </div>
         </div>
         <div className={s.divActions}>

@@ -52,3 +52,20 @@ export const getMyOrders = () => async (dispatch) => {
     });
   }
 }
+
+export const deleteOrder = (orderId) => async (dispatch) => {
+  dispatch({ type: 'DELETE_ORDER_REQUEST' });
+  try {
+    const response = await orderInstance.delete(`/${orderId}`);
+    console.log('Order deleted successfully:', response.data);
+    dispatch({
+      type: 'DELETE_ORDER_SUCCESS',
+      payload: orderId,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'DELETE_ORDER_FAILURE',
+      error: error.message,
+    });
+  }
+};

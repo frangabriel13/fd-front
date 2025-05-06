@@ -19,6 +19,18 @@ const orderReducer = (state = initialState, action) => {
       return { ...state, loading: false, myOrders: action.payload };
     case 'GET_MY_ORDERS_FAILURE':
       return { ...state, loading: false, error: action.error };
+    case 'CREATE_ORDER_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'CREATE_ORDER_SUCCESS':
+      return { ...state, loading: false, myOrders: [...state.myOrders, action.payload] };
+    case 'CREATE_ORDER_FAILURE':
+      return { ...state, loading: false, error: action.error };
+    case 'DELETE_ORDER_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'DELETE_ORDER_SUCCESS':
+      return { ...state, loading: false, myOrders: state.myOrders.filter(order => order.id !== action.payload) };
+    case 'DELETE_ORDER_FAILURE':
+      return { ...state, loading: false, error: action.error };
     default:
       return state;
   }

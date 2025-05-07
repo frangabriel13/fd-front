@@ -11,6 +11,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const cartItemsCount = useSelector((state) => state.cart.items.length);
 
   const handleLogout = () => {
     dispatch(logout());
@@ -49,7 +50,10 @@ const Header = () => {
           </>
         )}
         <Link to="/mi-carrito" className={s.link}>
-          <BsCart2 />
+          <div className={s.divCartIcon}>
+            <BsCart2 className={s.cartIcon} />
+            {cartItemsCount > 0 && <span className={s.cartBadge}>{cartItemsCount}</span>}
+          </div>
         </Link>
       </div>
     </div>

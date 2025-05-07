@@ -7,14 +7,16 @@ import DetailCart from "./DetailCart";
 import EditData from "../../components/modals/EditData";
 import { calculateTotalCart, formatPrice } from "../../utils/utils";
 import { FaEdit } from "react-icons/fa";
+import SuccesModal from "../../components/modals/SuccessModal";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const { items, products, dataUser } = useSelector((state) => state.cart);
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated, user } = useSelector((state) => state.auth);
   const [showDetail, setShowDetail] = useState(false);
   const [selectedCart, setSelectedCart] = useState(null);
   const [showEditData, setShowEditData] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   useEffect(() => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
@@ -57,6 +59,15 @@ const Cart = () => {
   };
 
   const handleSendOrder = (product) => {
+    if (user.role === "manufacturer") {
+      setShowSuccessModal({
+        show: true,
+        title: "Acción no permitida",
+        message: "Debe cerrar sesión como Fabricante para poder generar una orden.",
+      });
+      return;
+    }
+
     const order = {
       manufacturer: {
         userId: product.manufacturer.userId,
@@ -90,6 +101,15 @@ const Cart = () => {
   };
 
   const handleUnifiedOrder = () => {
+    if (user.role === "manufacturer") {
+      setShowSuccessModal({
+        show: true,
+        title: "Acción no permitida",
+        message: "Debe cerrar sesión como Fabricante para poder generar una orden.",
+      });
+      return;
+    }
+
     const unifiedOrder = {
       userData: dataUser,
       carts: products.map((product) => ({
@@ -119,10 +139,10 @@ const Cart = () => {
   
     dispatch(createOrder(unifiedOrder));
   };
-  
-  console.log('items', items);
-  console.log('products', products);
-  console.log('dataUser', dataUser);
+
+  const handleCloseSuccessModal = () => {
+    setShowSuccessModal({ show: false, title: "", message: "" });
+  };
 
   const unifiedTotal = products.reduce((acc, product) => acc + calculateTotalCart(product), 0);
 
@@ -178,6 +198,13 @@ const Cart = () => {
       </div>
       {showDetail && <DetailCart cart={selectedCart} onClose={handleCloseDetail} refreshCart={refreshCart} />}
       {showEditData && <EditData dataUser={dataUser} onClose={handleCloseEditModal} />}
+      {showSuccessModal.show && (
+        <SuccesModal
+          title={showSuccessModal.title}
+          message={showSuccessModal.message}
+          onClose={handleCloseSuccessModal}
+        />
+      )}
     </div>
   );
 };

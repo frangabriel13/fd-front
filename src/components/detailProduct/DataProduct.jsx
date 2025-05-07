@@ -8,11 +8,15 @@ import {
   BsStarFill,
 } from "react-icons/bs";
 import { formatPrice } from '../../utils/utils';
+import SuccessModal from '../modals/SuccessModal';
 
 const DataProduct = ({ product, manufacturer, onAddToCart }) => {
   const [quantities, setQuantities] = useState(
     product.inventories.map((inv) => ({ id: inv.id, quantity: inv.quantity || 0 }))
   );
+  const [showModal, setShowModal] = useState(false);
+  const [modalContent, setModalContent] = useState({ title: '', message: '' });
+
 
   const handleDecrement = (id) => {
     setQuantities((prevQuantities) => 
@@ -49,7 +53,19 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
 
     if (variations.length > 0) {
       onAddToCart(variations);
+      setQuantities(
+        product.inventories.map((inv) => ({ id: inv.id, quantity: 0 }))
+      );
+      setModalContent({
+        title: 'Producto añadido',
+        text: 'Los productos seleccionados se han añadido al carrito correctamente.',
+      });
+      setShowModal(true);
     }
+  };
+
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
   
   return (
@@ -128,6 +144,13 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
       <div className={s.divCart}>
         <button className={s.btnCart} onClick={handleAddToCartClick}>Añadir al carrito</button>
       </div>
+      {showModal && (
+        <SuccessModal 
+          title={modalContent.title} 
+          message={modalContent.text} 
+          onClose={handleCloseModal} 
+        />
+      )}
     </div>
   );
 };

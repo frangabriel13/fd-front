@@ -73,6 +73,16 @@ const Cart = () => {
       return;
     }
 
+    const totalCart = calculateTotalCart(product);
+    if (totalCart < product.manufacturer.minPurchase) { // Validación dinámica del mínimo de compra
+      setShowSuccessModal({
+        show: true,
+        title: "Atención",
+        message: `El mínimo de compra en ${product.manufacturer.name} es de ${formatPrice(product.manufacturer.minPurchase)}.`,
+      });
+      return;
+    }
+
     const order = {
       manufacturer: {
         userId: product.manufacturer.userId,
@@ -115,10 +125,21 @@ const Cart = () => {
       return;
     }
 
-    console.log('dataUser: ', dataUser);
     if (!dataUser || Object.keys(dataUser).length === 0) {
       setShowEditData(true);
       return;
+    }
+
+    for (const product of products) {
+      const totalCart = calculateTotalCart(product);
+      if (totalCart < product.manufacturer.minPurchase) {
+        setShowSuccessModal({
+          show: true,
+          title: "Atención",
+          message: `El mínimo de compra en ${product.manufacturer.name} (${formatPrice(product.manufacturer.minPurchase)}).`,
+        });
+        return;
+      }
     }
 
     const unifiedOrder = {
@@ -157,6 +178,8 @@ const Cart = () => {
 
   const unifiedTotal = products.reduce((acc, product) => acc + calculateTotalCart(product), 0);
 
+  console.log('products: ', products);
+
   return(
     <div className={s.container}>
       <div className={s.divHeader}>
@@ -187,7 +210,7 @@ const Cart = () => {
                 <p className={s.priceTotal}>{formatPrice(calculateTotalCart(product))}</p>
               </div>
               <div className={s.divManufacturer}>
-                <p className={s.minPurchase}>Mínimo de compra: $60.000</p>
+                <p className={s.minPurchase}>Mínimo de compra: {formatPrice(product.manufacturer.minPurchase)}</p>
                 <p className={s.priceUSD}>Consulta con el fabricante para abonar de dólares</p>
               </div>
             </div>

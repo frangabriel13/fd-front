@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import s from './DataPack.module.css';
 import { 
   BsHeart, 
@@ -8,8 +9,20 @@ import {
 } from "react-icons/bs";
 import { formatPrice } from '../../utils/utils';
 import ProductPack from './ProductPack';
+import SuccessModal from '../modals/SuccessModal';
 
 const DataPack = ({ pack, onAddToCart }) => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleAddToCartClick = () => {
+    onAddToCart(pack);
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false); // Cerrar el modal
+  };
+
   return(
     <div className={s.container}>
       <div className={s.divHeader}>
@@ -49,8 +62,15 @@ const DataPack = ({ pack, onAddToCart }) => {
         ))}
       </div>
       <div className={s.divCart}>
-        <button className={s.btnCart} onClick={onAddToCart}>Añadir al carrito</button>
+        <button className={s.btnCart} onClick={handleAddToCartClick}>Añadir al carrito</button>
       </div>
+      {isModalOpen && (
+        <SuccessModal 
+          title={'Pack añadido'} 
+          message={"El pack seleccionado se ha añadido al carrito correctamente."} 
+          onClose={handleCloseModal} 
+        />
+      )}
     </div>
   )
 };

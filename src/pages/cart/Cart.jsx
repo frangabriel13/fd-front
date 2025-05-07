@@ -59,12 +59,17 @@ const Cart = () => {
   };
 
   const handleSendOrder = (product) => {
-    if (user.role === "manufacturer") {
+    if (user?.role === "manufacturer") {
       setShowSuccessModal({
         show: true,
         title: "Acción no permitida",
         message: "Debe cerrar sesión como Fabricante para poder generar una orden.",
       });
+      return;
+    }
+
+    if (!dataUser || Object.keys(dataUser).length === 0) {
+      setShowEditData(true);
       return;
     }
 
@@ -101,12 +106,18 @@ const Cart = () => {
   };
 
   const handleUnifiedOrder = () => {
-    if (user.role === "manufacturer") {
+    if (user?.role === "manufacturer") {
       setShowSuccessModal({
         show: true,
         title: "Acción no permitida",
         message: "Debe cerrar sesión como Fabricante para poder generar una orden.",
       });
+      return;
+    }
+
+    console.log('dataUser: ', dataUser);
+    if (!dataUser || Object.keys(dataUser).length === 0) {
+      setShowEditData(true);
       return;
     }
 

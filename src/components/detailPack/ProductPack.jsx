@@ -1,8 +1,14 @@
+import { useNavigate } from 'react-router-dom';
 import s from './ProductPack.module.css';
 import { formatPrice } from '../../utils/utils';
 
 const ProductPack = ({ product }) => {
-  console.log(product);
+  const navigate = useNavigate();
+
+  const handleViewProduct = () => {
+    navigate(`/producto/${product.id}`);
+  }
+
   return(
     <div className={s.container}>
       <div className={s.divData}>
@@ -44,7 +50,7 @@ const ProductPack = ({ product }) => {
           <p className={s.totalText}>Total</p>
           <p className={s.totalQuantity}>{product.productpack.quantity} unidades</p>
         </div>
-        <button className={s.btnMore}>Ver</button>
+        <button className={s.btnMore} onClick={handleViewProduct}>Ver</button>
       </div>
     </div>
   )

@@ -1,12 +1,18 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { updateCart } from '../../store/actions/cartActions';
 import s from './DetailCart.module.css';
 import { formatPrice } from '../../utils/utils';
 
 const DetailCart = ({ cart, onClose, refreshCart }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [localCart, setLocalCart] = useState(cart);
+
+  const handleViewPack = (packId) => {
+    navigate(`/pack/${packId}`);
+  };
 
   const handleDeleteInventory = (productId, inventoryIndex) => {
     setLocalCart((prevCart) => {
@@ -181,7 +187,7 @@ const DetailCart = ({ cart, onClose, refreshCart }) => {
                     <p className={s.productPrice}>{formatPrice(pack.price)}</p>
                   </div>
                   <div className={s.divBtn}>
-                    <button>Ver pack</button>
+                    <button onClick={() => handleViewPack(pack.id)}>Ver pack</button>
                   </div>
                 </div>
                 <div className={s.divInventory}>

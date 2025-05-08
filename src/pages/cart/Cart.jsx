@@ -113,6 +113,11 @@ const Cart = () => {
     };
   
     dispatch(createOrder(payload));
+    setShowSuccessModal({
+      show: true,
+      title: "Orden generada con éxito",
+      message: "Puedes ver la orden en tu cuenta/ordenes.",
+    });
   };
 
   const handleUnifiedOrder = () => {
@@ -170,6 +175,11 @@ const Cart = () => {
     };
   
     dispatch(createOrder(unifiedOrder));
+    setShowSuccessModal({
+      show: true,
+      title: "Orden generada con éxito",
+      message: "Puedes ver la orden en tu cuenta/ordenes.",
+    });
   };
 
   const handleCloseSuccessModal = () => {

@@ -67,3 +67,17 @@
 .btnCancel:hover {
   background-color: var(--red-color-light);
 }
+
+.btnContact {
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: var(--second-bg-color);
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btnContact:hover {
+  background-color: var(--third-bg-color);
+}

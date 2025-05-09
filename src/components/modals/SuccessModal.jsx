@@ -1,11 +1,13 @@
 import s from './SuccessModal.module.css';
 
-const SuccessModal = ({ title, message, onClose }) => {
+const SuccessModal = ({ title, message, onClose, showContactButton }) => {
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
+
+  console.log('showContactButton', showContactButton);
 
   return (
     <div className={s.modal} onClick={handleClickOutside}>
@@ -17,6 +19,11 @@ const SuccessModal = ({ title, message, onClose }) => {
           </div>
           <hr className={s.divider} />
           <div className={s.divBtn}>
+            {showContactButton && (
+              <button className={s.btnContact}>
+                Contactar
+              </button>
+            )}
             <button className={s.btnCancel} onClick={onClose}>Cerrar</button>
           </div>
         </div>

@@ -115,11 +115,10 @@ const Cart = () => {
     try {
       const createdOrder = await dispatch(createOrder(payload)); // Llama a la acción y espera la respuesta
       const orderId = createdOrder?.id; // Extrae el ID de la orden creada
-      console.log("Orden creada con éxito:", createdOrder);
-      console.log("ID de la orden:", orderId);
+      handleDeleteCart(product.manufacturer.userId);
       setShowSuccessModal({
         show: true,
-        title: "Orden generada con éxito",
+        title: `Orden #${orderId} generada con éxito`,
         message: "Puedes ver el detalle de la orden en tu cuenta, en la sección de mis compras.",
         showContactButton: true,
         orderId,

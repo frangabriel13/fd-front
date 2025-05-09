@@ -47,8 +47,7 @@ export const formatDateAndTime = (isoString) => {
 };
 
 export const contactWspOrder = (manufacturerName, manufacturerPhone, orderId) => {
-  console.log('contact WspOrder', manufacturerName, manufacturerPhone, orderId);
-  // const message = `Hola, realicé una compra en ${manufacturerName} y quiero consultar sobre la orden #${orderId}.`;
-  // const url = `https://api.whatsapp.com/send?phone=${manufacturerPhone}&text=${encodeURIComponent(message)}`;
-  // window.open(url, '_blank');
+  const message = `Hola, realicé una compra en ${manufacturerName} y generé la siguiente orden #${orderId}.`;
+  const url = `https://api.whatsapp.com/send?phone=${manufacturerPhone}&text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
 };

@@ -1,6 +1,6 @@
 import s from './SuccessModal.module.css';
 
-const SuccessModal = ({ title, message, onClose, showContactButton, orderId }) => {
+const SuccessModal = ({ title, message, onClose, showContactButton, orderId, onContact }) => {
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
@@ -18,7 +18,7 @@ const SuccessModal = ({ title, message, onClose, showContactButton, orderId }) =
           <hr className={s.divider} />
           <div className={s.divBtn}>
             {showContactButton && (
-              <button className={s.btnContact}>
+              <button className={s.btnContact} onClick={onContact}>
                 Contactar
               </button>
             )}

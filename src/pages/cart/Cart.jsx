@@ -130,6 +130,8 @@ const Cart = () => {
         message: "Puedes ver la orden en tu cuenta/ordenes.",
         showContactButton: true,
         orderId,
+        manufacturerName: product.manufacturer.name,
+        manufacturerPhone: product.manufacturer.phone,
       });
     } catch (error) {
       console.error("Error al crear la orden:", error);
@@ -209,8 +211,6 @@ const Cart = () => {
 
   const unifiedTotal = products.reduce((acc, product) => acc + calculateTotalCart(product), 0);
 
-  console.log('products: ', products);
-
   return(
     <div className={s.container}>
       <div className={s.divHeader}>
@@ -270,7 +270,7 @@ const Cart = () => {
           onClose={handleCloseSuccessModal}
           showContactButton={showSuccessModal.showContactButton}
           orderId={showSuccessModal.orderId}
-          onContact={() => contactWspOrder(selectedCart.manufacturer.name, selectedCart.manufacturer.phone, showSuccessModal.orderId)}
+          onContact={() => contactWspOrder(showSuccessModal.manufacturerName, showSuccessModal.manufacturerPhone, showSuccessModal.orderId)}
         />
       )}
     </div>

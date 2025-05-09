@@ -117,6 +117,7 @@ const Cart = () => {
       show: true,
       title: "Orden generada con éxito",
       message: "Puedes ver la orden en tu cuenta/ordenes.",
+      showContactButton: true,
     });
   };
 
@@ -174,7 +175,7 @@ const Cart = () => {
       })),
     };
   
-    dispatch(createOrder(unifiedOrder));
+    // dispatch(createOrder(unifiedOrder));
     setShowSuccessModal({
       show: true,
       title: "Orden generada con éxito",
@@ -247,6 +248,7 @@ const Cart = () => {
           title={showSuccessModal.title}
           message={showSuccessModal.message}
           onClose={handleCloseSuccessModal}
+          showContactButton={showSuccessModal.showContactButton}
         />
       )}
     </div>

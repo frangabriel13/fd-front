@@ -5,7 +5,7 @@ import { createOrder } from "../../store/actions/orderActions";
 import s from "./Cart.module.css";
 import DetailCart from "./DetailCart";
 import EditData from "../../components/modals/EditData";
-import { calculateTotalCart, formatPrice } from "../../utils/utils";
+import { calculateTotalCart, formatPrice, contactWspOrder } from "../../utils/utils";
 import { FaEdit } from "react-icons/fa";
 import SuccesModal from "../../components/modals/SuccessModal";
 

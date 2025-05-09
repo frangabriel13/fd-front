@@ -45,3 +45,9 @@ export const formatDateAndTime = (isoString) => {
   const formattedTime = date.toLocaleTimeString('es-AR', { hour: '2-digit', minute: '2-digit', hour12: false });
   return { formattedDate, formattedTime };
 };
+
+export const contactWspOrder = (manufacturerName, manufacturerPhone, orderId) => {
+  const message = `Hola, realicé una compra en ${manufacturerName} y quiero consultar sobre la orden #${orderId}.`;
+  const url = `https://api.whatsapp.com/send?phone=${manufacturerPhone}&text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+};

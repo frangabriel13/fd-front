@@ -1,13 +1,11 @@
 import s from './SuccessModal.module.css';
 
-const SuccessModal = ({ title, message, onClose, showContactButton }) => {
+const SuccessModal = ({ title, message, onClose, showContactButton, orderId }) => {
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
-
-  console.log('showContactButton', showContactButton);
 
   return (
     <div className={s.modal} onClick={handleClickOutside}>

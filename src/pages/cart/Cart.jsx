@@ -59,6 +59,15 @@ const Cart = () => {
   };
 
   const handleSendOrder = async (product) => {
+    if (products.length === 0) {
+      setShowSuccessModal({
+        show: true,
+        title: "Carrito vacío",
+        message: "Debes añadir algo al carrito para poder realizar esta acción.",
+      });
+      return;
+    }
+    
     if (user?.role === "manufacturer") {
       setShowSuccessModal({
         show: true,
@@ -136,6 +145,15 @@ const Cart = () => {
   };
 
   const handleUnifiedOrder = () => {
+    if (products.length === 0) {
+      setShowSuccessModal({
+        show: true,
+        title: "Carrito vacío",
+        message: "Debes añadir algo al carrito para poder realizar esta acción.",
+      });
+      return;
+    }
+
     if (!isAuthenticated) {
       setShowSuccessModal({
         show: true,
@@ -199,6 +217,7 @@ const Cart = () => {
     };
   
     dispatch(createOrder(unifiedOrder));
+    handleClearCart();
     setShowSuccessModal({
       show: true,
       title: "Orden generada con éxito",

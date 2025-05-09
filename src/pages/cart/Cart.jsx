@@ -112,13 +112,6 @@ const Cart = () => {
       carts: [order],
     };
   
-    // dispatch(createOrder(payload));
-    // setShowSuccessModal({
-    //   show: true,
-    //   title: "Orden generada con éxito",
-    //   message: "Puedes ver la orden en tu cuenta/ordenes.",
-    //   showContactButton: true,
-    // });
     try {
       const createdOrder = await dispatch(createOrder(payload)); // Llama a la acción y espera la respuesta
       const orderId = createdOrder?.id; // Extrae el ID de la orden creada
@@ -127,7 +120,7 @@ const Cart = () => {
       setShowSuccessModal({
         show: true,
         title: "Orden generada con éxito",
-        message: "Puedes ver la orden en tu cuenta/ordenes.",
+        message: "Puedes ver el detalle de la orden en tu cuenta, en la sección de mis compras.",
         showContactButton: true,
         orderId,
         manufacturerName: product.manufacturer.name,
@@ -144,6 +137,15 @@ const Cart = () => {
   };
 
   const handleUnifiedOrder = () => {
+    if (!isAuthenticated) {
+      setShowSuccessModal({
+        show: true,
+        title: "Acción no permitida",
+        message: "Debe registrarse como mayorista para poder unificar pedidos.",
+      });
+      return;
+    }
+
     if (user?.role === "manufacturer") {
       setShowSuccessModal({
         show: true,
@@ -201,7 +203,7 @@ const Cart = () => {
     setShowSuccessModal({
       show: true,
       title: "Orden generada con éxito",
-      message: "Puedes ver la orden en tu cuenta/ordenes.",
+      message: "Puedes ver el detalle de la orden en tu cuenta, en la sección de mis compras.",
     });
   };
 
@@ -259,7 +261,7 @@ const Cart = () => {
           <button className={s.btnClean} onClick={handleClearCart}>Vaciar carrito</button>
         </div>
       </div>
-      <p className={s.pUnifique}>Unifica el pedido y nostros nos ocuparemos de la gestión del mismo</p>
+      <p className={s.pUnifique}>Unifica el pedido para que todas tus compras se agrupen en un único envío</p>
       </div>
       {showDetail && <DetailCart cart={selectedCart} onClose={handleCloseDetail} refreshCart={refreshCart} />}
       {showEditData && <EditData dataUser={dataUser} onClose={handleCloseEditModal} />}

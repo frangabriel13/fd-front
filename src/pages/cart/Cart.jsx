@@ -58,7 +58,7 @@ const Cart = () => {
     dispatch(getCart(cartItems)); // Refresca el carrito después de guardar cambios
   };
 
-  const handleSendOrder = (product) => {
+  const handleSendOrder = async (product) => {
     if (user?.role === "manufacturer") {
       setShowSuccessModal({
         show: true,
@@ -112,13 +112,33 @@ const Cart = () => {
       carts: [order],
     };
   
-    dispatch(createOrder(payload));
-    setShowSuccessModal({
-      show: true,
-      title: "Orden generada con éxito",
-      message: "Puedes ver la orden en tu cuenta/ordenes.",
-      showContactButton: true,
-    });
+    // dispatch(createOrder(payload));
+    // setShowSuccessModal({
+    //   show: true,
+    //   title: "Orden generada con éxito",
+    //   message: "Puedes ver la orden en tu cuenta/ordenes.",
+    //   showContactButton: true,
+    // });
+    try {
+      const createdOrder = await dispatch(createOrder(payload)); // Llama a la acción y espera la respuesta
+      const orderId = createdOrder?.id; // Extrae el ID de la orden creada
+      console.log("Orden creada con éxito:", createdOrder);
+      console.log("ID de la orden:", orderId);
+      setShowSuccessModal({
+        show: true,
+        title: "Orden generada con éxito",
+        message: "Puedes ver la orden en tu cuenta/ordenes.",
+        showContactButton: true,
+        orderId,
+      });
+    } catch (error) {
+      console.error("Error al crear la orden:", error);
+      setShowSuccessModal({
+        show: true,
+        title: "Error",
+        message: "Hubo un problema al generar la orden. Por favor, inténtalo nuevamente.",
+      });
+    }
   };
 
   const handleUnifiedOrder = () => {
@@ -175,7 +195,7 @@ const Cart = () => {
       })),
     };
   
-    // dispatch(createOrder(unifiedOrder));
+    dispatch(createOrder(unifiedOrder));
     setShowSuccessModal({
       show: true,
       title: "Orden generada con éxito",
@@ -249,6 +269,8 @@ const Cart = () => {
           message={showSuccessModal.message}
           onClose={handleCloseSuccessModal}
           showContactButton={showSuccessModal.showContactButton}
+          orderId={showSuccessModal.orderId}
+          onContact={() => contactWspOrder(selectedCart.manufacturer.name, selectedCart.manufacturer.phone, showSuccessModal.orderId)}
         />
       )}
     </div>

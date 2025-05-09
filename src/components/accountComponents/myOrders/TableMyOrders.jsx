@@ -17,6 +17,8 @@ const TableMyOrders = ({ mySubOrders }) => {
     setSelectedOrder(null);
   };
 
+  console.log(mySubOrders);
+
   return (
     <div className={s.container}>
       <h3>Mis Ordenes</h3>
@@ -25,7 +27,8 @@ const TableMyOrders = ({ mySubOrders }) => {
           <table className={s.table}>
             <thead>
               <tr>
-                <th>ID</th>
+                <th>N° de orden</th>
+                {/* <th>ID</th> */}
                 <th>ARS</th>
                 <th>Fecha</th>
                 <th>Hora</th>
@@ -50,7 +53,9 @@ const TableMyOrders = ({ mySubOrders }) => {
 
                 return (
                   <tr key={order.id}>
-                    <td>{order.id}</td>
+                    <td>#{order.order.id}</td>
+                    {/* <td>{order.id}</td> */}
+                    {/* <td>{order.subtotal}</td> */}
                     <td>{formatPrice(order.subtotal)}</td>
                     <td>{formattedDate}</td>
                     <td>{formattedTime}</td>

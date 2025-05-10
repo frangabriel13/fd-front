@@ -3,6 +3,7 @@ const initialState = {
   loading: false,
   error: null,
   isVerified: false,
+  followed: [],
 };
 
 const userReducer = (state = initialState, action) => {
@@ -82,6 +83,63 @@ const userReducer = (state = initialState, action) => {
           ...state.user,
           wholesaler: action.payload,
         },
+      };
+    case 'GET_FOLLOWED_MANUFACTURERS_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case 'GET_FOLLOWED_MANUFACTURERS_SUCCESS':
+      return {
+        ...state,
+        followed: action.payload,
+        loading: false,
+        error: null,
+      };
+    case 'GET_FOLLOWED_MANUFACTURERS_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    case 'FOLLOW_MANUFACTURER_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case 'FOLLOW_MANUFACTURER_SUCCESS':
+      return {
+        ...state,
+        followed: [...state.followed, action.payload],
+        loading: false,
+        error: null,
+      };
+    case 'FOLLOW_MANUFACTURER_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+      };
+    case 'UNFOLLOW_MANUFACTURER_REQUEST':
+      return {
+        ...state,
+        loading: true,
+        error: null,
+      };
+    case 'UNFOLLOW_MANUFACTURER_SUCCESS':
+      return {
+        ...state,
+        followed: state.followed.filter(manufacturer => manufacturer.id !== action.payload.id),
+        loading: false,
+        error: null,
+      };
+    case 'UNFOLLOW_MANUFACTURER_FAILURE':
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
       };
     default:
       return state;

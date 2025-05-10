@@ -14,7 +14,7 @@ const SubOrderDetail = ({ subOrder, onClose }) => {
       <div className={s.modalContent}>
         <div className={s.container}>
           <div className={s.divTitle}>
-            <h3>Detalle de la orden</h3>
+            <h3>Detalle de la suborden perteneciente a la orden #{subOrder.order.id}</h3>
           </div>
           <div className={s.divTable}>
             {subOrder.products && subOrder.products.length > 0 && (

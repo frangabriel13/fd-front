@@ -52,3 +52,51 @@ export const getMe = () => async (dispatch) => {
     });
   }
 };
+
+export const getFollowedManufacturers = () => async (dispatch) => {
+  dispatch({ type: 'GET_FOLLOWED_MANUFACTURERS_REQUEST' });
+  try {
+    const response = await userInstance.get('/followed-manufacturers');
+    dispatch({
+      type: 'GET_FOLLOWED_MANUFACTURERS_SUCCESS',
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'GET_FOLLOWED_MANUFACTURERS_FAILURE',
+      error: error.message,
+    });
+  }
+};
+
+export const followManufacturer = (manufacturerId) => async (dispatch) => {
+  dispatch({ type: 'FOLLOW_MANUFACTURER_REQUEST' });
+  try {
+    const response = await userInstance.post(`/follow/${manufacturerId}`);
+    dispatch({
+      type: 'FOLLOW_MANUFACTURER_SUCCESS',
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'FOLLOW_MANUFACTURER_FAILURE',
+      error: error.message,
+    });
+  }
+};
+
+export const unfollowManufacturer = (manufacturerId) => async (dispatch) => {
+  dispatch({ type: 'UNFOLLOW_MANUFACTURER_REQUEST' });
+  try {
+    const response = await userInstance.delete(`/unfollow/${manufacturerId}`);
+    dispatch({
+      type: 'UNFOLLOW_MANUFACTURER_SUCCESS',
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'UNFOLLOW_MANUFACTURER_FAILURE',
+      error: error.message,
+    });
+  }
+};

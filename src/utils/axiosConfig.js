@@ -67,3 +67,8 @@ export const reviewInstance = axios.create({
   baseURL: 'http://localhost:3001/api/reviews',
 });
 reviewInstance.interceptors.request.use(addAuthHeader);
+
+export const favoriteInstance = axios.create({
+  baseURL: 'http://localhost:3001/api/favorites',
+});
+favoriteInstance.interceptors.request.use(addAuthHeader);

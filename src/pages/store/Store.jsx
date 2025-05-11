@@ -63,8 +63,6 @@ const Store = () => {
     return stars;
   };
 
-  console.log('manufacturer', manufacturer);
-
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
@@ -99,7 +97,7 @@ const Store = () => {
           </button>
         </div>
       </div>
-      <Reviews />
+      <Reviews reviews={manufacturer.reviews} />
       <div className={s.divProducts}>
         <Products 
           products={manufacturerProducts} 

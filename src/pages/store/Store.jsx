@@ -5,9 +5,8 @@ import { getUserData } from '../../store/actions/storeActions';
 import s from './Store.module.css';
 import Products from '../../components/productStore/Products';
 import Pagination from '../../components/pagination/Pagination';
-import { 
-  BsHeart, 
-  BsFillHeartFill,
+import Reviews from '../../components/reviews/Reviews';
+import {
   BsStar,
   BsStarHalf,
   BsStarFill,
@@ -100,6 +99,7 @@ const Store = () => {
           </button>
         </div>
       </div>
+      <Reviews />
       <div className={s.divProducts}>
         <Products 
           products={manufacturerProducts} 

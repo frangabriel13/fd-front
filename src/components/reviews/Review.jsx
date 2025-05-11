@@ -1,9 +1,9 @@
 import s from './Review.module.css';
-import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
+import { BsStar, BsStarFill, BsStarHalf, BsXLg } from 'react-icons/bs';
 import { FiEdit2 } from "react-icons/fi";
 import { timeAgo } from '../../utils/utils';
 
-const Review = ({ review, isEditable, onEdit }) => {
+const Review = ({ review, isEditable, onEdit, onDelete }) => {
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -21,8 +21,13 @@ const Review = ({ review, isEditable, onEdit }) => {
   return (
     <div className={s.container}>
       {isEditable && (
-        <div className={s.editIcon} onClick={onEdit}>
-          <FiEdit2 />
+        <div className={s.actions}>
+          <div className={s.editIcon} onClick={onEdit}>
+            <FiEdit2 />
+          </div>
+          <div className={s.deleteIcon} onClick={onDelete}>
+            <BsXLg />
+          </div>
         </div>
       )}
       <div className={s.divStars}>

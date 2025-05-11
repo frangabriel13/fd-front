@@ -6,7 +6,7 @@ import Review from './Review';
 import CreateReview from './CreateReview';
 import EditReview from './EditReview';
 import SuccessModal from '../modals/SuccessModal';
-import { createReview, updateReview } from '../../store/actions/reviewActions';
+import { createReview, updateReview, deleteReview } from '../../store/actions/reviewActions';
 
 const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
   const dispatch = useDispatch();
@@ -68,7 +68,15 @@ const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
     }
   }
 
-  console.log('user: ', user);
+  const handleDeleteReview = async (reviewId) => {
+    const response = await dispatch(deleteReview(reviewId));
+    if(response.success) {
+      onRefresh();
+    }
+    else {
+      console.error('Error al eliminar la reseña:', response.error);
+    }
+  }
 
   return (
     <div className={s.container}>
@@ -89,6 +97,7 @@ const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
               setReviewToEdit(review);
               setIsEditModalOpen(true);
             }}
+            onDelete={() => handleDeleteReview(review.id)}
           />
         ))}
       </div>

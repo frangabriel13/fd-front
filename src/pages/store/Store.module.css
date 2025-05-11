@@ -24,6 +24,12 @@
   background-color: var(--other-gray-light);
 }
 
+.divLogo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
 .imgLogo {
   width: 4rem;
   height: 4rem;
@@ -33,6 +39,24 @@
 .name {
   font-size: 2rem;
   font-weight: 600;
+}
+
+.divRating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+}
+
+.divStars {
+  display: flex;
+  font-size: 1.4rem;
+  gap: .1rem;
+}
+
+.averageRating {
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 .divData {

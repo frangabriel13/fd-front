@@ -11,13 +11,18 @@
   position: relative;
 }
 
-.editIcon {
+.actions {
+  display: flex;
+  gap: 1rem; /* Espaciado entre los botones */
   position: absolute;
   top: 1rem;
   right: 1rem;
+}
+
+.editIcon {
   color: var(--main-color);
-  border-radius: 50%; /* Hace que el borde sea redondeado */
-  border: .1rem solid var(--main-color); /* Borde del icono */
+  border-radius: 50%;
+  border: 0.1rem solid var(--main-color);
   padding: 0.4rem;
   cursor: pointer;
   font-size: 1.2rem;
@@ -29,6 +34,24 @@
 
 .editIcon:hover {
   background-color: var(--main-color);
+  color: white;
+}
+
+.deleteIcon {
+  color: var(--red-color); /* Cambia a un color de peligro (rojo) */
+  border-radius: 50%;
+  border: 0.1rem solid var(--red-color); /* Borde rojo */
+  padding: 0.4rem;
+  cursor: pointer;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.deleteIcon:hover {
+  background-color: var(--red-color); /* Fondo rojo al pasar el mouse */
   color: white;
 }
 

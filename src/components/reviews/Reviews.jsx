@@ -1,21 +1,50 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { BsStar, BsStarFill, BsStarHalf } from 'react-icons/bs';
 import s from './Reviews.module.css';
 import Review from './Review';
 import CreateReview from './CreateReview';
-import { createReview } from '../../store/actions/reviewActions';
+import EditReview from './EditReview';
+import SuccessModal from '../modals/SuccessModal';
+import { createReview, updateReview } from '../../store/actions/reviewActions';
 
 const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [reviewToEdit, setReviewToEdit] = useState(null);
+  const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
 
   const handleOpenModal = () => {
-    setIsModalOpen(true);
+    if (!user || user.role !== 'wholesaler') {
+      setIsSuccessModalOpen(true);
+      return;
+    }
+
+    const existingReview = reviews.find(
+      (review) => review.user.id === user.userId
+    );
+
+    if(existingReview) {
+      setReviewToEdit(existingReview);
+      setIsEditModalOpen(true);
+    } else {
+      setIsModalOpen(true);
+    }
   };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleCloseEditModal = () => {
+    setIsEditModalOpen(false);
+    setReviewToEdit(null);
+  };
+
+  const handleCloseSuccessModal = () => {
+    setIsSuccessModalOpen(false);
   };
 
   const handleCreateReview = async (reviewData) => {
@@ -27,6 +56,19 @@ const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
       console.error('Error al crear la reseña:', response.error);
     }
   }
+
+  const handleUpdateReview = async (reviewData) => {
+    const response = await dispatch(updateReview(reviewToEdit.id, reviewData));
+    if(response.success) {
+      onRefresh();
+      setIsEditModalOpen(false);
+      setReviewToEdit(null);
+    } else {
+      console.error('Error al actualizar la reseña:', response.error);
+    }
+  }
+
+  console.log('user: ', user);
 
   return (
     <div className={s.container}>
@@ -47,6 +89,21 @@ const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
           manufacturerId={manufacturerId}
           onClose={handleCloseModal}
           onSubmit={handleCreateReview}
+        />
+      )}
+      {isEditModalOpen && reviewToEdit && (
+        <EditReview
+          review={reviewToEdit}
+          onClose={handleCloseEditModal}
+          onUpdate={handleUpdateReview}
+        />
+      )}
+      {isSuccessModalOpen && (
+        <SuccessModal
+          title="Acción no permitida"
+          message="Registrate como mayorista para calificar fabricantes."
+          onClose={handleCloseSuccessModal}
+          showContactButton={false}
         />
       )}
     </div>

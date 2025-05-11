@@ -97,7 +97,10 @@ const Store = () => {
           </button>
         </div>
       </div>
-      <Reviews reviews={manufacturer.reviews} />
+      <Reviews 
+        reviews={manufacturer.reviews} 
+        manufacturerId={manufacturer.id}
+      />
       <div className={s.divProducts}>
         <Products 
           products={manufacturerProducts} 

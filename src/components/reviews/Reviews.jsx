@@ -81,7 +81,15 @@ const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
       </div>
       <div className={s.divReviews}>
         {reviews.map((review, index) => (
-          <Review key={index} review={review} />
+          <Review 
+            key={index} 
+            review={review}
+            isEditable={user?.userId === review.user.id}
+            onEdit={() => {
+              setReviewToEdit(review);
+              setIsEditModalOpen(true);
+            }}
+          />
         ))}
       </div>
       {isModalOpen && (

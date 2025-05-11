@@ -51,3 +51,22 @@ export const contactWspOrder = (manufacturerName, manufacturerPhone, orderId) =>
   const url = `https://api.whatsapp.com/send?phone=${manufacturerPhone}&text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
 };
+
+export const timeAgo = (date) => {
+  const now = new Date();
+  const past = new Date(date);
+  const diffInSeconds = Math.floor((now - past) / 1000);
+
+  const minutes = Math.floor(diffInSeconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  const months = Math.floor(days / 30);
+  const years = Math.floor(days / 365);
+
+  if (years > 0) return `${years} ${years === 1 ? 'año' : 'años'}`;
+  if (months > 0) return `${months} ${months === 1 ? 'mes' : 'meses'}`;
+  if (days > 0) return `${days} ${days === 1 ? 'día' : 'días'}`;
+  if (hours > 0) return `${hours} ${hours === 1 ? 'hora' : 'horas'}`;
+  if (minutes > 0) return `${minutes} ${minutes === 1 ? 'minuto' : 'minutos'}`;
+  return 'hace unos segundos';
+};

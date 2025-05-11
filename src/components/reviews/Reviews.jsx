@@ -31,8 +31,8 @@ const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
   return (
     <div className={s.container}>
       <h2>Últimas reviews</h2>
-      <div className={s.container}>
-        <div>
+      <div className={s.divReviews}>
+        <div className={s.divButton}>
           <button onClick={handleOpenModal}>Hacer una review</button>
         </div>
         {reviews.map((review, index) => (

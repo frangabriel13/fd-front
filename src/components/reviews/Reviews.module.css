@@ -1,0 +1,12 @@
+.container {
+  padding: 0 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.divReviews {
+  display: flex;
+  gap: 3rem;
+  background-color: antiquewhite;
+}

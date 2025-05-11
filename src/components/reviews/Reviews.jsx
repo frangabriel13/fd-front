@@ -6,7 +6,7 @@ import Review from './Review';
 import CreateReview from './CreateReview';
 import { createReview } from '../../store/actions/reviewActions';
 
-const Reviews = ({ reviews, manufacturerId }) => {
+const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -21,7 +21,7 @@ const Reviews = ({ reviews, manufacturerId }) => {
   const handleCreateReview = async (reviewData) => {
     const response = await dispatch(createReview(manufacturerId, reviewData));
     if(response.success) {
-      // console.log('Reseña creada con éxito:', response.data);
+      onRefresh();
       setIsModalOpen(false);
     } else {
       console.error('Error al crear la reseña:', response.error);

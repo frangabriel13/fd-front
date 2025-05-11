@@ -100,6 +100,7 @@ const Store = () => {
       <Reviews 
         reviews={manufacturer.reviews} 
         manufacturerId={manufacturer.id}
+        onRefresh={() => dispatch(getUserData(userId, 1, pageSize, sortOrder))}
       />
       <div className={s.divProducts}>
         <Products 

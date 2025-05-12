@@ -4,15 +4,18 @@ import { Link } from "react-router-dom";
 import s from "./Navbar.module.css";
 import { BsChevronDown } from "react-icons/bs";
 import { getCategories } from "../../store/actions/categoryActions";
+import { getFavorites } from "../../store/actions/favoriteActions";
 import Dropdown from "./Dropdown";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const categories = useSelector((state) => state.category.categories);
+  const favorites = useSelector((state) => state.favorite.favorites);
   const [showCategories, setShowCategories] = useState(false);
 
   useEffect(() => {
     dispatch(getCategories());
+    dispatch(getFavorites());
   }, [dispatch]);
 
   const handleMouseEnter = () => {
@@ -22,6 +25,8 @@ const Navbar = () => {
   const handleMouseLeave = () => {
     setShowCategories(false);
   }
+
+  console.log('favorites', favorites);
 
   return (
     <div className={s.container}>

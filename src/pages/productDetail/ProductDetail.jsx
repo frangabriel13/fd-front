@@ -42,8 +42,6 @@ const ProductDetail = () => {
     return <div>{error}</div>;
   }
 
-  console.log('product', product);
-
   return (
     <div className={s.container}>
       <div className={s.divHeader}>

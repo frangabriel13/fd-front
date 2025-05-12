@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addFavorite } from '../../store/actions/favoriteActions';
 import s from './DataProduct.module.css';
 import { 
   BsHeart, 
@@ -11,12 +13,24 @@ import { formatPrice } from '../../utils/utils';
 import SuccessModal from '../modals/SuccessModal';
 
 const DataProduct = ({ product, manufacturer, onAddToCart }) => {
+  const dispatch = useDispatch();
   const [quantities, setQuantities] = useState(
     product.inventories.map((inv) => ({ id: inv.id, quantity: inv.quantity || 0 }))
   );
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({ title: '', message: '' });
+  const [isFavorite, setIsFavorite] = useState(false);
 
+  const handleAddFavorite = async () => {
+    try {
+      const result = await dispatch(addFavorite(product.id)); // Llama a la acción con el ID del producto
+      if (result.success) {
+        setIsFavorite(true); // Marca como favorito si la acción es exitosa
+      }
+    } catch (error) {
+      console.error('Error al añadir a favoritos:', error);
+    }
+  };
 
   const handleDecrement = (id) => {
     setQuantities((prevQuantities) => 
@@ -77,7 +91,12 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
         <div className={s.divName}>
           <div className={s.divTitle}>
             <h2 className={s.title}>{product.name}</h2>
-            <BsHeart className={s.iconHeart} />
+            {/* <BsHeart className={s.iconHeart} /> */}
+            {isFavorite ? (
+              <BsFillHeartFill className={s.iconHeartFilled} />
+            ) : (
+              <BsHeart className={s.iconHeart} onClick={handleAddFavorite} />
+            )}
           </div>
           <div className={s.divCalification}>
             <p>3.5</p>

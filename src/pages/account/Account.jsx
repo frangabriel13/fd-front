@@ -9,6 +9,7 @@ import MyOrders from "../../components/accountComponents/MyOrders";
 import UploadProduct from "../../components/accountComponents/UploadProduct";
 import MyPacks from "../../components/accountComponents/MyPacks";
 import MyPurchases from "../../components/accountComponents/myPurchases/MyPurchases";
+import Favorites from "../../components/favorites/Favorites";
 import s from "./Account.module.css";
 import { getSizes } from '../../store/actions/sizeAction';
 import { getProductsByUserId } from '../../store/actions/productActions';
@@ -61,6 +62,7 @@ const Account = () => {
           <Route path="ordenes" element={<MyOrders />} />
           <Route path="packs" element={<MyPacks myProducts={myProducts} />} />
           <Route path="compras" element={<MyPurchases />} />
+          <Route path="favoritos" element={<Favorites />} />
         </Routes>
       </div>
     </div>

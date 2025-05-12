@@ -88,7 +88,7 @@ const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
         <button className={s.btnMore}>Ver más</button>
       </div>
       <div className={s.divReviews}>
-        {reviews.map((review, index) => (
+        {reviews.slice(0, 4).map((review, index) => (
           <Review 
             key={index} 
             review={review}

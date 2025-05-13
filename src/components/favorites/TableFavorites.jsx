@@ -18,8 +18,8 @@ const TableFavorites = ({ favorites, onDelete }) => {
             <div className={s.divItem}>
               <img src={item.mainImage} alt={item.name} className={s.image} />
               <div className={s.divData}>
-                <p>{item.name}</p>
-                <p>{formatPrice(item.price)}</p>
+                <p className={s.name}>{item.name}</p>
+                <p className={s.price}>{formatPrice(item.price)}</p>
               </div>
             </div>
             <div className={s.divActions}>

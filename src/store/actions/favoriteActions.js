@@ -45,7 +45,8 @@ export const deleteFavorite = (productId) => async (dispatch) => {
     const response = await favoriteInstance.delete(`/${productId}`);
     dispatch({
       type: 'DELETE_FAVORITE_SUCCESS',
-      payload: response.data,
+      // payload: response.data,
+      payload: { productId },
     });
     return { success: true, data: response.data };
   } catch (error) {

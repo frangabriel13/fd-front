@@ -16,7 +16,7 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
   const dispatch = useDispatch();
   const { favorites } = useSelector((state) => state.favorite);
   const [isFavorite, setIsFavorite] = useState(
-    favorites.some((fav) => fav.id === product.id) // Verificar si el producto está en favoritos
+    favorites.some((fav) => fav.productId === product.id) // Verificar si el producto está en favoritos
   );
   const [quantities, setQuantities] = useState(
     product.inventories.map((inv) => ({ id: inv.id, quantity: inv.quantity || 0 }))

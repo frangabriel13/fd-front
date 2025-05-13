@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addFavorite } from '../../store/actions/favoriteActions';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavorite, deleteFavorite } from '../../store/actions/favoriteActions';
 import s from './DataProduct.module.css';
 import { 
   BsHeart, 
@@ -14,21 +14,27 @@ import SuccessModal from '../modals/SuccessModal';
 
 const DataProduct = ({ product, manufacturer, onAddToCart }) => {
   const dispatch = useDispatch();
+  const { favorites } = useSelector((state) => state.favorite);
+  const [isFavorite, setIsFavorite] = useState(
+    favorites.some((fav) => fav.id === product.id) // Verificar si el producto está en favoritos
+  );
   const [quantities, setQuantities] = useState(
     product.inventories.map((inv) => ({ id: inv.id, quantity: inv.quantity || 0 }))
   );
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState({ title: '', message: '' });
-  const [isFavorite, setIsFavorite] = useState(false);
 
-  const handleAddFavorite = async () => {
-    try {
-      const result = await dispatch(addFavorite(product.id)); // Llama a la acción con el ID del producto
+  const handleFavoriteClick = async () => {
+    if (isFavorite) {
+      const result = await dispatch(deleteFavorite(product.id));
       if (result.success) {
-        setIsFavorite(true); // Marca como favorito si la acción es exitosa
+        setIsFavorite(false);
       }
-    } catch (error) {
-      console.error('Error al añadir a favoritos:', error);
+    } else {
+      const result = await dispatch(addFavorite(product.id));
+      if (result.success) {
+        setIsFavorite(true);
+      }
     }
   };
 
@@ -81,6 +87,8 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
+  console.log('favorites', favorites);
   
   return (
     <div className={s.container}>
@@ -93,9 +101,15 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
             <h2 className={s.title}>{product.name}</h2>
             {/* <BsHeart className={s.iconHeart} /> */}
             {isFavorite ? (
-              <BsFillHeartFill className={s.iconHeartFilled} />
+              <BsFillHeartFill 
+                className={`${s.iconHeart} ${s.active}`} 
+                onClick={handleFavoriteClick} 
+              />
             ) : (
-              <BsHeart className={s.iconHeart} onClick={handleAddFavorite} />
+              <BsHeart 
+                className={s.iconHeart} 
+                onClick={handleFavoriteClick} 
+              />
             )}
           </div>
           <div className={s.divCalification}>

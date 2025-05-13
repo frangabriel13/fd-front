@@ -1,4 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import s from './Header.module.css';
 import logo from '../../assets/logo.jpg';
 import SearchBar from '../searchBar/SearchBar';
@@ -6,12 +7,21 @@ import Navbar from '../navbar/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { BsCart2 } from "react-icons/bs";
 import { logout } from '../../store/actions/authActions';
+import { getFavorites } from '../../store/actions/favoriteActions';
+import { use } from 'react';
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const cartItemsCount = useSelector((state) => state.cart.items.length);
+  const { favorites } = useSelector((state) => state.favorite);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      dispatch(getFavorites());
+    }
+  }, [dispatch, isAuthenticated]);
 
   const handleLogout = () => {
     dispatch(logout());

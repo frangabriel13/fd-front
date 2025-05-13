@@ -15,8 +15,3 @@
   flex-direction: column;
   gap: 2rem;
 }
-
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}

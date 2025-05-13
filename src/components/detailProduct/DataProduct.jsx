@@ -15,6 +15,7 @@ import SuccessModal from '../modals/SuccessModal';
 const DataProduct = ({ product, manufacturer, onAddToCart }) => {
   const dispatch = useDispatch();
   const { favorites } = useSelector((state) => state.favorite);
+  const { user } = useSelector((state) => state.auth);
   const [isFavorite, setIsFavorite] = useState(
     favorites.some((fav) => fav.productId === product.id) // Verificar si el producto está en favoritos
   );
@@ -25,6 +26,15 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
   const [modalContent, setModalContent] = useState({ title: '', message: '' });
 
   const handleFavoriteClick = async () => {
+    if (!user || user.role !== "wholesaler") {
+      setModalContent({
+        title: "Acción no permitida",
+        text: "Debes ser fabricante para agregar productos a favoritos.",
+      });
+      setShowModal(true);
+      return;
+    }
+  
     if (isFavorite) {
       const result = await dispatch(deleteFavorite(product.id));
       if (result.success) {
@@ -37,6 +47,19 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
       }
     }
   };
+  // const handleFavoriteClick = async () => {
+  //   if (isFavorite) {
+  //     const result = await dispatch(deleteFavorite(product.id));
+  //     if (result.success) {
+  //       setIsFavorite(false);
+  //     }
+  //   } else {
+  //     const result = await dispatch(addFavorite(product.id));
+  //     if (result.success) {
+  //       setIsFavorite(true);
+  //     }
+  //   }
+  // };
 
   const handleDecrement = (id) => {
     setQuantities((prevQuantities) => 
@@ -87,8 +110,6 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
-  console.log('favorites', favorites);
   
   return (
     <div className={s.container}>

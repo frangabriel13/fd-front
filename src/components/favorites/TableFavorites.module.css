@@ -10,8 +10,76 @@
   font-size: 2.2rem;
 }
 
+.divFavorites {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.favoriteItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2rem;
+  border-bottom: .1rem solid #e0e0e0;
+}
+
+.divItem {
+  display: flex;
+  gap: 4rem;
+}
+
+.image {
+  width: 13rem;
+}
+
 .divData {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.name {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.price {
+  font-size: 3rem;
+  font-weight: 400;
+  color: var(--gray-colorTwo);
+}
+
+.divActions {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.buttonDelete {
+  background-color: var(--red-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: .5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.buttonDelete:hover {
+  background-color: var(--red-color-light);
+}
+
+.buttonView {
+  background-color: var(--second-bg-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: .5rem;
+  font-size: 2rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.buttonView:hover {
+  background-color: var(--third-bg-color);
 }

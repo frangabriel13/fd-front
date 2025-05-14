@@ -72,3 +72,8 @@ export const favoriteInstance = axios.create({
   baseURL: 'http://localhost:3001/api/favorites',
 });
 favoriteInstance.interceptors.request.use(addAuthHeader);
+
+export const adminInstance = axios.create({
+  baseURL: 'http://localhost:3001/api/admin',
+});
+adminInstance.interceptors.request.use(addAuthHeader);

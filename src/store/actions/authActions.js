@@ -36,26 +36,6 @@ export const login = (data) => async (dispatch) => {
   }
 };
 
-export const loginGoogle = (token) => async (dispatch) => {
-  try {
-    const user = jwtDecode(token);
-    localStorage.setItem("token", token);
-
-    dispatch({
-      type: "LOGIN",
-      payload: { user, token },
-    });
-
-    return { success: true };
-  } catch(error) {
-    console.log(error);
-    return {
-      success: false,
-      message: error.response.data.message,
-    }
-  }
-};
-
 export const logout = () => async (dispatch) => {
   try {
     await authInstance.post("/logout");
@@ -75,7 +55,7 @@ export const forgotPassword = (email) => async (dispatch) => {
       type: "FORGOT_PASSWORD_SUCCESS",
       payload: response.data.message,
     });
-
+    
     return { success: true };
   } catch(error) {
     console.log(error);
@@ -119,5 +99,26 @@ export const googleLogin = () => async dispatch => {
     console.log(error);
     dispatch({ type: 'LOGIN_FAIL', payload: error.response.data.message });
     throw error;
+  }
+};
+
+// Maneja el token devuelto por el backend y completa el inicio de sesión en el frontend.
+export const loginGoogle = (token) => async (dispatch) => {
+  try {
+    const user = jwtDecode(token);
+    localStorage.setItem("token", token);
+
+    dispatch({
+      type: "LOGIN",
+      payload: { user, token },
+    });
+
+    return { success: true };
+  } catch(error) {
+    console.log(error);
+    return {
+      success: false,
+      message: error.response.data.message,
+    }
   }
 };

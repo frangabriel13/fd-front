@@ -10,6 +10,7 @@ import UploadProduct from "../../components/accountComponents/UploadProduct";
 import MyPacks from "../../components/accountComponents/MyPacks";
 import MyPurchases from "../../components/accountComponents/myPurchases/MyPurchases";
 import Favorites from "../../components/favorites/Favorites";
+import ProtectedRoute from "../../components/protectedRoute/ProtectedRoute";
 import s from "./Account.module.css";
 import { getSizes } from '../../store/actions/sizeAction';
 import { getProductsByUserId } from '../../store/actions/productActions';
@@ -51,18 +52,86 @@ const Account = () => {
     return <div>Cargando...</div>;
   }
 
+  console.log(user);
+
   return (
     <div className={s.container}>
       <SidebarAccount role={user.role} />
       <div className={s.divAccount}>
         <Routes>
           <Route path="/" element={<Profile user={user} />} />
-          <Route path="subir-producto" element={<UploadProduct sizes={sizes} />} />
+          <Route
+            path="/subir-producto"
+            element={
+              <ProtectedRoute
+                allowedRoles={["manufacturer"]}
+                userRole={user.role}
+              >
+                <UploadProduct sizes={sizes} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/publicaciones"
+            element={
+              <ProtectedRoute
+                allowedRoles={["manufacturer"]}
+                userRole={user.role}
+              >
+                <MyProducts sizes={sizes} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/ordenes"
+            element={
+              <ProtectedRoute
+                allowedRoles={["manufacturer"]}
+                userRole={user.role}
+              >
+                <MyOrders />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/packs"
+            element={
+              <ProtectedRoute
+                allowedRoles={["manufacturer"]}
+                userRole={user.role}
+              >
+                <MyPacks myProducts={myProducts} />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/compras"
+            element={
+              <ProtectedRoute
+                allowedRoles={["wholesaler"]}
+                userRole={user.role}
+              >
+                <MyPurchases />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/favoritos"
+            element={
+              <ProtectedRoute
+                allowedRoles={["wholesaler"]}
+                userRole={user.role}
+              >
+                <Favorites />
+              </ProtectedRoute>
+            }
+          />
+          {/* <Route path="subir-producto" element={<UploadProduct sizes={sizes} />} />
           <Route path="publicaciones" element={<MyProducts sizes={sizes} />} />
           <Route path="ordenes" element={<MyOrders />} />
           <Route path="packs" element={<MyPacks myProducts={myProducts} />} />
           <Route path="compras" element={<MyPurchases />} />
-          <Route path="favoritos" element={<Favorites />} />
+          <Route path="favoritos" element={<Favorites />} /> */}
         </Routes>
       </div>
     </div>

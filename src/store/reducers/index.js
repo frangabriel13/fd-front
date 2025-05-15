@@ -14,6 +14,7 @@ import cartReducer from './cartReducer';
 import orderReducer from './orderReducer';
 import reviewReducer from './reviewReducer';
 import favoriteReducer from './favoriteReducer';
+import adminReducer from './adminReducer';
 
 const rootReducer = combineReducers({
   manufacturer: manufacturerReducer,
@@ -31,6 +32,7 @@ const rootReducer = combineReducers({
   order: orderReducer,
   review: reviewReducer,
   favorite: favoriteReducer,
+  admin: adminReducer,
 });
 
 

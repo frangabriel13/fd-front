@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { logout } from '../../store/actions/authActions';
 import s from './SidebarAccount.module.css';
 import { BsUpload, BsBoxSeam, BsTag, BsHeart, BsCart, BsClipboardCheck } from "react-icons/bs";
+import { LiaUsersCogSolid } from "react-icons/lia";
 import { PiUserCircle } from "react-icons/pi";
 import { CiLogout } from "react-icons/ci";
 
@@ -46,6 +47,13 @@ const SidebarAccount = ({ role }) => {
             </Link>
             <Link to="/mi-cuenta/compras" className={s.link}>
               <BsCart className={s.icon} /> Mis compras
+            </Link>
+          </>
+        )}
+        {role === "admin" && (
+          <>
+            <Link to="/mi-cuenta/usuarios" className={s.link}>
+              <LiaUsersCogSolid className={s.icon} /> Usuarios
             </Link>
           </>
         )}

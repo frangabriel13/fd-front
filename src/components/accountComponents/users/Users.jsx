@@ -11,12 +11,10 @@ const Users = () => {
   useEffect(() => {
     dispatch(getAllUsers());
   }, [dispatch]);
-
-  console.log(manufacturers);
  
   return (
     <div className={s.container}>
-      <TableUsers />
+      <TableUsers manufacturers={manufacturers} />
     </div>
   );
 };

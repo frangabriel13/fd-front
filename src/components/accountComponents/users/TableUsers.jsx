@@ -2,7 +2,7 @@ import { useState } from "react";
 import s from "./TableUsers.module.css";
 
 const TableUsers = ({ manufacturers }) => {
-  console.log(manufacturers);
+  console.log('manufacturers', manufacturers);
 
   return(
     <div className={s.container}>

@@ -6,11 +6,11 @@ import s from "./Users.module.css";
 
 const Users = () => {
   const dispatch = useDispatch();
-  const { manufacturers } = useSelector((state) => state.admin);
+  const { manufacturers, total, totalPages, page } = useSelector((state) => state.admin);
 
   useEffect(() => {
-    dispatch(getAllUsers());
-  }, [dispatch]);
+    dispatch(getAllUsers(page));
+  }, [dispatch, page]);
  
   return (
     <div className={s.container}>

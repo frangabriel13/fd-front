@@ -1,5 +1,8 @@
 const initialState = {
   manufacturers: [],
+  total: 0,
+  totalPages: 1,
+  page: 1,
   loading: false,
   error: null,
 }
@@ -9,7 +12,10 @@ const adminReducer = (state = initialState, action) => {
     case "GET_ALL_USERS":
       return {
         ...state,
-        manufacturers: action.payload,
+        manufacturers: action.payload.users,
+        total: action.payload.total,
+        totalPages: action.payload.totalPages,
+        page: action.payload.page,
         loading: false,
       }
     case "DELETE_USER":

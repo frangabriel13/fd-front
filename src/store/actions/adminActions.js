@@ -1,14 +1,16 @@
 import { adminInstance } from "../../utils/axiosConfig";
 
-export const getAllUsers = () => async (dispatch) => {
+export const getAllUsers = (page = 1, limit = 15) => async (dispatch) => {
   try {
-    const response = await adminInstance.get("/");
-    const users = response.data;
+    const response = await adminInstance.get("/", {
+      params: { page, limit },
+    });
+    const { users, total, totalPages } = response.data;
     dispatch({
       type: "GET_ALL_USERS",
-      payload: users,
+      payload: { users, total, totalPages, page },
     });
-  } catch (error) {
+  } catch(error) {
     console.log(error);
   }
 };

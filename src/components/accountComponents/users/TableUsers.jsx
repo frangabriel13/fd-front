@@ -1,8 +1,8 @@
 import { useState } from "react";
+import Pagination from "../../Pagination/Pagination";
 import s from "./TableUsers.module.css";
 
-const TableUsers = ({ manufacturers }) => {
-  console.log('manufacturers', manufacturers);
+const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) => {
 
   return(
     <div className={s.container}>
@@ -33,6 +33,12 @@ const TableUsers = ({ manufacturers }) => {
           ))}
         </tbody>
       </table>
+      <Pagination
+        currentPage={page}
+        totalProducts={total}
+        pageSize={15} // o el valor que uses como límite
+        onPageChange={onPageChange}
+      />
     </div>
   );
 };

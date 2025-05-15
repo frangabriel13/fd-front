@@ -11,10 +11,20 @@ const Users = () => {
   useEffect(() => {
     dispatch(getAllUsers(page));
   }, [dispatch, page]);
+
+  const handlePageChange = (newPage) => {
+    dispatch(getAllUsers(newPage));
+  };
  
   return (
     <div className={s.container}>
-      <TableUsers manufacturers={manufacturers} />
+      <TableUsers 
+        manufacturers={manufacturers}
+        total={total}
+        totalPages={totalPages}
+        page={page}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };

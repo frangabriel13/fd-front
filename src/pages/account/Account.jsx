@@ -10,6 +10,7 @@ import UploadProduct from "../../components/accountComponents/UploadProduct";
 import MyPacks from "../../components/accountComponents/MyPacks";
 import MyPurchases from "../../components/accountComponents/myPurchases/MyPurchases";
 import Favorites from "../../components/favorites/Favorites";
+import Users from "../../components/accountComponents/users/Users";
 import ProtectedRoute from "../../components/protectedRoute/ProtectedRoute";
 import s from "./Account.module.css";
 import { getSizes } from '../../store/actions/sizeAction';
@@ -123,6 +124,17 @@ const Account = () => {
                 userRole={user.role}
               >
                 <Favorites />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/usuarios"
+            element={
+              <ProtectedRoute
+                allowedRoles={["admin"]}
+                userRole={user.role}
+              >
+                <Users />
               </ProtectedRoute>
             }
           />

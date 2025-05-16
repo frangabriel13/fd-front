@@ -6,7 +6,7 @@ import s from "./Users.module.css";
 
 const Users = () => {
   const dispatch = useDispatch();
-  const { manufacturers, total, totalPages, page } = useSelector((state) => state.admin);
+  const { manufacturers = [], total, totalPages, page } = useSelector((state) => state.admin);
 
   useEffect(() => {
     dispatch(getAllUsers(page));

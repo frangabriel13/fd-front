@@ -28,6 +28,13 @@ const EditManufacturer = ({ user, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = {}; // Add your validation logic here
+
+    if (formData.pointOfSale) {
+      if (!formData.street || formData.street.trim().length < 5) {
+        validationErrors.street = "La dirección es obligatoria y debe tener al menos 5 caracteres.";
+      }
+    }
+
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
@@ -63,7 +70,6 @@ const EditManufacturer = ({ user, onClose }) => {
               <div className={s.inputAddress}>
                 <h4>Dirección</h4>
                 <input
-                // className={s.input}
                   className={`${s.input} ${!formData.pointOfSale ? s.inputDisabled : ''}`}
                   type="text"
                   name="street"
@@ -71,12 +77,19 @@ const EditManufacturer = ({ user, onClose }) => {
                   onChange={handleChange}
                   disabled={!formData.pointOfSale}
                 />
-                {/* {errors.street && <p className={s.error}>{errors.street}</p>} */}
+                {errors.street && <p className={s.error}>{errors.street}</p>}
               </div>
             </div>
             <div className={s.divBtn}>
-              <button className={s.btnCancel} onClick={onClose}>Cancelar</button>
-              <button className={s.btnForm} type='submit'>Guardar cambios</button>
+              <button 
+                className={s.btnCancel}
+                type='button' 
+                onClick={onClose}
+              >Cancelar</button>
+              <button 
+                className={s.btnForm} 
+                type='submit'
+              >Guardar cambios</button>
             </div>
           </form>
         </div>

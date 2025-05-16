@@ -18,16 +18,18 @@ const adminReducer = (state = initialState, action) => {
         page: action.payload.page,
         loading: false,
       }
-    case "DELETE_USER":
+    case "DELETE_MANUFACTURERUSER":
       return {
         ...state,
         manufacturers: state.manufacturers.filter(user => user.id !== action.payload),
       }
-    case "UPDATE_MANUFACTURER":
+    case "UPDATE_MANUFACTURERUSER":
       return {
         ...state,
-        manufacturers: state.manufacturers.map(manufacturer =>
-          manufacturer.id === action.payload.id ? action.payload : manufacturer
+        manufacturers: state.manufacturers.map(user =>
+          user.manufacturer.id === action.payload.id
+            ? { ...user, manufacturer: action.payload }
+            : user
         ),
       }
     case "VERIFY_USER":

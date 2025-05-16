@@ -19,7 +19,7 @@ export const deleteUser = (id) => async (dispatch) => {
   try {
     await adminInstance.delete(`/${id}`);
     dispatch({
-      type: "DELETE_USER",
+      type: "DELETE_MANUFACTURERUSER",
       payload: id,
     });
   } catch (error) {
@@ -28,11 +28,12 @@ export const deleteUser = (id) => async (dispatch) => {
 };
 
 export const updateManufacturer = (id, data) => async (dispatch) => {
+  console.log("data", data);
   try {
     const response = await adminInstance.put(`/${id}`, data);
     const updatedManufacturer = response.data;
     dispatch({
-      type: "UPDATE_MANUFACTURER",
+      type: "UPDATE_MANUFACTURERUSER",
       payload: updatedManufacturer,
     });
   } catch(error) {

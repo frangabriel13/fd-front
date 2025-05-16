@@ -46,12 +46,20 @@ const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) =>
                 <td>{user.email}</td>
                 <td>{user.manufacturer ? user.manufacturer.verificationStatus : '-'}</td>
                 <td className={s.tdActions}>
-                  <button
+                  {/* <button
                     className={s.btnVerify}
                     onClick={() => handleOpenModal(user, 'verify')}
                   >
                     Verificar
-                  </button>
+                  </button> */}
+                  {user.manufacturer && user.manufacturer.verificationStatus === "pending" && (
+                    <button
+                      className={s.btnVerify}
+                      onClick={() => handleOpenModal(user, 'verify')}
+                    >
+                      Verificar
+                    </button>
+                  )}
                   <button
                     className={s.btnEdit}
                     onClick={() => handleOpenModal(user, 'edit')}

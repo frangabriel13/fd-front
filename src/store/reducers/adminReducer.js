@@ -36,7 +36,9 @@ const adminReducer = (state = initialState, action) => {
       return {
         ...state,
         manufacturers: state.manufacturers.map(user =>
-          user.id === action.payload.id ? { ...user, verified: true } : user
+          user.manufacturer.id === action.payload.id
+            ? { ...user, manufacturer: action.payload, verified: true }
+            : user
         ),
       }
     case "LOADING":

@@ -41,7 +41,7 @@ const EditManufacturer = ({ user, onClose }) => {
       setErrors({});
       const dataToSubmit = { ...formData };
       if (!dataToSubmit.pointOfSale) {
-        delete dataToSubmit.street;
+        dataToSubmit.street = null;
       }
       dispatch(updateManufacturer(user.manufacturer.id, dataToSubmit));
       onClose();

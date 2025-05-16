@@ -1,9 +1,23 @@
 import { useState } from "react";
 import Pagination from "../../Pagination/Pagination";
+import EditManufacturer from "./EditManufacturer";
+import VerifyUser from "./VerifyUser";
 import s from "./TableUsers.module.css";
 
 const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) => {
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [modalType, setModalType] = useState(null);
 
+  const handleOpenModal = (user, type) => {
+    setSelectedUser(user);
+    setModalType(type);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedUser(null);
+    setModalType(null);
+  };
+  
   return(
     <div className={s.container}>
       <h3>Usuarios</h3>
@@ -25,8 +39,14 @@ const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) =>
               <td>{user.email}</td>
               <td>{user.manufacturer.verificationStatus}</td>
               <td className={s.tdActions}>
-                <button className={s.btnVerify}>Verificar</button>
-                <button className={s.btnEdit}>Editar</button>
+                <button 
+                  className={s.btnVerify}
+                  onClick={() => handleOpenModal(user, 'verify')}
+                >Verificar</button>
+                <button 
+                  className={s.btnEdit}
+                  onClick={() => handleOpenModal(user, 'edit')}
+                >Editar</button>
                 <button className={s.btnDelete}>Eliminar</button>
               </td>
             </tr>
@@ -36,9 +56,21 @@ const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) =>
       <Pagination
         currentPage={page}
         totalProducts={total}
-        pageSize={15} // o el valor que uses como límite
+        pageSize={15}
         onPageChange={onPageChange}
       />
+      {modalType === 'verify' && selectedUser && (
+        <VerifyUser 
+          user={selectedUser}
+          onClose={handleCloseModal}
+        />
+      )}
+      {modalType === 'edit' && selectedUser && (
+        <EditManufacturer 
+          user={selectedUser}
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   );
 };

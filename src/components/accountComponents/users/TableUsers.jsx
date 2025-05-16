@@ -17,6 +17,8 @@ const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) =>
     setSelectedUser(null);
     setModalType(null);
   };
+
+  console.log('manufacturers', manufacturers);
   
   return(
     <div className={s.container}>
@@ -32,26 +34,36 @@ const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) =>
           </tr>
         </thead>
         <tbody>
-          {manufacturers.map((user) => (
-            <tr key={user.id}>
-              <td>{user.id}</td>
-              <td>{user.manufacturer.name}</td>
-              <td>{user.email}</td>
-              <td>{user.manufacturer.verificationStatus}</td>
-              <td className={s.tdActions}>
-                <button 
-                  className={s.btnVerify}
-                  onClick={() => handleOpenModal(user, 'verify')}
-                >Verificar</button>
-                <button 
-                  className={s.btnEdit}
-                  onClick={() => handleOpenModal(user, 'edit')}
-                >Editar</button>
-                <button className={s.btnDelete}>Eliminar</button>
-              </td>
+          {manufacturers.length === 0 ? (
+            <tr>
+              <td colSpan={5}>Cargando...</td>
             </tr>
-          ))}
-        </tbody>
+          ) : (
+            manufacturers.map((user) => (
+              <tr key={user.id}>
+                <td>{user.id}</td>
+                <td>{user.manufacturer ? user.manufacturer.name : '-'}</td>
+                <td>{user.email}</td>
+                <td>{user.manufacturer ? user.manufacturer.verificationStatus : '-'}</td>
+                <td className={s.tdActions}>
+                  <button
+                    className={s.btnVerify}
+                    onClick={() => handleOpenModal(user, 'verify')}
+                  >
+                    Verificar
+                  </button>
+                  <button
+                    className={s.btnEdit}
+                    onClick={() => handleOpenModal(user, 'edit')}
+                  >
+                    Editar
+                  </button>
+                  <button className={s.btnDelete}>Eliminar</button>
+                </td>
+              </tr>
+            ))
+          )}
+      </tbody>
       </table>
       <Pagination
         currentPage={page}

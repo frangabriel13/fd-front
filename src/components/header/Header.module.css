@@ -122,3 +122,45 @@
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   z-index: 10;
 }
+
+@media (max-width: 1360px) {
+  .container {
+    padding: 0 15rem;
+  }
+
+  .search {
+    width: 80%;
+  }
+
+  .message {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 5rem;
+  }
+
+  .message {
+    font-size: 1.2rem;
+    padding: .5rem 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+    height: 3.5rem;
+  }
+
+  .logo {
+    max-width: 10rem;
+  }
+}

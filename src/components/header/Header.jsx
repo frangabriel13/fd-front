@@ -8,14 +8,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { BsCart2 } from "react-icons/bs";
 import { logout } from '../../store/actions/authActions';
 import { getFavorites } from '../../store/actions/favoriteActions';
-import { use } from 'react';
 
 const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const cartItemsCount = useSelector((state) => state.cart.items.length);
-  const { favorites } = useSelector((state) => state.favorite);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -50,7 +48,6 @@ const Header = () => {
         {isAuthenticated ? (
           <>
             <Link to="/mi-cuenta" className={s.link}>Mi cuenta</Link>
-            {/* <button className={s.btnNav}>Mi cuenta</button> */}
             <button onClick={handleLogout} className={s.btnNav}>Salir</button>
           </>
         ) : (

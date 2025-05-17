@@ -142,4 +142,67 @@
   font-size: 1.2rem;
 }
 
-/* El password tiene un css diferenciado, ya que se le agrega un icono para mostrar y ocultar la contraseña. Para ello, se agrega un evento click al icono, que cambia el tipo de input de password a text y viceversa. */
+/* El password tiene un css diferenciado, ya que se le agrega un icono para mostrar y 
+ocultar la contraseña. Para ello, se agrega un evento click al icono, que cambia el tipo de input 
+de password a text y viceversa. */
+
+@media (max-width: 1360px) {
+  .container {
+    padding: 5rem 30rem;
+    gap: 2rem;
+  }
+
+  .divTitle {
+    width: 100%;
+  }
+
+  .divForm {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 5rem 15rem;
+    gap: 2rem;
+  }
+
+  .divTitle {
+    width: 100%;
+  }
+
+  .divForm {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 5rem 5rem;
+    gap: 2rem;
+  }
+
+  .divTitle {
+    width: 100%;
+  }
+
+  .divForm {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 5rem 5rem;
+    gap: 2rem;
+    flex-direction: column;
+  }
+
+  .divTitle {
+    width: 100%;
+  }
+
+  .divForm {
+    width: 100%;
+  }
+}

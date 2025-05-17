@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Home from './pages/home/Home';
 import Header from './components/header/Header';
+import HeaderMobile from './components/header/HeaderMobile';
 import Login from './pages/login/Login';
 import HeaderLogin from './components/header/HeaderLogin';
 import ForgotPassword from './pages/forgotPassword/ForgotPassword';
@@ -20,12 +21,14 @@ import Manufacturers from './pages/manufacturers/Manufacturers';
 import Help from './pages/help/Help';
 import Cart from './pages/cart/Cart';
 import PackDetail from './pages/packDetail/PackDetail';
+import useWindowWidth from './hooks/useWindowWidth';
 
 function App() {
   const location = useLocation();
   const navigate = useNavigate();
   const isAuthenticated = useSelector(state => state.auth.isAuthenticated);
   const user = useSelector(state => state.auth.user);
+  const width = useWindowWidth();
 
   const loginPages = [
     '/ingresar', 
@@ -56,7 +59,14 @@ function App() {
 
   return (
     <div className="App">
-      {isLoginPage ? <HeaderLogin /> : <Header />}
+      {/* {isLoginPage ? <HeaderLogin /> : <Header />} */}
+      {isLoginPage ? (
+        <HeaderLogin />
+      ) : width < 768 ? (
+        <HeaderMobile />
+      ) : (
+        <Header />
+      )}
       <div className="App-content">
         <Routes>
           <Route path='/' element={<Home />} />

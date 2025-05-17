@@ -28,3 +28,15 @@
 .icon{
   font-size: 1.5rem;
 }
+
+@media (max-width: 480px) {
+  .input {
+    width: 100%;
+  }
+  .searchBtn {
+    padding: .95rem 1rem;
+  }
+  .icon{
+    font-size: 1.2rem;
+  }
+}

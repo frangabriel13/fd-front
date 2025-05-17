@@ -101,3 +101,64 @@
   font-size: 1.2rem;
   text-align: center;
 }
+
+@media (max-width: 1360px) {
+  .container {
+    padding: 5rem 30rem;
+    gap: 2rem;
+  }
+
+  .divTitle {
+    width: 100%;
+  }
+
+  .divForm {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 5rem 15rem;
+    gap: 2rem;
+  }
+
+  .divTitle {
+    width: 100%;
+  }
+
+  .divForm {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 5rem 5rem;
+    gap: 2rem;
+  }
+
+  .divTitle {
+    width: 100%;
+  }
+
+  .divForm {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 5rem 5rem;
+    gap: 2rem;
+    flex-direction: column;
+  }
+
+  .divTitle {
+    width: 100%;
+  }
+
+  .divForm {
+    width: 100%;
+  }
+}

@@ -1,0 +1,27 @@
+.container {
+  width: 50%;
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+.divImages {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.otherImage {
+  width: 10rem;
+  cursor: pointer;
+}
+
+.selected {
+  border: .2rem solid var(--second-bg-color);
+}
+
+.image {
+  border-radius: .3rem;
+  width: 100%;
+}

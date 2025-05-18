@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.divImage {
+  display: flex;
+  gap: 1rem;
+  scrollbar-width: none;
+  position: relative;
+}
+
+.divImage::-webkit-scrollbar {
+  display: none;
+}
+
+.image {
+  width: 15rem;
+  height: 15rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.liveImage {
+  border: .4rem solid red;
+}
+
+.live {
+  position: absolute;
+  font-size: 1.2rem;
+  top: -0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: red;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.2rem;
+  z-index: 10;
+}

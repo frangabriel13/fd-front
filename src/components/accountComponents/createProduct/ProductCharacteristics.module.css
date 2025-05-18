@@ -1,0 +1,169 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5rem;
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+  padding: 3rem;
+}
+
+.divTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divTitle h3 {
+  font-size: 2.2rem;
+}
+
+.divTitle p {
+  font-size: 1.6rem;
+  color: var(--gray-color);
+}
+
+.divTypes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.divTypes h4 {
+  font-size: 1.8rem;
+}
+
+.divButtons {
+  display: flex;
+  flex-direction: row;
+  gap: 5rem;
+}
+
+.btn {
+  padding: 1rem 2rem;
+  border-radius: .3rem;
+  background-color: white;
+  color: var(--second-bg-color);
+  font-size: 1.6rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: .2rem solid var(--second-bg-color);
+}
+
+.btn:hover {
+  background-color: var(--second-color);
+}
+
+.btn span {
+  display: block;
+}
+
+.divGenres {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.divGenres h4 {
+  font-size: 1.8rem;
+}
+
+.divIcons {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+}
+
+.btnIcon {
+  width: 8rem;
+  height: 8rem;
+  border-radius: .3rem;
+  background-color: white;
+  color: var(--second-bg-color);
+  font-size: 1.6rem;
+  cursor: pointer;
+  border: .2rem solid var(--second-bg-color);
+}
+
+.btnIcon:hover {
+  background-color: var(--second-color);
+}
+
+.btnIcon span {
+  display: block;
+}
+
+.icon {
+  font-size: 3rem;
+  color: var(--second-bg-color);
+}
+
+.selected {
+  background-color: var(--second-color);
+}
+
+.divFinal {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 3rem;
+  width: 100%;
+}
+
+.divCategory {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+}
+
+.divCategory h4 {
+  font-size: 1.8rem;
+}
+
+.divCategory select {
+  /* width: 20rem; */
+  /* height: 3rem; */
+  border-radius: .3rem;
+  border: .2rem solid var(--second-bg-color);
+  font-size: 1.6rem;
+  padding: .5rem 1rem;
+}
+
+.divCategory option {
+  font-size: 1.6rem;
+}
+
+.divBtn {
+  display: flex;
+  justify-content: end;
+}
+
+.btnNext {
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: var(--second-bg-color);
+  color: white;
+  font-size: 1.6rem;
+  cursor: pointer;
+}
+
+.btnNext:hover {
+  background-color: var(--third-bg-color);
+}
+
+.divider {
+  border: 0;
+  height: .1rem;
+  background: #ccc;
+  width: 100%;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 1.3rem;
+  text-align: center;
+}

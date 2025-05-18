@@ -1,0 +1,42 @@
+.container {
+  padding: 0 30rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.divHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.divHeader h3 {
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.divSelect {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.divSelect label {
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+
+.select {
+  font-size: 1.4rem;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.divProducts {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
+  gap: 3rem; */
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+}

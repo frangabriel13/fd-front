@@ -17,7 +17,7 @@ const NavbarMobile = ({ open, onClose }) => {
         {!isAuthenticated && (
           <>
             <Link to="/ingresar" className={s.link} onClick={onClose}>Ingresar</Link>
-            <Link to="/registrarse" className={s.link} onClick={onClose}>Registrarse</Link>
+            <Link to="/registro" className={s.link} onClick={onClose}>Registrarse</Link>
           </>
         )}
         <button className={s.link} onClick={() => setShowCategories(v => !v)}>
@@ -25,16 +25,20 @@ const NavbarMobile = ({ open, onClose }) => {
         </button>
         {showCategories && (
           <div className={s.categoriesList}>
-            {categories.map(cat => (
-              <Link
-                key={cat.id}
-                to={`/categoria/${cat.slug}`}
-                className={s.link}
-                onClick={onClose}
-              >
-                {cat.name}
-              </Link>
-            ))}
+            {categories
+              .filter(cat =>
+                ["Indumentaria", "Blanquería", "Bisutería"].includes(cat.name)
+              )
+              .map(cat => (
+                <Link
+                  key={cat.id}
+                  to={`/tienda?type=product&category=${cat.id}&subcategory=&gender=&sortBy=&searchTerm=`}
+                  className={s.link}
+                  onClick={onClose}
+                >
+                  {cat.name}
+                </Link>
+              ))}
           </div>
         )}
         <Link to="/tienda" className={s.link} onClick={onClose}>Tienda</Link>

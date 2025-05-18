@@ -1,3 +1,7 @@
+.container {
+  display: flex;
+}
+
 .containerMobile {
   position: fixed;
   top: 0;

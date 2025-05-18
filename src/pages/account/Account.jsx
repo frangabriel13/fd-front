@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, Routes, Route } from "react-router-dom";
 import { getMe } from "../../store/actions/userActions";
 import SidebarAccount from "../../components/sidebarAccount/SidebarAccount";
+import SidebarMobile from "../../components/sidebarAccount/SidebarMobile";
 import Profile from "../../components/accountComponents/Profile";
 import MyProducts from "../../components/accountComponents/MyProducts";
 import MyOrders from "../../components/accountComponents/MyOrders";
@@ -15,6 +16,7 @@ import ProtectedRoute from "../../components/protectedRoute/ProtectedRoute";
 import s from "./Account.module.css";
 import { getSizes } from '../../store/actions/sizeAction';
 import { getProductsByUserId } from '../../store/actions/productActions';
+import useWindowWidth from "../../hooks/useWindowWidth";
 
 const Account = () => {
   const navigate = useNavigate();
@@ -24,6 +26,8 @@ const Account = () => {
   const sizes = useSelector((state) => state.size.sizes);
   const myProducts = useSelector((state) => state.product.myProducts);
   const [loading, setLoading] = useState(true);
+
+  const width = useWindowWidth();
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -69,11 +73,13 @@ const Account = () => {
     return <div>Cargando...</div>;
   }
 
-  console.log(user);
-
   return (
     <div className={s.container}>
-      <SidebarAccount role={user.role} />
+      {width < 768 ? (
+        <SidebarMobile role={user.role} />
+      ) : (
+        <SidebarAccount role={user.role} />
+      )}
       <div className={s.divAccount}>
         <Routes>
           <Route path="/" element={<Profile user={user} />} />
@@ -154,12 +160,6 @@ const Account = () => {
               </ProtectedRoute>
             }
           />
-          {/* <Route path="subir-producto" element={<UploadProduct sizes={sizes} />} />
-          <Route path="publicaciones" element={<MyProducts sizes={sizes} />} />
-          <Route path="ordenes" element={<MyOrders />} />
-          <Route path="packs" element={<MyPacks myProducts={myProducts} />} />
-          <Route path="compras" element={<MyPurchases />} />
-          <Route path="favoritos" element={<Favorites />} /> */}
         </Routes>
       </div>
     </div>

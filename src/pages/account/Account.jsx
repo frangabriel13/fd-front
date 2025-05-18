@@ -33,16 +33,32 @@ const Account = () => {
     }
   }, [isAuthenticated, navigate, dispatch]);
 
+  // useEffect(() => {
+  //   if (!loading) {
+  //     if (isAuthenticated && user && user.role === null) {
+  //       navigate('/completar-registro');
+  //     } 
+  //     // else if (isAuthenticated && user && user.role === 'manufacturer') {
+  //     //   navigate('/verificar-cuenta');
+  //     // }
+  //   }
+  // }, [loading, isAuthenticated, user, navigate]);
   useEffect(() => {
-    if (!loading) {
-      if (isAuthenticated && user && user.role === null) {
-        navigate('/completar-registro');
-      } 
-      // else if (isAuthenticated && user && user.role === 'manufacturer') {
-      //   navigate('/verificar-cuenta');
-      // }
+  if (!loading) {
+    if (isAuthenticated && user && user.role === null) {
+      navigate('/completar-registro');
+    } 
+    else if (
+      isAuthenticated &&
+      user &&
+      user.role === 'manufacturer' &&
+      user.manufacturer &&
+      user.manufacturer.verificationStatus === 'pending'
+    ) {
+      navigate('/verificar-cuenta');
     }
-  }, [loading, isAuthenticated, user, navigate]);
+  }
+}, [loading, isAuthenticated, user, navigate]);
 
   useEffect(() => {
     dispatch(getSizes());

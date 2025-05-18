@@ -3,6 +3,7 @@ import { BsCart2, BsList } from "react-icons/bs";
 import s from './HeaderMobile.module.css';
 import logo from '../../assets/logo.jpg';
 import SearchBar from '../searchBar/SearchBar';
+import NavbarMobile from '../navbar/NavbarMobile';
 import { useSelector } from 'react-redux';
 
 const HeaderMobile = ({ onMenuClick }) => {

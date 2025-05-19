@@ -86,10 +86,6 @@ const Store = () => {
             </p>
           </div>
         </div>
-        {/* <div className={s.divData}>
-          <p className={s.followers}>1.123 seguidores</p>
-          <button className={s.btnFollow}>Seguir</button>
-        </div> */}
         <div className={s.divData}>
           <p className={s.followers}>{followers} seguidores</p>
           <button className={s.btnFollow} onClick={handleFollowToggle}>

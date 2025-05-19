@@ -83,3 +83,69 @@
 .btnWsp:hover {
   background-color: #1ca74f;
 }
+
+@media (max-width: 1360px) {
+  .divHeader {
+    padding: 1rem 15rem;
+  }
+
+  .divFAQ {
+    margin: 0 15rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .divHeader {
+    padding: 1rem 5rem;
+  }
+
+  .divFAQ {
+    margin: 0 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .divHeader {
+    padding: 1rem 2rem;
+  }
+
+  .divFAQ {
+    margin: 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-top: 4.5rem;
+  }
+
+  .divHeader {
+    padding: .5rem 1rem;
+  }
+
+  .divFAQ {
+    margin: 0 1rem;
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .question h3 {
+    font-size: 1.8rem;
+  }
+
+  .question p {
+    font-size: 1.4rem;
+  }
+
+  .contact p {
+    font-size: 1.4rem;
+  }
+
+  .btnWsp {
+    font-size: 1.4rem;
+    padding: .5rem 1.5rem;
+  }
+}

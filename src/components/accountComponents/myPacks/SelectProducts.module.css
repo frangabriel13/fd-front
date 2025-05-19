@@ -137,3 +137,118 @@
 .btnCancel:hover {
   background-color: var(--red-color-light);
 }
+
+@media (max-width: 1360px) {
+  .modalContent {
+    width: 60%;
+  }
+
+  .container {
+    padding: 2rem;
+  }
+
+  .divTitle h3 {
+    font-size: 1.8rem;
+  }
+
+  .divTitle p {
+    font-size: 1.4rem;
+  }
+
+  .productImage {
+    width: 4rem;
+    height: 5rem;
+  }
+
+  .productInfo h4 {
+    font-size: 1.6rem;
+  }
+
+  .productInfo p {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .modalContent {
+    width: 80%;
+  }
+
+  .container {
+    padding: 2rem;
+  }
+
+  .divTitle h3 {
+    font-size: 2rem;
+  }
+
+  .divTitle p {
+    font-size: 1.4rem;
+  }
+
+  .form {
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    width: 90%;
+  }
+
+  .container {
+    padding: 2rem;
+  }
+
+  .divTitle h3 {
+    font-size: 1.8rem;
+  }
+
+  .divTitle p {
+    font-size: 1.4rem;
+  }
+
+  .productImage {
+    width: 3.5rem;
+    height: 4.5rem;
+  }
+
+  .productInfo h4 {
+    font-size: 1.4rem;
+  }
+
+  .productInfo p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    width: 95%;
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  .divTitle h3 {
+    font-size: 1.6rem;
+  }
+
+  .divTitle p {
+    font-size: 1.2rem;
+  }
+
+  .productImage {
+    width: 3rem;
+    height: 4rem;
+  }
+
+  .productInfo h4 {
+    font-size: 1.2rem;
+  }
+
+  .productInfo p {
+    font-size: 1rem;
+  }
+}

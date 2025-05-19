@@ -17,6 +17,7 @@
   border-radius: .4rem;
   overflow-y: auto;
   width: 40%;
+  max-height: 90vh;
 }
 
 .container {
@@ -155,4 +156,124 @@
 
 .btnCancel:hover {
   background-color: var(--red-color-light);
+}
+
+@media (max-width: 1360px) {
+  .modalContent {
+    width: 60%;
+  }
+
+  .container {
+    padding: 3rem 2rem 3rem 2rem;
+  }
+
+  .divTitle h3 {
+    font-size: 1.8rem;
+  }
+
+  .divTitle p {
+    font-size: 1.4rem;
+  }
+
+  .productItem h4 {
+    font-size: 1.6rem;
+  }
+
+  .variantItem h5 {
+    font-size: 1.4rem;
+  }
+
+  .quantity h5 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .modalContent {
+    width: 80%;
+  }
+
+  .container {
+    padding: 3rem 2rem 3rem 2rem;
+  }
+
+  .divTitle h3 {
+    font-size: 1.8rem;
+  }
+
+  .divTitle p {
+    font-size: 1.4rem;
+  }
+
+  .productItem h4 {
+    font-size: 1.6rem;
+  }
+
+  .variantItem h5 {
+    font-size: 1.4rem;
+  }
+
+  .quantity h5 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    width: 90%;
+  }
+
+  .container {
+    padding: 2rem 1rem 2rem 1rem;
+  }
+
+  .divTitle h3 {
+    font-size: 1.8rem;
+  }
+
+  .divTitle p {
+    font-size: 1.2rem;
+  }
+
+  .productItem h4 {
+    font-size: 1.4rem;
+  }
+
+  .variantItem h5 {
+    font-size: 1.4rem;
+  }
+
+  .quantity h5 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    width: 95%;
+  }
+
+  .container {
+    padding: 1.5rem;
+  }
+
+  .divTitle h3 {
+    font-size: 1.6rem;
+  }
+
+  .divTitle p {
+    font-size: 1.2rem;
+  }
+
+  .productItem h4 {
+    font-size: 1.4rem;
+  }
+
+  .variantItem h5 {
+    font-size: 1.4rem;
+  }
+
+  .quantity h5 {
+    font-size: 1.4rem;
+  }
 }

@@ -9,6 +9,7 @@ import ProductCard from '../../components/productStore/ProductCard';
 import FiltersShop from './FiltersShop';
 import Pagination from '../../components/pagination/Pagination';
 import PackCard from '../../components/packStore/PackCard';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 // Arreglar el hecho que llame dos veces a la API para obtener los productos y packs.
 const Shop = () => {
@@ -26,6 +27,10 @@ const Shop = () => {
     gender: '',
     sortBy: 'newest',
   });
+  const [showFilters, setShowFilters] = useState(false);
+
+  const width = useWindowWidth();
+  const isMobile = width <= 480;
 
   const parseQueryParams = (search) => {
     const params = new URLSearchParams(search);
@@ -82,12 +87,22 @@ const Shop = () => {
     <div className={s.container}>
       <div className={s.divHeader}>
         <h2 className={s.title}>Tienda</h2>
+        {isMobile && (
+          <button
+            className={s.filterToggleBtn}
+            onClick={() => setShowFilters(!showFilters)}
+          >
+            {showFilters ? 'Cerrar filtros' : 'Filtrar'}
+          </button>
+        )}
       </div>
-      <FiltersShop 
-        onFilterChange={handleFilterChange} 
-        genders={genders}
-        filters={filters}
-      />
+      {(!isMobile || showFilters) && (
+          <FiltersShop 
+            onFilterChange={handleFilterChange} 
+            genders={genders}
+            filters={filters}
+          />
+      )}
       <div className={s.divProducts}>
         {loading ? (
           <p>Cargando productos...</p>

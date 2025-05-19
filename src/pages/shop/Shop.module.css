@@ -37,3 +37,67 @@
   gap: 2rem;
   padding: 0 30rem;
 }
+
+@media (max-width: 1360px) {
+  .divHeader {
+    padding: 1rem 15rem;
+  }
+
+  .divFilters {
+    margin: 0 15rem;
+  }
+
+  .divProducts {
+    padding: 0 15rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .divHeader {
+    padding: 1rem 5rem;
+  }
+
+  .divFilters {
+    margin: 0 5rem;
+  }
+
+  .divProducts {
+    padding: 0 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .divHeader {
+    padding: 1rem 2rem;
+  }
+
+  .divFilters {
+    margin: 0 2rem;
+  }
+
+  .divProducts {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-top: 4.5rem;
+  }
+
+  .divHeader {
+    padding: .5rem 15rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .divFilters {
+    margin: 0 15rem;
+  }
+
+  .divProducts {
+    padding: 0 15rem;
+  }
+}

@@ -34,3 +34,39 @@
   font-size: 1.6rem;
   color: var(--gray-color);
 }
+
+@media (max-width: 1360px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .icon {
+    margin-bottom: 1rem;
+  }
+
+  .information {
+    width: 100%;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .description {
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 0;
+  }
+}

@@ -62,3 +62,36 @@
   font-size: 2rem;
   color: #ad0000;
 }
+
+@media (max-width: 1360px) {
+  .container {
+    padding: 7.8rem 1rem 0;
+  }
+  .divTitle {
+    padding: 5rem 0;
+  }
+  .title {
+    font-size: 1.8rem;
+  }
+  .link {
+    font-size: 1.6rem;
+  }
+  .btnLogout {
+    font-size: 1.4rem;
+  }
+  .icon {
+    font-size: 2rem;
+  }
+  .iconLogout {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+}

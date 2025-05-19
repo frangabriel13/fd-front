@@ -35,3 +35,23 @@
   margin: 0 5px;
   color: #666666;
 }
+
+@media (max-width: 1360px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 0 5rem;
+  }
+
+  .btn {
+    padding: .5rem 1rem;
+    font-size: 1.4rem;
+  }
+}

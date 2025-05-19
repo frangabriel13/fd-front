@@ -60,10 +60,39 @@
 .name {
   font-size: 1.5rem;
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .price {
   font-size: 1.6rem;
   font-weight: 400;
   color: var(--gray-color);
+}
+
+@media (max-width: 1360px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+  .logo {
+    width: 2rem;
+    height: 2rem;
+  }
+  .divLogo {
+    top: .3rem;
+    left: .3rem;
+  }
+  .name {
+    font-size: 1.4rem;
+  }
+  .price {
+    font-size: 1.4rem;
+  }
 }

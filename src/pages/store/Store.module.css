@@ -89,3 +89,93 @@
   flex-direction: column;
   gap: 3rem;
 }
+
+@media (max-width: 1360px) {
+  .divHeader {
+    padding: 1rem 15rem;
+  }
+
+  .divProducts {
+    padding: 0 15rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .divHeader {
+    padding: 1rem 5rem;
+  }
+
+  .divProducts {
+    padding: 0 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .divHeader {
+    padding: 1rem 2rem;
+  }
+
+  .divProducts {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-top: 4.5rem;
+  }
+
+  .divHeader {
+    padding: .5rem 1rem;
+  }
+
+  .divProducts {
+    padding: 0 1rem;
+  }
+
+  .divTitle {
+    padding: .5rem;
+  }
+
+  .divLogo {
+    gap: .5rem;
+  }
+
+  .imgLogo {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .name {
+    font-size: 1.5rem;
+  }
+
+  .divRating {
+    gap: .3rem;
+  }
+
+  .divStars {
+    font-size: 1.2rem;
+  }
+
+  .averageRating {
+    font-size: 1rem;
+  }
+
+  .divData {
+    gap: .5rem;
+  }
+
+  .followers {
+    font-size: 1.2rem;
+  }
+
+  .btnFollow {
+    padding: .3rem .5rem;
+    font-size: 1rem;
+  }
+
+  .btnFollow:hover {
+    background-color: var(--third-bg-color);
+  }
+}

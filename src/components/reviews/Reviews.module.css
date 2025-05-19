@@ -39,3 +39,75 @@
   display: flex;
   gap: 3rem;
 }
+
+@media (max-width: 1360px) {
+  .container {
+    padding: 0 15rem;
+  }
+
+  .divTitle {
+    gap: 1rem;
+  }
+
+  .btnReview {
+    font-size: 1.2rem;
+  }
+
+  .btnMore {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 5rem;
+  }
+
+  .divTitle {
+    gap: 1rem;
+  }
+
+  .btnReview {
+    font-size: 1.2rem;
+  }
+
+  .btnMore {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+
+  .divTitle {
+    gap: 1rem;
+  }
+
+  .btnReview {
+    font-size: 1.2rem;
+  }
+
+  .btnMore {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 1rem;
+  }
+
+  .divTitle {
+    gap: .5rem;
+  }
+
+  .btnReview {
+    font-size: 1.2rem;
+  }
+
+  .btnMore {
+    font-size: 1.2rem;
+  }
+}

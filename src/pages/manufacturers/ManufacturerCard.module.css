@@ -16,3 +16,31 @@
   font-size: 1.5rem;
   font-weight: 500;
 }
+
+@media (max-width: 1360px) {
+  .container img {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .container h3 {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+  .container img {
+    width: 5rem;
+    height: 5rem;
+  }
+
+  .container h3 {
+    font-size: 1rem;
+  }
+}

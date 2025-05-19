@@ -5,7 +5,7 @@ const ManufacturerCard = ({ manufacturer }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate(`/store/${manufacturer.id}`);
+    navigate(`/store/${manufacturer.userId}`);
   };
 
   return (

@@ -24,3 +24,51 @@
   padding: 3rem;
   background-color: white;
 }
+
+@media (max-width: 1360px) {
+  .divHeader {
+    padding: 1rem 15rem;
+  }
+
+  .divManufacturers {
+    margin: 0 15rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .divHeader {
+    padding: 1rem 5rem;
+  }
+
+  .divManufacturers {
+    margin: 0 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .divHeader {
+    padding: 1rem 2rem;
+  }
+
+  .divManufacturers {
+    margin: 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-top: 4.5rem;
+  }
+
+  .divHeader {
+    padding: .5rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .divManufacturers {
+    margin: 0 1rem;
+  }
+}

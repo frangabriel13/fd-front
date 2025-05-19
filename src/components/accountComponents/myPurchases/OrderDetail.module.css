@@ -154,3 +154,127 @@
     transform: scale(1);
   }
 }
+
+@media (max-width: 1360px) {
+  .modalContent {
+    width: 60%;
+  }
+
+  .divTitle h3 {
+    font-size: 1.5rem;
+  }
+
+  .divTable {
+    gap: 1rem;
+  }
+
+  .divSuborder h4 {
+    font-size: 1.2rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 1rem;
+  }
+
+  .divTotal h4 {
+    font-size: 1.2rem;
+  }
+
+  .divTotalOrder h4 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .modalContent {
+    width: 70%;
+  }
+
+  .divTitle h3 {
+    font-size: 1.5rem;
+  }
+
+  .divTable {
+    gap: 1rem;
+  }
+
+  .divSuborder h4 {
+    font-size: 1.2rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 1rem;
+  }
+
+  .divTotal h4 {
+    font-size: 1.2rem;
+  }
+
+  .divTotalOrder h4 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    width: 80%;
+  }
+
+  .divTitle h3 {
+    font-size: 1.5rem;
+  }
+
+  .divTable {
+    gap: 1rem;
+  }
+
+  .divSuborder h4 {
+    font-size: 1.2rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 1rem;
+  }
+
+  .divTotal h4 {
+    font-size: 1.2rem;
+  }
+
+  .divTotalOrder h4 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    width: 90%;
+  }
+
+  .divTitle h3 {
+    font-size: 1.5rem;
+  }
+
+  .divTable {
+    gap: 1rem;
+  }
+
+  .divSuborder h4 {
+    font-size: 1.2rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 1rem;
+  }
+
+  .divTotal h4 {
+    font-size: 1.2rem;
+  }
+
+  .divTotalOrder h4 {
+    font-size: 1.5rem;
+  }
+}

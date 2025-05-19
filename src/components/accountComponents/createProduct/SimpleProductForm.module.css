@@ -241,3 +241,93 @@
   color: red;
   font-size: 1.2rem;
 }
+
+@media (max-width: 1360px) {
+}
+
+@media (max-width: 1024px) {
+  .divInputs {
+    flex-direction: column;
+  }
+
+  .divPrices {
+    width: 100%;
+  }
+
+  .divInputsTwo {
+    flex-direction: column;
+  }
+
+  .divSubInputs {
+    width: 100%;
+  }
+
+  .divCategories {
+    width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .divInputs {
+    flex-direction: column;
+  }
+
+  .divPrices {
+    width: 100%;
+  }
+
+  .divInputsTwo {
+    flex-direction: column;
+  }
+
+  .divSubInputs {
+    width: 100%;
+  }
+
+  .divCategories {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .divTitle h3 {
+    font-size: 2rem;
+  }
+
+  .divTitle p {
+    font-size: 1.4rem;
+  }
+
+  .label {
+    font-size: 1.4rem;
+  }
+
+  .divInput {
+    width: 100%;
+  }
+
+  .input {
+    font-size: 1.4rem;
+    width: 100%;
+  }
+
+  .textarea {
+    font-size: 1.4rem;
+  }
+
+  .divTags {
+    width: 100%;
+  }
+
+  .btnAddTag {
+    font-size: 1.4rem;
+  }
+
+  .btnNext {
+    font-size: 1.4rem;
+  }
+}

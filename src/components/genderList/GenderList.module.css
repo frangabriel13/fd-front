@@ -27,3 +27,29 @@
 .icon {
   font-size: 5rem;
 }
+
+@media (max-width: 1360px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .btnIcon {
+    width: 8rem;
+    height: 8rem;
+    font-size: 1.5rem;
+  }
+
+  .icon {
+    font-size: 3rem;
+  }
+}

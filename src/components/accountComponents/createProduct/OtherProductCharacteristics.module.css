@@ -75,3 +75,23 @@
   color: red;
   font-size: 1.3rem;
 }
+
+@media (max-width: 1360px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .divCategory h3 {
+    font-size: 1.8rem;
+    text-align: center;
+  }
+}

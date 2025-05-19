@@ -167,3 +167,52 @@
   font-size: 1.3rem;
   text-align: center;
 }
+
+@media (max-width: 1360px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .divTitle h3 {
+    font-size: 1.8rem;
+  }
+
+  .divTitle p {
+    font-size: 1.4rem;
+  }
+
+  .divTypes h4 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .divButtons {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .divGenres h4 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+
+  .divIcons {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .divCategory h4 {
+    font-size: 1.6rem;
+    text-align: center;
+  }
+}

@@ -224,3 +224,139 @@
   color: var(--gray-color);
   text-align: center;
 }
+
+@media (max-width: 1360px) {
+  .divHeader {
+    padding: 1rem 15rem;
+  }
+
+  .divCart {
+    margin: 0 15rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .divHeader {
+    padding: 1rem 5rem;
+  }
+
+  .divCart {
+    margin: 0 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .divHeader {
+    padding: 1rem 2rem;
+  }
+
+  .divCart {
+    margin: 0 2rem;
+    gap: 1rem;
+    padding: 2rem;
+  }
+
+  .cartCard {
+    gap: 1rem;
+  }
+
+  .cartInfo {
+    gap: 1rem;
+  }
+
+  .divManufacturer {
+    gap: 0;
+  }
+
+  .logo {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .name {
+    font-size: 1.5rem;
+    width: 10rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-top: 4.5rem;
+  }
+
+  .divHeader {
+    padding: .5rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .divCart {
+  }
+
+  .cartCard {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .cartInfo {
+    flex-direction: column;
+    gap: .5rem;
+    align-items: center;
+  }
+
+  .divManufacturer {
+    gap: .5rem;
+  }
+
+  .divActions {
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .btnDelete {
+    font-size: 1.2rem;
+    padding: .5rem 1rem;
+  }
+
+  .btnSend {
+    font-size: 1.2rem;
+    padding: .5rem 1rem;
+  }
+
+  .btnDetail {
+    font-size: 1.2rem;
+    padding: .5rem 1rem;
+  }
+
+  .divUnified {
+    gap: 1rem;
+  }
+
+  .textUnified {
+    font-size: 1.5rem;
+  }
+
+  .totalUnified {
+    font-size: 3rem;
+  }
+
+  .divBtns {
+    gap: 1rem;
+  }
+
+  .btnBuy {
+    font-size: 1.5rem;
+    padding: .5rem 1rem;
+  }
+
+  .btnClean {
+    font-size: 1.5rem;
+    padding: .5rem 1rem;
+  }
+}

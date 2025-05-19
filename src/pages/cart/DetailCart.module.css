@@ -222,3 +222,170 @@
   background-color: var(--third-bg-color);
   transition: all .3s ease-in-out;
 }
+
+@media (max-width: 1360px) {
+  .modalContent {
+    width: 60%;
+  }
+
+  .productImage {
+    width: 7rem;
+  }
+
+  .divTitle h3 {
+    font-size: 1.5rem;
+  }
+
+  .productName {
+    font-size: 1.2rem;
+  }
+
+  .productPrice {
+    font-size: 1.5rem;
+  }
+
+  .inventoryDetail {
+    font-size: 1.2rem;
+  }
+
+  .buttonQuant,
+  .buttonDelete {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .inputQuant {
+    width: 4rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .modalContent {
+    width: 80%;
+  }
+
+  .divTitle h3 {
+    font-size: 1.5rem;
+  }
+
+  .productName {
+    font-size: 1.2rem;
+  }
+
+  .productPrice {
+    font-size: 1.5rem;
+  }
+
+  .inventoryDetail {
+    font-size: 1.2rem;
+  }
+
+  .buttonQuant,
+  .buttonDelete {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .inputQuant {
+    width: 4rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    width: 90%;
+  }
+
+  .divTitle h3 {
+    font-size: 1.5rem;
+  }
+
+  .productName {
+    font-size: 1.2rem;
+  }
+
+  .productPrice {
+    font-size: 1.5rem;
+  }
+
+  .inventoryDetail {
+    font-size: 1.2rem;
+  }
+
+  .buttonQuant,
+  .buttonDelete {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .inputQuant {
+    width: 4rem;
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    width: 95%;
+  }
+
+  .container {
+    padding: 1rem 1rem;
+  }
+
+  .divTitle h3 {
+    font-size: 1.5rem;
+  }
+
+  .productName {
+    font-size: 1.2rem;
+  }
+
+  .productPrice {
+    font-size: 1.5rem;
+  }
+
+  .divInventory {
+    gap: 1rem;
+  }
+
+  .inventoryDetail {
+    font-size: 1.2rem;
+  }
+
+  .divQuant {
+    gap: .5rem;
+  }
+
+  .buttonQuant,
+  .buttonDelete {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.5rem;
+  }
+
+  .inputQuant {
+    width: 4rem;
+    font-size: 1.5rem;
+  }
+
+  .divActions {
+    justify-content: center;
+  }
+
+  .divBtn {
+    justify-content: center;
+  }
+
+  .btnCancel,
+  .btnSave {
+    width: 100%;
+    padding: 1rem 0;
+    font-size: 1.5rem;
+  }
+}

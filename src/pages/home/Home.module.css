@@ -12,3 +12,31 @@
   flex-direction: column;
   gap: 4rem;
 }
+
+@media (max-width: 1360px) {
+  .home {
+    padding: 0 15rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .home {
+    padding: 0 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-top: 4.5rem;
+  }
+
+  .home {
+    padding: 0 1rem;
+  }
+}

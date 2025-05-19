@@ -7,6 +7,7 @@ import CreateReview from './CreateReview';
 import EditReview from './EditReview';
 import SuccessModal from '../modals/SuccessModal';
 import { createReview, updateReview, deleteReview } from '../../store/actions/reviewActions';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
   const dispatch = useDispatch();
@@ -15,6 +16,14 @@ const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [reviewToEdit, setReviewToEdit] = useState(null);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const width = useWindowWidth();
+
+  let reviewsToShow = 4; // default desktop
+  if (width <= 480) {
+    reviewsToShow = 2; // mobile
+  } else if (width <= 1024) {
+    reviewsToShow = 3; // ipad/tablet
+  }
 
   const handleOpenModal = () => {
     if (!user || user.role !== 'wholesaler') {
@@ -88,17 +97,19 @@ const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
         <button className={s.btnMore}>Ver más</button>
       </div>
       <div className={s.divReviews}>
-        {reviews.slice(0, 4).map((review, index) => (
-          <Review 
-            key={index} 
-            review={review}
-            isEditable={user?.userId === review.user.id}
-            onEdit={() => {
-              setReviewToEdit(review);
-              setIsEditModalOpen(true);
-            }}
-            onDelete={() => handleDeleteReview(review.id)}
-          />
+        {reviews
+          .slice(0, reviewsToShow)
+          .map((review, index) => (
+            <Review 
+              key={index} 
+              review={review}
+              isEditable={user?.userId === review.user.id}
+              onEdit={() => {
+                setReviewToEdit(review);
+                setIsEditModalOpen(true);
+              }}
+              onDelete={() => handleDeleteReview(review.id)}
+            />
         ))}
       </div>
       {isModalOpen && (

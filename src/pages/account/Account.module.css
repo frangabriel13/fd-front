@@ -16,3 +16,33 @@
   width: 100%;
   align-items: center;
 }
+
+@media (max-width: 1360px) {
+  .divAccount {
+    padding: 0 15rem 0 20rem;
+    padding-top: 7.8rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .divAccount {
+    padding: 0 5rem 0 20rem;
+    padding-top: 7.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .divAccount {
+    padding: 0 2rem 0 18rem;
+    padding-top: 7.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .divAccount {
+    padding: 0 1rem 0 1rem;
+    padding-top: 7.8rem;
+    width: 100%;
+    align-items: center;
+  }
+}

@@ -95,3 +95,126 @@
 .btnEdit:hover {
   background-color: var(--third-bg-color);
 }
+
+@media (max-width: 1360px) {
+  .container {
+    padding: 2rem;
+  }
+
+  .container h3 {
+    font-size: 2rem;
+  }
+
+  .divSearch h4 {
+    font-size: 1.6rem;
+  }
+
+  .divSearch p {
+    font-size: 1.4rem;
+  }
+
+  .table th, .table td {
+    font-size: 1.4rem;
+  }
+
+  .btnDelete, .btnEdit {
+    padding: .5rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .container h3 {
+    font-size: 1.8rem;
+  }
+
+  .divSearch h4 {
+    font-size: 1.4rem;
+  }
+
+  .divSearch p {
+    font-size: 1.2rem;
+  }
+
+  .table th, .table td {
+    font-size: 1.2rem;
+  }
+
+  .btnDelete, .btnEdit {
+    padding: .5rem;
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .container h3 {
+    font-size: 1.6rem;
+  }
+
+  .divSearch h4 {
+    font-size: 1.2rem;
+  }
+
+  .divSearch p {
+    font-size: 1rem;
+  }
+
+  .table th, .table td {
+    font-size: 1rem;
+  }
+
+  .btnDelete, .btnEdit {
+    padding: .5rem;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .divData {
+    width: 100%;
+    overflow-x: auto;
+  }
+
+  .mainImage {
+    width: 10rem;
+  }
+
+  .table {
+    min-width: 600px;
+    font-size: .8rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .container h3 {
+    font-size: 1.4rem;
+  }
+
+  .divSearch h4 {
+    font-size: 1rem;
+  }
+
+  .divSearch p {
+    font-size: .8rem;
+  }
+
+  .table th, .table td {
+    font-size: .8rem;
+  }
+
+  .buttonDelete,
+  .buttonEdit {
+    font-size: 1.4rem;
+    padding: .4rem 1rem;
+  }
+}

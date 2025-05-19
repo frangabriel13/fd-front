@@ -87,3 +87,38 @@
 .prevButton:hover, .nextButton:hover {
   background-color: var(--second-color);
 }
+
+@media (max-width: 1360px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .divTitle {
+    padding: 0 1rem;
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .btnMore {
+    font-size: 1.4rem;
+    padding: .5rem 1rem;
+  }
+
+  .prevButton, .nextButton {
+    padding: 1.5rem;
+    font-size: 2rem;
+  }
+}

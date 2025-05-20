@@ -120,3 +120,59 @@
 .btnMore:hover {
   background-color: var(--second-color);
 }
+
+@media (max-width: 1360px) {
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .divData {
+    /* flex-direction: column; */
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .divLeft {
+    width: 100%;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .image {
+    max-width: 10rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .price {
+    font-size: 1.5rem;
+  }
+
+  .divRight {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .divVariants {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .divTotal {
+    width: 100%;
+    justify-content: space-around;
+    gap: 2rem;
+  }
+}

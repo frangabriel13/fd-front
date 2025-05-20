@@ -111,6 +111,7 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
     setShowModal(false);
   };
   
+  console.log('product', product);
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
@@ -133,7 +134,7 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
               />
             )}
           </div>
-          <div className={s.divCalification}>
+          {/* <div className={s.divCalification}>
             <p>3.5</p>
             <div className={s.stars}>
               <BsStarFill className={s.iconStar} />
@@ -142,7 +143,7 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
               <BsStarHalf className={s.iconStar} />
               <BsStar className={s.iconStar} />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className={s.divPrice}>
@@ -151,7 +152,7 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
           <p className={s.whole}>Comprando al por mayor</p>
         </div>
         <div className={s.wholePrice}>
-          <p className={s.price}>U$D 10,00</p>
+          <p className={s.price}>U$D {product.priceUSD}</p>
           <p className={s.whole}>Comprando en dólares</p>
         </div>
       </div>

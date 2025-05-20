@@ -178,3 +178,134 @@
   background-color: var(--second-color);
   transition: all .3s ease-in-out;
 }
+
+@media (max-width: 1360px) {
+}
+
+@media (max-width: 1024px) {
+  .container {
+    width: 70%;
+    gap: 2rem;
+  }
+
+  .divHeader {
+    gap: 1rem;
+  }
+
+  .divTitle {
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .iconHeart {
+    font-size: 2.5rem;
+  }
+
+  .divCalification p {
+    font-size: 1.3rem;
+  }
+
+  .iconStar {
+    font-size: 1.3rem;
+  }
+
+  .price {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 50%;
+    gap: 2rem;
+  }
+
+  .divHeader {
+    gap: 1rem;
+  }
+
+  .divTitle {
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .iconHeart {
+    font-size: 2.5rem;
+  }
+
+  .divCalification p {
+    font-size: 1.3rem;
+  }
+
+  .iconStar {
+    font-size: 1.3rem;
+  }
+
+  .divPrice {
+    gap: 2rem;
+  }
+
+  .price {
+    font-size: 2.5rem;
+  }
+
+  .whole {
+    font-size: 1.3rem;
+  }
+
+  .divQuantities {
+    width: 100%;
+  }
+
+  .divInventory {
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    width: 100%;
+    gap: 2rem;
+  }
+
+  .divHeader {
+    gap: 1rem;
+  }
+
+  .divTitle {
+    gap: 1rem;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .iconHeart {
+    font-size: 2.5rem;
+  }
+
+  .divCalification p {
+    font-size: 1.3rem;
+  }
+
+  .iconStar {
+    font-size: 1.3rem;
+  }
+
+  .divPrice {
+    gap: 2rem;
+  }
+
+  .price {
+    font-size: 2.5rem;
+  }
+
+  .whole {
+    font-size: 1.3rem;
+  }
+}

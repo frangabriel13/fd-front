@@ -25,3 +25,43 @@
   border-radius: .3rem;
   width: 100%;
 }
+
+@media (max-width: 1360px) {
+  .container {
+    gap: 2rem;
+  }
+  .divImages {
+    gap: 1rem;
+  }
+  .otherImage {
+    width: 8rem;
+  }
+  .image {
+    width: 100%;
+  }
+  .selected {
+    border: .2rem solid var(--second-bg-color);
+  }
+}
+
+@media (max-width: 1024px) {
+}
+
+@media (max-width: 768px) {
+}
+
+@media (max-width: 480px) {
+  .container {
+    gap: 1rem;
+    width: 100%;
+  }
+  .divImages {
+    gap: 1rem;
+  }
+  .otherImage {
+    width: 8rem;
+  }
+  .image {
+    width: 100%;
+  }
+}

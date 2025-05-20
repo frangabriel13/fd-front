@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { refreshToken } from '../store/actions/manufacturerActions';
 
 const addAuthHeader = (config) => {
   const token = localStorage.getItem('token');
@@ -77,3 +78,36 @@ export const adminInstance = axios.create({
   baseURL: 'http://localhost:3001/api/admin',
 });
 adminInstance.interceptors.request.use(addAuthHeader);
+
+const instancesWithAuth = [
+  manufacturerInstance,
+  userInstance,
+  productInstance,
+  wholesalerInstance,
+  imageInstance,
+  packInstance,
+  orderInstance,
+  reviewInstance,
+  favoriteInstance,
+  adminInstance
+];
+
+instancesWithAuth.forEach(instance => {
+  instance.interceptors.response.use(
+    response => response,
+    async error => {
+      const originalRequest = error.config;
+      if (error.response && error.response.status === 401 && !originalRequest._retry) {
+        originalRequest._retry = true;
+        try {
+          const newToken = await refreshToken();
+          originalRequest.headers['Authorization'] = 'Bearer ' + newToken;
+          return instance(originalRequest);
+        } catch (err) {
+          return Promise.reject(err);
+        }
+      }
+      return Promise.reject(error);
+    }
+  );
+});

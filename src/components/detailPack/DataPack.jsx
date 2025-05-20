@@ -32,9 +32,9 @@ const DataPack = ({ pack, onAddToCart }) => {
         <div className={s.divName}>
           <div className={s.divTitle}>
             <h2 className={s.title}>{pack.name}</h2>
-            <BsHeart className={s.iconHeart} />
+            {/* <BsHeart className={s.iconHeart} /> */}
           </div>
-          <div className={s.divCalification}>
+          {/* <div className={s.divCalification}>
             <p>3.5</p>
             <div className={s.stars}>
               <BsStarFill className={s.iconStar} />
@@ -43,7 +43,7 @@ const DataPack = ({ pack, onAddToCart }) => {
               <BsStarHalf className={s.iconStar} />
               <BsStar className={s.iconStar} />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className={s.divPrice}>

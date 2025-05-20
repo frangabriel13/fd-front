@@ -28,3 +28,51 @@
   padding: 3rem;
   gap: 3rem;
 }
+
+@media (max-width: 1360px) {
+  .divDetail {
+    margin: 0rem 15rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .divDetail {
+    margin: 0rem 5rem;
+  }
+
+  .divHeader {
+    padding: 0rem 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .divDetail {
+    margin: 0rem 2rem;
+    padding: 2rem;
+    gap: 2rem;
+  }
+
+  .divHeader {
+    padding: 0rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-top: 4.5rem;
+  }
+
+  .divHeader {
+    padding: 0rem 0rem;
+  }
+
+  .divHeader p {
+    font-size: 1.2rem;
+  }
+
+  .divDetail {
+    margin: 0rem 1rem;
+    padding: 1rem;
+    gap: 1rem;
+  }
+}

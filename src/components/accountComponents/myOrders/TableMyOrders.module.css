@@ -99,3 +99,121 @@
 .btnEdit:hover {
   background-color: var(--third-bg-color);
 }
+
+@media (max-width: 1360px) {
+  .container {
+    padding: 2rem;
+  }
+
+  .container h3 {
+    font-size: 2rem;
+  }
+
+  .divSearch h4 {
+    font-size: 1.6rem;
+  }
+
+  .divSearch p {
+    font-size: 1.4rem;
+  }
+
+  .table th, .table td {
+    padding: .8rem;
+    font-size: 1.1rem;
+  }
+
+  .table img {
+    width: 4rem;
+    height: 5.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 1.5rem;
+  }
+
+  .container h3 {
+    font-size: 1.8rem;
+  }
+
+  .divSearch h4 {
+    font-size: 1.4rem;
+  }
+
+  .divSearch p {
+    font-size: 1.2rem;
+  }
+
+  .table th, .table td {
+    padding: .6rem;
+    font-size: 1rem;
+  }
+
+  .table img {
+    width: 3.5rem;
+    height: 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .container h3 {
+    font-size: 1.6rem;
+  }
+
+  .divSearch h4 {
+    font-size: 1.2rem;
+  }
+
+  .divSearch p {
+    font-size: 1rem;
+  }
+
+  .table th, .table td {
+    padding: .5rem;
+    font-size: .9rem;
+  }
+
+  .table img {
+    width: 3rem;
+    height: 4.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: .5rem;
+    overflow-x: auto;
+  }
+
+  .container h3 {
+    font-size: 1.4rem;
+  }
+
+  .divSearch h4 {
+    font-size: 1rem;
+  }
+
+  .divSearch p {
+    font-size: .8rem;
+  }
+
+  .table th, .table td {
+    padding: .4rem;
+    font-size: .8rem;
+  }
+
+  .table img {
+    width: 2.5rem;
+    height: 4rem;
+  }
+
+  .tdActions {
+    display: flex;
+    flex-direction: row;
+  }
+}

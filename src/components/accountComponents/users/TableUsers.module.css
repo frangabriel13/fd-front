@@ -14,6 +14,7 @@
 .table {
   width: 100%;
   border-collapse: collapse;
+  min-width: 50rem;
 }
 
 .table th, .table td {
@@ -83,4 +84,73 @@
 
 .btnVerify:hover {
   background-color: var(--green-color-light);
+}
+
+@media (max-width: 1360px) {
+  .container {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .container h3 {
+    font-size: 2rem;
+  }
+
+  .divSearch h4 {
+    font-size: 1.6rem;
+  }
+
+  .divSearch p {
+    font-size: 1.4rem;
+  }
+
+  .table th, .table td {
+    padding: .8rem;
+    font-size: 1.1rem;
+  }
+
+  .table img {
+    width: 4rem;
+    height: 5.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  .container h3 {
+    font-size: 1.8rem;
+  }
+
+  .divSearch h4 {
+    font-size: 1.4rem;
+  }
+
+  .divSearch p {
+    font-size: 1.2rem;
+  }
+
+  .table th, .table td {
+    padding: .6rem;
+    font-size: 1rem;
+  }
+
+  .table img {
+    width: 3rem;
+    height: 4.5rem;
+  }
 }

@@ -32,10 +32,12 @@ const PackDetail = () => {
     return <div>{error}</div>;
   }
 
+  console.log(pack);
+
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
-        <p>Compra mínima de por mayor en el mismo fabricante</p>
+        <p>Compra mínima de {formatPrice(pack.manufacturer.minPurchase)} en {pack.manufacturer.name}</p>
       </div>
       <div className={s.divDetail}>
         <DataPack pack={pack} onAddToCart={handleAddToCart} />

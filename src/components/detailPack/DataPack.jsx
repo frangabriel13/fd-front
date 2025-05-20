@@ -51,10 +51,10 @@ const DataPack = ({ pack, onAddToCart }) => {
           <p className={s.price}>{formatPrice(pack.price)}</p>
           <p className={s.whole}>Comprando al por mayor</p>
         </div>
-        <div className={s.wholePrice}>
+        {/* <div className={s.wholePrice}>
           <p className={s.price}>U$D 10,00</p>
           <p className={s.whole}>Comprando en dólares</p>
-        </div>
+        </div> */}
       </div>
       <div className={s.divProducts}>
         {pack.products.map((product) => (

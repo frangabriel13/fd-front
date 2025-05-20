@@ -45,7 +45,7 @@ const ProductDetail = () => {
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
-        <p>Compra mínima de {formatPrice(manufacturer.minPurchase)} por mayor en el mismo fabricante</p>
+        <p>Compra mínima de {formatPrice(manufacturer.minPurchase)} por mayor en {manufacturer.name}</p>
       </div>
       <div className={s.divDetail}>
         <Gallery images={product.images} mainImage={product.mainImage} name={product.name} />

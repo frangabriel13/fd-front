@@ -81,3 +81,57 @@
 .btnContact:hover {
   background-color: var(--third-bg-color);
 }
+
+@media (max-width: 1360px) {
+  .modalContent {
+    width: 60%;
+  }
+
+  .container {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .modalContent {
+    width: 70%;
+  }
+
+  .container {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    width: 80%;
+  }
+
+  .container {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    width: 90%;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+
+  .container h3 {
+    font-size: 2rem;
+  }
+
+  .container p {
+    font-size: 1.4rem;
+  }
+
+  .btnCancel,
+  .btnContact {
+    font-size: 1.4rem;
+    padding: .8rem;
+  }
+}

@@ -22,6 +22,7 @@ import Help from './pages/help/Help';
 import Cart from './pages/cart/Cart';
 import PackDetail from './pages/packDetail/PackDetail';
 import useWindowWidth from './hooks/useWindowWidth';
+import Maintenance from './components/maintenance/Maintenance';
 
 function App() {
   const location = useLocation();
@@ -59,7 +60,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* {isLoginPage ? <HeaderLogin /> : <Header />} */}
       {isLoginPage ? (
         <HeaderLogin />
       ) : width < 768 ? (
@@ -67,7 +67,7 @@ function App() {
       ) : (
         <Header />
       )}
-      <div className="App-content">
+      {/* <div className="App-content">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/ingresar' element={<Login />} />
@@ -86,7 +86,8 @@ function App() {
           <Route path='/mi-carrito' element={<Cart />} />
           <Route path='/pack/:packId' element={<PackDetail />} />
         </Routes>
-      </div>
+      </div> */}
+      <Maintenance />
       <Footer />
     </div>
   );

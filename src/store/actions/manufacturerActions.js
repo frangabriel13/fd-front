@@ -146,3 +146,16 @@ export const getManufacturerByUserId = (userId) => async (dispatch) => {
     console.error(error);
   }
 };
+
+export const refreshToken = async () => {
+  try {
+    console.log('Refreshing token...');
+    const response = await manufacturerInstance.post('/refresh-token');
+    const newToken = response.data.token;
+    localStorage.setItem('token', newToken);
+    return newToken;
+  } catch (error) {
+    console.error('Error refreshing token:', error);
+    throw error;
+  }
+};

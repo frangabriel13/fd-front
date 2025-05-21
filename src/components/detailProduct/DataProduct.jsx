@@ -111,7 +111,6 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
     setShowModal(false);
   };
   
-  console.log('product', product);
   return (
     <div className={s.container}>
       <div className={s.divHeader}>

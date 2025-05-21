@@ -52,6 +52,12 @@ export const contactWspOrder = (manufacturerName, manufacturerPhone, orderId) =>
   window.open(url, '_blank');
 };
 
+export const contactWspBuyer = (buyerName, buyerPhone, manufacturerName, orderId) => {
+  const message = `Hola ${buyerName}, soy de ${manufacturerName} y quiero contactarte por tu orden #${orderId}.`;
+  const url = `https://api.whatsapp.com/send?phone=${buyerPhone}&text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+};
+
 export const timeAgo = (date) => {
   const now = new Date();
   const past = new Date(date);

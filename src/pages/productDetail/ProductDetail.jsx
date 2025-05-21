@@ -48,12 +48,26 @@ const ProductDetail = () => {
         <p>Compra mínima de {formatPrice(manufacturer.minPurchase)} por mayor en {manufacturer.name}</p>
       </div>
       <div className={s.divDetail}>
-        <Gallery images={product.images} mainImage={product.mainImage} name={product.name} />
+        {product && (
+          <Gallery
+            images={product.images}
+            mainImage={product.mainImage}
+            name={product.name}
+          />
+        )}
+        {product && (
+          <DataProduct
+            product={product}
+            manufacturer={manufacturer}
+            onAddToCart={handleAddToCart}
+          />
+        )}
+        {/* <Gallery images={product.images} mainImage={product.mainImage} name={product.name} />
         <DataProduct 
           product={product} 
           manufacturer={manufacturer}
           onAddToCart={handleAddToCart} 
-        />
+        /> */}
       </div>
     </div>
   );

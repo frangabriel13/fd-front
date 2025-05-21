@@ -67,7 +67,7 @@ function App() {
       ) : (
         <Header />
       )}
-      {/* <div className="App-content">
+      <div className="App-content">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/ingresar' element={<Login />} />
@@ -86,8 +86,8 @@ function App() {
           <Route path='/mi-carrito' element={<Cart />} />
           <Route path='/pack/:packId' element={<PackDetail />} />
         </Routes>
-      </div> */}
-      <Maintenance />
+      </div>
+      {/* <Maintenance /> */}
       <Footer />
     </div>
   );

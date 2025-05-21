@@ -2,6 +2,7 @@ import { useState } from 'react';
 import s from './TableMyOrders.module.css';
 import { formatPrice, formatDateAndTime } from '../../../utils/utils';
 import SubOrderDetail from './SubOrderDetail';
+import { contactWspBuyer } from '../../../utils/utils';
 
 const TableMyOrders = ({ mySubOrders }) => {
   const [selectedOrder, setSelectedOrder] = useState(null);
@@ -17,7 +18,17 @@ const TableMyOrders = ({ mySubOrders }) => {
     setSelectedOrder(null);
   };
 
-  console.log(mySubOrders);
+  const handleContact = (order) => {
+    const buyerName = order.order.userData
+      ? order.order.userData.name
+      : (order.order.user?.wholesaler?.name || order.order.user?.manufacturer?.name || 'Desconocido');
+    const buyerPhone = order.order.userData
+      ? order.order.userData.phone
+      : (order.order.user?.wholesaler?.phone || order.order.user?.manufacturer?.phone || 'N/A');
+    const manufacturerName = order.user?.manufacturer?.name || 'Desconocido';
+    const orderId = order.order.id;
+    contactWspBuyer(buyerName, buyerPhone, manufacturerName, orderId);
+  };
 
   return (
     <div className={s.container}>
@@ -63,7 +74,7 @@ const TableMyOrders = ({ mySubOrders }) => {
                     <td>{buyerPhone}</td>
                     <td className={s.tdActions}>
                       <button className={s.btnEdit} onClick={() => openModal(order)}>Ver</button>
-                      <button className={s.btnDelete}>Contactar</button>
+                      <button className={s.btnDelete} onClick={() => handleContact(order)}>Contactar</button>
                     </td>
                   </tr>
                 );

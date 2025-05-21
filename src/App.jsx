@@ -69,7 +69,7 @@ function App() {
       )}
       <div className="App-content">
         <Routes>
-          <Route path='/' element={<Home />} />
+          {/* <Route path='/' element={<Home />} />
           <Route path='/ingresar' element={<Login />} />
           <Route path='/recuperar-password' element={<ForgotPassword />} />
           <Route path='/registro' element={<Register />} />
@@ -85,9 +85,9 @@ function App() {
           <Route path='/preguntas-frecuentes' element={<Help />} />
           <Route path='/mi-carrito' element={<Cart />} />
           <Route path='/pack/:packId' element={<PackDetail />} />
-        </Routes>
+        </Routes> */}
       </div>
-      {/* <Maintenance /> */}
+      <Maintenance />
       <Footer />
     </div>
   );

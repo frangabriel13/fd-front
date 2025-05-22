@@ -35,14 +35,15 @@ const ProductDetail = () => {
     dispatch(addToCart(item, product.userId, 'product'));
   };
 
-  if(loading || !product || !manufacturer) {
-    return <div>Loading...</div>;
-  }
   if(error) {
     return <div>{error}</div>;
   }
-
-  console.log('ProductDetail:', product);
+  if(loading || !product || !manufacturer) {
+    return <div>Loading...</div>;
+  }
+  if (!product.images || !Array.isArray(product.images)) {
+  return <div>Producto sin imágenes</div>;
+}
 
   return (
     <div className={s.container}>

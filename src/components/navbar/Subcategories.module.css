@@ -5,6 +5,8 @@
   flex-direction: column;
   width: 30rem;
   border-radius: .3rem;
+  overflow-y: auto;
+  max-height: 80vh;
 }
 
 .title {

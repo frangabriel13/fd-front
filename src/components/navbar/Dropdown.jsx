@@ -20,22 +20,22 @@ const Dropdown = ({ categories }) => {
       <div className={s.container}>
         <div className={s.divCategories}>
           <div 
-            className={`${s.divCategory} ${hoveredCategory === 1 ? s.active : ''}`} 
-            onMouseEnter={() => handleMouseEnter(1)}
+            className={`${s.divCategory} ${hoveredCategory === 88 ? s.active : ''}`} 
+            onMouseEnter={() => handleMouseEnter(88)}
           >
             Indumentaria
             <GrNext className={s.icon} />
           </div>
           <div 
-            className={`${s.divCategory} ${hoveredCategory === 2 ? s.active : ''}`} 
-            onMouseEnter={() => handleMouseEnter(2)}
+            className={`${s.divCategory} ${hoveredCategory === 130 ? s.active : ''}`} 
+            onMouseEnter={() => handleMouseEnter(130)}
           >
             Blanquería
             <GrNext className={s.icon} />
           </div>
           <div 
-            className={`${s.divCategory} ${hoveredCategory === 3 ? s.active : ''}`} 
-            onMouseEnter={() => handleMouseEnter(3)}
+            className={`${s.divCategory} ${hoveredCategory === 131 ? s.active : ''}`} 
+            onMouseEnter={() => handleMouseEnter(131)}
           >
             Bisutería
             <GrNext className={s.icon} />

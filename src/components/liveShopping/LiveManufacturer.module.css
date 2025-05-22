@@ -10,6 +10,7 @@
   gap: 1rem;
   scrollbar-width: none;
   position: relative;
+  cursor: pointer;
 }
 
 .divImage::-webkit-scrollbar {

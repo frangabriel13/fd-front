@@ -53,8 +53,8 @@
 }
 
 .img {
-  width: 15rem;
-  height: 15rem;
+  width: 20rem;
+  height: 20rem;
   object-fit: cover;
   border-radius: .3rem;
   background: #fafafa;
@@ -106,7 +106,30 @@
   font-size: 1.2rem;
 }
 
+.expandedOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.expandedImg {
+  max-width: 90vw;
+  max-height: 90vh;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #000;
+}
+
 @media (max-width: 1360px) {
+  .modalContent {
+    width: 50%;
+  }
+
   .container {
     padding: 2rem;
   }
@@ -121,13 +144,13 @@
 
   .divCredentials {
     gap: 1rem;
-    flex-direction: column;
+    /* flex-direction: column; */
     align-items: center;
   }
 
   .img {
-    width: 10rem;
-    height: 10rem;
+    width: 20rem;
+    height: 20rem;
   }
 
   .btnForm,
@@ -139,7 +162,7 @@
 
 @media (max-width: 1024px) {
   .modalContent {
-    width: 50%;
+    width: 70%;
   }
 
   .container {
@@ -156,13 +179,12 @@
 
   .divCredentials {
     gap: 1rem;
-    flex-direction: column;
     align-items: center;
   }
 
   .img {
-    width: 10rem;
-    height: 10rem;
+    width: 20em;
+    height: 20rem;
   }
 
   .btnForm,
@@ -191,13 +213,12 @@
 
   .divCredentials {
     gap: 1rem;
-    flex-direction: column;
     align-items: center;
   }
 
   .img {
-    width: 8rem;
-    height: 8rem;
+    width: 15rem;
+    height: 15rem;
   }
 
   .btnForm,
@@ -231,8 +252,8 @@
   }
 
   .img {
-    width: 6rem;
-    height: 6rem;
+    width: 15rem;
+    height: 15rem;
   }
 
   .btnForm,

@@ -57,7 +57,9 @@ const Account = () => {
       user &&
       user.role === 'manufacturer' &&
       user.manufacturer &&
-      user.manufacturer.verificationStatus === 'pending'
+      // user.manufacturer.verificationStatus === 'pending'
+      (user.manufacturer.verificationStatus === 'pending' ||
+       user.manufacturer.verificationStatus === 'not_started')
     ) {
       navigate('/verificar-cuenta');
     }

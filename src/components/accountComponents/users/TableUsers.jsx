@@ -1,10 +1,13 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { deleteUser } from "../../../store/actions/adminActions";
 import Pagination from "../../Pagination/Pagination";
 import EditManufacturer from "./EditManufacturer";
 import VerifyUser from "./VerifyUser";
 import s from "./TableUsers.module.css";
 
 const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) => {
+  const dispatch = useDispatch();
   const [selectedUser, setSelectedUser] = useState(null);
   const [modalType, setModalType] = useState(null);
 
@@ -18,7 +21,11 @@ const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) =>
     setModalType(null);
   };
 
-  console.log('manufacturers', manufacturers);
+  const handleDeleteUser = (id) => {
+    if (window.confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
+      dispatch(deleteUser(id));
+    }
+  }
   
   return(
     <div className={s.container}>
@@ -46,12 +53,6 @@ const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) =>
                 <td>{user.email}</td>
                 <td>{user.manufacturer ? user.manufacturer.verificationStatus : '-'}</td>
                 <td className={s.tdActions}>
-                  {/* <button
-                    className={s.btnVerify}
-                    onClick={() => handleOpenModal(user, 'verify')}
-                  >
-                    Verificar
-                  </button> */}
                   {user.manufacturer && user.manufacturer.verificationStatus === "pending" && (
                     <button
                       className={s.btnVerify}
@@ -66,7 +67,10 @@ const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) =>
                   >
                     Editar
                   </button>
-                  <button className={s.btnDelete}>Eliminar</button>
+                  <button 
+                    className={s.btnDelete}
+                    onClick={() => handleDeleteUser(user.id)}
+                  >Eliminar</button>
                 </td>
               </tr>
             ))

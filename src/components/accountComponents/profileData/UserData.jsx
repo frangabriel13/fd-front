@@ -9,6 +9,8 @@ const UserData = ({ user }) => {
   const inputRef = useRef(null);
   const [hover, setHover] = useState(false);
 
+  console.log('UserData component rendered with user:', user);
+
   const handleImageClick = () => {
     inputRef.current.click();
   };
@@ -22,7 +24,7 @@ const UserData = ({ user }) => {
     }
   };
   
-  const hasImage = !!user.manufacturer.image;
+  const hasImage = !!(user.manufacturer && user.manufacturer.image);
 
   return (
     <div className={s.container}>

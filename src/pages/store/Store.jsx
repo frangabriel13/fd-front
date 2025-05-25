@@ -94,13 +94,15 @@ const Store = () => {
         </div>
       </div>
       <Reviews 
-        reviews={manufacturer.reviews} 
+        // reviews={manufacturer.reviews} 
+        reviews={manufacturer.reviews || []} 
         manufacturerId={manufacturer.id}
         onRefresh={() => dispatch(getUserData(userId, 1, pageSize, sortOrder))}
       />
       <div className={s.divProducts}>
         <Products 
-          products={manufacturerProducts} 
+          // products={manufacturerProducts} 
+          products={manufacturerProducts || []}
           onSortChange={handleSortChange}
           manufacturerId={manufacturer.id}
           minPurchase={manufacturer.minPurchase}

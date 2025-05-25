@@ -29,7 +29,7 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
     if (!user || user.role !== "wholesaler") {
       setModalContent({
         title: "Acción no permitida",
-        text: "Debes ser fabricante para agregar productos a favoritos.",
+        text: "Debes ser mayorista para agregar productos a favoritos.",
       });
       setShowModal(true);
       return;

@@ -7,7 +7,8 @@ const Footer = () => {
     <div className={s.container}>
       <div className={s.divApp}>
         <img className={s.logo} src={logo} alt="" />
-        <p>¡Descargá nuestra app!</p>
+        {/* <p>¡Descargá nuestra app!</p> */}
+        <p>Próximamente nuestra app</p>
       </div>
       <div className={s.divNav}>
         <Link className={s.link} to="/">Inicio</Link>

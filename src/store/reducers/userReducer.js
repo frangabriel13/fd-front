@@ -141,6 +141,19 @@ const userReducer = (state = initialState, action) => {
         loading: false,
         error: action.error,
       };
+    case 'ADD_LOGO_TO_MANUFACTURER_SUCCESS':
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          manufacturer: {
+            ...state.user.manufacturer,
+            image: action.payload,
+          },
+        },
+        loading: true,
+        error: null,
+      };
     default:
       return state;
   }

@@ -64,29 +64,29 @@ const UploadProduct = ({ sizes }) => {
         </div>
         <div className={s.divTypes}>
           <div 
-            className={`${s.divCard} ${productType?.id === 1 ? s.selected : ''}`}
-            onClick={() => handleTypeClick('Indumentaria', 1)}
+            className={`${s.divCard} ${productType?.id === 88 ? s.selected : ''}`}
+            onClick={() => handleTypeClick('Indumentaria', 88)}
           >
             <PiTShirtLight className={s.icon} />
             <p>Indumentaria</p>
           </div>
           <div 
-            className={`${s.divCard} ${productType?.id === 2 ? s.selected : ''}`} 
-            onClick={() => handleTypeClick('Blanquería', 2)}
+            className={`${s.divCard} ${productType?.id === 130 ? s.selected : ''}`} 
+            onClick={() => handleTypeClick('Blanquería', 130)}
           >
             <PiTowel className={s.icon} />
             <p>Blanquería</p>
           </div>
           <div 
-            className={`${s.divCard} ${productType?.id === 3 ? s.selected : ''}`} 
-            onClick={() => handleTypeClick('Bisutería', 3)}
+            className={`${s.divCard} ${productType?.id === 131 ? s.selected : ''}`} 
+            onClick={() => handleTypeClick('Bisutería', 131)}
           >
             <GiBigDiamondRing className={s.icon} />
             <p>Bisutería</p>
           </div>
         </div>
       </div>
-      {productType && productType.id === 1 && (
+      {productType && productType.id === 88 && (
         <div ref={characteristicsRef}>
           <ProductCharacteristics 
             productType={productType} 
@@ -96,7 +96,7 @@ const UploadProduct = ({ sizes }) => {
           />
         </div>
       )}
-      {productType && (productType.id === 2 || productType.id === 3) && (
+      {productType && (productType.id === 130 || productType.id === 131) && (
         <div ref={characteristicsRef}>
           <OtherProductCharacteristics 
             productType={productType} 
@@ -106,7 +106,7 @@ const UploadProduct = ({ sizes }) => {
           />
         </div>
       )}
-      {showForm && productType.id === 1 && formProps && formProps.uniqueSize && (
+      {showForm && productType.id === 88 && formProps && formProps.uniqueSize && (
         <div ref={formRef}>
           <VariableProductForm
             productType={formProps.productType}
@@ -117,7 +117,7 @@ const UploadProduct = ({ sizes }) => {
           />
         </div>
       )}
-      {showForm && productType.id === 1 && formProps && !formProps.uniqueSize && (
+      {showForm && productType.id === 88 && formProps && !formProps.uniqueSize && (
         <div ref={formRef}>
           <SimpleProductForm
             productType={formProps.productType}
@@ -129,7 +129,7 @@ const UploadProduct = ({ sizes }) => {
           />
         </div>
       )}
-      {showForm && (productType.id === 2 || productType.id === 3) && formProps && (
+      {showForm && (productType.id === 130 || productType.id === 131) && formProps && (
         <div ref={formRef}>
           <BisuteriProductForm
             productType={formProps.productType}

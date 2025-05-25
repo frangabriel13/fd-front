@@ -29,7 +29,7 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
     if (!user || user.role !== "wholesaler") {
       setModalContent({
         title: "Acción no permitida",
-        text: "Debes ser fabricante para agregar productos a favoritos.",
+        text: "Debes ser mayorista para agregar productos a favoritos.",
       });
       setShowModal(true);
       return;
@@ -47,19 +47,6 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
       }
     }
   };
-  // const handleFavoriteClick = async () => {
-  //   if (isFavorite) {
-  //     const result = await dispatch(deleteFavorite(product.id));
-  //     if (result.success) {
-  //       setIsFavorite(false);
-  //     }
-  //   } else {
-  //     const result = await dispatch(addFavorite(product.id));
-  //     if (result.success) {
-  //       setIsFavorite(true);
-  //     }
-  //   }
-  // };
 
   const handleDecrement = (id) => {
     setQuantities((prevQuantities) => 
@@ -150,13 +137,19 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
           <p className={s.price}>{formatPrice(product.price)}</p>
           <p className={s.whole}>Comprando al por mayor</p>
         </div>
-        <div className={s.wholePrice}>
-          <p className={s.price}>U$D {product.priceUSD}</p>
-          <p className={s.whole}>Comprando en dólares</p>
-        </div>
+        {product.priceUSD && (
+          <div className={s.wholePrice}>
+            <p className={s.price}>U$D {product.priceUSD}</p>
+            <p className={s.whole}>Comprando en dólares</p>
+          </div>
+        )}
       </div>
       <div className={s.divQuantities}>
-        <p>Selecciona las cantidades:</p>
+        { product.isVariable ? (
+          <p>Selecciona los  colores:</p>
+        ) : (
+          <p>Selecciona los talles:</p>
+        )}
         {
           product.inventories.map((inv) => {
             return (

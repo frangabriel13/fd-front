@@ -119,7 +119,7 @@ export const addLogoToManufacturer = (id, formData) => async (dispatch) => {
     });
     dispatch({
       type: 'ADD_LOGO_TO_MANUFACTURER_SUCCESS',
-      payload: response.data.logo,
+      payload: response.data.image,
     });
   } catch(error) {
     dispatch({

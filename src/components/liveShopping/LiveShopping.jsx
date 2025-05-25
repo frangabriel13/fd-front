@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import s from './LiveShopping.module.css';
 import { getLiveManufacturers } from '../../store/actions/manufacturerActions';
 import LiveManufacturer from './LiveManufacturer';
@@ -7,6 +8,7 @@ import { GrNext, GrPrevious } from "react-icons/gr";
 
 const LiveShopping = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const liveManufacturers = useSelector((state) => state.manufacturer.liveManufacturers);
 
   useEffect(() => {
@@ -17,7 +19,7 @@ const LiveShopping = () => {
     <div className={s.container}>
       <div className={s.divTitle}>
         <h2 className={s.title}>Live Shopping</h2>
-        <button className={s.btnMore}>Ver más</button>
+        <button className={s.btnMore} onClick={() => navigate('/fabricantes')}>Ver más</button>
       </div>
       <div className={s.navigation}>
         <button className={s.prevButton}>

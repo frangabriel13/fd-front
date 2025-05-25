@@ -1,17 +1,17 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { verifyUser } from "../../../store/actions/adminActions";
 import s from "./VerifyUser.module.css";
 
 const VerifyUser = ({ user, onClose }) => {
   const dispatch = useDispatch();
+  const [expandedImg, setExpandedImg] = useState(null);
 
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   };
-
-  console.log('user', user);
 
   return (
     <div className={s.modal} onClick={handleClickOutside}>
@@ -22,8 +22,27 @@ const VerifyUser = ({ user, onClose }) => {
             <p>Verifica las credenciales de {user.manufacturer.name}</p>
           </div>
           <div className={s.divCredentials}>
-            <img className={s.img} src={user.manufacturer.dniFront} alt={user.manufacturer.name} />
-            <img className={s.img} src={user.manufacturer.dniBack} alt={user.manufacturer.name} />
+            <img
+              className={s.img}
+              src={user.manufacturer.dniFront}
+              alt={user.manufacturer.name}
+              onClick={() => setExpandedImg(user.manufacturer.dniFront)}
+              style={{ cursor: "pointer" }}
+            />
+            <img
+              className={s.img}
+              src={user.manufacturer.dniBack}
+              alt={user.manufacturer.name}
+              onClick={() => setExpandedImg(user.manufacturer.dniBack)}
+              style={{ cursor: "pointer" }}
+            />
+            <img
+              className={s.img}
+              src={user.manufacturer.selfie}
+              alt={user.manufacturer.selfie}
+              onClick={() => setExpandedImg(user.manufacturer.selfie)}
+              style={{ cursor: "pointer" }}
+            />
           </div>
           <div className={s.divBtn}>
             <button
@@ -41,6 +60,11 @@ const VerifyUser = ({ user, onClose }) => {
           </div>
         </div>
       </div>
+      {expandedImg && (
+        <div className={s.expandedOverlay} onClick={() => setExpandedImg(null)}>
+          <img className={s.expandedImg} src={expandedImg} alt="Expandida" />
+        </div>
+      )}
     </div>
   )
 };

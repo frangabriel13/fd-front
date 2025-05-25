@@ -38,14 +38,14 @@ const Store = () => {
   };
 
   // Manejar el botón de seguir/dejar de seguir
-  const handleFollowToggle = () => {
-    if (isFollowing) {
-      setFollowers(followers - 1);
-    } else {
-      setFollowers(followers + 1);
-    }
-    setIsFollowing(!isFollowing);
-  };
+  // const handleFollowToggle = () => {
+  //   if (isFollowing) {
+  //     setFollowers(followers - 1);
+  //   } else {
+  //     setFollowers(followers + 1);
+  //   }
+  //   setIsFollowing(!isFollowing);
+  // };
 
   const renderStars = (rating) => {
     const stars = [];
@@ -87,10 +87,10 @@ const Store = () => {
           </div>
         </div>
         <div className={s.divData}>
-          <p className={s.followers}>{followers} seguidores</p>
+          {/* <p className={s.followers}>{followers} seguidores</p>
           <button className={s.btnFollow} onClick={handleFollowToggle}>
             {isFollowing ? 'Dejar de seguir' : 'Seguir'}
-          </button>
+          </button> */}
         </div>
       </div>
       <Reviews 

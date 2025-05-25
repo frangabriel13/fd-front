@@ -1,11 +1,15 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addLogoToManufacturer } from '../../../store/actions/manufacturerActions';
+import { FiPlus, FiEdit } from 'react-icons/fi';
 import s from './UserData.module.css';
 
 const UserData = ({ user }) => {
   const dispatch = useDispatch();
   const inputRef = useRef(null);
+  const [hover, setHover] = useState(false);
+
+  console.log('UserData component rendered with user:', user);
 
   const handleImageClick = () => {
     inputRef.current.click();
@@ -19,13 +23,33 @@ const UserData = ({ user }) => {
       dispatch(addLogoToManufacturer(user.manufacturer.id, formData));
     }
   };
+  
+  const hasImage = !!(user.manufacturer && user.manufacturer.image);
 
   return (
     <div className={s.container}>
       {
         user.role === 'manufacturer' && (
-          <div className={s.imageContainer} onClick={handleImageClick}>
-            <img src={user.manufacturer.image} alt="user" />
+          <div
+            className={s.imageContainer}
+            onClick={handleImageClick}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+          >
+            {hasImage ? (
+              <>
+                <img src={user.manufacturer.image} alt="user" />
+                {hover && (
+                  <div className={s.iconOverlay}>
+                    <FiEdit size={32} />
+                  </div>
+                )}
+              </>
+            ) : (
+              <div className={s.iconCenter}>
+                <FiPlus size={40} />
+              </div>
+            )}
             <input
               type="file"
               ref={inputRef}

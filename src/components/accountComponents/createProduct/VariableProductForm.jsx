@@ -19,7 +19,7 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
     mainImage: '',
     images: [],
     imgIds: [],
-    sizes: [19],
+    sizes: [76],
     colors: [],
     isVariable: true,
     onSale: false,

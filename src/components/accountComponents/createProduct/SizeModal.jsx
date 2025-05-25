@@ -73,7 +73,7 @@ const SizeModal = ({ sizes, onClose, onSave, initialSelectedSizes }) => {
                   </div>
                 ))}
               </div>
-              <div className={s.list}>
+              {/* <div className={s.list}>
                 <h4>Calzado</h4>
                 <div className={s.largeList}>
                   {sizes.Calzado && sizes.Calzado.map((size, index) => (
@@ -91,7 +91,7 @@ const SizeModal = ({ sizes, onClose, onSave, initialSelectedSizes }) => {
                     </div>
                   ))}
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
           <hr className={s.divider} />

@@ -14,12 +14,22 @@ const NavbarMobile = ({ open, onClose }) => {
     <div className={s.overlay} onClick={onClose}>
       <div className={s.menu} onClick={e => e.stopPropagation()}>
         <button className={s.closeBtn} onClick={onClose}>Cerrar</button>
-        {!isAuthenticated && (
+        {/* Link mi cuenta */}
+        {isAuthenticated ? (
+          <Link to="/mi-cuenta" className={s.link} onClick={onClose}>Mi Cuenta</Link>
+        ) : (
           <>
             <Link to="/ingresar" className={s.link} onClick={onClose}>Ingresar</Link>
             <Link to="/registro" className={s.link} onClick={onClose}>Registrarse</Link>
           </>
         )}
+        {/* Link ingresar y registrarse */}
+        {/* {!isAuthenticated && (
+          <>
+            <Link to="/ingresar" className={s.link} onClick={onClose}>Ingresar</Link>
+            <Link to="/registro" className={s.link} onClick={onClose}>Registrarse</Link>
+          </>
+        )} */}
         <button className={s.link} onClick={() => setShowCategories(v => !v)}>
           Categorías
         </button>

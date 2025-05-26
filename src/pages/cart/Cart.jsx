@@ -25,6 +25,10 @@ const Cart = () => {
     }
   }, [dispatch]);
 
+  if(typeof products === "undefined") {
+    return <div className={s.loading}>Cargando carrito...</div>;
+  }
+
   const handleClearCart = () => {
     dispatch(clearCart());
     refreshCart();
@@ -230,7 +234,8 @@ const Cart = () => {
   };
 
   // const unifiedTotal = products.reduce((acc, product) => acc + calculateTotalCart(product), 0);
-  const unifiedTotal = (products || []).reduce((acc, product) => acc + calculateTotalCart(product), 0);
+  const safeProducts = Array.isArray(products) ? products : [];
+  const unifiedTotal = safeProducts.reduce((acc, product) => acc + calculateTotalCart(product), 0);
 
   return(
     <div className={s.container}>

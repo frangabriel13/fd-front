@@ -1,12 +1,18 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import {  useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { getCategories } from '../../store/actions/categoryActions';
 import s from './NavbarMobile.module.css';
 
 const NavbarMobile = ({ open, onClose }) => {
+  const dispatch = useDispatch();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const categories = useSelector((state) => state.category.categories);
   const [showCategories, setShowCategories] = useState(false);
+
+  useEffect(() => {
+    dispatch(getCategories());
+  }, [dispatch]);
 
   if(!open) return null;
 
@@ -23,13 +29,6 @@ const NavbarMobile = ({ open, onClose }) => {
             <Link to="/registro" className={s.link} onClick={onClose}>Registrarse</Link>
           </>
         )}
-        {/* Link ingresar y registrarse */}
-        {/* {!isAuthenticated && (
-          <>
-            <Link to="/ingresar" className={s.link} onClick={onClose}>Ingresar</Link>
-            <Link to="/registro" className={s.link} onClick={onClose}>Registrarse</Link>
-          </>
-        )} */}
         <button className={s.link} onClick={() => setShowCategories(v => !v)}>
           Categorías
         </button>

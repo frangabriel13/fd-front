@@ -11,7 +11,7 @@ import SuccesModal from "../../components/modals/SuccessModal";
 
 const Cart = () => {
   const dispatch = useDispatch();
-  const { items, products, dataUser } = useSelector((state) => state.cart);
+  const { items, products = [], dataUser } = useSelector((state) => state.cart);
   const { isAuthenticated, user } = useSelector((state) => state.auth);
   const [showDetail, setShowDetail] = useState(false);
   const [selectedCart, setSelectedCart] = useState(null);
@@ -24,6 +24,10 @@ const Cart = () => {
       dispatch(getCart(cartItems));
     }
   }, [dispatch]);
+
+  if(typeof products === "undefined") {
+    return <div className={s.loading}>Cargando carrito...</div>;
+  }
 
   const handleClearCart = () => {
     dispatch(clearCart());
@@ -229,7 +233,9 @@ const Cart = () => {
     setShowSuccessModal({ show: false, title: "", message: "" });
   };
 
-  const unifiedTotal = products.reduce((acc, product) => acc + calculateTotalCart(product), 0);
+  // const unifiedTotal = products.reduce((acc, product) => acc + calculateTotalCart(product), 0);
+  const safeProducts = Array.isArray(products) ? products : [];
+  const unifiedTotal = safeProducts.reduce((acc, product) => acc + calculateTotalCart(product), 0);
 
   return(
     <div className={s.container}>

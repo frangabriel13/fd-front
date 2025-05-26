@@ -16,6 +16,10 @@ const MyPurchases = () => {
     dispatch(deleteOrder(orderId));
   };
 
+  if (!Array.isArray(myOrders)) {
+    return <div className={s.container}>Cargando...</div>;
+  }
+
   return (
     <div className={s.container}>
       <TablePurchases myOrders={myOrders} onDeleteOrder={handleDeleteOrder} />

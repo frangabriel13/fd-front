@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addLogoToManufacturer } from '../../../store/actions/manufacturerActions';
+import { addLogoToManufacturer, activateLiveManufacturer } from '../../../store/actions/manufacturerActions';
 import { FiPlus, FiEdit } from 'react-icons/fi';
 import s from './UserData.module.css';
 
@@ -67,6 +67,12 @@ const UserData = ({ user }) => {
             <p>{user.email}</p>
           </div>
         </div>
+      </div>
+      <div className={s.divLive}>
+        <button className={s.buttonLive} onClick={() => dispatch(activateLiveManufacturer())}>
+          LIVE
+        </button>
+        <p>{user.manufacturer.live ? "Estás en vivo" : "No estás en vivo"}</p>
       </div>
     </div>
   )

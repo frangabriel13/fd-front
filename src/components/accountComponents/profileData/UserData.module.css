@@ -79,6 +79,48 @@
   pointer-events: none;
 }
 
+.divLive {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: auto;
+  gap: .5rem;
+}
+
+.buttonLive {
+  border: none;
+  border-radius: 2rem;
+  padding: 0.7rem 2.5rem;
+  font-size: 3rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 2px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.liveActive {
+  background-color: var(--green-color-light);
+  color: #fff;
+}
+
+.liveInactive {
+  background-color: var(--red-color);
+  color: #fff;
+}
+
+.textLive {
+  color: var(--green-color-light);
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
+.textNotLive {
+  color: var(--red-color);
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+
 @media (max-width: 480px) {
   .container {
     flex-direction: column;
@@ -105,5 +147,11 @@
   .divInput {
     align-items: flex-start;
     width: 100%;
+  }
+
+  .divLive {
+    width: 100%;
+    align-items: center;
+    margin-left: 0;
   }
 }

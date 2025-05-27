@@ -69,10 +69,18 @@ const UserData = ({ user }) => {
         </div>
       </div>
       <div className={s.divLive}>
-        <button className={s.buttonLive} onClick={() => dispatch(activateLiveManufacturer())}>
+        <button
+          className={`${s.buttonLive} ${user.manufacturer.live ? s.liveActive : s.liveInactive}`}
+          onClick={() => dispatch(activateLiveManufacturer())}
+        >
           LIVE
         </button>
-        <p>{user.manufacturer.live ? "Estás en vivo" : "No estás en vivo"}</p>
+        <p>
+          {user.manufacturer.live
+            ? <span className={s.textLive}>Estás en vivo</span>
+            : <span className={s.textNotLive}>No estás en vivo</span>
+          }
+        </p>
       </div>
     </div>
   )

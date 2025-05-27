@@ -1,6 +1,6 @@
 import { manufacturerInstance } from "../../utils/axiosConfig";
 
-export const getManufacturers = (page = 1, pageSize = 18) => async (dispatch) => {
+export const getManufacturers = (page = 1, pageSize = 1000) => async (dispatch) => {
   dispatch({ type: 'GET_MANUFACTURERS_REQUEST' });
   try {
     const response = await manufacturerInstance.get('/', {

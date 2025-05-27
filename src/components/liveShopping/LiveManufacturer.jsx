@@ -12,8 +12,6 @@ const LiveManufacturer = ({ manufacturer }) => {
   }
 };
 
-  console.log('manufacturer: ', manufacturer)
-
   return (
     <div className={s.container}>
       <div className={s.divImage}>

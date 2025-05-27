@@ -10,7 +10,10 @@ const ManufacturerCard = ({ manufacturer }) => {
 
   return (
     <div className={s.container}>
-      <img src={manufacturer.image} alt={manufacturer.name} onClick={handleClick} />
+      <div className={s.divImage}>
+        <img src={manufacturer.image} alt={manufacturer.name} onClick={handleClick} />
+        {manufacturer.live && <div className={s.live}>LIVE</div>}
+      </div>
       <h3>{manufacturer.name}</h3>
     </div>
   );

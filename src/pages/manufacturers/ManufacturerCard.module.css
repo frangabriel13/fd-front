@@ -8,6 +8,7 @@
   box-shadow: 0 4px 16px rgba(0,0,0,0.07);
   padding: 1.5rem 1rem;
   transition: box-shadow 0.2s;
+  cursor: pointer;
 }
 
 .container:hover {

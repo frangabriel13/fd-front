@@ -1,6 +1,6 @@
 import { manufacturerInstance } from "../../utils/axiosConfig";
 
-export const getManufacturers = (page = 1, pageSize = 18) => async (dispatch) => {
+export const getManufacturers = (page = 1, pageSize = 1000) => async (dispatch) => {
   dispatch({ type: 'GET_MANUFACTURERS_REQUEST' });
   try {
     const response = await manufacturerInstance.get('/', {
@@ -27,7 +27,7 @@ export const getManufacturers = (page = 1, pageSize = 18) => async (dispatch) =>
   };
 };
 
-export const getLiveManufacturers = (page = 1, pageSize = 24) => async (dispatch) => {
+export const getLiveManufacturers = (page = 1, pageSize = 16) => async (dispatch) => {
   dispatch({ type: 'GET_LIVE_MANUFACTURERS_REQUEST' });
   try {
     const response = await manufacturerInstance.get('/live', {
@@ -103,6 +103,23 @@ export const updateManufacturer = (id, manufacturerData) => async (dispatch) => 
   } catch (error) {
     dispatch({
       type: 'UPDATE_MANUFACTURER_FAILURE',
+      error: error.message,
+    });
+    console.error(error);
+  }
+};
+
+export const activateLiveManufacturer = () => async (dispatch) => {
+  dispatch({ type: 'ACTIVATE_LIVE_MANUFACTURER_REQUEST' });
+  try {
+    const response = await manufacturerInstance.put('/activate');
+    dispatch({
+      type: 'UPDATE_USER_MANUFACTURER',
+      payload: response.data.manufacturer,
+    });
+  } catch(error) {
+    dispatch({
+      type: 'ACTIVATE_LIVE_MANUFACTURER_FAILURE',
       error: error.message,
     });
     console.error(error);

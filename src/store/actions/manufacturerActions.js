@@ -112,7 +112,7 @@ export const updateManufacturer = (id, manufacturerData) => async (dispatch) => 
 export const activateLiveManufacturer = () => async (dispatch) => {
   dispatch({ type: 'ACTIVATE_LIVE_MANUFACTURER_REQUEST' });
   try {
-    const response = await manufacturerInstance.post('/activate');
+    const response = await manufacturerInstance.put('/activate');
     dispatch({
       type: 'UPDATE_USER_MANUFACTURER',
       payload: response.data.manufacturer,

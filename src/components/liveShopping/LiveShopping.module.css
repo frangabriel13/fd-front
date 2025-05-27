@@ -55,8 +55,9 @@
   overflow-x: auto;
   flex-grow: 1;
   gap: 1rem;
-  justify-content: center;
   padding-top: 1rem;
+  scrollbar-width: none;         /* Firefox */
+  -ms-overflow-style: none;      /* IE y Edge */
 }
 
 .prevButton, .nextButton {

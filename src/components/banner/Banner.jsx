@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import s from './Banner.module.css';
-import image1 from '../../assets/banner1.png';
-import image2 from '../../assets/banner2.png';
-import image3 from '../../assets/banner3.png';
-import image4 from '../../assets/banner4.png';
-import image5 from '../../assets/banner5.png';
+import banner1 from '../../assets/bannerOne.png';
+import banner2 from '../../assets/bannerTwo.png';
+import banner3 from '../../assets/bannerThree.png';
+import banner4 from '../../assets/bannerFour.png';
 import { GrNext, GrPrevious } from "react-icons/gr";
 
 const Banner = () => {
-  const images = [image1, image2, image3, image4, image5];
+  // const images = [image1, image2, image3, image4, image5];
+  const images = [banner1, banner2, banner3, banner4];
   const [index, setIndex] = useState(0);
   const [resetInterval, setResetInterval] = useState(false);
 

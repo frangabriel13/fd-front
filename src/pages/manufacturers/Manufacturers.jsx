@@ -12,6 +12,8 @@ const Manufacturers = () => {
     dispatch(getManufacturers());
   }, [dispatch]);
 
+  console.log(manufacturers);
+
   return (
     <div className={s.container}>
       <div className={s.divHeader}>

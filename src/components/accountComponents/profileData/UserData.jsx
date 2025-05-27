@@ -3,11 +3,13 @@ import { useDispatch } from 'react-redux';
 import { addLogoToManufacturer, activateLiveManufacturer } from '../../../store/actions/manufacturerActions';
 import { FiPlus, FiEdit } from 'react-icons/fi';
 import s from './UserData.module.css';
+import SuccessModal from '../../modals/SuccessModal';
 
 const UserData = ({ user }) => {
   const dispatch = useDispatch();
   const inputRef = useRef(null);
   const [hover, setHover] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   console.log('UserData component rendered with user:', user);
 
@@ -22,6 +24,14 @@ const UserData = ({ user }) => {
       formData.append('image', file);
       dispatch(addLogoToManufacturer(user.manufacturer.id, formData));
     }
+  };
+
+  const handleLiveClick = () => {
+    if (!user.manufacturer.tiktokUrl) {
+      setShowModal(true);
+      return;
+    }
+    dispatch(activateLiveManufacturer());
   };
   
   const hasImage = !!(user.manufacturer && user.manufacturer.image);
@@ -71,7 +81,7 @@ const UserData = ({ user }) => {
       <div className={s.divLive}>
         <button
           className={`${s.buttonLive} ${user.manufacturer.live ? s.liveActive : s.liveInactive}`}
-          onClick={() => dispatch(activateLiveManufacturer())}
+          onClick={handleLiveClick}
         >
           LIVE
         </button>
@@ -82,6 +92,13 @@ const UserData = ({ user }) => {
           }
         </p>
       </div>
+      {showModal && (
+        <SuccessModal
+          title="Completa tus datos"
+          message="Debes editar tus datos y agregar tu nick de TikTok para poder activar el modo en vivo."
+          onClose={() => setShowModal(false)}
+        />
+      )}
     </div>
   )
 };

@@ -109,6 +109,23 @@ export const updateManufacturer = (id, manufacturerData) => async (dispatch) => 
   }
 };
 
+export const activateLiveManufacturer = () => async (dispatch) => {
+  dispatch({ type: 'ACTIVATE_LIVE_MANUFACTURER_REQUEST' });
+  try {
+    const response = await manufacturerInstance.post('/activate');
+    dispatch({
+      type: 'UPDATE_USER_MANUFACTURER',
+      payload: response.data.manufacturer,
+    });
+  } catch(error) {
+    dispatch({
+      type: 'ACTIVATE_LIVE_MANUFACTURER_FAILURE',
+      error: error.message,
+    });
+    console.error(error);
+  }
+};
+
 export const addLogoToManufacturer = (id, formData) => async (dispatch) => {
   dispatch({ type: 'ADD_LOGO_TO_MANUFACTURER_REQUEST' });
   try {

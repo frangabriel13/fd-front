@@ -78,7 +78,7 @@ const UserData = ({ user }) => {
           </div>
         </div>
       </div>
-      <div className={s.divLive}>
+      {/* <div className={s.divLive}>
         <button
           className={`${s.buttonLive} ${user.manufacturer.live ? s.liveActive : s.liveInactive}`}
           onClick={handleLiveClick}
@@ -91,7 +91,23 @@ const UserData = ({ user }) => {
             : <span className={s.textNotLive}>No estás en vivo</span>
           }
         </p>
-      </div>
+      </div> */}
+      {user.role === 'manufacturer' && (
+        <div className={s.divLive}>
+          <button
+            className={`${s.buttonLive} ${user.manufacturer.live ? s.liveActive : s.liveInactive}`}
+            onClick={handleLiveClick}
+          >
+            LIVE
+          </button>
+          <p>
+            {user.manufacturer.live
+              ? <span className={s.textLive}>Estás en vivo</span>
+              : <span className={s.textNotLive}>No estás en vivo</span>
+            }
+          </p>
+        </div>
+      )}
       {showModal && (
         <SuccessModal
           title="Completa tus datos"

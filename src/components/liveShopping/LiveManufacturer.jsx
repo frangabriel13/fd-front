@@ -5,8 +5,14 @@ const LiveManufacturer = ({ manufacturer }) => {
   const navigate = useNavigate();
 
   const handleClick = () => {
+  if (manufacturer.live && manufacturer.tiktokUrl) {
+    window.open(manufacturer.tiktokUrl, '_blank');
+  } else {
     navigate(`/store/${manufacturer.user.id}`);
-  };
+  }
+};
+
+  console.log('manufacturer: ', manufacturer)
 
   return (
     <div className={s.container}>

@@ -12,7 +12,8 @@ const RegisterWholesaler = ({ user }) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    userId: user.userId,
+    userId: user.id,
+    // antes userId
   });
   const [errors, setErrors] = useState({});
 
@@ -35,9 +36,10 @@ const RegisterWholesaler = ({ user }) => {
       setFormData({
         name: '',
         phone: '',
-        userId: user.userId,
+        userId: user.id,
+        // antes userId
       });
-      dispatch(getMe());
+      await dispatch(getMe());
       navigate('/mi-cuenta');
     }
   };

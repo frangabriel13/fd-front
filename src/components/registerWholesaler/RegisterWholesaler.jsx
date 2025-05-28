@@ -12,7 +12,7 @@ const RegisterWholesaler = ({ user }) => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    userId: user.id,
+    userId: user.userId,
     // antes userId
   });
   const [errors, setErrors] = useState({});
@@ -36,7 +36,7 @@ const RegisterWholesaler = ({ user }) => {
       setFormData({
         name: '',
         phone: '',
-        userId: user.id,
+        userId: user.userId,
         // antes userId
       });
       await dispatch(getMe());

@@ -17,7 +17,8 @@ const RegisterManufacturer = ({ user }) => {
     street: '',
     phone: '',
     minPurchase: 0,
-    userId: user.userId,
+    userId: user.id,
+    // antes userId
   });
   const [errors, setErrors] = useState({});
 
@@ -37,7 +38,7 @@ const RegisterManufacturer = ({ user }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = registerManufacturerValidator(formData);
     if(Object.keys(validationErrors).length > 0) {
@@ -48,7 +49,7 @@ const RegisterManufacturer = ({ user }) => {
       if (!dataToSubmit.pointOfSale) {
         delete dataToSubmit.street;
       }
-      dispatch(createManufacturer(dataToSubmit));
+      await dispatch(createManufacturer(dataToSubmit));
       setFormData({
         name: '',
         owner: '',
@@ -56,10 +57,11 @@ const RegisterManufacturer = ({ user }) => {
         street: '',
         phone: '',
         minPurchase: 0,
-        userId: user.userId,
+        userId: user.id,
+        // antes userId
       });
       setHasPointOfSale(false);
-      dispatch(getMe());
+      await dispatch(getMe());
       navigate('/mi-cuenta');
     }
   };

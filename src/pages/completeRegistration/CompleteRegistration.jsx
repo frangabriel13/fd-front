@@ -12,6 +12,8 @@ const CompleteRegistration = () => {
     setRole(role);
   };
 
+  console.log('user', user);
+
   return (
     <div className={s.container}>
       <div className={s.divRole}>

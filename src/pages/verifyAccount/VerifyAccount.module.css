@@ -96,3 +96,109 @@
   color: green;
   font-size: 1.2rem;
 }
+
+@media (max-width: 1360px) {
+  .container {
+    padding: 7.8rem 30rem;
+  }
+  
+  .divVerifyAccount {
+    padding: 2rem;
+  }
+  
+  .divHeader h2 {
+    font-size: 2.4rem;
+  }
+  
+  .divHeader p {
+    font-size: 1.4rem;
+  }
+  
+  .input {
+    font-size: 1.4rem;
+  }
+  
+  .btnForm {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 7.8rem 20rem;
+  }
+  
+  .divVerifyAccount {
+    padding: 1.5rem;
+  }
+  
+  .divHeader h2 {
+    font-size: 2.2rem;
+  }
+  
+  .divHeader p {
+    font-size: 1.3rem;
+  }
+  
+  .input {
+    font-size: 1.3rem;
+  }
+  
+  .btnForm {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 7.8rem 10rem;
+  }
+  
+  .divVerifyAccount {
+    padding: 1rem;
+  }
+  
+  .divHeader h2 {
+    font-size: 2rem;
+  }
+  
+  .divHeader p {
+    font-size: 1.2rem;
+  }
+  
+  .input {
+    font-size: 1.2rem;
+  }
+  
+  .btnForm {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 7.8rem 2rem;
+  }
+  
+  .divVerifyAccount {
+    padding: 1rem;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .divHeader h2 {
+    font-size: 1.8rem;
+  }
+  
+  .divHeader p {
+    font-size: 1rem;
+  }
+  
+  .input {
+    font-size: 1.2rem;
+  }
+  
+  .btnForm {
+    font-size: 1.2rem;
+  }
+}

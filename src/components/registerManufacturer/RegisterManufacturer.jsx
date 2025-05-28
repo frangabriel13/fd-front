@@ -17,7 +17,7 @@ const RegisterManufacturer = ({ user }) => {
     street: '',
     phone: '',
     minPurchase: 0,
-    userId: user.id,
+    userId: user.userId,
     // antes userId
   });
   const [errors, setErrors] = useState({});
@@ -57,7 +57,7 @@ const RegisterManufacturer = ({ user }) => {
         street: '',
         phone: '',
         minPurchase: 0,
-        userId: user.id,
+        userId: user.userId,
         // antes userId
       });
       setHasPointOfSale(false);

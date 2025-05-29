@@ -8,7 +8,6 @@ const OrderDetail = ({ order, onClose }) => {
     }
   }
 
-  console.log(order);
   return (
     <div className={s.modal} onClick={handleClickOutside}>
       <div className={s.modalContent}>

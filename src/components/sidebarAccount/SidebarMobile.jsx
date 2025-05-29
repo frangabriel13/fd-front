@@ -47,9 +47,14 @@ const SidebarMobile = ({ role }) => {
         </>
       )}
       {role === "admin" && (
-        <Link to="/mi-cuenta/usuarios" className={s.iconLink}>
-          <LiaUsersCogSolid size={24} />
-        </Link>
+        <>
+          <Link to="/mi-cuenta/usuarios" className={s.iconLink}>
+            <LiaUsersCogSolid size={24} />
+          </Link>
+          <Link to="/mi-cuenta/ordenes-unificadas" className={s.iconLink}>
+            <BsBoxSeam size={24} />
+          </Link>
+        </>
       )}
       <Link to="/mi-cuenta/" className={s.iconLink}>
         <PiUserCircle size={24} />

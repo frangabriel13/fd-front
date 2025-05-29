@@ -55,6 +55,9 @@ const SidebarAccount = ({ role }) => {
             <Link to="/mi-cuenta/usuarios" className={s.link}>
               <LiaUsersCogSolid className={s.icon} /> Usuarios
             </Link>
+            <Link to="/mi-cuenta/ordenes-unificadas" className={s.link}>
+              <BsBoxSeam className={s.icon} /> Pedidos unificados
+            </Link>
           </>
         )}
         <Link to="/mi-cuenta/" className={s.link}>

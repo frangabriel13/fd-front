@@ -1,0 +1,156 @@
+.container {
+  padding: 3rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  border-radius: .3rem;
+  gap: 3rem;
+}
+
+.container h3 {
+  font-size: 2.2rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 50rem;
+}
+
+.table th, .table td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: .1rem solid var(--other-gray);
+  font-size: 1.2rem;
+}
+
+.table th {
+  background-color: var(--second-color);
+  font-weight: bold;
+  color: white;
+  font-size: 1.2rem;
+}
+
+.table tr:hover {
+  background-color: var(--other-gray-light);
+}
+
+.thActions {
+  text-align: center !important;
+}
+
+.tdActions {
+  display: flex;
+  justify-content: end;
+  gap: 1rem;
+  align-items: center;
+}
+
+.btnDelete {
+  background-color: var(--red-color);
+  color: white;
+  padding: .5rem 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: .3rem;
+}
+
+.btnDelete:hover {
+  background-color: var(--red-color-light);
+}
+
+.btnEdit {
+  background-color: var(--second-bg-color);
+  color: white;
+  padding: .5rem 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: .3rem;
+  /* margin-right: 1rem; */
+}
+
+.btnEdit:hover {
+  background-color: var(--third-bg-color);
+}
+
+.btnVerify {
+  background-color: var(--green-color);
+  color: white;
+  padding: .5rem 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: .3rem;
+}
+
+.btnVerify:hover {
+  background-color: var(--green-color-light);
+}
+
+@media (max-width: 1360px) {
+  .container {
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .container h3 {
+    font-size: 2rem;
+  }
+
+  .divSearch h4 {
+    font-size: 1.6rem;
+  }
+
+  .divSearch p {
+    font-size: 1.4rem;
+  }
+
+  .table th, .table td {
+    padding: .8rem;
+    font-size: 1.1rem;
+  }
+
+  .table img {
+    width: 4rem;
+    height: 5.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  .container h3 {
+    font-size: 1.8rem;
+  }
+
+  .divSearch h4 {
+    font-size: 1.4rem;
+  }
+
+  .divSearch p {
+    font-size: 1.2rem;
+  }
+
+  .table th, .table td {
+    padding: .6rem;
+    font-size: 1rem;
+  }
+
+  .table img {
+    width: 3rem;
+    height: 4.5rem;
+  }
+}

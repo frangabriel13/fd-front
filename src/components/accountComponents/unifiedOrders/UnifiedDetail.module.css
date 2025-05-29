@@ -1,0 +1,280 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: white;
+  border-radius: .4rem;
+  overflow-y: auto;
+  width: 40%;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+  padding: 1.5rem 1.5rem;
+}
+
+.divTitle {
+  background-color: var(--main-color);
+  padding: .2rem .5rem;
+}
+
+.divTitle h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.divTable {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.divSuborder {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  border-bottom: .1rem solid #ddd;
+  padding-bottom: 2rem;
+}
+
+.divSuborder h4 {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.tableSection {
+  display: flex;
+  flex-direction: column;
+}
+
+.tableSection h4 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  color: #555;
+}
+
+.divProdPack {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table th,
+.table td {
+  border: .1rem solid #ddd;
+  padding: .8rem;
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+.table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}
+
+.table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.table tr:hover {
+  background-color: #f1f1f1;
+}
+
+
+.divTotal {
+  display: flex;
+  justify-content: end;
+}
+
+.divTotal h4 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.divTotalOrder {
+  display: flex;
+  justify-content: end;
+}
+
+.divTotalOrder h4 {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.divActions {
+  display: flex;
+  justify-content: end;
+  gap: 2rem;
+  padding: 0rem 1.5rem 1.5rem 1.5rem;
+  background-color: white;
+}
+
+.btnCancel {
+  background-color: var(--red-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: .3rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btnCancel:hover {
+  background-color: var(--red-color-light);
+  transition: all .3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 1360px) {
+  .modalContent {
+    width: 60%;
+  }
+
+  .divTitle h3 {
+    font-size: 1.5rem;
+  }
+
+  .divTable {
+    gap: 1rem;
+  }
+
+  .divSuborder h4 {
+    font-size: 1.2rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 1rem;
+  }
+
+  .divTotal h4 {
+    font-size: 1.2rem;
+  }
+
+  .divTotalOrder h4 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .modalContent {
+    width: 70%;
+  }
+
+  .divTitle h3 {
+    font-size: 1.5rem;
+  }
+
+  .divTable {
+    gap: 1rem;
+  }
+
+  .divSuborder h4 {
+    font-size: 1.2rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 1rem;
+  }
+
+  .divTotal h4 {
+    font-size: 1.2rem;
+  }
+
+  .divTotalOrder h4 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .modalContent {
+    width: 80%;
+  }
+
+  .divTitle h3 {
+    font-size: 1.5rem;
+  }
+
+  .divTable {
+    gap: 1rem;
+  }
+
+  .divSuborder h4 {
+    font-size: 1.2rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 1rem;
+  }
+
+  .divTotal h4 {
+    font-size: 1.2rem;
+  }
+
+  .divTotalOrder h4 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .modalContent {
+    width: 90%;
+  }
+
+  .divTitle h3 {
+    font-size: 1.5rem;
+  }
+
+  .divTable {
+    gap: 1rem;
+  }
+
+  .divSuborder h4 {
+    font-size: 1.2rem;
+  }
+
+  .table th,
+  .table td {
+    font-size: 1rem;
+  }
+
+  .divTotal h4 {
+    font-size: 1.2rem;
+  }
+
+  .divTotalOrder h4 {
+    font-size: 1.5rem;
+  }
+}

@@ -3,6 +3,7 @@ const initialState = {
   error: null,
   mySubOrders: [],
   myOrders: [],
+  unifiedOrders: [],
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -30,6 +31,12 @@ const orderReducer = (state = initialState, action) => {
     case 'DELETE_ORDER_SUCCESS':
       return { ...state, loading: false, myOrders: state.myOrders.filter(order => order.id !== action.payload) };
     case 'DELETE_ORDER_FAILURE':
+      return { ...state, loading: false, error: action.error };
+    case 'GET_UNIFIED_ORDERS_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'GET_UNIFIED_ORDERS_SUCCESS':
+      return { ...state, loading: false, unifiedOrders: action.payload };
+    case 'GET_UNIFIED_ORDERS_FAILURE':
       return { ...state, loading: false, error: action.error };
     default:
       return state;

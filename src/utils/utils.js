@@ -46,15 +46,31 @@ export const formatDateAndTime = (isoString) => {
   return { formattedDate, formattedTime };
 };
 
+// Contacta el mayorista al fabricante
 export const contactWspOrder = (manufacturerName, manufacturerPhone, orderId) => {
   const message = `Hola, realicé una compra en ${manufacturerName} y generé la siguiente orden #${orderId}.`;
   const url = `https://api.whatsapp.com/send?phone=${manufacturerPhone}&text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
 };
 
+// Contacta al fabricante al mayorista
 export const contactWspBuyer = (buyerName, buyerPhone, manufacturerName, orderId) => {
   const message = `Hola ${buyerName}, soy de ${manufacturerName} y quiero contactarte por tu orden #${orderId}.`;
   const url = `https://api.whatsapp.com/send?phone=${buyerPhone}&text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+};
+
+// Contacta el administrador al mayorista
+export const contactAdminToWholesaler = (wholesalerName, wholesalerPhone, orderId) => {
+  const message = `Hola ${wholesalerName}, te contactamos de Fabricante Directo. Queremos consultarte por la orden #${orderId}.`;
+  const url = `https://api.whatsapp.com/send?phone=${wholesalerPhone}&text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+};
+
+// Contacta el administrador al fabricante
+export const contactAdminToManufacturer = (manufacturerName, manufacturerPhone, orderId) => {
+  const message = `Hola ${manufacturerName}, te contactamos de Fabricante Directo. Queremos consultarte por la orden #${orderId}.`;
+  const url = `https://api.whatsapp.com/send?phone=${manufacturerPhone}&text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
 };
 

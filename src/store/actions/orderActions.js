@@ -71,3 +71,20 @@ export const deleteOrder = (orderId) => async (dispatch) => {
     });
   }
 };
+
+export const getUnifiedOrders = () => async (dispatch) => {
+  dispatch({ type: 'GET_UNIFIED_ORDERS_REQUEST' });
+  try {
+    const response = await orderInstance.get('/unified');
+    console.log('Unified orders fetched successfully:', response.data);
+    dispatch({
+      type: 'GET_UNIFIED_ORDERS_SUCCESS',
+      payload: response.data,
+    });
+  } catch(error) {
+    dispatch({
+      type: 'GET_UNIFIED_ORDERS_FAILURE',
+      error: error.message,
+    });
+  }
+};

@@ -79,7 +79,7 @@ export const getUnifiedOrders = (page = 1, limit = 15) => async (dispatch) => {
       params: { page, limit },
     });
 
-    const { unifiedOrders, total, totalPages, page } = response.data;
+    const { unifiedOrders, total, totalPages } = response.data;
 
     dispatch({
       type: 'GET_UNIFIED_ORDERS_SUCCESS',

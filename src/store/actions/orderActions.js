@@ -72,14 +72,18 @@ export const deleteOrder = (orderId) => async (dispatch) => {
   }
 };
 
-export const getUnifiedOrders = () => async (dispatch) => {
+export const getUnifiedOrders = (page = 1, limit = 15) => async (dispatch) => {
   dispatch({ type: 'GET_UNIFIED_ORDERS_REQUEST' });
   try {
-    const response = await orderInstance.get('/unified');
-    console.log('Unified orders fetched successfully:', response.data);
+    const response = await orderInstance.get('/unified' , {
+      params: { page, limit },
+    });
+
+    const { unifiedOrders, total, totalPages, page } = response.data;
+
     dispatch({
       type: 'GET_UNIFIED_ORDERS_SUCCESS',
-      payload: response.data,
+      payload: { unifiedOrders, total, totalPages, page },
     });
   } catch(error) {
     dispatch({

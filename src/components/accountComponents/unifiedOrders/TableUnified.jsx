@@ -1,19 +1,21 @@
 import { useState } from 'react';
 import Pagination from '../../Pagination/Pagination';
+import { formatPrice, formatDateAndTime, contactWspOrder } from "../../../utils/utils";
 import s from './TableUnified.module.css';
+import UnifiedDetail from './UnifiedDetail';
 
-const TableUnified = ({ unifiedOrders, total, totalPage, page, onPageChange }) => {
+const TableUnified = ({ unifiedOrders, total, totalPages, page, onPageChange }) => {
   const [selectedOrder, setSelectedOrder] = useState(null);
-  const [modalType, setModalType] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleOpenModal = (order, type) => {
+  const openModal = (order) => {
     setSelectedOrder(order);
-    setModalType(type);
+    setIsModalOpen(true);
   };
 
-  const handleCloseModal = () => {
+  const closeModal = () => {
+    setIsModalOpen(false);
     setSelectedOrder(null);
-    setModalType(null);
   };
 
   console.log(unifiedOrders);
@@ -31,8 +33,37 @@ const TableUnified = ({ unifiedOrders, total, totalPage, page, onPageChange }) =
             <th className={s.thActions}>Acciones</th>
           </tr>
         </thead>
-        <tbody></tbody>
+        <tbody>
+          {unifiedOrders && unifiedOrders.length > 0 ? unifiedOrders.map(order => {
+            if (!order) return null;
+            const { formattedDate, formattedTime } = formatDateAndTime(order.createdAt);
+            return (
+              <tr key={order.id}>
+                <td>{order.id}</td>
+                <td>{formatPrice(order.total)}</td>
+                <td>{formattedDate}</td>
+                <td>{formattedTime}</td>
+                <td className={s.tdActions}>
+                  <button className={s.btnEdit} onClick={() => openModal(order)}>Ver</button>
+                </td>
+              </tr>
+            );
+          }) : (
+            <tr>
+              <td colSpan={6}>No hay pedidos unificados.</td>
+            </tr>
+          )}
+        </tbody>
       </table>
+      {isModalOpen && selectedOrder && (
+        <UnifiedDetail order={selectedOrder} onClose={closeModal} />
+      )}
+      <Pagination
+        currentPage={page}
+        onChange={onPageChange}
+        totalProducts={total}
+        pageSize={15}
+      />
     </div>
   )
 };

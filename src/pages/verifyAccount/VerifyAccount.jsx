@@ -150,22 +150,11 @@ const VerifyAccount = () => {
 
   const handleUpload = async (e) => {
     e.preventDefault();
-    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
-    let fileInputs = [];
-    const form = document.getElementById('verify-form');
 
-    if (isSafari) {
-      fileInputs = Array.from(form.querySelectorAll('input[type="file"]')).filter(
-        input => !input.files.length
-      );
-      fileInputs.forEach(input => input.disabled = true);
-    }
-
-    const formData = new FormData(form);
-
-    if (isSafari) {
-      fileInputs.forEach(input => input.disabled = false);
-    }
+    const formData = new FormData();
+    if (images.selfie) formData.append('selfie', images.selfie);
+    if (images.dniFront) formData.append('dniFront', images.dniFront);
+    if (images.dniBack) formData.append('dniBack', images.dniBack);
 
     try {
       await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
@@ -173,7 +162,8 @@ const VerifyAccount = () => {
       setTimeout(() => {
         navigate('/mi-cuenta');
       }, 1000);
-    } catch(error) {
+    } catch (error) {
+      console.error('Error al subir imágenes:', error);
       setSuccessMessage('');
     }
   };
@@ -197,7 +187,7 @@ const VerifyAccount = () => {
           </div>
         </div>
       ) : user.manufacturer.verificationStatus === 'not_started' && (
-        <form id="verify-form" onSubmit={handleUpload} className={s.divVerifyAccount}>
+        <form onSubmit={handleUpload} className={s.divVerifyAccount}>
           <div className={s.divHeader}>
             <h2>Verificar cuenta</h2>
             <p>Su cuenta ha sido registrada con éxito. Ahora solo falta verificar su cuenta con una selfie y la imagen del dni (frente y reverso).</p>
@@ -250,7 +240,7 @@ const VerifyAccount = () => {
         </form>
       )}
     </div>
-  )
+  );
 };
 
 export default VerifyAccount;

@@ -19,6 +19,12 @@ const UnifiedDetail = ({ order, onClose }) => {
     contactAdminToWholesaler(wholesalerName, wholesalerPhone, orderId);
   };
 
+  const handleContactManufacturer = (manufacturer, orderId) => {
+    const manufacturerName = manufacturer?.name || "Desconocido";
+    const manufacturerPhone = manufacturer?.phone || "N/A";
+    contactAdminToManufacturer(manufacturerName, manufacturerPhone, orderId);
+  };
+
   return (
     <div className={s.modal} onClick={handleClickOutside}>
       <div className={s.modalContent}>
@@ -103,6 +109,10 @@ const UnifiedDetail = ({ order, onClose }) => {
                 </div>
                 <div className={s.divTotal}>
                   <h4>Subtotal: {formatPrice(subOrder.subtotal)}</h4>
+                  <button 
+                    className={s.buttonContact}
+                    onClick={() => handleContactManufacturer(subOrder.user.manufacturer, order.id)}
+                  >Contactar</button>
                 </div>
               </div>
             ))}
@@ -112,7 +122,7 @@ const UnifiedDetail = ({ order, onClose }) => {
           </div>
         </div>
         <div className={s.divActions}>
-          <button onClick={handleContactWholesaler}>Contactar</button>
+          <button className={s.btnContact} onClick={handleContactWholesaler}>Contactar</button>
           <button className={s.btnCancel} onClick={onClose}>Cancelar</button>
         </div>
       </div>

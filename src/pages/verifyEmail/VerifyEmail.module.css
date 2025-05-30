@@ -13,3 +13,39 @@
   color: #333;
   text-align: center;
 }
+
+@media (max-width: 1360px) {
+  .container {
+    padding: 5rem 20rem;
+  }
+  .message {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 5rem 10rem;
+  }
+  .message {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 5rem 5rem;
+  }
+  .message {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 5rem 2rem;
+  }
+  .message {
+    font-size: 1.2rem;
+  }
+}

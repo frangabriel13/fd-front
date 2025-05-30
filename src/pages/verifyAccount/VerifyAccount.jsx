@@ -70,15 +70,33 @@ const VerifyAccount = () => {
           <div className={s.divImages}>
             <div className={s.divImage}>
               <h4>Selfie:</h4>
-              <input type="file" name="selfie" className={s.input} onChange={handleFileChange} />
+              <input 
+                type="file" 
+                name="selfie" 
+                className={s.input} 
+                onChange={handleFileChange}
+                accept="image/*"
+              />
             </div>
             <div className={s.divImage}>
               <h4>DNI Frente:</h4>
-              <input type="file" name="dniFront" className={s.input} onChange={handleFileChange} />
+              <input 
+                type="file" 
+                name="dniFront" 
+                className={s.input} 
+                onChange={handleFileChange}
+                accept="image/*" 
+              />
             </div>
             <div className={s.divImage}>
               <h4>DNI Reverso:</h4>
-              <input type="file" name="dniBack" className={s.input} onChange={handleFileChange} />
+              <input 
+                type="file" 
+                name="dniBack" 
+                className={s.input} 
+                onChange={handleFileChange}
+                accept="image/*"
+              />
             </div>
           </div>
           <div className={s.divbtn}>

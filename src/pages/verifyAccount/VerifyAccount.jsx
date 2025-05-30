@@ -25,23 +25,54 @@ const VerifyAccount = () => {
     }));
   };
 
-  const handleUpload = async () => {
-    const formData = new FormData();
-    Object.keys(images).forEach((key) => {
-      formData.append(key, images[key]);
-    });
+  // const handleUpload = async () => {
+  //   const formData = new FormData();
+  //   Object.keys(images).forEach((key) => {
+  //     formData.append(key, images[key]);
+  //   });
 
-    try {
-      await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
-      setSuccessMessage('Imágenes subidas correctamente');
-      // dispatch(getMe());
-      setTimeout(() => {
-        navigate('/mi-cuenta');
-      }, 1000);
-    } catch(error) {
-      setSuccessMessage('');
-    }
-  };
+  //   try {
+  //     await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
+  //     setSuccessMessage('Imágenes subidas correctamente');
+  //     // dispatch(getMe());
+  //     setTimeout(() => {
+  //       navigate('/mi-cuenta');
+  //     }, 1000);
+  //   } catch(error) {
+  //     setSuccessMessage('');
+  //   }
+  // };
+  const handleUpload = async () => {
+  // Si es Safari, deshabilita los inputs vacíos
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+  let fileInputs = [];
+  if (isSafari) {
+    fileInputs = Array.from(document.querySelectorAll('input[type="file"]')).filter(
+      input => !input.files.length
+    );
+    fileInputs.forEach(input => input.disabled = true);
+  }
+
+  const formData = new FormData();
+  Object.keys(images).forEach((key) => {
+    if (images[key]) formData.append(key, images[key]);
+  });
+
+  // Vuelve a habilitar los inputs vacíos
+  if (isSafari) {
+    fileInputs.forEach(input => input.disabled = false);
+  }
+
+  try {
+    await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
+    setSuccessMessage('Imágenes subidas correctamente');
+    setTimeout(() => {
+      navigate('/mi-cuenta');
+    }, 1000);
+  } catch(error) {
+    setSuccessMessage('');
+  }
+};
 
   const isDisabled = !images.selfie || !images.dniFront || !images.dniBack;
 

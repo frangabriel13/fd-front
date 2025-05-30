@@ -67,44 +67,18 @@ export const createManufacturer = (manufacturer) => async (dispatch) => {
   }
 };
 
-// export const uploadManufacturerImages = (id, formData) => async (dispatch) => {
-//   dispatch({ type: 'UPLOAD_MANUFACTURER_IMAGES_REQUEST' });
-//   try {
-//     // const response = await manufacturerInstance.post(`/${id}/images`, formData, {
-//     //   headers: {
-//     //     'Content-Type': 'multipart/form-data',
-//     //   },
-//     // });
-//     const response = await manufacturerInstance.post(`/${id}/images`, formData);
-//     dispatch({
-//       type: 'UPLOAD_MANUFACTURER_IMAGES_SUCCESS',
-//       payload: response.data.images,
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: 'UPLOAD_MANUFACTURER_IMAGES_FAILURE',
-//       error: error.message,
-//     });
-//     console.error(error);
-//   }
-// };
 export const uploadManufacturerImages = (id, formData) => async (dispatch) => {
   dispatch({ type: 'UPLOAD_MANUFACTURER_IMAGES_REQUEST' });
   try {
-    const token = localStorage.getItem('token');
-    const response = await fetch(`https://nodeuser.fabricantedirecto.com/api/manufacturers/${id}/images`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        // NO pongas 'Content-Type'
-      },
-      body: formData,
-    });
-    const data = await response.json();
-    if (!response.ok) throw new Error(data.message || 'Error al subir imágenes');
+    // const response = await manufacturerInstance.post(`/${id}/images`, formData, {
+    //   headers: {
+    //     'Content-Type': 'multipart/form-data',
+    //   },
+    // });
+    const response = await manufacturerInstance.post(`/${id}/images`, formData);
     dispatch({
       type: 'UPLOAD_MANUFACTURER_IMAGES_SUCCESS',
-      payload: data.images,
+      payload: response.data.images,
     });
   } catch (error) {
     dispatch({

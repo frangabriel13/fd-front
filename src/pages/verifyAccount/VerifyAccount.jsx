@@ -77,6 +77,7 @@ const VerifyAccount = () => {
                 onChange={handleFileChange}
                 accept="image/*"
               />
+              {images.selfie && <span>Archivo: {images.selfie.name}</span>}
             </div>
             <div className={s.divImage}>
               <h4>DNI Frente:</h4>
@@ -87,6 +88,7 @@ const VerifyAccount = () => {
                 onChange={handleFileChange}
                 accept="image/*" 
               />
+              {images.dniFront && <span>Archivo: {images.dniFront.name}</span>}
             </div>
             <div className={s.divImage}>
               <h4>DNI Reverso:</h4>
@@ -97,6 +99,7 @@ const VerifyAccount = () => {
                 onChange={handleFileChange}
                 accept="image/*"
               />
+              {images.dniBack && <span>Archivo: {images.dniBack.name}</span>}
             </div>
           </div>
           <div className={s.divbtn}>

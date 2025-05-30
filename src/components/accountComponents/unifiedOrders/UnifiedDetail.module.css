@@ -152,7 +152,23 @@
 
 .divTotal {
   display: flex;
+  align-items: center;
   justify-content: end;
+  gap: 1rem;
+}
+
+.buttonContact {
+  background-color: var(--green-color);
+  color: white;
+  padding: .75rem 1.5rem;
+  border-radius: .3rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.buttonContact:hover {
+  background-color: var(--green-color-light);
+  transition: all .3s ease-in-out;
 }
 
 .divTotal h4 {
@@ -176,6 +192,20 @@
   gap: 2rem;
   padding: 0rem 1.5rem 1.5rem 1.5rem;
   background-color: white;
+}
+
+.btnContact {
+  background-color: var(--second-bg-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: .3rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btnContact:hover {
+  background-color: var(--third-bg-color);
+  transition: all .3s ease-in-out;
 }
 
 .btnCancel {

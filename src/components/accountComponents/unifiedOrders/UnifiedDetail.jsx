@@ -1,12 +1,29 @@
-import s from "./OrderDetail.module.css";
-import { formatPrice } from "../../../utils/utils";
+import s from './UnifiedDetail.module.css';
+import { 
+  formatPrice,
+  contactAdminToManufacturer,
+  contactAdminToWholesaler, 
+} from '../../../utils/utils';
 
-const OrderDetail = ({ order, onClose }) => {
+const UnifiedDetail = ({ order, onClose }) => {
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       onClose();
     }
   }
+
+  const handleContactWholesaler = () => {
+    const wholesalerName = order.user.wholesaler?.name || "Desconocido";
+    const wholesalerPhone = order.user.wholesaler?.phone || "N/A";
+    const orderId = order.id;
+    contactAdminToWholesaler(wholesalerName, wholesalerPhone, orderId);
+  };
+
+  const handleContactManufacturer = (manufacturer, orderId) => {
+    const manufacturerName = manufacturer?.name || "Desconocido";
+    const manufacturerPhone = manufacturer?.phone || "N/A";
+    contactAdminToManufacturer(manufacturerName, manufacturerPhone, orderId);
+  };
 
   return (
     <div className={s.modal} onClick={handleClickOutside}>
@@ -14,6 +31,15 @@ const OrderDetail = ({ order, onClose }) => {
         <div className={s.container}>
           <div className={s.divTitle}>
             <h3>Detalle de la orden #{order.id}</h3>
+          </div>
+          <div className={s.divWhole}>
+            <h4>Datos del mayorista</h4>
+            <div className={s.divWholeInfo}>
+              <p><strong>Nombre:</strong> {order.user.wholesaler?.name || "No especifica"}</p>
+              <p><strong>Email:</strong> {order.user?.email || order.user?.email || "No especifica"}</p>
+              <p><strong>Teléfono:</strong> {order.user.wholesaler?.phone || order.user?.phone || "No especifica"}</p>
+              <p><strong>Dirección:</strong> {order.user.wholesaler?.address || "No especifica"}</p>
+            </div>
           </div>
           <div className={s.divTable}>
             {order.subOrders && order.subOrders.length > 0 && order.subOrders.map((subOrder, index) => (
@@ -83,6 +109,10 @@ const OrderDetail = ({ order, onClose }) => {
                 </div>
                 <div className={s.divTotal}>
                   <h4>Subtotal: {formatPrice(subOrder.subtotal)}</h4>
+                  <button 
+                    className={s.buttonContact}
+                    onClick={() => handleContactManufacturer(subOrder.user.manufacturer, order.id)}
+                  >Contactar</button>
                 </div>
               </div>
             ))}
@@ -92,6 +122,7 @@ const OrderDetail = ({ order, onClose }) => {
           </div>
         </div>
         <div className={s.divActions}>
+          <button className={s.btnContact} onClick={handleContactWholesaler}>Contactar</button>
           <button className={s.btnCancel} onClick={onClose}>Cancelar</button>
         </div>
       </div>
@@ -100,4 +131,4 @@ const OrderDetail = ({ order, onClose }) => {
 };
 
 
-export default OrderDetail;
+export default UnifiedDetail;

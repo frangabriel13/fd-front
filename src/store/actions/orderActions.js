@@ -71,3 +71,24 @@ export const deleteOrder = (orderId) => async (dispatch) => {
     });
   }
 };
+
+export const getUnifiedOrders = (page = 1, limit = 15) => async (dispatch) => {
+  dispatch({ type: 'GET_UNIFIED_ORDERS_REQUEST' });
+  try {
+    const response = await orderInstance.get('/unified' , {
+      params: { page, limit },
+    });
+
+    const { unifiedOrders, total, totalPages } = response.data;
+
+    dispatch({
+      type: 'GET_UNIFIED_ORDERS_SUCCESS',
+      payload: { unifiedOrders, total, totalPages, page },
+    });
+  } catch(error) {
+    dispatch({
+      type: 'GET_UNIFIED_ORDERS_FAILURE',
+      error: error.message,
+    });
+  }
+};

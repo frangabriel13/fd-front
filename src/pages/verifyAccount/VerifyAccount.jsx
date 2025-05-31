@@ -159,19 +159,21 @@ const VerifyAccount = () => {
   });
 
   try {
-  const result = await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
-  if(result.success) {
-  setSuccessMessage(result.message);
-  setTimeout(() => {
-    navigate('/mi-cuenta');
-  }, 1000);
-} else {
-  setSuccessMessage(result.message);
-}
-} catch(error) {
-  console.error('Error al subir imágenes:', error);
-  setSuccessMessage('Error inesperado al subir imágenes');
-}
+    // OJO: dispatch devuelve una Promise, pero depende de tu configuración de redux-thunk
+    const actionResult = await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
+    // Si actionResult es undefined, el error fue lanzado y capturado por el catch
+    if (actionResult && actionResult.success) {
+      setSuccessMessage(actionResult.message);
+      setTimeout(() => {
+        navigate('/mi-cuenta');
+      }, 1000);
+    } else if (actionResult) {
+      setSuccessMessage(actionResult.message);
+    }
+  } catch (error) {
+    // Aquí solo deberías entrar si la action lanza un error, no si retorna un objeto
+    setSuccessMessage('No se pudo conectar con el servidor. Verifica tu conexión o intenta más tarde.');
+  }
 };
 
   const isDisabled = !images.selfie || !images.dniFront || !images.dniBack;

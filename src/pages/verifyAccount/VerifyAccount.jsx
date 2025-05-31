@@ -1,130 +1,3 @@
-// import { useDispatch, useSelector } from 'react-redux';
-// import { useState } from 'react';
-// import { useNavigate } from 'react-router-dom';
-// import { uploadManufacturerImages } from '../../store/actions/manufacturerActions';
-// // import { getMe } from '../../store/actions/userActions';
-// import s from './VerifyAccount.module.css';
-
-// const VerifyAccount = () => {
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
-//   const { user } = useSelector((state) => state.user);
-//   const { loading, error, uploadedImages } = useSelector((state) => state.manufacturer);
-//   const [images, setImages] = useState({
-//     selfie: null,
-//     dniFront: null,
-//     dniBack: null,
-//   });
-//   const [successMessage, setSuccessMessage] = useState('');
-
-//   const handleFileChange = (e) => {
-//     const { name, files } = e.target;
-//     setImages((prevImages) => ({
-//       ...prevImages,
-//       [name]: files[0],
-//     }));
-//   };
-
-//   const handleUpload = async () => {
-//     console.log('state images:', images);
-
-//     const formData = new FormData();
-//     Object.keys(images).forEach((key) => {
-//       formData.append(key, images[key]);
-//     });
-
-//     for (let pair of formData.entries()) {
-//       console.log('FORMDATA ENTRY:', pair[0], pair[1]);
-//     }
-
-//     try {
-//       await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
-//       setSuccessMessage('Imágenes subidas correctamente');
-//       // dispatch(getMe());
-//       setTimeout(() => {
-//         navigate('/mi-cuenta');
-//       }, 1000);
-//     } catch(error) {
-//       console.error('Error al subir imágenes:', error);
-//       setSuccessMessage('');
-//     }
-//   };
-
-//   const isDisabled = !images.selfie || !images.dniFront || !images.dniBack;
-
-//   return (
-//     <div className={s.container}>
-//       {user.manufacturer.verificationStatus === 'pending' ? (
-//         <div className={s.divVerifyAccount}>
-//           <div className={s.divHeader}>
-//             <h2>Verificación pendiente</h2>
-//             <p>Su cuenta se encuentra en proceso de verificación. Un asesor analizará los datos a la brevedad.</p>
-//           </div>
-//         </div>
-//       ) : user.manufacturer.verificationStatus === 'verified' ? (
-//         <div className={s.divVerifyAccount}>
-//           <div className={s.divHeader}>
-//             <h2>Verificación completada</h2>
-//             <p>Su cuenta ha sido verificada con éxito. Ya puede comenzar a utilizar todas las funcionalidades de la plataforma.</p>
-//           </div>
-//         </div>
-//       ) : user.manufacturer.verificationStatus === 'not_started' && (
-//         <div className={s.divVerifyAccount}>
-//           <div className={s.divHeader}>
-//             <h2>Verificar cuenta</h2>
-//             <p>Su cuenta ha sido registrada con éxito. Ahora solo falta verificar su cuenta con una selfie y la imagen del dni (frente y reverso).</p>
-//           </div>
-//           <div className={s.divImages}>
-//             <div className={s.divImage}>
-//               <h4>Selfie:</h4>
-//               <input 
-//                 type="file" 
-//                 name="selfie" 
-//                 className={s.input} 
-//                 onChange={handleFileChange}
-//                 accept="image/*"
-//               />
-//             </div>
-//             <div className={s.divImage}>
-//               <h4>DNI Frente:</h4>
-//               <input 
-//                 type="file" 
-//                 name="dniFront" 
-//                 className={s.input} 
-//                 onChange={handleFileChange}
-//                 accept="image/*" 
-//               />
-//             </div>
-//             <div className={s.divImage}>
-//               <h4>DNI Reverso:</h4>
-//               <input 
-//                 type="file" 
-//                 name="dniBack" 
-//                 className={s.input} 
-//                 onChange={handleFileChange}
-//                 accept="image/*"
-//               />
-//             </div>
-//           </div>
-//           <div className={s.divbtn}>
-//             <button 
-//               onClick={handleUpload}
-//               className={isDisabled ? `${s.btnForm} ${s.btnFormDisabled}` : s.btnForm} 
-//               disabled={isDisabled}
-//             >
-//               Subir Imágenes
-//             </button>
-//           </div>
-//           {successMessage && <p className={s.successMessage}>{successMessage}</p>}
-//         </div>
-//       )}
-//     </div>
-//   )
-// };
-
-
-// export default VerifyAccount;
-
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -143,8 +16,6 @@ const VerifyAccount = () => {
     dniBack: null,
   });
   const [successMessage, setSuccessMessage] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [formDataDebug, setFormDataDebug] = useState([]);
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
@@ -154,78 +25,24 @@ const VerifyAccount = () => {
     }));
   };
 
-  // const handleUpload = async () => {
-  //   console.log('state images:', images);
+  const handleUpload = async () => {
+    const formData = new FormData();
+    Object.keys(images).forEach((key) => {
+      formData.append(key, images[key]);
+    });
 
-  //   const formData = new FormData();
-  //   Object.keys(images).forEach((key) => {
-  //     formData.append(key, images[key]);
-  //   });
-
-  //   for (let pair of formData.entries()) {
-  //     console.log('FORMDATA ENTRY:', pair[0], pair[1]);
-  //   }
-
-  //   try {
-  //     await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
-  //     setSuccessMessage('Imágenes subidas correctamente');
-  //     // dispatch(getMe());
-  //     setTimeout(() => {
-  //       navigate('/mi-cuenta');
-  //     }, 1000);
-  //   } catch(error) {
-  //     console.error('Error al subir imágenes:', error);
-  //     setSuccessMessage('');
-  //   }
-  // };
-  const handleSimpleUpload = async () => {
-  // if (!images.selfie || !images.dniFront || !images.dniBack) {
-  //   alert('Faltan imágenes');
-  //   return;
-  // }
-
-  setErrorMessage(''); // Limpia el error anterior
-
-  const formData = new FormData();
-  formData.append('selfie', images.selfie);
-  formData.append('dniFront', images.dniFront);
-  formData.append('dniBack', images.dniBack);
-
-  const debugArr = [];
-  for (let pair of formData.entries()) {
-    debugArr.push(`${pair[0]}: ${pair[1] && pair[1].name ? pair[1].name : pair[1]}`);
-  }
-  setFormDataDebug(debugArr);
-
-  try {
-    const res = await fetch(
-      `https://nodeuser.fabricantedirecto.com/api/manufacturers/${user.manufacturer.id}/images`,
-      {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Authorization': 'Bearer ' + localStorage.getItem('token')
-        }
-      }
-    );
-    let data;
     try {
-      data = await res.json();
-    } catch {
-      data = {};
-    }
-    if (res.ok) {
-      setSuccessMessage('Imágenes subidas correctamente (fetch)');
-      setTimeout(() => navigate('/mi-cuenta'), 1000);
-    } else {
+      await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
+      setSuccessMessage('Imágenes subidas correctamente');
+      // dispatch(getMe());
+      setTimeout(() => {
+        navigate('/mi-cuenta');
+      }, 1000);
+    } catch(error) {
+      console.error('Error al subir imágenes:', error);
       setSuccessMessage('');
-      setErrorMessage(data.message || 'Error al subir imágenes');
     }
-  } catch (error) {
-    setSuccessMessage('');
-    setErrorMessage('Error de red al subir imágenes: ' + error.message);
-  }
-};
+  };
 
   const isDisabled = !images.selfie || !images.dniFront || !images.dniBack;
 
@@ -285,24 +102,14 @@ const VerifyAccount = () => {
           </div>
           <div className={s.divbtn}>
             <button 
-              // onClick={handleUpload}
-              onClick={handleSimpleUpload}
+              onClick={handleUpload}
               className={isDisabled ? `${s.btnForm} ${s.btnFormDisabled}` : s.btnForm} 
               disabled={isDisabled}
             >
               Subir Imágenes
             </button>
           </div>
-          <div>
-  <h4>Debug FormData:</h4>
-  <ul>
-    {formDataDebug.map((item, idx) => (
-      <li key={idx} style={{ fontSize: 12 }}>{item}</li>
-    ))}
-  </ul>
-</div>
           {successMessage && <p className={s.successMessage}>{successMessage}</p>}
-          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </div>
       )}
     </div>

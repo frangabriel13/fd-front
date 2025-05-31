@@ -152,23 +152,26 @@ const VerifyAccount = () => {
     }));
   };
 
- const handleUpload = async (e) => {
-  e.preventDefault();
+  const handleUpload = async () => {
   const formData = new FormData();
   Object.keys(images).forEach((key) => {
     formData.append(key, images[key]);
   });
 
+  try {
   const result = await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
-  if (result?.success) {
-    setSuccessMessage(result.message);
+  if(result.success) {
+    setSuccessMessage(result.message || 'Imágenes subidas correctamente');
     setTimeout(() => {
       navigate('/mi-cuenta');
     }, 1000);
   } else {
-    setSuccessMessage('');
-    alert(result?.message || 'Error al subir imágenes');
+    setSuccessMessage('Error al subir imágenes');
   }
+} catch(error) {
+  console.error('Error al subir imágenes:', error);
+  setSuccessMessage('Error inesperado al subir imágenes');
+}
 };
 
   const isDisabled = !images.selfie || !images.dniFront || !images.dniBack;
@@ -190,11 +193,7 @@ const VerifyAccount = () => {
           </div>
         </div>
       ) : user.manufacturer.verificationStatus === 'not_started' && (
-        <form 
-          className={s.divVerifyAccount} 
-          onSubmit={handleUpload} 
-          encType="multipart/form-data"
-        >
+        <div className={s.divVerifyAccount}>
           <div className={s.divHeader}>
             <h2>Verificar cuenta</h2>
             <p>Su cuenta ha sido registrada con éxito. Ahora solo falta verificar su cuenta con una selfie y la imagen del dni (frente y reverso).</p>
@@ -208,7 +207,6 @@ const VerifyAccount = () => {
                 className={s.input} 
                 onChange={handleFileChange}
                 accept="image/*"
-                required
               />
             </div>
             <div className={s.divImage}>
@@ -219,7 +217,6 @@ const VerifyAccount = () => {
                 className={s.input} 
                 onChange={handleFileChange}
                 accept="image/*" 
-                required
               />
             </div>
             <div className={s.divImage}>
@@ -230,13 +227,12 @@ const VerifyAccount = () => {
                 className={s.input} 
                 onChange={handleFileChange}
                 accept="image/*"
-                required
               />
             </div>
           </div>
           <div className={s.divbtn}>
             <button 
-              type="submit"
+              onClick={handleUpload}
               className={isDisabled ? `${s.btnForm} ${s.btnFormDisabled}` : s.btnForm} 
               disabled={isDisabled}
             >
@@ -244,10 +240,11 @@ const VerifyAccount = () => {
             </button>
           </div>
           {successMessage && <p className={s.successMessage}>{successMessage}</p>}
-        </form>
+        </div>
       )}
     </div>
   )
 };
+
 
 export default VerifyAccount;

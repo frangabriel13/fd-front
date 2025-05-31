@@ -82,7 +82,7 @@ export const uploadManufacturerImages = (id, formData) => async (dispatch) => {
       type: 'UPLOAD_MANUFACTURER_IMAGES_SUCCESS',
       payload: response.data.images,
     });
-    return { succes: true, message: response.data.message };
+    return { success: true, message: response.data.message };
   } catch (error) {
     dispatch({
       type: 'UPLOAD_MANUFACTURER_IMAGES_FAILURE',

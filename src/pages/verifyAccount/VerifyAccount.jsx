@@ -143,6 +143,7 @@ const VerifyAccount = () => {
     dniBack: null,
   });
   const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
@@ -182,6 +183,8 @@ const VerifyAccount = () => {
     return;
   }
 
+  setErrorMessage(''); // Limpia el error anterior
+
   const formData = new FormData();
   formData.append('selfie', images.selfie);
   formData.append('dniFront', images.dniFront);
@@ -195,21 +198,25 @@ const VerifyAccount = () => {
         body: formData,
         headers: {
           'Authorization': 'Bearer ' + localStorage.getItem('token')
-          // NO pongas Content-Type
         }
       }
     );
-    const data = await res.json();
+    let data;
+    try {
+      data = await res.json();
+    } catch {
+      data = {};
+    }
     if (res.ok) {
       setSuccessMessage('Imágenes subidas correctamente (fetch)');
       setTimeout(() => navigate('/mi-cuenta'), 1000);
     } else {
       setSuccessMessage('');
-      alert(data.message || 'Error al subir imágenes');
+      setErrorMessage(data.message || 'Error al subir imágenes');
     }
   } catch (error) {
     setSuccessMessage('');
-    alert('Error de red al subir imágenes');
+    setErrorMessage('Error de red al subir imágenes: ' + error.message);
   }
 };
 
@@ -280,6 +287,7 @@ const VerifyAccount = () => {
             </button>
           </div>
           {successMessage && <p className={s.successMessage}>{successMessage}</p>}
+          {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </div>
       )}
     </div>

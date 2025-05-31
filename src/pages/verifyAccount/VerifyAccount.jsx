@@ -144,6 +144,7 @@ const VerifyAccount = () => {
   });
   const [successMessage, setSuccessMessage] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [formDataDebug, setFormDataDebug] = useState([]);
 
   const handleFileChange = (e) => {
     const { name, files } = e.target;
@@ -189,6 +190,12 @@ const VerifyAccount = () => {
   formData.append('selfie', images.selfie);
   formData.append('dniFront', images.dniFront);
   formData.append('dniBack', images.dniBack);
+
+  const debugArr = [];
+  for (let pair of formData.entries()) {
+    debugArr.push(`${pair[0]}: ${pair[1] && pair[1].name ? pair[1].name : pair[1]}`);
+  }
+  setFormDataDebug(debugArr);
 
   try {
     const res = await fetch(
@@ -286,6 +293,14 @@ const VerifyAccount = () => {
               Subir Imágenes
             </button>
           </div>
+          <div>
+  <h4>Debug FormData:</h4>
+  <ul>
+    {formDataDebug.map((item, idx) => (
+      <li key={idx} style={{ fontSize: 12 }}>{item}</li>
+    ))}
+  </ul>
+</div>
           {successMessage && <p className={s.successMessage}>{successMessage}</p>}
           {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
         </div>

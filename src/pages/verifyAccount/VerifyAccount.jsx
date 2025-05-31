@@ -178,10 +178,10 @@ const VerifyAccount = () => {
   //   }
   // };
   const handleSimpleUpload = async () => {
-  if (!images.selfie || !images.dniFront || !images.dniBack) {
-    alert('Faltan imágenes');
-    return;
-  }
+  // if (!images.selfie || !images.dniFront || !images.dniBack) {
+  //   alert('Faltan imágenes');
+  //   return;
+  // }
 
   setErrorMessage(''); // Limpia el error anterior
 

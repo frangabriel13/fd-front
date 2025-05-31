@@ -83,12 +83,24 @@ export const uploadManufacturerImages = (id, formData) => async (dispatch) => {
       payload: response.data.images,
     });
     return { success: true, message: response.data.message };
+  // } catch (error) {
+  //   dispatch({
+  //     type: 'UPLOAD_MANUFACTURER_IMAGES_FAILURE',
+  //     error: error.message,
+  //   });
+  //   return { success: false, message: error.response?.data?.message || error.message };
   } catch (error) {
     dispatch({
       type: 'UPLOAD_MANUFACTURER_IMAGES_FAILURE',
       error: error.message,
     });
-    return { success: false, message: error.response?.data?.message || error.message };
+    let message = 'Error inesperado al subir imágenes';
+    if (error.response?.data?.message) {
+      message = error.response.data.message;
+    } else if (error.message === 'Network Error') {
+      message = 'No se pudo conectar con el servidor. Verifica tu conexión o intenta más tarde.';
+    }
+    return { success: false, message };
     // console.error(error);
   }
 };

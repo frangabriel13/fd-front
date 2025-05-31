@@ -161,12 +161,14 @@ const VerifyAccount = () => {
   try {
   const result = await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
   if(result.success) {
-    setSuccessMessage(result.message || 'Imágenes subidas correctamente');
+    // setSuccessMessage(result.message || 'Imágenes subidas correctamente');
+    setSuccessMessage(result.message);
     setTimeout(() => {
       navigate('/mi-cuenta');
     }, 1000);
   } else {
-    setSuccessMessage('Error al subir imágenes');
+    // setSuccessMessage('Error al subir imágenes');
+    setSuccessMessage(result.message);
   }
 } catch(error) {
   console.error('Error al subir imágenes:', error);

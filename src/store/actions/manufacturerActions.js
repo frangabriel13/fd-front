@@ -75,6 +75,8 @@ export const uploadManufacturerImages = (id, formData) => async (dispatch) => {
     //     'Content-Type': 'multipart/form-data',
     //   },
     // });
+    console.log('Uploading images for manufacturer ID:', id);
+    console.log('FormData:', formData);
     const response = await manufacturerInstance.post(`/${id}/images`, formData);
     dispatch({
       type: 'UPLOAD_MANUFACTURER_IMAGES_SUCCESS',

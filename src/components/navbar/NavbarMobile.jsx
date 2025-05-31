@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import {  useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getCategories } from '../../store/actions/categoryActions';
+import { logout } from '../../store/actions/authActions';
 import s from './NavbarMobile.module.css';
 
 const NavbarMobile = ({ open, onClose }) => {
@@ -53,6 +54,17 @@ const NavbarMobile = ({ open, onClose }) => {
         <Link to="/tienda" className={s.link} onClick={onClose}>Tienda</Link>
         <Link to="/fabricantes" className={s.link} onClick={onClose}>Fabricantes</Link>
         <Link to="/preguntas-frecuentes" className={s.link} onClick={onClose}>Ayuda</Link>
+        {isAuthenticated && (
+          <button
+            className={s.link}
+            onClick={() => {
+              dispatch(logout());
+              onClose();
+            }}
+          >
+            Cerrar sesión
+          </button>
+        )}
       </div>
     </div>
   );

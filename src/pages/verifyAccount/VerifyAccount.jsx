@@ -152,23 +152,24 @@ const VerifyAccount = () => {
     }));
   };
 
-  const handleUpload = async (e) => {
-    e.preventDefault();
-    const formData = new FormData();
-    Object.keys(images).forEach((key) => {
-      formData.append(key, images[key]);
-    });
+ const handleUpload = async (e) => {
+  e.preventDefault();
+  const formData = new FormData();
+  Object.keys(images).forEach((key) => {
+    formData.append(key, images[key]);
+  });
 
-    try {
-      await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
-      setSuccessMessage('Imágenes subidas correctamente');
-      setTimeout(() => {
-        navigate('/mi-cuenta');
-      }, 1000);
-    } catch(error) {
-      setSuccessMessage('');
-    }
-  };
+  const result = await dispatch(uploadManufacturerImages(user.manufacturer.id, formData));
+  if (result?.success) {
+    setSuccessMessage(result.message);
+    setTimeout(() => {
+      navigate('/mi-cuenta');
+    }, 1000);
+  } else {
+    setSuccessMessage('');
+    alert(result?.message || 'Error al subir imágenes');
+  }
+};
 
   const isDisabled = !images.selfie || !images.dniFront || !images.dniBack;
 

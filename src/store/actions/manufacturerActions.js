@@ -82,12 +82,14 @@ export const uploadManufacturerImages = (id, formData) => async (dispatch) => {
       type: 'UPLOAD_MANUFACTURER_IMAGES_SUCCESS',
       payload: response.data.images,
     });
+    return { succes: true, message: response.data.message };
   } catch (error) {
     dispatch({
       type: 'UPLOAD_MANUFACTURER_IMAGES_FAILURE',
       error: error.message,
     });
-    console.error(error);
+    return { success: false, message: error.response?.data?.message || error.message };
+    // console.error(error);
   }
 };
 

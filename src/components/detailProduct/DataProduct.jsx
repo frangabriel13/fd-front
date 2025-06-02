@@ -9,7 +9,7 @@ import {
   BsStarHalf,
   BsStarFill,
 } from "react-icons/bs";
-import { formatPrice } from '../../utils/utils';
+import { formatPrice, contactWspProduct } from '../../utils/utils';
 import SuccessModal from '../modals/SuccessModal';
 
 const DataProduct = ({ product, manufacturer, onAddToCart }) => {
@@ -140,7 +140,15 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
       <div className={s.divContact}>
         <h5>Contacta con {manufacturer.name}:</h5>
         <div className={s.manuData}>
-          <button>Contactar</button>
+          <button
+            onClick={() => {
+              contactWspProduct(
+                manufacturer.name,
+                manufacturer.phone,
+                window.location.href,
+              );
+            }}
+          >Contactar</button>
           <p>{manufacturer.street}</p>
         </div>
       </div>

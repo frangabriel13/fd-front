@@ -107,10 +107,9 @@
   background-color: var(--green-color-light);
 }
 
-.manuData p {
-  font-size: 1.2rem;
+.streetLink {
   color: var(--gray-color);
-  font-weight: 400;
+  font-size: 1.4rem;
 }
 
 .whole {

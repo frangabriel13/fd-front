@@ -74,6 +74,13 @@ export const contactAdminToManufacturer = (manufacturerName, manufacturerPhone, 
   window.open(url, '_blank');
 };
 
+// Contacta el mayorista al fabricante acerca de un producto
+export const contactWspProduct = (manufacturerName, manufacturerPhone, productUrl) => {
+  const message = `Hola ${manufacturerName}, tengo una consulta sobre el siguiente producto ${productUrl}. `;
+  const url = `https://api.whatsapp.com/send?phone=${manufacturerPhone}&text=${encodeURIComponent(message)}`;
+  window.open(url, '_blank');
+};
+
 export const timeAgo = (date) => {
   const now = new Date();
   const past = new Date(date);

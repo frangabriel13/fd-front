@@ -97,6 +97,9 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
+  console.log('Product:', product);
+  console.log('Manufacturer:', manufacturer);
   
   return (
     <div className={s.container}>

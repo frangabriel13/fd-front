@@ -58,6 +58,10 @@ const ProductDetail = () => {
           onAddToCart={handleAddToCart} 
         />
       </div>
+      <div className={s.divDescription}>
+        <h3>Descripción</h3>
+        <p>{product.description || "Sin descripción disponible."}</p>
+      </div>
     </div>
   );
 };

@@ -123,16 +123,6 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
               />
             )}
           </div>
-          {/* <div className={s.divCalification}>
-            <p>3.5</p>
-            <div className={s.stars}>
-              <BsStarFill className={s.iconStar} />
-              <BsStarFill className={s.iconStar} />
-              <BsStarFill className={s.iconStar} />
-              <BsStarHalf className={s.iconStar} />
-              <BsStar className={s.iconStar} />
-            </div>
-          </div> */}
         </div>
       </div>
       <div className={s.divPrice}>
@@ -146,6 +136,13 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
             <p className={s.whole}>Comprando en dólares</p>
           </div>
         )}
+      </div>
+      <div className={s.divContact}>
+        <h5>Contacta con {manufacturer.name}:</h5>
+        <div className={s.manuData}>
+          <button>Contactar</button>
+          <p>{manufacturer.street}</p>
+        </div>
       </div>
       <div className={s.divQuantities}>
         { product.isVariable ? (

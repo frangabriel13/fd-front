@@ -50,6 +50,13 @@
   color: var(--gray-color);
 }
 
+.divMoreProducts {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 0rem 30rem;
+}
+
 @media (max-width: 1360px) {
   .divDetail {
     margin: 0rem 15rem;
@@ -59,6 +66,10 @@
   .divDescription {
     margin: 0 15rem;
     padding: 1.5rem 2rem;
+  }
+
+  .divMoreProducts {
+    margin: 0rem 15rem;
   }
 }
 
@@ -74,6 +85,10 @@
   .divDescription {
     margin: 0 5rem;
     padding: 1.5rem 2rem;
+  }
+
+  .divMoreProducts {
+    margin: 0rem 5rem;
   }
 }
 
@@ -95,6 +110,10 @@
   .divDescription {
     margin: 0 2rem;
     padding: 1.5rem 2rem;
+  }
+
+  .divMoreProducts {
+    margin: 0rem 2rem;
   }
 }
 
@@ -126,5 +145,9 @@
 
   .divDescription h3 {
     font-size: 2.5rem;
+  }
+
+  .divMoreProducts {
+    margin: 0rem 1rem;
   }
 }

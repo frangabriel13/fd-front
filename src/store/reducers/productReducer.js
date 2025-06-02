@@ -19,6 +19,8 @@ const initialState = {
   manufacturerPageSize: 15,
   manufacturerTotalProducts: 0,
 
+  otherProducts: [],
+
   newProducts: [],
   onSaleProducts: [],
   bisBlanProducts: [],
@@ -172,6 +174,17 @@ const productReducer = (state = initialState, action) => {
       };
     case 'SEARCH_RESULTS_FAILURE':
       return { ...state, loading: false, error: action.error };
+    // case 'GET_FIVE_PRODUCTS_BY_MANUFACTURER_REQUEST':
+    //   return { ...state, loading: true, error: null };
+    case 'GET_FIVE_PRODUCTS_BY_MANUFACTURER_SUCCESS':
+      return {
+        ...state,
+        // loading: false,
+        // error: null,
+        otherProducts: action.payload.products,
+      };
+    // case 'GET_FIVE_PRODUCTS_BY_MANUFACTURER_FAILURE':
+    //   return { ...state, loading: false, error: action.error };
     default:
       return state;
   }

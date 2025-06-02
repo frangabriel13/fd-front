@@ -8,6 +8,7 @@ import { addToCart } from '../../store/actions/cartActions';
 import { formatPrice } from '../../utils/utils';
 import Gallery from '../../components/detailProduct/Gallery';
 import DataProduct from '../../components/detailProduct/DataProduct';
+import MoreProducts from '../../components/productRow/MoreProducts';
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -61,6 +62,13 @@ const ProductDetail = () => {
       <div className={s.divDescription}>
         <h3>Descripción</h3>
         <p>{product.description || "Sin descripción disponible."}</p>
+      </div>
+      <div className={s.divMoreProducts}>
+        <MoreProducts 
+          userId={product.userId}
+          manufacturerId={manufacturer.id}
+          manufacturerName={manufacturer.name}
+        />
       </div>
     </div>
   );

@@ -29,10 +29,36 @@
   gap: 3rem;
 }
 
+.divDescription {
+  background: #fff;
+  border-radius: 0.3rem;
+  margin: 0 30rem;
+  padding: 2rem 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.divDescription h3 {
+  font-size: 3rem;
+  color: black !important;
+  font-weight: 600;
+}
+
+.divDescription p {
+  font-size: 1.6rem;
+  color: var(--gray-color);
+}
+
 @media (max-width: 1360px) {
   .divDetail {
     margin: 0rem 15rem;
     padding: 2rem;
+  }
+
+  .divDescription {
+    margin: 0 15rem;
+    padding: 1.5rem 2rem;
   }
 }
 
@@ -43,6 +69,11 @@
 
   .divHeader {
     padding: 0rem 5rem;
+  }
+
+  .divDescription {
+    margin: 0 5rem;
+    padding: 1.5rem 2rem;
   }
 }
 
@@ -59,6 +90,11 @@
 
   .divHeader p {
     text-align: center;
+  }
+
+  .divDescription {
+    margin: 0 2rem;
+    padding: 1.5rem 2rem;
   }
 }
 
@@ -81,5 +117,14 @@
     padding: 1rem;
     gap: 1rem;
     flex-direction: column;
+  }
+
+  .divDescription {
+    margin: 0 1rem;
+    padding: 1rem;
+  }
+
+  .divDescription h3 {
+    font-size: 2.5rem;
   }
 }

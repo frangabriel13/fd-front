@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import {  useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { getCategories } from '../../store/actions/categoryActions';
 import { logout } from '../../store/actions/authActions';
 import s from './NavbarMobile.module.css';
 
 const NavbarMobile = ({ open, onClose }) => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const categories = useSelector((state) => state.category.categories);
   const [showCategories, setShowCategories] = useState(false);
@@ -60,6 +61,9 @@ const NavbarMobile = ({ open, onClose }) => {
             onClick={() => {
               dispatch(logout());
               onClose();
+              setTimeout(() => {
+                navigate('/ingresar');
+              }, 1000);
             }}
           >
             Cerrar sesión

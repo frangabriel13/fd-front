@@ -55,6 +55,11 @@
     margin: 0rem 15rem;
     padding: 2rem;
   }
+
+  .divDescription {
+    margin: 0 15rem;
+    padding: 1.5rem 2rem;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -64,6 +69,11 @@
 
   .divHeader {
     padding: 0rem 5rem;
+  }
+
+  .divDescription {
+    margin: 0 5rem;
+    padding: 1.5rem 2rem;
   }
 }
 
@@ -80,6 +90,11 @@
 
   .divHeader p {
     text-align: center;
+  }
+
+  .divDescription {
+    margin: 0 2rem;
+    padding: 1.5rem 2rem;
   }
 }
 
@@ -102,5 +117,14 @@
     padding: 1rem;
     gap: 1rem;
     flex-direction: column;
+  }
+
+  .divDescription {
+    margin: 0 1rem;
+    padding: 1rem;
+  }
+
+  .divDescription h3 {
+    font-size: 2.5rem;
   }
 }

@@ -149,7 +149,15 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
               );
             }}
           >Contactar</button>
-          <p>{manufacturer.street}</p>
+          {/* <p>{manufacturer.street}</p> */}
+          <a
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(manufacturer.street)}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={s.streetLink}
+          >
+            {manufacturer.street}
+          </a>
         </div>
       </div>
       <div className={s.divQuantities}>

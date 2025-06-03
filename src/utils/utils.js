@@ -46,38 +46,56 @@ export const formatDateAndTime = (isoString) => {
   return { formattedDate, formattedTime };
 };
 
+
+// Formatea el número de teléfono argentino para WhatsApp
+const formatPhoneForWhatsapp = (phone) => {
+  let cleanPhone = phone.toString().replace(/\D/g, ''); // Solo números
+  if (cleanPhone.startsWith('0')) {
+    cleanPhone = cleanPhone.substring(1); // Quita el 0 inicial si existe
+  }
+  if (!cleanPhone.startsWith('54')) {
+    cleanPhone = '54' + cleanPhone; // Agrega el código de país si no está
+  }
+  return cleanPhone;
+};
+
 // Contacta el mayorista al fabricante
 export const contactWspOrder = (manufacturerName, manufacturerPhone, orderId) => {
+  const phone = formatPhoneForWhatsapp(manufacturerPhone);
   const message = `Hola, realicé una compra en ${manufacturerName} y generé la siguiente orden #${orderId}.`;
-  const url = `https://api.whatsapp.com/send?phone=${manufacturerPhone}&text=${encodeURIComponent(message)}`;
+  const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
 };
 
 // Contacta al fabricante al mayorista
 export const contactWspBuyer = (buyerName, buyerPhone, manufacturerName, orderId) => {
+  const phone = formatPhoneForWhatsapp(buyerPhone);
   const message = `Hola ${buyerName}, soy de ${manufacturerName} y quiero contactarte por tu orden #${orderId}.`;
-  const url = `https://api.whatsapp.com/send?phone=${buyerPhone}&text=${encodeURIComponent(message)}`;
+  const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
 };
 
 // Contacta el administrador al mayorista
 export const contactAdminToWholesaler = (wholesalerName, wholesalerPhone, orderId) => {
+  const phone = formatPhoneForWhatsapp(wholesalerPhone);
   const message = `Hola ${wholesalerName}, te contactamos de Fabricante Directo. Queremos consultarte por la orden #${orderId}.`;
-  const url = `https://api.whatsapp.com/send?phone=${wholesalerPhone}&text=${encodeURIComponent(message)}`;
+  const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
 };
 
 // Contacta el administrador al fabricante
 export const contactAdminToManufacturer = (manufacturerName, manufacturerPhone, orderId) => {
+  const phone = formatPhoneForWhatsapp(manufacturerPhone); 
   const message = `Hola ${manufacturerName}, te contactamos de Fabricante Directo. Queremos consultarte por la orden #${orderId}.`;
-  const url = `https://api.whatsapp.com/send?phone=${manufacturerPhone}&text=${encodeURIComponent(message)}`;
+  const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
 };
 
 // Contacta el mayorista al fabricante acerca de un producto
 export const contactWspProduct = (manufacturerName, manufacturerPhone, productUrl) => {
+  const phone = formatPhoneForWhatsapp(manufacturerPhone);
   const message = `Hola ${manufacturerName}, tengo una consulta sobre el siguiente producto ${productUrl}. `;
-  const url = `https://api.whatsapp.com/send?phone=${manufacturerPhone}&text=${encodeURIComponent(message)}`;
+  const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
 };
 

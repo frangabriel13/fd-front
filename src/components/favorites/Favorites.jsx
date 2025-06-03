@@ -15,8 +15,7 @@ const Favorites = () => {
   const handleDelete = (productId) => {
     dispatch(deleteFavorite(productId));
   };
-
-  console.log('favorites', favorites);
+  
   return (
     <div className={s.container}>
       <TableFavorites favorites={favorites} onDelete={handleDelete} />

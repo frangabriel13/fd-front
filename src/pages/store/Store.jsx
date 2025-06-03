@@ -20,10 +20,17 @@ const Store = () => {
   const { manufacturerProducts, manufacturerCurrentPage, manufacturerTotalProducts } = useSelector(state => state.product);
   const pageSize = 18; // Tamaño de la página fijo
   const [sortOrder, setSortOrder] = useState('newest');
+  const [isFollowed, setIsFollowed] = useState(manufacturer.isFollowed);
+  const [followersCount, setFollowersCount] = useState(manufacturer.followersCount);
 
   useEffect(() => {
     dispatch(getUserData(userId, 1, pageSize, sortOrder));
   }, [dispatch, userId, pageSize, sortOrder]);
+
+  useEffect(() => {
+  setIsFollowed(manufacturer.isFollowed);
+  setFollowersCount(manufacturer.followersCount);
+}, [manufacturer.isFollowed, manufacturer.followersCount]);
 
   const handlePageChange = (page) => {
     dispatch(getUserData(userId, page, pageSize, sortOrder));
@@ -34,11 +41,22 @@ const Store = () => {
     dispatch(getUserData(userId, 1, pageSize, newSortOrder));
   };
 
-  const handleFollow = () => {
-    if (manufacturer.isFollowed) {
-      dispatch(unfollowManufacturer(manufacturer.id));
+  // const handleFollow = () => {
+  //   if (manufacturer.isFollowed) {
+  //     dispatch(unfollowManufacturer(manufacturer.id));
+  //   } else {
+  //     dispatch(followManufacturer(manufacturer.id));
+  //   }
+  // };
+  const handleFollow = async () => {
+    if (isFollowed) {
+      await dispatch(unfollowManufacturer(manufacturer.id));
+      setIsFollowed(false);
+      setFollowersCount(followersCount - 1);
     } else {
-      dispatch(followManufacturer(manufacturer.id));
+      await dispatch(followManufacturer(manufacturer.id));
+      setIsFollowed(true);
+      setFollowersCount(followersCount + 1);
     }
   };
 
@@ -84,9 +102,9 @@ const Store = () => {
           </div>
         </div>
         <div className={s.divData}>
-          <p className={s.followers}>{manufacturer.followersCount} seguidores</p>
+          <p className={s.followers}>{followersCount} seguidores</p>
           <button className={s.btnFollow} onClick={handleFollow}>
-            {manufacturer.isFollowed ? 'Dejar de seguir' : 'Seguir'}
+            {isFollowed ? 'Dejar de seguir' : 'Seguir'}
           </button>
         </div>
       </div>

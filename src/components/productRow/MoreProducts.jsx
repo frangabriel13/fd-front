@@ -19,7 +19,7 @@ const MoreProducts = ({ userId, manufacturerName, manufacturerId }) => {
   }, [dispatch, userId]);
 
   const handleViewMore = () => {
-    navigate('/tienda?type=product&sortBy=newest');
+    navigate(`/store/${userId}`);
   };
 
   // const handleNext = () => {

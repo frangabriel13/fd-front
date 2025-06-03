@@ -152,6 +152,33 @@ export const getProductsByManufacturer = (userId, page = 1, pageSize = 18, sortO
   }
 };
 
+export const getFiveProductsByManufacturer = (userId, sortOrder = 'newest') => async (dispatch) => {
+  dispatch({ type: 'GET_FIVE_PRODUCTS_BY_MANUFACTURER_REQUEST' });
+  try {
+    const response = await productInstance.get(`/manufacturer/${userId}`, {
+      params: {
+        page: 1,
+        pageSize: 5,
+        sortOrder,
+      }
+    });
+    dispatch({
+      type: 'GET_FIVE_PRODUCTS_BY_MANUFACTURER_SUCCESS',
+      payload: {
+        products: response.data.products,
+        currentPage: 1,
+        pageSize: 5,
+        totalProducts: response.data.totalProducts,
+      }
+    });
+  } catch(error) {
+    dispatch({
+      type: 'GET_FIVE_PRODUCTS_BY_MANUFACTURER_FAILURE',
+      error: error.message,
+    });
+  }
+};
+
 export const getProductById = (productId) => async (dispatch) => {
   dispatch({ type: 'GET_PRODUCT_BY_ID_REQUEST' });
   try {

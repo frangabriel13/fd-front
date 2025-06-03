@@ -76,8 +76,6 @@ const Store = () => {
     return stars;
   };
 
-  console.log('manufacturer', manufacturer);
-
   return (
     <div className={s.container}>
       <div className={s.divHeader}>

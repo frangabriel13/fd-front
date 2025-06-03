@@ -9,6 +9,7 @@ import MyProducts from "../../components/accountComponents/MyProducts";
 import MyOrders from "../../components/accountComponents/MyOrders";
 import UploadProduct from "../../components/accountComponents/UploadProduct";
 import MyPacks from "../../components/accountComponents/MyPacks";
+import MyFollows from "../../components/accountComponents/follows/MyFollows";
 import MyPurchases from "../../components/accountComponents/myPurchases/MyPurchases";
 import Favorites from "../../components/favorites/Favorites";
 import Users from "../../components/accountComponents/users/Users";
@@ -149,6 +150,17 @@ const Account = () => {
                 userRole={user.role}
               >
                 <Favorites />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/seguidos"
+            element={
+              <ProtectedRoute
+                allowedRoles={["wholesaler"]}
+                userRole={user.role}
+              >
+                <MyFollows />
               </ProtectedRoute>
             }
           />

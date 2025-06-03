@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/actions/authActions';
 import s from './SidebarMobile.module.css';
-import { BsUpload, BsBoxSeam, BsTag, BsHeart, BsCart, BsClipboardCheck } from "react-icons/bs";
+import { BsUpload, BsBoxSeam, BsTag, BsHeart, BsCart, BsClipboardCheck, BsPersonCheck } from "react-icons/bs";
 import { LiaUsersCogSolid } from "react-icons/lia";
 import { PiUserCircle } from "react-icons/pi";
 import { CiLogout } from "react-icons/ci";
@@ -43,6 +43,9 @@ const SidebarMobile = ({ role }) => {
           </Link>
           <Link to="/mi-cuenta/compras" className={s.iconLink} >
             <BsCart size={24} />
+          </Link>
+          <Link to="/mi-cuenta/seguidos" className={s.iconLink}>
+            <BsPersonCheck size={24} />
           </Link>
         </>
       )}

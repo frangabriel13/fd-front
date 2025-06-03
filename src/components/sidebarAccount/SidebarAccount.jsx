@@ -2,7 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { logout } from '../../store/actions/authActions';
 import s from './SidebarAccount.module.css';
-import { BsUpload, BsBoxSeam, BsTag, BsHeart, BsCart, BsClipboardCheck } from "react-icons/bs";
+import { BsUpload, BsBoxSeam, BsTag, BsHeart, BsCart, BsClipboardCheck, BsPersonCheck } from "react-icons/bs";
 import { LiaUsersCogSolid } from "react-icons/lia";
 import { PiUserCircle } from "react-icons/pi";
 import { CiLogout } from "react-icons/ci";
@@ -47,6 +47,9 @@ const SidebarAccount = ({ role }) => {
             </Link>
             <Link to="/mi-cuenta/compras" className={s.link}>
               <BsCart className={s.icon} /> Mis compras
+            </Link>
+            <Link to="/mi-cuenta/seguidos" className={s.link}>
+              <BsPersonCheck className={s.icon} /> Seguidos
             </Link>
           </>
         )}

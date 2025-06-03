@@ -20,10 +20,6 @@ const Store = () => {
   const pageSize = 18; // Tamaño de la página fijo
   const [sortOrder, setSortOrder] = useState('newest');
 
-  // Estado local para seguidores
-  const [followers, setFollowers] = useState(0);
-  const [isFollowing, setIsFollowing] = useState(false);
-
   useEffect(() => {
     dispatch(getUserData(userId, 1, pageSize, sortOrder));
   }, [dispatch, userId, pageSize, sortOrder]);
@@ -36,16 +32,6 @@ const Store = () => {
     setSortOrder(newSortOrder);
     dispatch(getUserData(userId, 1, pageSize, newSortOrder));
   };
-
-  // Manejar el botón de seguir/dejar de seguir
-  // const handleFollowToggle = () => {
-  //   if (isFollowing) {
-  //     setFollowers(followers - 1);
-  //   } else {
-  //     setFollowers(followers + 1);
-  //   }
-  //   setIsFollowing(!isFollowing);
-  // };
 
   const renderStars = (rating) => {
     const stars = [];
@@ -62,6 +48,8 @@ const Store = () => {
     }
     return stars;
   };
+
+  console.log('manufacturer', manufacturer);
 
   return (
     <div className={s.container}>
@@ -87,10 +75,10 @@ const Store = () => {
           </div>
         </div>
         <div className={s.divData}>
-          {/* <p className={s.followers}>{followers} seguidores</p>
-          <button className={s.btnFollow} onClick={handleFollowToggle}>
-            {isFollowing ? 'Dejar de seguir' : 'Seguir'}
-          </button> */}
+          <p className={s.followers}>{manufacturer.followersCount} seguidores</p>
+          <button className={s.btnFollow}>
+            {manufacturer.isFollowed ? 'Dejar de seguir' : 'Seguir'}
+          </button>
         </div>
       </div>
       <Reviews 

@@ -41,7 +41,7 @@ const MoreProducts = ({ userId, manufacturerName, manufacturerId, manufacturerLo
   }
 
   if(errorOtherProducts) {
-    return <div className={s.error}>Error al cargar los productos: {error}</div>;
+    return <div className={s.error}>Error al cargar los productos: {errorOtherProducts}</div>;
   }
 
   if(!otherProducts || otherProducts.length === 0) {

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getUserData } from '../../store/actions/storeActions';
+import { followManufacturer, unfollowManufacturer } from '../../store/actions/userActions';
 import s from './Store.module.css';
 import Products from '../../components/productStore/Products';
 import Pagination from '../../components/pagination/Pagination';
@@ -31,6 +32,14 @@ const Store = () => {
   const handleSortChange = (newSortOrder) => {
     setSortOrder(newSortOrder);
     dispatch(getUserData(userId, 1, pageSize, newSortOrder));
+  };
+
+  const handleFollow = () => {
+    if (manufacturer.isFollowed) {
+      dispatch(unfollowManufacturer(manufacturer.id));
+    } else {
+      dispatch(followManufacturer(manufacturer.id));
+    }
   };
 
   const renderStars = (rating) => {
@@ -76,7 +85,7 @@ const Store = () => {
         </div>
         <div className={s.divData}>
           <p className={s.followers}>{manufacturer.followersCount} seguidores</p>
-          <button className={s.btnFollow}>
+          <button className={s.btnFollow} onClick={handleFollow}>
             {manufacturer.isFollowed ? 'Dejar de seguir' : 'Seguir'}
           </button>
         </div>

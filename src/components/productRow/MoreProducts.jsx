@@ -6,10 +6,10 @@ import s from './ProductRow.module.css';
 import { GrNext, GrPrevious } from "react-icons/gr";
 import ProductCard from '../productStore/ProductCard';
 
-const MoreProducts = ({ userId, manufacturerName, manufacturerId }) => {
+const MoreProducts = ({ userId, manufacturerName, manufacturerId, manufacturerLogo }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { otherProducts, loading, error } = useSelector((state) => state.product);
+  const { otherProducts, loadingOtherProducts, errorOtherProducts } = useSelector((state) => state.product);
   const productsContainerRef = useRef(null);
 
   useEffect(() => {
@@ -21,6 +21,8 @@ const MoreProducts = ({ userId, manufacturerName, manufacturerId }) => {
   const handleViewMore = () => {
     navigate(`/store/${userId}`);
   };
+
+  console.log('manufacturerLogo', manufacturerLogo);
 
   // const handleNext = () => {
   //   if (productsContainerRef.current) {
@@ -34,17 +36,17 @@ const MoreProducts = ({ userId, manufacturerName, manufacturerId }) => {
   //   }
   // };
 
-  // if(loading) {
-  //   return <div className={s.loading}>Cargando nuevos productos...</div>;
-  // }
+  if(loadingOtherProducts) {
+    return <div className={s.loading}>Cargando nuevos productos...</div>;
+  }
 
-  // if(error) {
-  //   return <div className={s.error}>Error al cargar los productos: {error}</div>;
-  // }
+  if(errorOtherProducts) {
+    return <div className={s.error}>Error al cargar los productos: {error}</div>;
+  }
 
-  // if(!otherProducts || otherProducts.length === 0) {
-  //   return <div className={s.noProducts}>No hay nuevos productos disponibles.</div>;
-  // }
+  if(!otherProducts || otherProducts.length === 0) {
+    return <div className={s.noProducts}>No hay nuevos productos disponibles.</div>;
+  }
 
   return (
     <div className={s.container}>
@@ -63,7 +65,7 @@ const MoreProducts = ({ userId, manufacturerName, manufacturerId }) => {
                 name={product.name}
                 image={product.mainImage}
                 price={product.price}
-                logo={product.logo}
+                logo={manufacturerLogo}
                 id={product.id}
               />
             </div>

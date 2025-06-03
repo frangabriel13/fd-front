@@ -20,6 +20,8 @@ const initialState = {
   manufacturerTotalProducts: 0,
 
   otherProducts: [],
+  loadingOtherProducts: false,
+  errorOtherProducts: null,
 
   newProducts: [],
   onSaleProducts: [],
@@ -174,17 +176,25 @@ const productReducer = (state = initialState, action) => {
       };
     case 'SEARCH_RESULTS_FAILURE':
       return { ...state, loading: false, error: action.error };
-    // case 'GET_FIVE_PRODUCTS_BY_MANUFACTURER_REQUEST':
-    //   return { ...state, loading: true, error: null };
+    case 'GET_FIVE_PRODUCTS_BY_MANUFACTURER_REQUEST':
+      return {
+        ...state,
+        loadingOtherProducts: true,
+        errorOtherProducts: null,
+      };
     case 'GET_FIVE_PRODUCTS_BY_MANUFACTURER_SUCCESS':
       return {
         ...state,
-        // loading: false,
-        // error: null,
+        loadingOtherProducts: false,
+        errorOtherProducts: null,
         otherProducts: action.payload.products,
       };
-    // case 'GET_FIVE_PRODUCTS_BY_MANUFACTURER_FAILURE':
-    //   return { ...state, loading: false, error: action.error };
+    case 'GET_FIVE_PRODUCTS_BY_MANUFACTURER_FAILURE':
+      return {
+        ...state,
+        loadingOtherProducts: false,
+        errorOtherProducts: action.error,
+      };
     default:
       return state;
   }

@@ -16,9 +16,13 @@ const MyFollows = () => {
     dispatch(getFollowedManufacturers());
   }, [dispatch]);
 
+  const handleUnfollow = (manufacturerId) => {
+    dispatch(unfollowManufacturer(manufacturerId));
+  };
+
   return (
     <div className={s.container}>
-      <TableFollows />
+      <TableFollows follows={followed} onUnfollow={handleUnfollow} />
     </div>
   )
 };

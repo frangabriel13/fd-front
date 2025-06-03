@@ -69,13 +69,13 @@ const ProductDetail = () => {
           manufacturerId={manufacturer.id}
           manufacturerName={manufacturer.name}
         /> */}
-        {product.userId && manufacturer.id && manufacturer.name && (
+        {/* {product.userId && manufacturer.id && manufacturer.name && (
           <MoreProducts 
             userId={product.userId}
             manufacturerId={manufacturer.id}
             manufacturerName={manufacturer.name}
           />
-        )}
+        )} */}
       </div>
     </div>
   );

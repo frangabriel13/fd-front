@@ -89,6 +89,7 @@ export const unfollowManufacturer = (manufacturerId) => async (dispatch) => {
   dispatch({ type: 'UNFOLLOW_MANUFACTURER_REQUEST' });
   try {
     const response = await userInstance.delete(`/unfollow/${manufacturerId}`);
+    console.log(response.data);
     dispatch({
       type: 'UNFOLLOW_MANUFACTURER_SUCCESS',
       payload: response.data,

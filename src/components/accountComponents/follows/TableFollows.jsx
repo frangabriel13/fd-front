@@ -1,12 +1,14 @@
 import { useNavigate } from 'react-router-dom';
 import s from './TableFollows.module.css';
 
-const MyFollows = ({ follows, onUnfollows }) => {
+const MyFollows = ({ follows, onUnfollow }) => {
   const navigate = useNavigate();
 
   const handleViewManufacturer = (userId) => {
     navigate(`/store/${userId}`);
   };
+
+  console.log(follows);
 
   return (
     <div className={s.container}>
@@ -22,7 +24,7 @@ const MyFollows = ({ follows, onUnfollows }) => {
             </div>
             <div className={s.divActions}>
               <button 
-                onClick={() => onUnfollows(item.userId)} 
+                onClick={() => onUnfollow(item.id)} 
                 className={s.buttonUnfollow}
               >Dejar de seguir</button>
               <button 

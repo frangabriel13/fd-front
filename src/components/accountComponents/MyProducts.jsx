@@ -6,7 +6,7 @@ import TableMyProducts from './myProducts/TableMyProducts';
 
 const MyProducts = ({ sizes }) => {
   const dispatch = useDispatch();
-  const myProducts = useSelector(state => state.product.myProducts);
+  const { myProducts = [], myCurrentPage, myPageSize, myTotalProducts } = useSelector(state => state.product);
 
   useEffect(() => {
     dispatch(getProductsByUserId());
@@ -16,11 +16,27 @@ const MyProducts = ({ sizes }) => {
     dispatch(deleteProduct(productId));
   };
 
+  const handlePageChange = (newPage) => {
+    dispatch(getProductsByUserId(newPage));
+  };
+
+  console.log(myProducts);
+  console.log(myCurrentPage, myPageSize, myTotalProducts);
+
   return (
     <div className={s.container}>
-      <TableMyProducts sizes={sizes} myProducts={myProducts} handleDelete={handleDelete} />
+      <TableMyProducts 
+        sizes={sizes} 
+        myProducts={myProducts} 
+        handleDelete={handleDelete}
+        myCurrentPage={myCurrentPage}
+        myPageSize={myPageSize}
+        myTotalProducts={myTotalProducts}
+        onPageChange={handlePageChange}
+      />
     </div>
   )
 };
+
 
 export default MyProducts;

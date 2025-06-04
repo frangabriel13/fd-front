@@ -37,7 +37,7 @@ const AllReviews = ({ reviews, onEdit, onDelete, onClose }) => {
                 <div key={index} className={s.reviewItem}>
                   <div className={s.reviewHeader}>
                     <div className={s.stars}>{renderStars(review.rating)}</div>
-                    {onEdit && onDelete && (
+                    {/* {onEdit && onDelete && (
                       <div className={s.actions}>
                         <span className={s.editIcon} onClick={() => onEdit(review)} title="Editar">
                           <FiEdit2 />
@@ -46,7 +46,7 @@ const AllReviews = ({ reviews, onEdit, onDelete, onClose }) => {
                           <BsXLg />
                         </span>
                       </div>
-                    )}
+                    )} */}
                   </div>
                   <div className={s.commentSection}>
                     <p className={s.comment}>{review.comment}</p>
@@ -61,9 +61,11 @@ const AllReviews = ({ reviews, onEdit, onDelete, onClose }) => {
               <p>No hay reviews disponibles.</p>
             )}
           </div>
+          <div className={s.divBtn}>
+            <button onClick={onClose}>Cerrar</button>
+          </div>
         </div>
       </div>
-      <button className={s.btnClose} onClick={onClose}>Cerrar</button>
     </div>
   );
 };

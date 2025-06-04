@@ -34,44 +34,47 @@
   text-align: center;
 }
 
-/* .divReviews {
+.divReviews {
   display: flex;
   flex-direction: column;
   gap: 2rem;
-} */
+}
 
-/* .reviewItem {
-  background: #f8f8f8;
-  border-radius: 1rem;
+.reviewItem {
+  background: var(--dark-white);
+  border-radius: .4rem;
   padding: 1.8rem 1.6rem 1.2rem 1.6rem;
   box-shadow: 0 .2rem .8rem rgba(0,0,0,0.06);
   transition: box-shadow 0.2s;
   position: relative;
-} */
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
 
-/* .reviewItem:hover {
+.reviewItem:hover {
   box-shadow: 0 .4rem 1.6rem rgba(0,0,0,0.10);
-} */
+}
 
-/* .reviewHeader {
+.reviewHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
-} */
+}
 
-/* .stars {
+.stars {
   display: flex;
   gap: .2rem;
   font-size: 1.2rem;
-  color: #f7b500;
-} */
+  color: var(--main-color);
+}
 
-/* .actions {
+.actions {
   display: flex;
   gap: 1rem;
-} */
+}
 
-/* .editIcon, .deleteIcon {
+.editIcon, .deleteIcon {
   cursor: pointer;
   padding: .4rem;
   border-radius: .4rem;
@@ -79,60 +82,60 @@
   display: flex;
   align-items: center;
   font-size: 1.1rem;
-} */
+}
 
-/* .editIcon:hover {
-  background: #e6f7ff;
-  color: #1890ff;
-} */
+.editIcon:hover {
+  background: var(--white-blue);
+  color: var(--second-bg-color);
+}
 
-/* .deleteIcon:hover {
-  background: #fff1f0;
-  color: #ff4d4f;
-} */
+.deleteIcon:hover {
+  background: var(--white-red);
+  color: var(--red-color);
+}
 
-/* .commentSection {
-  margin: 1rem 0 0 0;
-} */
+.commentSection {
+}
 
-/* .comment {
-  margin: 0;
-  font-size: 1.05rem;
-  color: #333;
-  line-height: 1.5;
-} */
+.comment {
+  font-size: 1.3rem;
+  color: var(--gray-color);
+}
 
-/* .reviewFooter {
+.reviewFooter {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
-  font-size: 0.95rem;
-  color: #888;
-} */
+  font-size: 1.2rem;
+  color: var(--gray-colorTwo);
+}
 
-/* .userName {
+.userName {
   font-weight: 500;
-  color: #444;
-} */
+  color: var(--second-bg-color);
+}
 
-/* .date {
+.date {
   font-style: italic;
-} */
+}
 
-/* .btnClose {
-  margin: 1.8rem auto 0 auto;
-  display: block;
-  background: #222;
-  color: #fff;
+.divBtn {
+  display: flex;
+  justify-content: center;
+}
+
+.divBtn button {
+  background: var(--main-color);
+  color: white;
   border: none;
-  border-radius: .6rem;
-  padding: 1rem 2.8rem;
-  font-size: 1rem;
+  padding: .8rem 1.6rem;
+  border-radius: .4rem;
+  font-size: 1.4rem;
   cursor: pointer;
-  transition: background 0.18s;
-} */
+  transition: background 0.2s, transform 0.2s;
+}
 
-/* .btnClose:hover {
-  background: #444;
-} */
+.divBtn button:hover {
+  background: var(--second-color);
+  /* transform: scale(1.02); */
+}

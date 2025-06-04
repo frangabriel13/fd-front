@@ -10,7 +10,7 @@ import TableFollows from './TableFollows';
 
 const MyFollows = () => {
   const dispatch = useDispatch();
-  const { followed, loading } = useSelector((state) => state.user);
+  const { followed = [], loading } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getFollowedManufacturers());

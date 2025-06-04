@@ -8,6 +8,7 @@ import EditReview from './EditReview';
 import SuccessModal from '../modals/SuccessModal';
 import { createReview, updateReview, deleteReview } from '../../store/actions/reviewActions';
 import useWindowWidth from '../../hooks/useWindowWidth';
+import AllReviews from './AllReviews';
 
 const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
   const dispatch = useDispatch();
@@ -16,6 +17,7 @@ const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [reviewToEdit, setReviewToEdit] = useState(null);
   const [isSuccessModalOpen, setIsSuccessModalOpen] = useState(false);
+  const [showAllReviews, setShowAllReviews] = useState(false);
   const width = useWindowWidth();
 
   let reviewsToShow = 4; // default desktop
@@ -87,6 +89,14 @@ const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
     }
   }
 
+  const handleShowAllReviews = () => {
+    setShowAllReviews(true);
+  };
+
+  const handleCloseAllReviews = () => {
+    setShowAllReviews(false);
+  };
+
   return (
     <div className={s.container}>
       <div className={s.divTitle}>
@@ -94,7 +104,7 @@ const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
         <div className={s.divButton}>
           <button className={s.btnReview} onClick={handleOpenModal}>Calificar</button>
         </div>
-        <button className={s.btnMore}>Ver más</button>
+        <button className={s.btnMore} onClick={handleShowAllReviews}>Ver más</button>
       </div>
       <div className={s.divReviews}>
         {reviews
@@ -132,6 +142,17 @@ const Reviews = ({ reviews, manufacturerId, onRefresh }) => {
           message="Registrate como mayorista para calificar fabricantes."
           onClose={handleCloseSuccessModal}
           showContactButton={false}
+        />
+      )}
+      {showAllReviews && (
+        <AllReviews 
+          reviews={reviews}
+          onClose={handleCloseAllReviews}
+          onEdit={(review) => {
+            setReviewToEdit(review);
+            setIsEditModalOpen(true);
+          }}
+          onDelete={handleDeleteReview}
         />
       )}
     </div>

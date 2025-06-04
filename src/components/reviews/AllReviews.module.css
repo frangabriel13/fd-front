@@ -1,0 +1,138 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: white;
+  border-radius: .4rem;
+  overflow-y: auto;
+  width: 40%;
+}
+
+.container {
+  background-color: white;
+  padding: 3rem;
+  border-radius: .3rem;
+  box-shadow: 0 0 .1rem rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  max-height: 90vh;
+}
+
+.container h3 {
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+/* .divReviews {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+} */
+
+/* .reviewItem {
+  background: #f8f8f8;
+  border-radius: 1rem;
+  padding: 1.8rem 1.6rem 1.2rem 1.6rem;
+  box-shadow: 0 .2rem .8rem rgba(0,0,0,0.06);
+  transition: box-shadow 0.2s;
+  position: relative;
+} */
+
+/* .reviewItem:hover {
+  box-shadow: 0 .4rem 1.6rem rgba(0,0,0,0.10);
+} */
+
+/* .reviewHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+} */
+
+/* .stars {
+  display: flex;
+  gap: .2rem;
+  font-size: 1.2rem;
+  color: #f7b500;
+} */
+
+/* .actions {
+  display: flex;
+  gap: 1rem;
+} */
+
+/* .editIcon, .deleteIcon {
+  cursor: pointer;
+  padding: .4rem;
+  border-radius: .4rem;
+  transition: background 0.15s;
+  display: flex;
+  align-items: center;
+  font-size: 1.1rem;
+} */
+
+/* .editIcon:hover {
+  background: #e6f7ff;
+  color: #1890ff;
+} */
+
+/* .deleteIcon:hover {
+  background: #fff1f0;
+  color: #ff4d4f;
+} */
+
+/* .commentSection {
+  margin: 1rem 0 0 0;
+} */
+
+/* .comment {
+  margin: 0;
+  font-size: 1.05rem;
+  color: #333;
+  line-height: 1.5;
+} */
+
+/* .reviewFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #888;
+} */
+
+/* .userName {
+  font-weight: 500;
+  color: #444;
+} */
+
+/* .date {
+  font-style: italic;
+} */
+
+/* .btnClose {
+  margin: 1.8rem auto 0 auto;
+  display: block;
+  background: #222;
+  color: #fff;
+  border: none;
+  border-radius: .6rem;
+  padding: 1rem 2.8rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.18s;
+} */
+
+/* .btnClose:hover {
+  background: #444;
+} */

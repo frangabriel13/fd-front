@@ -4,8 +4,17 @@ import { formatPrice } from '../../../utils/utils';
 import EditSimpleProduct from './EditSimpleProduct';
 import EditVariableProduct from './EditVariableProduct';
 import EditBisuteriProduct from './EditBisuteriProduct';
+import Pagination from '../../Pagination/Pagination';
 
-const TableMyProducts = ({ myProducts, handleDelete, sizes }) => {
+const TableMyProducts = ({ 
+    myProducts, 
+    handleDelete, 
+    sizes,
+    myCurrentPage,
+    myPageSize,
+    myTotalProducts,
+    onPageChange,
+  }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isVariable, setIsVariable] = useState(false);
@@ -69,6 +78,12 @@ const TableMyProducts = ({ myProducts, handleDelete, sizes }) => {
             </tbody>
           </table>
         </div>
+        <Pagination
+          currentPage={myCurrentPage}
+          onPageChange={onPageChange}
+          totalProducts={myTotalProducts}
+          pageSize={myPageSize}
+        />
       </div>
       {isModalOpen && (
         isVariable ? (

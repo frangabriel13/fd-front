@@ -97,7 +97,7 @@ export const createProduct = (productData) => async (dispatch) => {
   }
 };
 
-export const getProductsByUserId = (page = 1, pageSize = 10) => async (dispatch) => {
+export const getProductsByUserId = (page = 1, pageSize = 2) => async (dispatch) => {
   dispatch({ type: 'GET_PRODUCTS_BY_USER_REQUEST' });
   try {
     const response = await productInstance.get('/createdbyMe', {

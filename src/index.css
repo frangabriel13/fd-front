@@ -13,6 +13,7 @@
 }
 
 :root {
+  --dark-white: #f8f8f8;
   --bg-color: #e4e4e4;
   --gray-color: #666;
   --gray-colorTwo: #a0a0a0;
@@ -31,6 +32,8 @@
   --red-color-light: #c52323;
   --green-color: #2b8d2b;
   --green-color-light: #339233;
+  --white-blue: #e6f7ff;
+  --white-red: #fff1f0;
 }
 
 html {

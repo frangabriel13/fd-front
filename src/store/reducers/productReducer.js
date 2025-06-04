@@ -73,7 +73,7 @@ const productReducer = (state = initialState, action) => {
         myProducts: action.payload.myProducts,
         myCurrentPage: action.payload.currentPage,
         myPageSize: action.payload.pageSize,
-        myTotalProducts: action.payload.totalProducts,
+        myTotalProducts: action.payload.myTotalProducts,
       };
     case 'GET_PRODUCTS_BY_USER_FAILURE':
       return { ...state, loading: false, error: action.error };

@@ -12,16 +12,19 @@ import {
   BsStarHalf,
   BsStarFill,
 } from "react-icons/bs";
+import SuccessModal from '../../components/modals/SuccessModal';
 
 const Store = () => {
   const { userId } = useParams();
   const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
   const { manufacturer } = useSelector(state => state.manufacturer);
   const { manufacturerProducts, manufacturerCurrentPage, manufacturerTotalProducts } = useSelector(state => state.product);
   const pageSize = 18; // Tamaño de la página fijo
   const [sortOrder, setSortOrder] = useState('newest');
   const [isFollowed, setIsFollowed] = useState(manufacturer.isFollowed);
   const [followersCount, setFollowersCount] = useState(manufacturer.followersCount);
+  const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
     dispatch(getUserData(userId, 1, pageSize, sortOrder));
@@ -41,14 +44,22 @@ const Store = () => {
     dispatch(getUserData(userId, 1, pageSize, newSortOrder));
   };
 
-  // const handleFollow = () => {
-  //   if (manufacturer.isFollowed) {
-  //     dispatch(unfollowManufacturer(manufacturer.id));
+  // const handleFollow = async () => {
+  //   if (isFollowed) {
+  //     await dispatch(unfollowManufacturer(manufacturer.id));
+  //     setIsFollowed(false);
+  //     setFollowersCount(followersCount - 1);
   //   } else {
-  //     dispatch(followManufacturer(manufacturer.id));
+  //     await dispatch(followManufacturer(manufacturer.id));
+  //     setIsFollowed(true);
+  //     setFollowersCount(followersCount + 1);
   //   }
   // };
   const handleFollow = async () => {
+    if (!user || user.role !== 'wholesaler') {
+      setShowModal(true);
+      return;
+    }
     if (isFollowed) {
       await dispatch(unfollowManufacturer(manufacturer.id));
       setIsFollowed(false);
@@ -128,6 +139,14 @@ const Store = () => {
           onPageChange={handlePageChange}
         />
       </div>
+      {showModal && (
+        <SuccessModal 
+          title="Acción no permitida"
+          show={showModal} 
+          onClose={() => setShowModal(false)} 
+          message="Registrate como mayorista para seguir a fabricantes."
+        />
+      )}
     </div>
   );
 };

@@ -163,7 +163,8 @@
   }
 
   .divData {
-    gap: .5rem;
+    flex-direction: column-reverse;
+    gap: .2rem;
   }
 
   .followers {

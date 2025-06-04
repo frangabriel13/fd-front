@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getUserData } from '../../store/actions/storeActions';
+import { followManufacturer, unfollowManufacturer } from '../../store/actions/userActions';
 import s from './Store.module.css';
 import Products from '../../components/productStore/Products';
 import Pagination from '../../components/pagination/Pagination';
@@ -19,14 +20,17 @@ const Store = () => {
   const { manufacturerProducts, manufacturerCurrentPage, manufacturerTotalProducts } = useSelector(state => state.product);
   const pageSize = 18; // Tamaño de la página fijo
   const [sortOrder, setSortOrder] = useState('newest');
-
-  // Estado local para seguidores
-  const [followers, setFollowers] = useState(0);
-  const [isFollowing, setIsFollowing] = useState(false);
+  const [isFollowed, setIsFollowed] = useState(manufacturer.isFollowed);
+  const [followersCount, setFollowersCount] = useState(manufacturer.followersCount);
 
   useEffect(() => {
     dispatch(getUserData(userId, 1, pageSize, sortOrder));
   }, [dispatch, userId, pageSize, sortOrder]);
+
+  useEffect(() => {
+  setIsFollowed(manufacturer.isFollowed);
+  setFollowersCount(manufacturer.followersCount);
+}, [manufacturer.isFollowed, manufacturer.followersCount]);
 
   const handlePageChange = (page) => {
     dispatch(getUserData(userId, page, pageSize, sortOrder));
@@ -37,15 +41,24 @@ const Store = () => {
     dispatch(getUserData(userId, 1, pageSize, newSortOrder));
   };
 
-  // Manejar el botón de seguir/dejar de seguir
-  // const handleFollowToggle = () => {
-  //   if (isFollowing) {
-  //     setFollowers(followers - 1);
+  // const handleFollow = () => {
+  //   if (manufacturer.isFollowed) {
+  //     dispatch(unfollowManufacturer(manufacturer.id));
   //   } else {
-  //     setFollowers(followers + 1);
+  //     dispatch(followManufacturer(manufacturer.id));
   //   }
-  //   setIsFollowing(!isFollowing);
   // };
+  const handleFollow = async () => {
+    if (isFollowed) {
+      await dispatch(unfollowManufacturer(manufacturer.id));
+      setIsFollowed(false);
+      setFollowersCount(followersCount - 1);
+    } else {
+      await dispatch(followManufacturer(manufacturer.id));
+      setIsFollowed(true);
+      setFollowersCount(followersCount + 1);
+    }
+  };
 
   const renderStars = (rating) => {
     const stars = [];
@@ -87,10 +100,10 @@ const Store = () => {
           </div>
         </div>
         <div className={s.divData}>
-          {/* <p className={s.followers}>{followers} seguidores</p>
-          <button className={s.btnFollow} onClick={handleFollowToggle}>
-            {isFollowing ? 'Dejar de seguir' : 'Seguir'}
-          </button> */}
+          <p className={s.followers}>{followersCount} seguidores</p>
+          <button className={s.btnFollow} onClick={handleFollow}>
+            {isFollowed ? 'Dejar de seguir' : 'Seguir'}
+          </button>
         </div>
       </div>
       <Reviews 

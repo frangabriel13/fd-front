@@ -10,7 +10,7 @@ import TableFollows from './TableFollows';
 
 const MyFollows = () => {
   const dispatch = useDispatch();
-  const { followed } = useSelector((state) => state.user);
+  const { followed, loading } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(getFollowedManufacturers());
@@ -22,7 +22,11 @@ const MyFollows = () => {
 
   return (
     <div className={s.container}>
-      <TableFollows follows={followed} onUnfollow={handleUnfollow} />
+      {loading ? (
+        <div>Cargando...</div>
+      ) : (
+        <TableFollows follows={followed} onUnfollow={handleUnfollow} />
+      )}
     </div>
   )
 };

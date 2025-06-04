@@ -22,6 +22,7 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory, onC
   const [tagInput, setTagInput] = useState('');
   const [showImageModal, setShowImageModal] = useState(false);
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
  
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -61,6 +62,8 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory, onC
       return;
     }
 
+    setLoading(true);
+
     const productData = {
       ...formData,
       type: productType,
@@ -70,8 +73,11 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory, onC
 
     setErrors({});
     dispatch(createProduct(productData)).then(() => {
-      onClose();
+      setLoading(false); // <-- desactivar loading al terminar
       onSuccess();
+      onClose();
+    }).catch(() => {
+      setLoading(false); // <-- desactivar loading si hay error
     });
   };
 
@@ -196,8 +202,11 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory, onC
         </div>
         <hr className={s.divider} />
         <div className={s.divBtn}>
-          <button className={s.btnNext} type='submit'>Crear producto</button>
+          <button className={s.btnNext} type='submit' disabled={loading}>
+            {loading ? 'Creando producto...' : 'Crear producto'}
+          </button>
         </div>
+        {loading && <p style={{ textAlign: 'center', color: '#888' }}>Creando producto...</p>}
       </form>
       {showImageModal && 
         <ImageModal 

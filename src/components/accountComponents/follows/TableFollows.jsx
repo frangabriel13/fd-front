@@ -1,8 +1,41 @@
-import s from './MyFollows.module.css';
+import { useNavigate } from 'react-router-dom';
+import s from './TableFollows.module.css';
 
-const MyFollows = () => {
+const MyFollows = ({ follows, onUnfollow }) => {
+  const navigate = useNavigate();
+
+  const handleViewManufacturer = (userId) => {
+    navigate(`/store/${userId}`);
+  };
+
+  console.log(follows);
+
   return (
-    <div>Tabla</div>
+    <div className={s.container}>
+      <h3>Fabricantes seguidos</h3>
+      <div className={s.divFollows}>
+        {follows.map((item, index) => (
+          <div key={index} className={s.followItem}>
+            <div className={s.divItem}>
+              <img src={item.image} alt={item.name} className={s.image} />
+              <div className={s.divData}>
+                <p className={s.name}>{item.name}</p>
+              </div>
+            </div>
+            <div className={s.divActions}>
+              <button 
+                onClick={() => onUnfollow(item.id)} 
+                className={s.buttonUnfollow}
+              >Dejar de seguir</button>
+              <button 
+                className={s.buttonView} 
+                onClick={() => handleViewManufacturer(item.userId)}
+              >Ver tienda</button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
   )
 };
 

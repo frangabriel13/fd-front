@@ -28,6 +28,7 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
   const [showColorModal, setShowColorModal] = useState(false);
   const [showImageModal, setShowImageModal] = useState(false);
   const [errors, setErrors] = useState({});
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     dispatch(getColors());
@@ -77,6 +78,8 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
       return;
     }
 
+    setLoading(true);
+
     const variations = formData.colors.map((color) => ({
       colorId: color.id,
       mainImage: formData.mainImage,
@@ -92,13 +95,16 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
     };
 
     setErrors({});
-    // dispatch(createProduct(productData));
+    // dispatch(createProduct(productData)).then(() => {
+    //   onSuccess();
+    //   onClose();
+    // });
     dispatch(createProduct(productData)).then(() => {
+      setLoading(false); // <-- desactivar loading al terminar
       onSuccess();
       onClose();
-      // if(onClose) {
-      //   onClose();
-      // }
+    }).catch(() => {
+      setLoading(false); // <-- desactivar loading si hay error
     });
   };
 
@@ -245,8 +251,12 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
         </div>
         <hr className={s.divider} />
         <div className={s.divBtn}>
-          <button className={s.btnNext} type='submit'>Crear producto</button>
+          {/* <button className={s.btnNext} type='submit'>Crear producto</button> */}
+          <button className={s.btnNext} type='submit' disabled={loading}>
+            {loading ? 'Creando producto...' : 'Crear producto'}
+          </button>
         </div>
+        {loading && <p style={{ textAlign: 'center', color: '#888' }}>Creando producto...</p>}
       </form>
       {showColorModal &&
         <ColorModal 

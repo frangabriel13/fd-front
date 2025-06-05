@@ -29,6 +29,8 @@ const initialState = {
   results: [],
 
   relatedProducts: [],
+  loadingRelatedProducts: false,
+  errorRelatedProducts: null,
 
   product: null,
   loading: false,
@@ -198,16 +200,20 @@ const productReducer = (state = initialState, action) => {
         errorOtherProducts: action.error,
       };
     case 'GET_RELATED_PRODUCTS_REQUEST':
-      return { ...state, loading: true, error: null };
+      return { ...state, loadingRelatedProducts: true, errorRelatedProducts: null };
     case 'GET_RELATED_PRODUCTS_SUCCESS':
       return {
         ...state,
-        loading: false,
-        error: null,
+        loadingRelatedProducts: false,
+        errorRelatedProducts: null,
         relatedProducts: action.payload,
       };
     case 'GET_RELATED_PRODUCTS_FAILURE':
-      return { ...state, loading: false, error: action.error };
+      return {
+        ...state,
+        loadingRelatedProducts: false,
+        errorRelatedProducts: action.error,
+      };
     default:
       return state;
   }

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import s from './ProductDetail.module.css';
 import { getProductById } from '../../store/actions/productActions';
@@ -12,6 +13,7 @@ import MoreProducts from '../../components/productRow/MoreProducts';
 import RelatedProducts from '../../components/productRow/RelatedProducts';
 
 const ProductDetail = () => {
+  const navigate = useNavigate();
   const { productId } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product.product);
@@ -72,6 +74,9 @@ const ProductDetail = () => {
         { product.categoryId && (
           <RelatedProducts categoryId={product.categoryId} />
         )}
+      </div>
+      <div className={s.btnHomeContainer}>
+        <button className={s.btnHome} onClick={() => navigate('/')}>Inicio</button>
       </div>
     </div>
   );

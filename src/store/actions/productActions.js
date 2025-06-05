@@ -273,7 +273,6 @@ export const getBisuteriaOrBlanqueria = () => async (dispatch) => {
 };
 
 export const getRelatedProducts = (categoryId) => async (dispatch) => {
-  console.log('getRelatedProducts', categoryId);
   dispatch({ type: 'GET_RELATED_PRODUCTS_REQUEST' });
   try {
     const response = await productInstance.get(`/related/${categoryId}`);

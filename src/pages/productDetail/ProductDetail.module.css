@@ -57,6 +57,26 @@
   margin: 0rem 30rem;
 }
 
+.btnHomeContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.btnHome {
+  background-color: var(--main-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: .3rem;
+  text-decoration: none;
+  font-size: 1.4rem;
+}
+
+.btnHome:hover {
+  background-color: var(--second-color);
+  color: white;
+  cursor: pointer;
+}
+
 @media (max-width: 1360px) {
   .divDetail {
     margin: 0rem 15rem;

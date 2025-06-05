@@ -11,6 +11,7 @@ import {
 } from "react-icons/bs";
 import { formatPrice, contactWspProduct } from '../../utils/utils';
 import SuccessModal from '../modals/SuccessModal';
+import Description from './Description';
 
 const DataProduct = ({ product, manufacturer, onAddToCart }) => {
   const dispatch = useDispatch();
@@ -159,6 +160,10 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
             {manufacturer.street}
           </a>
         </div>
+      </div>
+      <div className={s.divDescription}>
+        <h3>Descripción:</h3>
+        <Description text={product.description} />
       </div>
       <div className={s.divQuantities}>
         { product.isVariable ? (

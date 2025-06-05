@@ -271,3 +271,19 @@ export const getBisuteriaOrBlanqueria = () => async (dispatch) => {
     });
   }
 };
+
+export const getRelatedProducts = (categoryId) => async (dispatch) => {
+  dispatch({ type: 'GET_RELATED_PRODUCTS_REQUEST' });
+  try {
+    const response = await productInstance.get(`/related/${categoryId}`);
+    dispatch({
+      type: 'GET_RELATED_PRODUCTS_SUCCESS',
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'GET_RELATED_PRODUCTS_FAILURE',
+      error: error.message,
+    });
+  }
+};

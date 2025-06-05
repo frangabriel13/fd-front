@@ -1,0 +1,42 @@
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.text {
+  color: #222;
+  font-size: 1.4rem;
+}
+
+.clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  max-height: 4.5em;
+  color: #222;
+  font-size: 1.4rem;
+  transition: max-height 0.3s;
+}
+
+.btnShowMore {
+  background: linear-gradient(90deg, #007bff 0%, #00c6ff 100%);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: .6rem 1.8rem;
+  border-radius: .4rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  transition: background 0.2s, transform 0.2s;
+  align-self: flex-end;
+}
+
+.btnShowMore:hover {
+  background: linear-gradient(90deg, #0056b3 0%, #00aaff 100%);
+}

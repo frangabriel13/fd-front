@@ -3,7 +3,7 @@ import s from './Stepper.module.css';
 const Stepper = ({ steps, activeStep }) => {
   return (
     <div className={s.container}>
-      {steps.map((label, idx) => (
+      {/* {steps.map((label, idx) => (
         <div key={label} className={s.stepWrapper}>
           <div
             className={
@@ -19,7 +19,7 @@ const Stepper = ({ steps, activeStep }) => {
           <span className={s.label}>{label}</span>
           {idx < steps.length - 1 && <div className={s.line} />}
         </div>
-      ))}
+      ))} */}
     </div>
   );
 };

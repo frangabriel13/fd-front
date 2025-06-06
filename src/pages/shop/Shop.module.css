@@ -27,6 +27,7 @@
   padding: 3rem 2.5rem;
   display: flex;
   flex-direction: column;
+  min-height: 75vh;
 }
 
 /* .container {

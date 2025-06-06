@@ -2,7 +2,7 @@ import s from './Stepper.module.css';
 
 const Stepper = ({ steps, activeStep }) => {
   return (
-    <div className={s.stepperContainer}>
+    <div className={s.container}>
       {steps.map((label, idx) => (
         <div key={label} className={s.stepWrapper}>
           <div

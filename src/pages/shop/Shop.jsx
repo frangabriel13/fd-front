@@ -64,7 +64,7 @@ const Shop = () => {
         <h2 className={s.title}>Tienda</h2>
       </div>
       <div className={s.stepperContainer}>
-        <Stepper steps={steps} activeStep={activeStep} />
+        <Stepper steps={steps} activeStep={activeStep} onBack={handleBack} />
         {activeStep === 0 && (
           <CategorySelection onSelect={handleCategorySelect} />
         )}

@@ -1,9 +1,9 @@
 import s from './CategorySelection.module.css';
 
 const categories = [
-  { label: 'Indumentaria', value: 'Indumentaria' },
-  { label: 'Blanquería', value: 'Blanquería' },
-  { label: 'Bisutería', value: 'Bisutería' },
+  { label: 'Indumentaria', value: 'Indumentaria', id: 88 },
+  { label: 'Blanquería', value: 'Blanquería', id: 130 },
+  { label: 'Bisutería', value: 'Bisutería', id: 131 },
 ];
 
 const CategorySelection = ({ onSelect }) => {

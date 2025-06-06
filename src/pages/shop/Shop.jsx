@@ -1,98 +1,66 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import s from './Shop.module.css';
-import Stepper from '../../components/shopComponents/Stepper';
-import CategorySelection from '../../components/shopComponents/CategorySelection';
-import CategoriesSelection from '../../components/shopComponents/CategoriesSelection';
-import GenderSelection from '../../components/shopComponents/GenderSelection';
 import Shopping from '../../components/shopComponents/Shopping';
+import GenderSeletcion from '../../components/shopComponents/GenderSelection';
+import CategorySelection from '../../components/shopComponents/CategorySelection';
+import ModalCategory from '../../components/shopComponents/ModalCategory';
+import { parentCategories } from '../../utils/hardcodeo';
 
-const steps = [
-  'Selecciona una categoría',
-  'Selecciona un genero',
-  'Selecciona una subcategoría',
-  'Tienda',
-];
+const DEFAULT_CATEGORY = 'indumentaria';
 
 const Shop = () => {
-  const [activeStep, setActiveStep] = useState(0);
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedGender, setSelectedGender] = useState(null);
-  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+  const { category } = useParams();
+  const navigate = useNavigate();
+  const [showModal, setShowModal] = useState(false);
 
-  // Paso 1: Elegir categoría
-  const handleCategorySelect = (category) => {
-    setSelectedCategory(category);
-    if (category === 'Indumentaria') {
-      setActiveStep(1);
-    } else {
-      setActiveStep(3); // Ir directo a Shopping
+  // Busca la categoría por slug (nombre en minúsculas)
+  const selectedCategory = parentCategories.find(
+    cat => cat.name.toLowerCase() === (category || DEFAULT_CATEGORY).toLowerCase()
+  ) || parentCategories[0];
+
+  // Redirige a /tienda/indumentaria si no hay categoría en la URL
+  useEffect(() => {
+    if (!category) {
+      navigate(`/tienda/${DEFAULT_CATEGORY}`, { replace: true });
     }
-  };
+  }, [category, navigate]);
 
-  // Paso 2: Elegir género
-  const handleGenderSelect = (gender) => {
-    setSelectedGender(gender);
-    setActiveStep(2);
-  };
-
-  // Paso 3: Elegir subcategoría
-  const handleSubcategorySelect = (subcategory) => {
-    setSelectedSubcategory(subcategory);
-    setActiveStep(3);
-  };
-
-  // Volver atrás
-  const handleBack = () => {
-    if (activeStep === 3 && selectedCategory !== 'Indumentaria') {
-      setSelectedCategory(null);
-      setActiveStep(0);
-    } else if (activeStep === 3) {
-      setSelectedSubcategory(null);
-      setActiveStep(2);
-    } else if (activeStep === 2) {
-      setSelectedGender(null);
-      setActiveStep(1);
-    } else if (activeStep === 1) {
-      setSelectedCategory(null);
-      setActiveStep(0);
+  // Cambia la categoría y actualiza la URL
+  const handleCategoryChange = (newCategoryId) => {
+    const cat = parentCategories.find(cat => cat.id === newCategoryId);
+    if (cat) {
+      navigate(`/tienda/${cat.name.toLowerCase()}`);
+      setShowModal(false);
     }
   };
 
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
-        <h2 className={s.title}>Tienda</h2>
+        <h2 className={s.title}>
+          {selectedCategory ? selectedCategory.name : ''}
+        </h2>
+        <button className={s.btnChange} onClick={() => setShowModal(true)}>
+          Cambiar
+        </button>
       </div>
-      <div className={s.stepperContainer}>
-        <Stepper steps={steps} activeStep={activeStep} onBack={handleBack} />
-        {activeStep === 0 && (
-          <CategorySelection onSelect={handleCategorySelect} />
-        )}
-        {activeStep === 1 && selectedCategory === 'Indumentaria' && (
-          <GenderSelection onSelect={handleGenderSelect} onBack={handleBack} />
-        )}
-        {activeStep === 2 && (
-          <CategoriesSelection
-            gender={selectedGender}
-            onSelect={handleSubcategorySelect}
-            onBack={handleBack}
-          />
-        )}
-        {activeStep === 3 && (
-          <Shopping
-            category={selectedCategory}
-            gender={selectedGender}
-            subcategory={selectedSubcategory}
-            onBack={handleBack}
-          />
-        )}
-      </div>
+      {showModal && (
+        <ModalCategory
+          categories={parentCategories}
+          selected={selectedCategory.id}
+          onSelect={handleCategoryChange}
+          onClose={() => setShowModal(false)}
+        />
+      )}
+      {/* Aquí iría el resto del contenido de la tienda */}
     </div>
-  )
+  );
 };
 
 
 export default Shop;
+
 
 // import { useEffect, useState } from 'react';
 // import { useDispatch, useSelector } from 'react-redux';

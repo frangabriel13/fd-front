@@ -1,12 +1,93 @@
+import { useState } from 'react';
 import s from './Shop.module.css';
 import Stepper from '../../components/shopComponents/Stepper';
 import CategorySelection from '../../components/shopComponents/CategorySelection';
+import CategoriesSelection from '../../components/shopComponents/CategoriesSelection';
 import GenderSelection from '../../components/shopComponents/GenderSelection';
 import Shopping from '../../components/shopComponents/Shopping';
 
+const steps = [
+  'Selecciona una categoría',
+  'Selecciona un genero',
+  'Selecciona una subcategoría',
+  'Tienda',
+];
+
 const Shop = () => {
+  const [activeStep, setActiveStep] = useState(0);
+  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedGender, setSelectedGender] = useState(null);
+  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+
+  // Paso 1: Elegir categoría
+  const handleCategorySelect = (category) => {
+    setSelectedCategory(category);
+    if (category === 'Indumentaria') {
+      setActiveStep(1);
+    } else {
+      setActiveStep(3); // Ir directo a Shopping
+    }
+  };
+
+  // Paso 2: Elegir género
+  const handleGenderSelect = (gender) => {
+    setSelectedGender(gender);
+    setActiveStep(2);
+  };
+
+  // Paso 3: Elegir subcategoría
+  const handleSubcategorySelect = (subcategory) => {
+    setSelectedSubcategory(subcategory);
+    setActiveStep(3);
+  };
+
+  // Volver atrás
+  const handleBack = () => {
+    if (activeStep === 3 && selectedCategory !== 'Indumentaria') {
+      setSelectedCategory(null);
+      setActiveStep(0);
+    } else if (activeStep === 3) {
+      setSelectedSubcategory(null);
+      setActiveStep(2);
+    } else if (activeStep === 2) {
+      setSelectedGender(null);
+      setActiveStep(1);
+    } else if (activeStep === 1) {
+      setSelectedCategory(null);
+      setActiveStep(0);
+    }
+  };
+
   return (
-    <div>Tienda</div>
+    <div className={s.container}>
+      <div className={s.divHeader}>
+        <h2 className={s.title}>Tienda</h2>
+      </div>
+      <div className={s.stepperContainer}>
+        <Stepper steps={steps} activeStep={activeStep} />
+        {activeStep === 0 && (
+          <CategorySelection onSelect={handleCategorySelect} />
+        )}
+        {activeStep === 1 && selectedCategory === 'Indumentaria' && (
+          <GenderSelection onSelect={handleGenderSelect} onBack={handleBack} />
+        )}
+        {activeStep === 2 && (
+          <CategoriesSelection
+            gender={selectedGender}
+            onSelect={handleSubcategorySelect}
+            onBack={handleBack}
+          />
+        )}
+        {activeStep === 3 && (
+          <Shopping
+            category={selectedCategory}
+            gender={selectedGender}
+            subcategory={selectedSubcategory}
+            onBack={handleBack}
+          />
+        )}
+      </div>
+    </div>
   )
 };
 

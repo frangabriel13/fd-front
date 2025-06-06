@@ -20,7 +20,13 @@
 }
 
 .stepperContainer {
+  background-color: white;
   margin: 0 30rem;
+  border-radius: .3rem;
+  box-shadow: 0 .4rem 2.4rem 0 rgba(60, 72, 88, 0.12);
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
 }
 
 /* .container {

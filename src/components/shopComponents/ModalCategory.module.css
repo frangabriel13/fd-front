@@ -1,0 +1,69 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  z-index: 1000;
+  align-items: center;
+}
+
+.modalContent {
+  background-color: white;
+  border-radius: .4rem;
+  overflow-y: auto;
+  width: 40%;
+  animation: fadeIn 0.3s ease-in-out;
+  max-height: 90vh;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
+  padding: 1.5rem 1.5rem;
+}
+
+.divTitle h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.divBtns {
+  display: flex;
+  justify-content: end;
+  gap: 2rem;
+  padding: 0rem 1.5rem 1.5rem 1.5rem;
+  background-color: white;
+}
+
+.btnCancel {
+  background-color: var(--red-color);
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: .3rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.btnCancel:hover {
+  background-color: var(--red-color-light);
+  transition: all .3s ease-in-out;
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

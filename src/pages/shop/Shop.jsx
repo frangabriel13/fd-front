@@ -12,14 +12,14 @@ import {
 } from '../../utils/hardcodeo';
 
 const DEFAULT_CATEGORY = 'indumentaria';
-const DEFAULT_GENDER = indumentariaCategories[0]?.[0]?.gender?.id || '1'; // Ajusta según tus datos
+const DEFAULT_GENDER = '3'; // Ajusta según tus datos
 
 const Shop = () => {
   const { category, gender } = useParams();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
-  const [selectedGenderId, setSelectedGenderId] = useState(gender || DEFAULT_GENDER);
+  const [selectedGenderId, setSelectedGenderId] = useState(parseInt(DEFAULT_GENDER));
 
   // Busca la categoría por slug (nombre en minúsculas)
   const selectedCategory = parentCategories.find(

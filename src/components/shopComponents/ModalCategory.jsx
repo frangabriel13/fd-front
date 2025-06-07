@@ -1,8 +1,14 @@
 import s from './ModalCategory.module.css';
 
 const ModalCategory = ({ categories, selected, onSelect, onClose }) => {
+  const handleClickOutside = (e) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  }
+
   return (
-    <div className={s.modal}>
+    <div className={s.modal} onClick={handleClickOutside}>
       <div className={s.modalContent}>
         <div className={s.container}>
           <div className={s.divTitle}>

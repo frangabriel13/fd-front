@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import s from './Shop.module.css';
@@ -19,7 +18,7 @@ const Shop = () => {
   const { category } = useParams();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
-  const { categories } = useSelector(state => state.category);
+  const [selectedSubcategory, setSelectedSubcategory] = useState(null);
 
   // Busca la categoría por slug (nombre en minúsculas)
   const selectedCategory = parentCategories.find(
@@ -62,7 +61,14 @@ const Shop = () => {
           Cambiar
         </button>
       </div>
-      <CategorySelection categories={subcategories} />
+      {!selectedSubcategory ? (
+        <CategorySelection
+          categories={subcategories}
+          onSelect={setSelectedSubcategory}
+        />
+      ) : (
+        <Shopping subcategory={selectedSubcategory} />
+      )}
       {showModal && (
         <ModalCategory
           categories={parentCategories}
@@ -71,7 +77,6 @@ const Shop = () => {
           onClose={() => setShowModal(false)}
         />
       )}
-      {/* Aquí iría el resto del contenido de la tienda */}
     </div>
   );
 };

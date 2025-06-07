@@ -1,13 +1,7 @@
-import { useState } from 'react';
 import GenderSelection from './GenderSelection';
 import s from './CategorySelection.module.css';
 
-const CategorySelection = ({ categories, onSelect, isIndumentaria }) => {
-  // Estado para el género seleccionado solo si es indumentaria
-  const [selectedGenderId, setSelectedGenderId] = useState(
-    isIndumentaria && categories.length > 0 ? categories[0].gender.id : null
-  );
-
+const CategorySelection = ({ categories, onSelect, isIndumentaria, selectedGenderId, onGenderChange }) => {
   // Si es indumentaria, filtra las categorías por género
   let filteredCategories = [];
   if (isIndumentaria) {
@@ -23,7 +17,7 @@ const CategorySelection = ({ categories, onSelect, isIndumentaria }) => {
       {isIndumentaria && (
         <GenderSelection
           selectedGenderId={selectedGenderId}
-          onSelect={setSelectedGenderId}
+          onSelect={onGenderChange}
           genders={categories.map(cat => cat.gender)}
         />
       )}

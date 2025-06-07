@@ -12,20 +12,29 @@ import {
 } from '../../utils/hardcodeo';
 
 const DEFAULT_CATEGORY = 'indumentaria';
-const DEFAULT_GENDER = '3'; // Ajusta según tus datos
+const DEFAULT_GENDER = 3;
 
 const Shop = () => {
   const { category, gender } = useParams();
   const navigate = useNavigate();
+  const genderFromUrl = gender ? Number(gender) : DEFAULT_GENDER;
   const [showModal, setShowModal] = useState(false);
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
-  const [selectedGenderId, setSelectedGenderId] = useState(parseInt(DEFAULT_GENDER));
+  const [selectedGenderId, setSelectedGenderId] = useState(genderFromUrl);
 
   // Busca la categoría por slug (nombre en minúsculas)
   const selectedCategory = parentCategories.find(
     cat => cat.name.toLowerCase() === (category || DEFAULT_CATEGORY).toLowerCase()
   ) || parentCategories[0];
 
+
+  // Cuando cambia el parámetro de género en la URL, actualiza el estado
+  useEffect(() => {
+    if (gender && Number(gender) !== selectedGenderId) {
+      setSelectedGenderId(Number(gender));
+    }
+  }, [gender, selectedGenderId]);
+  
   // Redirige a /tienda/indumentaria/:gender si no hay categoría o género en la URL
   useEffect(() => {
     if (!category) {

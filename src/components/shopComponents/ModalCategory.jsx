@@ -20,9 +20,9 @@ const ModalCategory = ({ categories, selected, onSelect, onClose }) => {
             ))}
           </div>
           <div className={s.divBtns}>
-          <button className={s.btnCancel} onClick={onClose}>
-            Cerrar
-          </button>
+            <button className={s.btnCancel} onClick={onClose}>
+              Cerrar
+            </button>
           </div>
         </div>
       </div>

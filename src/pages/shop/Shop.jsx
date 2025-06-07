@@ -65,6 +65,7 @@ const Shop = () => {
         <CategorySelection
           categories={subcategories}
           onSelect={setSelectedSubcategory}
+          isIndumentaria={selectedCategory.name.toLowerCase() === 'indumentaria'}
         />
       ) : (
         <Shopping subcategory={selectedSubcategory} />

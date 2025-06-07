@@ -1,0 +1,37 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.gendersRow {
+  display: flex;
+  gap: 1rem;
+}
+
+.genderBtn {
+  background: #f4f4f4;
+  color: #333;
+  border: none;
+  border-radius: 20px;
+  padding: 0.6rem 1.6rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.genderBtn:hover,
+.genderBtn:focus {
+  background: #e0e0e0;
+  color: #111;
+}
+
+.selected {
+  background: #222;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}

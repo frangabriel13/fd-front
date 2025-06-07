@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import s from './Shop.module.css';
@@ -18,6 +19,7 @@ const Shop = () => {
   const { category } = useParams();
   const navigate = useNavigate();
   const [showModal, setShowModal] = useState(false);
+  const { categories } = useSelector(state => state.category);
 
   // Busca la categoría por slug (nombre en minúsculas)
   const selectedCategory = parentCategories.find(

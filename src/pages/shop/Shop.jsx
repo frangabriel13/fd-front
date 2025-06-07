@@ -5,7 +5,12 @@ import Shopping from '../../components/shopComponents/Shopping';
 import GenderSeletcion from '../../components/shopComponents/GenderSelection';
 import CategorySelection from '../../components/shopComponents/CategorySelection';
 import ModalCategory from '../../components/shopComponents/ModalCategory';
-import { parentCategories } from '../../utils/hardcodeo';
+import { 
+  parentCategories,
+  indumentariaCategories,
+  blanqueriaCategories,
+  bisuteriaCategories
+} from '../../utils/hardcodeo';
 
 const DEFAULT_CATEGORY = 'indumentaria';
 
@@ -35,6 +40,16 @@ const Shop = () => {
     }
   };
 
+  // Determina las subcategorías según la categoría principal seleccionada
+  let subcategories = [];
+  if (selectedCategory.name.toLowerCase() === 'indumentaria') {
+    subcategories = indumentariaCategories;
+  } else if (selectedCategory.name.toLowerCase() === 'blanquería') {
+    subcategories = blanqueriaCategories;
+  } else if (selectedCategory.name.toLowerCase() === 'bisutería') {
+    subcategories = bisuteriaCategories;
+  }
+
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
@@ -45,6 +60,7 @@ const Shop = () => {
           Cambiar
         </button>
       </div>
+      <CategorySelection categories={subcategories} />
       {showModal && (
         <ModalCategory
           categories={parentCategories}

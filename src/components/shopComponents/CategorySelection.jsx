@@ -1,27 +1,10 @@
 import s from './CategorySelection.module.css';
 
-const categories = [
-  { label: 'Indumentaria', value: 'Indumentaria', id: 88 },
-  { label: 'Blanquería', value: 'Blanquería', id: 130 },
-  { label: 'Bisutería', value: 'Bisutería', id: 131 },
-];
+const CategorySelection = ({ categories }) => {
+  console.log('Subcategorías:', categories);
 
-const CategorySelection = ({ onSelect }) => {
   return (
     <div className={s.container}>
-      <h3 className={s.title}>Selecciona una categoría</h3>
-      <div className={s.categories}>
-        {categories.map((cat) => (
-          <button
-            key={cat.value}
-            className={s.categoryBtn}
-            onClick={() => onSelect(cat.value)}
-            type="button"
-          >
-            {cat.label}
-          </button>
-        ))}
-      </div>
     </div>
   );
 };

@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import s from './Shop.module.css';
 import Shopping from '../../components/shopComponents/Shopping';
-import GenderSeletcion from '../../components/shopComponents/GenderSelection';
 import CategorySelection from '../../components/shopComponents/CategorySelection';
 import ModalCategory from '../../components/shopComponents/ModalCategory';
 import { 
@@ -13,30 +12,47 @@ import {
 } from '../../utils/hardcodeo';
 
 const DEFAULT_CATEGORY = 'indumentaria';
+const DEFAULT_GENDER = 3;
 
 const Shop = () => {
-  const { category } = useParams();
+  const { category, gender } = useParams();
   const navigate = useNavigate();
+  const genderFromUrl = gender ? Number(gender) : DEFAULT_GENDER;
   const [showModal, setShowModal] = useState(false);
   const [selectedSubcategory, setSelectedSubcategory] = useState(null);
+  const [selectedGenderId, setSelectedGenderId] = useState(genderFromUrl);
 
   // Busca la categoría por slug (nombre en minúsculas)
   const selectedCategory = parentCategories.find(
     cat => cat.name.toLowerCase() === (category || DEFAULT_CATEGORY).toLowerCase()
   ) || parentCategories[0];
 
-  // Redirige a /tienda/indumentaria si no hay categoría en la URL
+
+  // Cuando cambia el parámetro de género en la URL, actualiza el estado
+  useEffect(() => {
+    if (gender && Number(gender) !== selectedGenderId) {
+      setSelectedGenderId(Number(gender));
+    }
+  }, [gender, selectedGenderId]);
+  
+  // Redirige a /tienda/indumentaria/:gender si no hay categoría o género en la URL
   useEffect(() => {
     if (!category) {
-      navigate(`/tienda/${DEFAULT_CATEGORY}`, { replace: true });
+      navigate(`/tienda/${DEFAULT_CATEGORY}/${selectedGenderId}`, { replace: true });
+    } else if (selectedCategory.name.toLowerCase() === 'indumentaria' && !gender) {
+      navigate(`/tienda/${category}/${selectedGenderId}`, { replace: true });
     }
-  }, [category, navigate]);
+  }, [category, gender, navigate, selectedGenderId, selectedCategory.name]);
 
   // Cambia la categoría y actualiza la URL
   const handleCategoryChange = (newCategoryId) => {
     const cat = parentCategories.find(cat => cat.id === newCategoryId);
     if (cat) {
-      navigate(`/tienda/${cat.name.toLowerCase()}`);
+      if (cat.name.toLowerCase() === 'indumentaria') {
+        navigate(`/tienda/${cat.name.toLowerCase()}/${selectedGenderId}`);
+      } else {
+        navigate(`/tienda/${cat.name.toLowerCase()}`);
+      }
       setShowModal(false);
     }
   };
@@ -50,6 +66,13 @@ const Shop = () => {
   } else if (selectedCategory.name.toLowerCase() === 'bisutería') {
     subcategories = bisuteriaCategories;
   }
+
+  // Cuando cambia el género, actualiza la URL
+  const handleGenderChange = (newGenderId) => {
+    setSelectedGenderId(newGenderId);
+    navigate(`/tienda/${selectedCategory.name.toLowerCase()}/${newGenderId}`);
+    setSelectedSubcategory(null);
+  };
 
   return (
     <div className={s.container}>
@@ -66,6 +89,8 @@ const Shop = () => {
           categories={subcategories}
           onSelect={setSelectedSubcategory}
           isIndumentaria={selectedCategory.name.toLowerCase() === 'indumentaria'}
+          selectedGenderId={selectedGenderId}
+          onGenderChange={handleGenderChange}
         />
       ) : (
         <Shopping subcategory={selectedSubcategory} />

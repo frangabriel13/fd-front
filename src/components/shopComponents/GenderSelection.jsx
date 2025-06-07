@@ -1,24 +1,17 @@
 import s from './GenderSelection.module.css';
 
-const genders = [
-  { label: 'Femenino', value: 'Femenino' },
-  { label: 'Masculino', value: 'Masculino' },
-  { label: 'Unisex', value: 'Unisex' },
-];
-
-const GenderSelection = ({ onSelect }) => {
+const GenderSelection = ({ selectedGenderId, onSelect, genders }) => {
   return (
     <div className={s.container}>
-      <h3 className={s.title}>Géneros</h3>
-      <div className={s.genders}>
-        {genders.map((gender) => (
+      <div className={s.gendersRow}>
+        {genders.map(gender => (
           <button
-            key={gender.value}
-            className={s.genderBtn}
-            onClick={() => onSelect(gender.value)}
+            key={gender.id}
+            className={`${s.genderBtn} ${selectedGenderId === gender.id ? s.selected : ''}`}
+            onClick={() => onSelect(gender.id)}
             type="button"
           >
-            {gender.label}
+            {gender.name}
           </button>
         ))}
       </div>

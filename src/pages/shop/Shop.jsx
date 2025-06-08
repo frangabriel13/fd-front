@@ -15,7 +15,7 @@ const DEFAULT_CATEGORY = 'indumentaria';
 const DEFAULT_GENDER = 3;
 
 const Shop = () => {
-  const { category, gender } = useParams();
+  const { category, gender, subcategory } = useParams();
   const navigate = useNavigate();
   const genderFromUrl = gender ? Number(gender) : DEFAULT_GENDER;
   const [showModal, setShowModal] = useState(false);
@@ -27,6 +27,33 @@ const Shop = () => {
     cat => cat.name.toLowerCase() === (category || DEFAULT_CATEGORY).toLowerCase()
   ) || parentCategories[0];
 
+  // Determina las subcategorías según la categoría principal seleccionada
+  let subcategories = [];
+  if (selectedCategory.name.toLowerCase() === 'indumentaria') {
+    subcategories = indumentariaCategories;
+  } else if (selectedCategory.name.toLowerCase() === 'blanquería') {
+    subcategories = blanqueriaCategories;
+  } else if (selectedCategory.name.toLowerCase() === 'bisutería') {
+    subcategories = bisuteriaCategories;
+  }
+
+  // Sincroniza el estado de subcategoría con la URL
+  useEffect(() => {
+    if (subcategory && subcategories.length > 0) {
+      let found = null;
+      if (selectedCategory.name.toLowerCase() === 'indumentaria') {
+        const genderObj = subcategories.find(cat => cat.gender.id === selectedGenderId);
+        if (genderObj) {
+          found = genderObj.categories.find(cat => String(cat.id) === String(subcategory));
+        }
+      } else if (subcategories[0]?.categories) {
+        found = subcategories[0].categories.find(cat => String(cat.id) === String(subcategory));
+      }
+      setSelectedSubcategory(found || null);
+    } else {
+      setSelectedSubcategory(null);
+    }
+  }, [subcategory, subcategories, selectedCategory.name, selectedGenderId]);
 
   // Cuando cambia el parámetro de género en la URL, actualiza el estado
   useEffect(() => {
@@ -57,21 +84,21 @@ const Shop = () => {
     }
   };
 
-  // Determina las subcategorías según la categoría principal seleccionada
-  let subcategories = [];
-  if (selectedCategory.name.toLowerCase() === 'indumentaria') {
-    subcategories = indumentariaCategories;
-  } else if (selectedCategory.name.toLowerCase() === 'blanquería') {
-    subcategories = blanqueriaCategories;
-  } else if (selectedCategory.name.toLowerCase() === 'bisutería') {
-    subcategories = bisuteriaCategories;
-  }
-
   // Cuando cambia el género, actualiza la URL
   const handleGenderChange = (newGenderId) => {
     setSelectedGenderId(newGenderId);
     navigate(`/tienda/${selectedCategory.name.toLowerCase()}/${newGenderId}`);
     setSelectedSubcategory(null);
+  };
+
+  // Cuando el usuario selecciona una subcategoría, navega a la URL correspondiente
+  const handleSubcategorySelect = (cat) => {
+    setSelectedSubcategory(cat);
+    if (selectedCategory.name.toLowerCase() === 'indumentaria') {
+      navigate(`/tienda/${selectedCategory.name.toLowerCase()}/${selectedGenderId}/${cat.id}`);
+    } else {
+      navigate(`/tienda/${selectedCategory.name.toLowerCase()}/${cat.id}`);
+    }
   };
 
   return (
@@ -87,7 +114,7 @@ const Shop = () => {
       {!selectedSubcategory ? (
         <CategorySelection
           categories={subcategories}
-          onSelect={setSelectedSubcategory}
+          onSelect={handleSubcategorySelect}
           isIndumentaria={selectedCategory.name.toLowerCase() === 'indumentaria'}
           selectedGenderId={selectedGenderId}
           onGenderChange={handleGenderChange}

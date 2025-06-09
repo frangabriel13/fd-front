@@ -12,7 +12,9 @@ import {
   BsStarHalf,
   BsStarFill,
 } from "react-icons/bs";
+import { FaRegShareFromSquare } from "react-icons/fa6";
 import SuccessModal from '../../components/modals/SuccessModal';
+import { shareWspLink } from '../../utils/utils';
 
 const Store = () => {
   const { userId } = useParams();
@@ -44,17 +46,6 @@ const Store = () => {
     dispatch(getUserData(userId, 1, pageSize, newSortOrder));
   };
 
-  // const handleFollow = async () => {
-  //   if (isFollowed) {
-  //     await dispatch(unfollowManufacturer(manufacturer.id));
-  //     setIsFollowed(false);
-  //     setFollowersCount(followersCount - 1);
-  //   } else {
-  //     await dispatch(followManufacturer(manufacturer.id));
-  //     setIsFollowed(true);
-  //     setFollowersCount(followersCount + 1);
-  //   }
-  // };
   const handleFollow = async () => {
     if (!user || user.role !== 'wholesaler') {
       setShowModal(true);
@@ -109,6 +100,7 @@ const Store = () => {
                 : 'Sin calificar'}
             </p>
           </div>
+          <FaRegShareFromSquare className={s.iconShare} onClick={() => shareWspLink(window.location.href)} />
         </div>
         <div className={s.divData}>
           <p className={s.followers}>{followersCount} seguidores</p>

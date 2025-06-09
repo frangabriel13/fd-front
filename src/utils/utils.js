@@ -99,6 +99,12 @@ export const contactWspProduct = (manufacturerName, manufacturerPhone, productUr
   window.open(url, '_blank');
 };
 
+// Comparte un enlace o mensaje en WhatsApp permitiendo elegir el contacto
+export const shareWspLink = (messageOrUrl) => {
+  const url = `https://api.whatsapp.com/send?text=${encodeURIComponent(messageOrUrl)}`;
+  window.open(url, '_blank');
+};
+
 export const timeAgo = (date) => {
   const now = new Date();
   const past = new Date(date);

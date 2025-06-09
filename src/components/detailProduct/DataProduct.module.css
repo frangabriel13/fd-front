@@ -25,13 +25,25 @@
 .divTitle {
   display: flex;
   gap: 1rem;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 }
 
 .title {
   font-size: 3rem;
   font-weight: 600;
+}
+
+.divShare {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.iconShare {
+  font-size: 3rem;
+  color: var(--second-bg-color);
+  cursor: pointer;
 }
 
 .iconHeart {
@@ -251,6 +263,10 @@
     font-size: 2.5rem;
   }
 
+  .iconShare {
+    font-size: 2.5rem;
+  }
+
   .iconHeart {
     font-size: 2.5rem;
   }
@@ -283,6 +299,10 @@
   }
 
   .title {
+    font-size: 2.5rem;
+  }
+
+  .iconShare {
     font-size: 2.5rem;
   }
 
@@ -333,6 +353,10 @@
   }
 
   .title {
+    font-size: 2.5rem;
+  }
+
+  .iconShare {
     font-size: 2.5rem;
   }
 

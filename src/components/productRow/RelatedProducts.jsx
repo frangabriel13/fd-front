@@ -44,14 +44,16 @@ const RelatedProducts = ({ categoryId }) => {
       <div className={s.divNavigation}>
         <div className={s.divProducts} ref={productsContainerRef}>
           {relatedProducts.map(product => (
-            <ProductCard 
-              key={product.id}
-              id={product.id}
-              name={product.name}
-              image={product.mainImage}
-              price={product.price}
-              logo={product.logo}
-            />
+            <div className={s.productCard} key={product.id}>
+              <ProductCard 
+                key={product.id}
+                id={product.id}
+                name={product.name}
+                image={product.mainImage}
+                price={product.price}
+                logo={product.logo}
+              />
+            </div>
           ))}
         </div>
       </div>

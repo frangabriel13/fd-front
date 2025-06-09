@@ -9,7 +9,8 @@ import {
   BsStarHalf,
   BsStarFill,
 } from "react-icons/bs";
-import { formatPrice, contactWspProduct } from '../../utils/utils';
+import { FaRegShareFromSquare } from "react-icons/fa6";
+import { formatPrice, contactWspProduct, shareWspLink } from '../../utils/utils';
 import SuccessModal from '../modals/SuccessModal';
 import Description from './Description';
 
@@ -98,9 +99,6 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
-
-  console.log('Product:', product);
-  console.log('Manufacturer:', manufacturer);
   
   return (
     <div className={s.container}>
@@ -111,18 +109,20 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
         <div className={s.divName}>
           <div className={s.divTitle}>
             <h2 className={s.title}>{product.name}</h2>
-            {/* <BsHeart className={s.iconHeart} /> */}
-            {isFavorite ? (
-              <BsFillHeartFill 
-                className={`${s.iconHeart} ${s.active}`} 
-                onClick={handleFavoriteClick} 
-              />
-            ) : (
-              <BsHeart 
-                className={s.iconHeart} 
-                onClick={handleFavoriteClick} 
-              />
-            )}
+            <div className={s.divShare}>
+              <FaRegShareFromSquare className={s.iconShare} onClick={() => shareWspLink(window.location.href)} />
+              {isFavorite ? (
+                <BsFillHeartFill 
+                  className={`${s.iconHeart} ${s.active}`} 
+                  onClick={handleFavoriteClick} 
+                />
+              ) : (
+                <BsHeart 
+                  className={s.iconHeart} 
+                  onClick={handleFavoriteClick} 
+                />
+              )}
+            </div>
           </div>
         </div>
       </div>

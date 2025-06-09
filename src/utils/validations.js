@@ -104,7 +104,7 @@ export const registerWholesalerValidator = ({ name, phone }) => {
   return errors;
 };
 
-export const editManufacturerValidator = ({ name, owner, phone, minPurchase, pointOfSale, street, tiktokUrl }) => {
+export const editManufacturerValidator = ({ name, owner, phone, minPurchase, pointOfSale, street, tiktokUrl, instagramNick }) => {
   console.log('minPurchase', minPurchase);
   const errors = {};
 
@@ -135,6 +135,10 @@ export const editManufacturerValidator = ({ name, owner, phone, minPurchase, poi
   if(tiktokUrl && typeof tiktokUrl !== 'string') {
     errors.tiktokUrl = 'La URL de TikTok debe ser un string';
   }
+
+  if(instagramNick && typeof instagramNick !== 'string') {
+    errors.instagramNick = 'El nick de Instagram debe ser un string';
+  };
 
   return errors;
 };

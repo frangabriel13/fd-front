@@ -11,6 +11,8 @@ import {
   BsStar,
   BsStarHalf,
   BsStarFill,
+  BsInstagram,
+  BsTiktok,
 } from "react-icons/bs";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import SuccessModal from '../../components/modals/SuccessModal';
@@ -78,6 +80,8 @@ const Store = () => {
     return stars;
   };
 
+  console.log('Manufacturer:', manufacturer);
+
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
@@ -100,13 +104,39 @@ const Store = () => {
                 : 'Sin calificar'}
             </p>
           </div>
-          <FaRegShareFromSquare className={s.iconShare} onClick={() => shareWspLink(window.location.href)} />
         </div>
         <div className={s.divData}>
-          <p className={s.followers}>{followersCount} seguidores</p>
-          <button className={s.btnFollow} onClick={handleFollow}>
-            {isFollowed ? 'Dejar de seguir' : 'Seguir'}
-          </button>
+          <div className={s.divSocial}>
+            {manufacturer.instagramNick && (
+              <a
+              href={`https://instagram.com/${manufacturer.instagramNick}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={s.iconShare}
+              title="Instagram"
+              >
+                <BsInstagram />
+              </a>
+            )}
+            {manufacturer.tiktokUrl && (
+              <a
+              href={manufacturer.tiktokUrl.replace(/\/live$/, '')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={s.iconShare}
+              title="TikTok"
+              >
+                <BsTiktok />
+              </a>
+            )}
+            <FaRegShareFromSquare className={s.iconShare} onClick={() => shareWspLink(window.location.href)} />
+          </div>
+          <div className={s.divFollow}>
+            <p className={s.followers}>{followersCount} seguidores</p>
+            <button className={s.btnFollow} onClick={handleFollow}>
+              {isFollowed ? 'Dejar de seguir' : 'Seguir'}
+            </button>
+          </div>
         </div>
       </div>
       <Reviews 

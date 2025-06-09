@@ -59,16 +59,31 @@
   font-weight: 400;
 }
 
+.divData {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.divSocial {
+  display: flex;
+  gap: 1rem;
+}
+
 .iconShare {
   font-size: 2.5rem;
-  color: var(--second-bg-color);
+  color: white;
   cursor: pointer;
 }
 
-.divData {
+.divFollow {
   display: flex;
-  gap: 1rem;
   align-items: center;
+  gap: .5rem;
+}
+
+.iconShare:hover {
+  color: var(--third-bg-color);
 }
 
 .followers {
@@ -133,6 +148,8 @@
 
   .divHeader {
     padding: .5rem 1rem;
+    flex-direction: column;
+    gap: .5rem;
   }
 
   .divProducts {
@@ -140,7 +157,9 @@
   }
 
   .divTitle {
-    padding: .5rem;
+    padding: .5rem 1rem;
+    width: 100%;
+    justify-content: space-between;
   }
 
   .divLogo {
@@ -169,8 +188,12 @@
   }
 
   .divData {
+    gap: 1rem;
+  }
+
+  .divFollow {
+    gap: .1rem;
     flex-direction: column-reverse;
-    gap: .2rem;
   }
 
   .followers {

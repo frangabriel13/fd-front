@@ -18,9 +18,9 @@ const Home = () => {
         <Banner />
       </div>
       <div className={s.home}>
-        <Features />
         <LiveShopping />
         <GenederList />
+        <Features />
         <NewArrivals />
         <ProductsOnSale />
         <BisBlanProducts />

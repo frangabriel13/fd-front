@@ -28,6 +28,10 @@ const initialState = {
   bisBlanProducts: [],
   results: [],
 
+  relatedProducts: [],
+  loadingRelatedProducts: false,
+  errorRelatedProducts: null,
+
   product: null,
   loading: false,
   error: null,
@@ -194,6 +198,21 @@ const productReducer = (state = initialState, action) => {
         ...state,
         loadingOtherProducts: false,
         errorOtherProducts: action.error,
+      };
+    case 'GET_RELATED_PRODUCTS_REQUEST':
+      return { ...state, loadingRelatedProducts: true, errorRelatedProducts: null };
+    case 'GET_RELATED_PRODUCTS_SUCCESS':
+      return {
+        ...state,
+        loadingRelatedProducts: false,
+        errorRelatedProducts: null,
+        relatedProducts: action.payload,
+      };
+    case 'GET_RELATED_PRODUCTS_FAILURE':
+      return {
+        ...state,
+        loadingRelatedProducts: false,
+        errorRelatedProducts: action.error,
       };
     default:
       return state;

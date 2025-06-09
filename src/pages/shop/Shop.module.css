@@ -1,3 +1,39 @@
+/* .container {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+  padding-bottom: 4rem;
+  margin-top: 7.8rem;
+}
+
+.divHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 30rem;
+  background-color: var(--second-color);
+}
+
+.title {
+  padding: .5rem 0;
+  font-size: 3rem;
+}
+
+.btnChange {
+  background: white;
+  color: var(--second-bg-color);
+  border: none;
+  border-radius: .3rem;
+  padding: .5rem 1.2rem;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.btnChange:hover {
+  background-color: var(--second-bg-color);
+  color: white;
+} */
+
 .container {
   display: flex;
   flex-direction: column;
@@ -31,8 +67,6 @@
 
 .divProducts {
   display: grid;
-  /* grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr));
-  gap: 3rem; */
   grid-template-columns: repeat(6, 1fr);
   gap: 2rem;
   padding: 0 30rem;

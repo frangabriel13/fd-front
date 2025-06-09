@@ -2,6 +2,7 @@ import { productInstance } from "../../utils/axiosConfig";
 
 export const getProducts = (page = 1, pageSize = 24, filters = {}, searchTerm = '') => async (dispatch) => {
   dispatch({ type: 'GET_PRODUCTS_REQUEST' });
+  console.log('filters', filters);
   try {
     const response = await productInstance.get('/', {
       params: {
@@ -267,6 +268,22 @@ export const getBisuteriaOrBlanqueria = () => async (dispatch) => {
   } catch(error) {
     dispatch({
       type: 'GET_BISUTERIA_OR_BLANQUERIA_FAILURE',
+      error: error.message,
+    });
+  }
+};
+
+export const getRelatedProducts = (categoryId) => async (dispatch) => {
+  dispatch({ type: 'GET_RELATED_PRODUCTS_REQUEST' });
+  try {
+    const response = await productInstance.get(`/related/${categoryId}`);
+    dispatch({
+      type: 'GET_RELATED_PRODUCTS_SUCCESS',
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'GET_RELATED_PRODUCTS_FAILURE',
       error: error.message,
     });
   }

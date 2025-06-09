@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import s from './ProductDetail.module.css';
 import { getProductById } from '../../store/actions/productActions';
@@ -9,8 +10,10 @@ import { formatPrice } from '../../utils/utils';
 import Gallery from '../../components/detailProduct/Gallery';
 import DataProduct from '../../components/detailProduct/DataProduct';
 import MoreProducts from '../../components/productRow/MoreProducts';
+import RelatedProducts from '../../components/productRow/RelatedProducts';
 
 const ProductDetail = () => {
+  const navigate = useNavigate();
   const { productId } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product.product);
@@ -59,16 +62,7 @@ const ProductDetail = () => {
           onAddToCart={handleAddToCart} 
         />
       </div>
-      <div className={s.divDescription}>
-        <h3>Descripción</h3>
-        <p>{product.description || "Sin descripción disponible."}</p>
-      </div>
       <div className={s.divMoreProducts}>
-        {/* <MoreProducts 
-          userId={product.userId}
-          manufacturerId={manufacturer.id}
-          manufacturerName={manufacturer.name}
-        /> */}
         {product.userId && manufacturer.id && manufacturer.name && (
           <MoreProducts
             userId={product.userId}
@@ -77,6 +71,12 @@ const ProductDetail = () => {
             manufacturerLogo={manufacturer.image}
           />
         )}
+        { product.categoryId && (
+          <RelatedProducts categoryId={product.categoryId} />
+        )}
+      </div>
+      <div className={s.btnHomeContainer}>
+        <button className={s.btnHome} onClick={() => navigate('/')}>Inicio</button>
       </div>
     </div>
   );

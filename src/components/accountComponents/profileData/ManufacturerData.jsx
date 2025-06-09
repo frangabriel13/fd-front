@@ -45,6 +45,10 @@ const ManufacturerData = ({ user }) => {
           <h4>TikTok URL</h4>
           <p>{user.manufacturer.tiktokUrl}</p>
         </div>
+        <div className={s.divInput}>
+          <h4>Instagram URL</h4>
+          <p>{user.manufacturer.instagramNick}</p>
+        </div>
       </div>
       <hr className={s.divider} />
       <div className={s.divBtn}>

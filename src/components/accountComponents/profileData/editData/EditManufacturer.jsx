@@ -16,6 +16,7 @@ const EditManufacturer = ({ user, closeModal }) => {
     street: user.manufacturer.street || '',
     // tiktokUrl: user.manufacturer.tiktokUrl || '',
     tiktokUrl: user.manufacturer.tiktokUrl ? urlToNickname(user.manufacturer.tiktokUrl) : '',
+    instagramNick: user.manufacturer.instagramNick || '',
   });
   const [errors, setErrors] = useState({});
 
@@ -46,6 +47,11 @@ const EditManufacturer = ({ user, closeModal }) => {
       }
       if (dataToSubmit.tiktokUrl) {
         dataToSubmit.tiktokUrl = nicknameToUrl(dataToSubmit.tiktokUrl);
+      } else {
+        dataToSubmit.tiktokUrl = null;
+      }
+      if (!dataToSubmit.instagramNick) {
+        dataToSubmit.instagramNick = null;
       }
       dispatch(updateManufacturer(user.manufacturer.id, dataToSubmit));
       closeModal();
@@ -131,7 +137,8 @@ const EditManufacturer = ({ user, closeModal }) => {
                   {errors.street && <p className={s.error}>{errors.street}</p>}
                 </div>
               </div>
-              <div className={s.divInputTikTok}>
+              {/* <div className={s.divInputTikTok}> */}
+              <div className={s.divInputs}>
                 <div className={s.divInput}>
                   <h4>Usuario de TikTok</h4>
                   <input
@@ -142,6 +149,17 @@ const EditManufacturer = ({ user, closeModal }) => {
                     onChange={handleChange}
                   />
                   {errors.tiktokUrl && <p className={s.error}>{errors.tiktokUrl}</p>}
+                </div>
+                <div className={s.divInput}>
+                  <h4>Usuario de Instagram</h4>
+                  <input
+                    className={s.input}
+                    type="text"
+                    name="instagramNick"
+                    value={formData.instagramNick}
+                    onChange={handleChange}
+                  />
+                  {errors.instagramNick && <p className={s.error}>{errors.instagramNick}</p>}
                 </div>
               </div>
               <div className={s.divBtn}>

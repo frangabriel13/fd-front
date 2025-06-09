@@ -6,6 +6,10 @@ export const urlToNickname = (url) => {
   return url.split('@')[1].split('/')[0];
 };
 
+export const instagramNicknameToUrl = (nickname) => {
+  return `https://www.instagram.com/${nickname}/`;
+}
+
 export const filterCategoriesByParentAndGender = (categories, parentId, genderId) => {
   return categories.filter((category) => 
     category.parentId === parentId && 

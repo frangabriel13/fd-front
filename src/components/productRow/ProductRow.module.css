@@ -122,16 +122,20 @@
   }
 
   .title {
-    font-size: 2rem;
+    font-size: 1.6rem;
   }
 
   .btnMore {
-    font-size: 1.4rem;
-    padding: .5rem 1.5rem;
+    font-size: 1.2rem;
+    padding: .5rem 1rem;
   }
 
   .prevButton, .nextButton {
     font-size: 2rem;
     padding: 2rem;
+  }
+
+  .productCard {
+    min-width: 40%;
   }
 }

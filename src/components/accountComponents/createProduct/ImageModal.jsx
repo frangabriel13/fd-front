@@ -10,6 +10,7 @@ const ImageModal = ({ onClose, onSave }) => {
   const [uploadedImages, setUploadedImages] = useState([]);
   const [mainImage, setMainImage] = useState('');
   const [isUploadDisabled, setIsUploadDisabled] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
 
   useEffect(() => {
     if (images) {
@@ -83,12 +84,14 @@ const ImageModal = ({ onClose, onSave }) => {
   //   dispatch(uploadImages(formData));
   // };
   const handleUpload = async () => {
+    setIsUploading(true);
     const formData = new FormData();
     for (const image of selectedImages) {
       const resized = await resizeImageCover(image);
       formData.append('images', resized);
     }
-    dispatch(uploadImages(formData));
+    await dispatch(uploadImages(formData));
+    setIsUploading(false);
   };
 
   const handleSelectMainImage = (imageId) => {
@@ -113,13 +116,21 @@ const ImageModal = ({ onClose, onSave }) => {
           </div>
           <div className={s.divImages}>
             <input className={s.inputFile} type="file" multiple onChange={handleImageChange} />
-            <button 
+            {/* <button 
               className={`${s.btnNext} ${isUploadDisabled ? s.btnDisabled : ''}`}
               type='button' 
               onClick={handleUpload} 
               disabled={isUploadDisabled}
             >
               Subir imágenes
+            </button> */}
+            <button 
+              className={`${s.btnNext} ${(isUploadDisabled || isUploading) ? s.btnDisabled : ''}`}
+              type='button' 
+              onClick={handleUpload} 
+              disabled={isUploadDisabled || isUploading}
+            >
+              {isUploading ? 'Subiendo imágenes...' : 'Subir imágenes'}
             </button>
           </div>
           <div className={s.uploadImages}>

@@ -16,7 +16,7 @@ const EditVariableProduct = ({ product, closeModal }) => {
     onSale: product.onSale,
     colors: product.colors || [],
     isVariable: product.isVariable,
-    sizes: product.sizes || [],
+    sizes: [76],
   });
   const [tagInput, setTagInput] = useState('');
   const [showColorModal, setShowColorModal] = useState(false);
@@ -71,7 +71,20 @@ const EditVariableProduct = ({ product, closeModal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateProduct(product.id, formData));
+
+    // Generar variations igual que en el formulario de creación
+    const variations = formData.colors.map((color) => ({
+      colorId: color.id,
+      mainImage: formData.mainImage,
+      images: formData.images,
+    }));
+
+    const productData = {
+      ...formData,
+      variations,
+    };
+
+    dispatch(updateProduct(product.id, productData));
     closeModal();
   };
 

@@ -3,6 +3,7 @@ import s from './SizeModal.module.css';
 
 const SizeModal = ({ sizes, onClose, onSave, initialSelectedSizes }) => {
   const [selectedSizes, setSelectedSizes] = useState([]);
+  console.log("Sizes in SizeModal:", initialSelectedSizes);
 
   useEffect(() => {
     setSelectedSizes(initialSelectedSizes);

@@ -18,9 +18,6 @@ const ImageModal = ({ onClose, onSave }) => {
     }
   }, [images]);
 
-  console.log('images', images);
-  console.log('uploadedImages', uploadedImages);
-
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
       onClose();

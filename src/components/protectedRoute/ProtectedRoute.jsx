@@ -1,6 +1,6 @@
 import s from "./ProtectedRoute.module.css";
 
-const ProtectedRouyte = ({ allowedRoles, userRole, children }) => {
+const ProtectedRoute = ({ allowedRoles, userRole, children }) => {
   if(!allowedRoles.includes(userRole)) {
     return <div>Access Denied</div>;
   }
@@ -13,4 +13,4 @@ const ProtectedRouyte = ({ allowedRoles, userRole, children }) => {
 }
 
 
-export default ProtectedRouyte;
+export default ProtectedRoute;

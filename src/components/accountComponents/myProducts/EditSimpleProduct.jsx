@@ -15,12 +15,14 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
     priceUSD: product.priceUSD,
     onSale: product.onSale,
     isVariable: product.isVariable,
-    // mainImage: product.mainImage,
-    // images: product.images,
+    mainImage: product.mainImage,
+    images: product.images,
+    imgIds: [],
     sizes: product.sizes || [],
   });
   const [tagInput, setTagInput] = useState('');
   const [showSizeModal, setShowSizeModal] = useState(false);
+  const [showImageModal, setShowImageModal] = useState(false);
 
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
@@ -74,6 +76,19 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
       sizes: selectedSizes,
     });
     setShowSizeModal(false);
+  };
+
+  const handleShowImageModal = () => setShowImageModal(true);
+  const handleHideImageModal = () => setShowImageModal(false);
+
+  const handleSaveImages = (selectedImages, mainImage, imgIds) => {
+    setFormData({
+      ...formData,
+      images: selectedImages,
+      mainImage: mainImage,
+      imgIds: imgIds,
+    });
+    setShowImageModal(false);
   };
 
   console.log('Form Data:', formData);
@@ -176,7 +191,7 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
                   <div className={s.divCategories}>
                     <h4>Imágenes</h4>
                     <div>
-                      <button type="button">Editar imágenes</button>
+                      <button type="button" onClick={handleShowImageModal}>Editar imágenes</button>
                     </div>
                   </div>
                 </div>
@@ -196,6 +211,12 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
           sizes={sizes}
           onSave={handleSaveSizes}
           initialSelectedSizes={formData.sizes}
+        />
+      )}
+      {showImageModal && (
+        <ImageModal
+          onClose={handleHideImageModal}
+          onSave={handleSaveImages}
         />
       )}
     </div>

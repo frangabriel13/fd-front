@@ -1,19 +1,25 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateProduct } from '../../../store/actions/productActions';
 import s from './EditSimpleProduct.module.css';
+import ColorModal from '../createProduct/ColorModal';
 
 const EditVariableProduct = ({ product, closeModal }) => {
   const dispatch = useDispatch();
+  const colors = useSelector((state) => state.color.colors);
   const [formData, setFormData] = useState({
     name: product.name,
-    price: product.price,
+    price: Number(product.price),
     description: product.description,
     tags: product.tags,
-    priceUSD: product.priceUSD,
+    priceUSD: Number(product.priceUSD),
     onSale: product.onSale,
+    colors: product.colors || [],
+    isVariable: product.isVariable,
+    sizes: product.sizes || [],
   });
   const [tagInput, setTagInput] = useState('');
+  const [showColorModal, setShowColorModal] = useState(false);
 
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
@@ -53,11 +59,24 @@ const EditVariableProduct = ({ product, closeModal }) => {
     });
   };
 
+  const handleShowColorModal = () => setShowColorModal(true);
+  const handleHideColorModal = () => setShowColorModal(false);
+  const handleSaveColors = (selectedColors) => {
+    setFormData({
+      ...formData,
+      colors: selectedColors,
+    });
+    setShowColorModal(false);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(updateProduct(product.id, formData));
     closeModal();
   };
+
+  console.log("Form Data in EditVariableProduct:", formData);
+
 
   return (
     <div className={s.modal} onClick={handleClickOutside}>
@@ -151,7 +170,7 @@ const EditVariableProduct = ({ product, closeModal }) => {
                   <div className={s.divCategories}>
                     <h4>Colores</h4>
                     <div>
-                      <button type="button">Editar colores</button>
+                      <button type="button" onClick={handleShowColorModal}>Editar colores</button>
                     </div>
                   </div>
                   <div className={s.divCategories}>
@@ -171,6 +190,14 @@ const EditVariableProduct = ({ product, closeModal }) => {
           </form>
         </div>
       </div>
+      {showColorModal && (
+        <ColorModal
+          onClose={handleHideColorModal}
+          colors={colors}
+          onSave={handleSaveColors}
+          initialSelectedColors={formData.colors}
+        />
+      )}
     </div>
   );
 };

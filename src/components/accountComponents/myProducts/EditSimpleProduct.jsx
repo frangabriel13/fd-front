@@ -76,6 +76,8 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
     setShowSizeModal(false);
   };
 
+  console.log('Form Data:', formData);
+
   return (
     <div className={s.modal} onClick={handleClickOutside}>
       <div className={s.modalContent}>

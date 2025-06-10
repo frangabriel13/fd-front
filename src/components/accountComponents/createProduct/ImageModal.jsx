@@ -36,11 +36,58 @@ const ImageModal = ({ onClose, onSave }) => {
     setIsUploadDisabled(false);
   };
 
-  const handleUpload = () => {
-    const formData = new FormData();
-    selectedImages.forEach((image) => {
-      formData.append('images', image);
+  const resizeImageCover = (file, targetWidth = 900, targetHeight = 1200) => {
+    return new Promise((resolve) => {
+      const img = new window.Image();
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        img.src = e.target.result;
+      };
+      img.onload = () => {
+        const aspectRatio = targetWidth / targetHeight;
+        let cropWidth = img.width;
+        let cropHeight = img.height;
+        let offsetX = 0;
+        let offsetY = 0;
+
+        if (img.width / img.height > aspectRatio) {
+          cropWidth = img.height * aspectRatio;
+          offsetX = (img.width - cropWidth) / 2;
+        } else {
+          cropHeight = img.width / aspectRatio;
+          offsetY = (img.height - cropHeight) / 2;
+        }
+
+        const canvas = document.createElement('canvas');
+        canvas.width = targetWidth;
+        canvas.height = targetHeight;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(
+          img,
+          offsetX, offsetY, cropWidth, cropHeight,
+          0, 0, targetWidth, targetHeight
+        );
+        canvas.toBlob((blob) => {
+          resolve(new File([blob], file.name, { type: file.type }));
+        }, file.type, 0.9);
+      };
+      reader.readAsDataURL(file);
     });
+  };
+
+  // const handleUpload = () => {
+  //   const formData = new FormData();
+  //   selectedImages.forEach((image) => {
+  //     formData.append('images', image);
+  //   });
+  //   dispatch(uploadImages(formData));
+  // };
+  const handleUpload = async () => {
+    const formData = new FormData();
+    for (const image of selectedImages) {
+      const resized = await resizeImageCover(image);
+      formData.append('images', resized);
+    }
     dispatch(uploadImages(formData));
   };
 

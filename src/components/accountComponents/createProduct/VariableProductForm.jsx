@@ -7,7 +7,7 @@ import ImageModal from './ImageModal';
 import ColorModal from './ColorModal';
 import { createVariableProductValidator } from '../../../utils/validations';
 
-const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClose, onSuccess }) => {
+const VariableProductForm = ({ productType, genderProduct, selectedCategory, onClose, onSuccess }) => {
   const dispatch = useDispatch();
   const colors = useSelector((state) => state.color.colors);
   const [formData, setFormData] = useState({
@@ -275,4 +275,4 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
 }
 
 
-export default SimpleProductForm;
+export default VariableProductForm;

@@ -2,9 +2,9 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateProduct } from '../../../store/actions/productActions';
 import s from './EditSimpleProduct.module.css';
+import ImageModal from '../createProduct/ImageModal';
 
 const EditBisuteriProduct = ({ product, closeModal }) => {
-  console.log('product', product);
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
     name: product.name,
@@ -13,8 +13,12 @@ const EditBisuteriProduct = ({ product, closeModal }) => {
     tags: product.tags,
     priceUSD: product.priceUSD,
     onSale: product.onSale,
+    mainImage: product.mainImage,
+    images: product.images,
+    imgIds: [],
   });
   const [tagInput, setTagInput] = useState('');
+  const [showImageModal, setShowImageModal] = useState(false);
 
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
@@ -55,6 +59,19 @@ const EditBisuteriProduct = ({ product, closeModal }) => {
       ...formData,
       tags: formData.tags.filter((_, i) => i !== index),
     });
+  };
+
+  const handleShowImageModal = () => setShowImageModal(true);
+  const handleHideImageModal = () => setShowImageModal(false);
+
+  const handleSaveImages = (selectedImages, mainImage, imgIds) => {
+    setFormData({
+      ...formData,
+      images: selectedImages,
+      mainImage: mainImage,
+      imgIds: imgIds,
+    });
+    setShowImageModal(false);
   };
 
   const handleSubmit = (e) => {
@@ -165,7 +182,7 @@ const EditBisuteriProduct = ({ product, closeModal }) => {
                   <div className={s.divCategories}>
                     <h4>Imágenes</h4>
                     <div>
-                      <button type="button">Editar imágenes</button>
+                      <button type="button" onClick={handleShowImageModal}>Editar imágenes</button>
                     </div>
                   </div>
                 </div>
@@ -179,6 +196,12 @@ const EditBisuteriProduct = ({ product, closeModal }) => {
           </form>
         </div>
       </div>
+      {showImageModal && (
+        <ImageModal
+          onClose={handleHideImageModal}
+          onSave={handleSaveImages}
+        />
+      )}
     </div>
   );
 };

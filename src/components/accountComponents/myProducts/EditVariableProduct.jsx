@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { updateProduct } from '../../../store/actions/productActions';
 import s from './EditSimpleProduct.module.css';
 import ColorModal from '../createProduct/ColorModal';
+import ImageModal from '../createProduct/ImageModal';
 
 const EditVariableProduct = ({ product, closeModal }) => {
   const dispatch = useDispatch();
@@ -17,9 +18,13 @@ const EditVariableProduct = ({ product, closeModal }) => {
     colors: product.colors || [],
     isVariable: product.isVariable,
     sizes: [76],
+    mainImage: product.mainImage,
+    images: product.images,
+    imgIds: [],
   });
   const [tagInput, setTagInput] = useState('');
   const [showColorModal, setShowColorModal] = useState(false);
+  const [showImageModal, setShowImageModal] = useState(false);
 
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
@@ -67,6 +72,19 @@ const EditVariableProduct = ({ product, closeModal }) => {
       colors: selectedColors,
     });
     setShowColorModal(false);
+  };
+
+  const handleShowImageModal = () => setShowImageModal(true);
+  const handleHideImageModal = () => setShowImageModal(false);
+
+  const handleSaveImages = (selectedImages, mainImage, imgIds) => {
+    setFormData({
+      ...formData,
+      images: selectedImages,
+      mainImage: mainImage,
+      imgIds: imgIds,
+    });
+    setShowImageModal(false);
   };
 
   const handleSubmit = (e) => {
@@ -189,7 +207,7 @@ const EditVariableProduct = ({ product, closeModal }) => {
                   <div className={s.divCategories}>
                     <h4>Imágenes</h4>
                     <div>
-                      <button type="button">Editar imágenes</button>
+                      <button type="button" onClick={handleShowImageModal}>Editar imágenes</button>
                     </div>
                   </div>
                 </div>
@@ -209,6 +227,12 @@ const EditVariableProduct = ({ product, closeModal }) => {
           colors={colors}
           onSave={handleSaveColors}
           initialSelectedColors={formData.colors}
+        />
+      )}
+      {showImageModal && (
+        <ImageModal
+          onClose={handleHideImageModal}
+          onSave={handleSaveImages}
         />
       )}
     </div>

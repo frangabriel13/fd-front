@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { updateProduct } from '../../../store/actions/productActions';
 import s from './EditSimpleProduct.module.css';
-import sizeModal from '../createProduct/SizeModal';
-import imageModal from '../createProduct/ImageModal';
+import SizeModal from '../createProduct/SizeModal';
+import ImageModal from '../createProduct/ImageModal';
 
 const EditSimpleProduct = ({ product, closeModal, sizes }) => {
   const dispatch = useDispatch();
@@ -17,9 +17,10 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
     isVariable: product.isVariable,
     // mainImage: product.mainImage,
     // images: product.images,
-    // sizes: product.sizes,
+    sizes: product.sizes || [],
   });
   const [tagInput, setTagInput] = useState('');
+  const [showSizeModal, setShowSizeModal] = useState(false);
 
   const handleClickOutside = (e) => {
     if (e.target === e.currentTarget) {
@@ -62,6 +63,17 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
     e.preventDefault();
     dispatch(updateProduct(product.id, formData));
     closeModal();
+  };
+
+  const handleShowSizeModal = () => setShowSizeModal(true);
+  const handleHideSizeModal = () => setShowSizeModal(false);
+
+   const handleSaveSizes = (selectedSizes) => {
+    setFormData({
+      ...formData,
+      sizes: selectedSizes,
+    });
+    setShowSizeModal(false);
   };
 
   return (
@@ -156,7 +168,7 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
                   <div className={s.divCategories}>
                     <h4>Talles</h4>
                     <div>
-                      <button type="button">Editar talles</button>
+                      <button type="button" onClick={handleShowSizeModal}>Editar talles</button>
                     </div>
                   </div>
                   <div className={s.divCategories}>
@@ -176,6 +188,14 @@ const EditSimpleProduct = ({ product, closeModal, sizes }) => {
           </form>
         </div>
       </div>
+      {showSizeModal && (
+        <SizeModal
+          onClose={handleHideSizeModal}
+          sizes={sizes}
+          onSave={handleSaveSizes}
+          initialSelectedSizes={formData.sizes}
+        />
+      )}
     </div>
   );
 };

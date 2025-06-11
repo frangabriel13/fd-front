@@ -23,6 +23,7 @@ import Cart from './pages/cart/Cart';
 import PackDetail from './pages/packDetail/PackDetail';
 import useWindowWidth from './hooks/useWindowWidth';
 import Maintenance from './components/maintenance/Maintenance';
+import Packs from './pages/packs/Packs';
 
 function App() {
   const location = useLocation();
@@ -89,6 +90,7 @@ function App() {
           <Route path='/preguntas-frecuentes' element={<Help />} />
           <Route path='/mi-carrito' element={<Cart />} />
           <Route path='/pack/:packId' element={<PackDetail />} />
+          <Route path='/packs' element={<Packs />} />
         </Routes>
       </div>
       {/* <Maintenance /> */}

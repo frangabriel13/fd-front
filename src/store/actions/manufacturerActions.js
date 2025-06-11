@@ -96,6 +96,7 @@ export const updateManufacturer = (id, manufacturerData) => async (dispatch) => 
   dispatch({ type: 'UPDATE_MANUFACTURER_REQUEST' });
   try {
     const response = await manufacturerInstance.put(`/${id}`, manufacturerData);
+    console.log('Update Manufacturer Response:', response.data);
     dispatch({
       type: 'UPDATE_MANUFACTURER',
       payload: response.data,

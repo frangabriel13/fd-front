@@ -163,10 +163,10 @@ const EditManufacturer = ({ user, closeModal }) => {
                   {errors.instagramNick && <p className={s.error}>{errors.instagramNick}</p>}
                 </div>
               </div>
-              <div className={s.divInput}>
-                <h4>Descripción</h4>
+              <div className={s.divDescription}>
+                <h4 className={s.label}>Descripción</h4>
                 <textarea
-                  className={s.input}
+                  className={s.textarea}
                   name="description"
                   value={formData.description}
                   onChange={handleChange}

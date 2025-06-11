@@ -25,3 +25,83 @@
   gap: 2rem;
   padding: 0 30rem;
 }
+
+@media (max-width: 1360px) {
+  .divHeader {
+    padding: 1rem 15rem;
+  }
+
+  .divFilters {
+    margin: 0 15rem;
+  }
+
+  .divProducts {
+    padding: 0 15rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .divHeader {
+    padding: 1rem 5rem;
+  }
+
+  .divFilters {
+    margin: 0 5rem;
+  }
+
+  .divProducts {
+    padding: 0 5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .divHeader {
+    padding: 1rem 2rem;
+  }
+
+  .divFilters {
+    margin: 0 2rem;
+  }
+
+  .divProducts {
+    padding: 0 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin-top: 4.5rem;
+  }
+
+  .divHeader {
+    padding: .5rem 1rem;
+  }
+
+  .filterToggleBtn {
+    display: block;
+    background: white;
+    color: var(--second-bg-color);
+    border: none;
+    border-radius: .3rem;
+    padding: .5rem 1.2rem;
+    font-size: 1.1rem;
+    margin-left: auto;
+    cursor: pointer;
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .divFilters {
+    margin: 0 1rem;
+  }
+
+  .divProducts {
+    padding: 0 1rem;
+    gap: .5rem;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

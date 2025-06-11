@@ -18,3 +18,10 @@
   padding: .5rem 0;
   font-size: 3rem;
 }
+
+.divProducts {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+  padding: 0 30rem;
+}

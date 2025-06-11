@@ -3,14 +3,19 @@ import { useSelector, useDispatch } from 'react-redux';
 import { getPacks } from '../../store/actions/packActions';
 import s from './Packs.module.css';
 import PackCard from '../../components/packStore/packCard';
+import Pagination from '../../components/Pagination/Pagination';
 
 const Packs = () => {
   const dispatch = useDispatch();
-  const { packs } = useSelector(state => state.pack);
+  const { packs, currentPage, totalPacks } = useSelector(state => state.pack);
 
   useEffect(() => {
-    dispatch(getPacks());
-  }, [dispatch]);
+    dispatch(getPacks(currentPage, 24));
+  }, [dispatch, currentPage]);
+
+  const handlePageChange = (page) => {
+    dispatch(getPacks(page, 24));
+  };
 
   return (
     <div className={s.container}>
@@ -34,6 +39,12 @@ const Packs = () => {
           <p>No hay packs disponibles.</p>
         )}
       </div>
+      <Pagination
+        currentPage={currentPage}
+        totalProducts={totalPacks}
+        pageSize={24}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };

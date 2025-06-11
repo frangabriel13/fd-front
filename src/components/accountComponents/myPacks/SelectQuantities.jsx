@@ -12,24 +12,24 @@ const SelectQuantities = ({ products, onClose, onSave }) => {
   };
 
   const handleQuantityChange = (productId, inventoryId, value) => {
-    const newProducts = updatedProducts.map(product => {
-      if (product.id === productId) {
-        const updatedQuantities = product.quantities.map(quantity =>
-          quantity.id === inventoryId
-            ? { ...quantity, quantity: parseInt(value) || 0 }
-            : quantity
-        );
-  
-        return {
-          ...product,
-          quantities: updatedQuantities,
-        };
-      }
-      return product;
-    });
-  
-    setUpdatedProducts(newProducts); // Actualizar el estado local
-  };
+  const newProducts = updatedProducts.map(product => {
+    if (product.id === productId) {
+      const updatedQuantities = product.quantities.map(quantity =>
+        quantity.id === inventoryId
+          ? { ...quantity, quantity: value === "" ? "" : parseInt(value) || 0 }
+          : quantity
+      );
+
+      return {
+        ...product,
+        quantities: updatedQuantities,
+      };
+    }
+    return product;
+  });
+
+  setUpdatedProducts(newProducts);
+};
 
   const handleSave = () => {
     onSave(updatedProducts); // Llamar a onSave con los productos actualizados
@@ -60,7 +60,7 @@ const SelectQuantities = ({ products, onClose, onSave }) => {
                           <h5>Cantidad:</h5>
                           <input
                             type="number"
-                            value={quantityObj.quantity}
+                            value={quantityObj.quantity === 0 ? (quantityObj.quantity === "" ? "" : 0) : quantityObj.quantity}
                             onChange={(e) =>
                               handleQuantityChange(product.id, inv.id, e.target.value)
                             }

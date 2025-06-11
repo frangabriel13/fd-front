@@ -59,6 +59,16 @@
   font-weight: 400;
 }
 
+.divDescription {
+  border-radius: .3rem;
+}
+
+.divDescription p {
+  font-size: 1.2rem;
+  color: black;
+  text-align: center;
+}
+
 .divData {
   display: flex;
   gap: 2rem;

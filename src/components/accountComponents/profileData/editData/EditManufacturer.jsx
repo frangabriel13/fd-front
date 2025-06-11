@@ -17,6 +17,7 @@ const EditManufacturer = ({ user, closeModal }) => {
     // tiktokUrl: user.manufacturer.tiktokUrl || '',
     tiktokUrl: user.manufacturer.tiktokUrl ? urlToNickname(user.manufacturer.tiktokUrl) : '',
     instagramNick: user.manufacturer.instagramNick || '',
+    description: user.manufacturer.description || '',
   });
   const [errors, setErrors] = useState({});
 
@@ -161,6 +162,17 @@ const EditManufacturer = ({ user, closeModal }) => {
                   />
                   {errors.instagramNick && <p className={s.error}>{errors.instagramNick}</p>}
                 </div>
+              </div>
+              <div className={s.divDescription}>
+                <h4 className={s.label}>Descripción</h4>
+                <textarea
+                  className={s.textarea}
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  rows={3}
+                />
+                {errors.description && <p className={s.error}>{errors.description}</p>}
               </div>
               <div className={s.divBtn}>
                 <button className={s.btnCancel} onClick={closeModal}>Cancelar</button>

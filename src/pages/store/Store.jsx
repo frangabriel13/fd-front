@@ -105,6 +105,11 @@ const Store = () => {
             </p>
           </div>
         </div>
+        { manufacturer.description && (
+          <div className={s.divDescription}>
+            <p className={s.description}>{manufacturer.description}</p>
+          </div>
+        )}
         <div className={s.divData}>
           <div className={s.divSocial}>
             {manufacturer.instagramNick && (

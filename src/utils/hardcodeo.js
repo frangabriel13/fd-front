@@ -7,9 +7,9 @@ export const parentCategories = [
 ];
 
 export const genders = [
-  { id: 2, name: 'Hombre' },
-  { id: 3, name: 'Mujer' },
-  { id: 4, name: 'Niño' },
-  { id: 5, name: 'Niña' },
-  { id: 6, name: 'Bebés' },
+  { id: 2, name: 'Hombre', url: 'hombre' },
+  { id: 3, name: 'Mujer', url: 'mujer' },
+  { id: 4, name: 'Niño', url: 'niño' },
+  { id: 5, name: 'Niña', url: 'niña' },
+  { id: 6, name: 'Bebés', url: 'bebes' },
 ];

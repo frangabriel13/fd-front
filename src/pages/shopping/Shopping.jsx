@@ -1,22 +1,25 @@
 import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import GenderFilter from '../../components/shopping/GenderFilter';
 import s from './Shopping.module.css';
 
 const Shopping = () => {
   const navigate = useNavigate();
+  const { gender } = useParams();
 
   useEffect(() => {
-    navigate('/tienda/mujer', { replace: true });
-  }, [navigate]);
+    if(!gender) {
+      navigate('/tienda/mujer', { replace: true });
+    }
+  }, [navigate, gender]);
 
-  const handleGenderSelect = (gender) => {
-    navigate(`/tienda/${gender}`);
+  const handleGenderSelect = (selectedGender) => {
+    navigate(`/tienda/${selectedGender}`);
   };
 
   return (
     <div className={s.container}>
-      <GenderFilter onSelect={handleGenderSelect} />
+      <GenderFilter selectedGender={gender} onSelect={handleGenderSelect} />
     </div>
   );
 };

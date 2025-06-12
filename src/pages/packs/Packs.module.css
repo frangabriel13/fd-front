@@ -19,11 +19,31 @@
   font-size: 3rem;
 }
 
+.divPacks {
+  display: flex;
+  flex-direction: column;
+  padding: 0 30rem;
+  gap: 1rem;
+}
+
+.divSelect {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.select {
+  padding: .5rem 1rem;
+  font-size: 1.4rem;
+  border-radius: .3rem;
+  border: none;
+  background-color: transparent;
+}
+
 .divProducts {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 2rem;
-  padding: 0 30rem;
+  /* padding: 0 30rem; */
 }
 
 @media (max-width: 1360px) {

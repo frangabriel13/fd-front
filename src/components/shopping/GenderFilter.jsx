@@ -7,8 +7,8 @@ const GenderFilter = ({ selectedGender, onSelect }) => {
       {genders.map(gender => (
         <button
           key={gender.id}
-          onClick={() => onSelect(gender.id)}
-          className={`${s.button} ${selectedGender === gender.id ? s.selected : ''}`}
+          onClick={() => onSelect(gender.url)}
+          className={`${s.button} ${selectedGender === gender.url ? s.selected : ''}`}
         >
           {gender.name}
         </button>

@@ -81,18 +81,19 @@ function App() {
           <Route path='/completar-registro' element={<CompleteRegistration />} />
           <Route path='/verificar-cuenta' element={<VerifyAccount />} />
           <Route path='/store/:userId' element={<Store />} />
-          <Route path="/tienda" element={<Shop />} />
+          {/* <Route path="/tienda" element={<Shop />} />
           <Route path="/tienda/:category" element={<Shop />} />
           <Route path="/tienda/:category/:subcategory" element={<Shop />} />
           <Route path="/tienda/:category/:gender" element={<Shop />} />
-          <Route path="/tienda/:category/:gender/:subcategory" element={<Shop />} />
+          <Route path="/tienda/:category/:gender/:subcategory" element={<Shop />} /> */}
           <Route path='/producto/:productId' element={<ProductDetail />} />
           <Route path='/fabricantes' element={<Manufacturers />} />
           <Route path='/preguntas-frecuentes' element={<Help />} />
           <Route path='/mi-carrito' element={<Cart />} />
           <Route path='/pack/:packId' element={<PackDetail />} />
           <Route path='/packs' element={<Packs />} />
-          <Route path='/shopping' element={<Shopping />} />
+          <Route path='/tienda' element={<Shopping />} />
+          <Route path='/tienda/:gender' element={<Shopping />} />
         </Routes>
       </div>
       {/* <Maintenance /> */}

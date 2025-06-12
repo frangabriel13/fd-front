@@ -33,7 +33,7 @@ const Navbar = () => {
         {showCategories && <Dropdown categories={categories} />}
       </div> */}
       {/* <Link to="/tienda" className={s.link}>Tienda</Link> */}
-      <Link to="/shopping" className={s.link}>Tienda</Link>
+      <Link to="/tienda" className={s.link}>Tienda</Link>
       <Link to="/packs" className={s.link}>Packs</Link>
       <Link to="/fabricantes" className={s.link}>Fabricantes</Link>
       <Link to="/preguntas-frecuentes" className={s.link}>Ayuda</Link>

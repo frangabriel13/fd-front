@@ -55,8 +55,12 @@
     margin: 0 15rem;
   }
 
-  .divProducts {
+  .divPacks {
     padding: 0 15rem;
+  }
+
+  .divProducts {
+    gap: 1rem;
   }
 }
 
@@ -69,7 +73,7 @@
     margin: 0 5rem;
   }
 
-  .divProducts {
+  .divPacks {
     padding: 0 5rem;
   }
 }
@@ -83,7 +87,7 @@
     margin: 0 2rem;
   }
 
-  .divProducts {
+  .divPacks {
     padding: 0 2rem;
   }
 }
@@ -119,9 +123,14 @@
     margin: 0 1rem;
   }
 
-  .divProducts {
+  .divPacks {
     padding: 0 1rem;
     gap: .5rem;
+  }
+
+  .divProducts {
     grid-template-columns: repeat(2, 1fr);
+    padding: 0 1rem;
+    gap: .5rem;
   }
 }

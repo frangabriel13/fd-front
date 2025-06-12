@@ -11,11 +11,11 @@ const Packs = () => {
   const [sortBy, setSortBy] = useState('newest');
 
   useEffect(() => {
-    dispatch(getPacks(currentPage, 2, sortBy));
+    dispatch(getPacks(currentPage, 24, sortBy));
   }, [dispatch, currentPage, sortBy]);
 
   const handlePageChange = (page) => {
-    dispatch(getPacks(page, 2, sortBy));
+    dispatch(getPacks(page, 24, sortBy));
   };
 
   const handleSortChange = (e) => {
@@ -56,7 +56,7 @@ const Packs = () => {
       <Pagination
         currentPage={currentPage}
         totalProducts={totalPacks}
-        pageSize={2}
+        pageSize={24}
         onPageChange={handlePageChange}
       />
     </div>

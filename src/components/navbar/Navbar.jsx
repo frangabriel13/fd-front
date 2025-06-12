@@ -28,11 +28,12 @@ const Navbar = () => {
 
   return (
     <div className={s.container}>
-      <div className={s.link} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+      {/* <div className={s.link} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
         Categorías <BsChevronDown className={s.icon} />
         {showCategories && <Dropdown categories={categories} />}
-      </div>
+      </div> */}
       <Link to="/tienda" className={s.link}>Tienda</Link>
+      <Link to="/packs" className={s.link}>Packs</Link>
       <Link to="/fabricantes" className={s.link}>Fabricantes</Link>
       <Link to="/preguntas-frecuentes" className={s.link}>Ayuda</Link>
     </div>

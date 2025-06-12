@@ -24,6 +24,7 @@ import PackDetail from './pages/packDetail/PackDetail';
 import useWindowWidth from './hooks/useWindowWidth';
 import Maintenance from './components/maintenance/Maintenance';
 import Packs from './pages/packs/Packs';
+import Shopping from './pages/shopping/Shopping';
 
 function App() {
   const location = useLocation();
@@ -91,6 +92,7 @@ function App() {
           <Route path='/mi-carrito' element={<Cart />} />
           <Route path='/pack/:packId' element={<PackDetail />} />
           <Route path='/packs' element={<Packs />} />
+          <Route path='/shopping' element={<Shopping />} />
         </Routes>
       </div>
       {/* <Maintenance /> */}

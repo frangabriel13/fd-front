@@ -1,7 +1,6 @@
 import s from './GenderFilter.module.css';
-import { genders } from '../../utils/hardcodeo';
 
-const GenderFilter = ({ selectedGender, onSelect }) => {
+const GenderFilter = ({ selectedGender, onSelect, genders }) => {
   return (
     <div className={s.container}>
       {genders.map(gender => (

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import GenderFilter from '../../components/shopping/GenderFilter';
 import CategoryFilter from '../../components/shopping/CategoryFilter';
 import s from './Shopping.module.css';
+import { genders } from '../../utils/hardcodeo';
 
 const Shopping = () => {
   const navigate = useNavigate();
@@ -18,9 +19,13 @@ const Shopping = () => {
     navigate(`/tienda/${selectedGender}`);
   };
 
+  const selectedGenderObj = genders.find(g => g.url === gender);
+  const categories = selectedGenderObj ? selectedGenderObj.categories : [];
+
   return (
     <div className={s.container}>
-      <GenderFilter selectedGender={gender} onSelect={handleGenderSelect} />
+      <GenderFilter selectedGender={gender} onSelect={handleGenderSelect} genders={genders} />
+      <CategoryFilter categories={categories} />
     </div>
   );
 };

@@ -12,4 +12,5 @@ export const genders = [
   { id: 4, name: 'Niño', url: 'niño' },
   { id: 5, name: 'Niña', url: 'niña' },
   { id: 6, name: 'Bebés', url: 'bebes' },
+  { id: 7, name: 'Más', url: 'mas' },
 ];

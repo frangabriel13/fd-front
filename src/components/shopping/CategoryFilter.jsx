@@ -1,9 +1,14 @@
 import s from './CategoryFilter.module.css';
 
-const CategoryFilter = () => {
+const CategoryFilter = ({ categories }) => {
   return (
     <div className={s.container}>
-      sigsilghsuodf
+      {categories.map((cat, idx) => (
+        <div key={idx} className={s.item}>
+          <img src={cat.image} alt={cat.name} className={s.image} />
+          <span className={s.name}>{cat.name}</span>
+        </div>
+      ))}
     </div>
   );
 };

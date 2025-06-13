@@ -2,7 +2,6 @@
   display: flex;
   gap: 1.5rem;
   justify-content: center;
-  /* padding: 1rem 0; */
   background-color: var(--second-color);
 }
 
@@ -29,7 +28,6 @@
   position: absolute;
   left: 0; right: 0; bottom: 0;
   height: .25rem;
-  /* background: linear-gradient(90deg, #0078d4 0%, #00c6fb 100%); */
   background: linear-gradient(90deg, var(--third-bg-color) 0%, var(--other-blue) 100%);
   transform: scaleX(0);
   transition: transform 0.25s cubic-bezier(.4,0,.2,1);

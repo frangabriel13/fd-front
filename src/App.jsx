@@ -94,6 +94,7 @@ function App() {
           <Route path='/packs' element={<Packs />} />
           <Route path='/tienda' element={<Shopping />} />
           <Route path='/tienda/:gender' element={<Shopping />} />
+          <Route path='/tienda/:gender/:category' element={<Shopping />} />
         </Routes>
       </div>
       {/* <Maintenance /> */}

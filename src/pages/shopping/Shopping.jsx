@@ -7,7 +7,7 @@ import { genders } from '../../utils/hardcodeo';
 
 const Shopping = () => {
   const navigate = useNavigate();
-  const { gender } = useParams();
+  const { gender, category } = useParams();
 
   useEffect(() => {
     if(!gender) {
@@ -16,7 +16,15 @@ const Shopping = () => {
   }, [navigate, gender]);
 
   const handleGenderSelect = (selectedGender) => {
-    navigate(`/tienda/${selectedGender}`);
+    if (category) {
+      navigate(`/tienda/${selectedGender}/${category}`);
+    } else {
+      navigate(`/tienda/${selectedGender}`);
+    }
+  };
+
+   const handleCategorySelect = (selectedCategory) => {
+    navigate(`/tienda/${gender}/${selectedCategory}`);
   };
 
   const selectedGenderObj = genders.find(g => g.url === gender);
@@ -24,8 +32,17 @@ const Shopping = () => {
 
   return (
     <div className={s.container}>
-      <GenderFilter selectedGender={gender} onSelect={handleGenderSelect} genders={genders} />
-      <CategoryFilter categories={categories} />
+      <GenderFilter 
+        selectedGender={gender} 
+        onSelect={handleGenderSelect} 
+        genders={genders} 
+      />
+      <CategoryFilter 
+        categories={categories} 
+        onSelect={handleCategorySelect} 
+        selectedCategory={category}
+      />
+      
     </div>
   );
 };

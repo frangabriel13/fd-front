@@ -62,3 +62,43 @@
 .button.selected::after {
   background: linear-gradient(90deg, var(--third-bg-color) 0%, var(--other-blue) 100%);
 }
+
+@media (max-width: 1360px) {
+  .header {
+    padding: 0 15rem;
+  }
+  .button {
+    font-size: 1.3rem;
+    padding: 0.75rem 1rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .header {
+    padding: 0 10rem;
+  }
+  .button {
+    font-size: 1.2rem;
+    padding: 0.65rem 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 0 5rem;
+  }
+  .button {
+    font-size: 1.1rem;
+    padding: 0.55rem 0.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 0 1rem;
+  }
+  .button {
+    font-size: 1rem;
+    padding: 0.45rem 0.5rem;
+  }
+}

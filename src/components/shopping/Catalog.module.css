@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 0 30rem;
+  background-color: var(--second-color);
+  padding: 0rem 30rem;
+}
+
+.button {
+  background: none;
+  border: none;
+  border-bottom: .1rem solid transparent;
+  padding: 0.85rem 1rem;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
+  cursor: pointer;
+  transition:
+    color 0.25s cubic-bezier(.4,0,.2,1),
+    border-bottom-color 0.25s cubic-bezier(.4,0,.2,1);
+  outline: none;
+  letter-spacing: .1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+
+.button::after {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  height: .25rem;
+  background: linear-gradient(90deg, var(--third-bg-color) 0%, var(--other-blue) 100%);
+  transform: scaleX(0);
+  transition: transform 0.25s cubic-bezier(.4,0,.2,1);
+  border-radius: 2px;
+}
+
+.button:hover,
+.button:focus {
+  color: var(--third-bg-color);
+}
+
+.button:hover::after,
+.button:focus::after,
+.button.selected::after {
+  transform: scaleX(1);
+}
+
+.button.selected {
+  color: var(--third-bg-color);
+}
+
+.button.selected::after {
+  background: linear-gradient(90deg, var(--third-bg-color) 0%, var(--other-blue) 100%);
+}

@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ProductCard from '../productStore/ProductCard';
+import Pagination from '../pagination/Pagination';
 import s from './Catalog.module.css';
 import { getProducts } from '../../store/actions/productActions';
 import { GrLinkPrevious } from "react-icons/gr";
@@ -50,6 +51,12 @@ const Catalog = ({ genderId, categoryId }) => {
           ))
         )}
       </div>
+      <Pagination 
+        totalItems={products.length} 
+        itemsPerPage={24} 
+        currentPage={1} 
+        onPageChange={(page) => dispatch(getProducts(page, 24, genderId, categoryId))}
+      />
     </div>
   );
 };

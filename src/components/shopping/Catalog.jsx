@@ -10,14 +10,18 @@ import { GrLinkPrevious } from "react-icons/gr";
 const Catalog = ({ genderId, categoryId }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { products, loading, error } = useSelector(state => state.product);
+  const { products, loading, error, currentPage, totalProducts } = useSelector(state => state.product);
 
   useEffect(() => {
-    dispatch(getProducts(1, 24, genderId, categoryId));
-  }, [dispatch, genderId, categoryId]);
+    dispatch(getProducts(currentPage, 24, genderId, categoryId));
+  }, [dispatch, genderId, categoryId, currentPage]);
 
   const handleBack = () => {
     navigate('/tienda');
+  };
+
+  const handlePageChange = (page) => {
+    dispatch(getProducts(page, 24, genderId, categoryId));
   };
 
   return (
@@ -52,10 +56,10 @@ const Catalog = ({ genderId, categoryId }) => {
         )}
       </div>
       <Pagination 
-        totalItems={products.length} 
-        itemsPerPage={24} 
-        currentPage={1} 
-        onPageChange={(page) => dispatch(getProducts(page, 24, genderId, categoryId))}
+        totalProducts={totalProducts} 
+        pageSize={24} 
+        currentPage={currentPage} 
+        onPageChange={handlePageChange}
       />
     </div>
   );

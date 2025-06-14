@@ -78,6 +78,10 @@
     font-size: 1.3rem;
     padding: 0.75rem 1rem;
   }
+  .productList {
+    grid-template-columns: repeat(6, 1fr);
+    padding: 0 15rem;
+  }
 }
 
 @media (max-width: 1024px) {
@@ -87,6 +91,10 @@
   .button {
     font-size: 1.2rem;
     padding: 0.65rem 0.8rem;
+  }
+  .productList {
+    grid-template-columns: repeat(6, 1fr);
+    padding: 0 5rem;
   }
 }
 
@@ -98,6 +106,10 @@
     font-size: 1.1rem;
     padding: 0.55rem 0.6rem;
   }
+  .productList {
+    grid-template-columns: repeat(4, 1fr);
+    padding: 0 2rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -107,5 +119,10 @@
   .button {
     font-size: 1rem;
     padding: 0.45rem 0.5rem;
+  }
+  .productList {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0 1rem;
+    gap: 1rem;
   }
 }

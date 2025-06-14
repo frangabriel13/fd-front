@@ -28,8 +28,13 @@ const Shopping = () => {
     navigate(`/tienda/${gender}/${selectedCategory}`);
   };
 
+  // const selectedGenderObj = genders.find(g => g.url === gender);
+  // const categories = selectedGenderObj ? selectedGenderObj.categories : [];
   const selectedGenderObj = genders.find(g => g.url === gender);
+  const genderId = selectedGenderObj ? selectedGenderObj.id : null;
   const categories = selectedGenderObj ? selectedGenderObj.categories : [];
+  const selectedCategoryObj = categories.find(c => c.url === category);
+  const categoryId = selectedCategoryObj ? selectedCategoryObj.id : null;
 
   return (
     <div className={s.container}>
@@ -47,7 +52,10 @@ const Shopping = () => {
           />
         </>
       ) : (
-        <Catalog gender={gender} category={category} />
+        <Catalog
+          genderId={genderId}
+          categoryId={categoryId}
+        />
       )}
     </div>
   );

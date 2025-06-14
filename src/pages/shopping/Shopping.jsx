@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import GenderFilter from '../../components/shopping/GenderFilter';
 import CategoryFilter from '../../components/shopping/CategoryFilter';
+import Catalog from '../../components/shopping/Catalog';
 import s from './Shopping.module.css';
 import { genders } from '../../utils/hardcodeo';
 
@@ -32,17 +33,22 @@ const Shopping = () => {
 
   return (
     <div className={s.container}>
-      <GenderFilter 
-        selectedGender={gender} 
-        onSelect={handleGenderSelect} 
-        genders={genders} 
-      />
-      <CategoryFilter 
-        categories={categories} 
-        onSelect={handleCategorySelect} 
-        selectedCategory={category}
-      />
-      
+      {!category ? (
+        <>
+          <GenderFilter 
+            selectedGender={gender} 
+            onSelect={handleGenderSelect} 
+            genders={genders} 
+          />
+          <CategoryFilter 
+            categories={categories} 
+            onSelect={handleCategorySelect} 
+            selectedCategory={category}
+          />
+        </>
+      ) : (
+        <Catalog gender={gender} category={category} />
+      )}
     </div>
   );
 };

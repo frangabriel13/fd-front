@@ -63,6 +63,13 @@
   background: linear-gradient(90deg, var(--third-bg-color) 0%, var(--other-blue) 100%);
 }
 
+.productList {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2rem;
+  padding: 0 30rem;
+}
+
 @media (max-width: 1360px) {
   .header {
     padding: 0 15rem;

@@ -4,7 +4,8 @@ export const getProducts = (
   page = 1,
   pageSize = 24,
   genderId = null,
-  categoryId = null
+  categoryId = null,
+  sortBy = 'newest'
 ) => async (dispatch) => {
   dispatch({ type: 'GET_PRODUCTS_REQUEST' });
   try {
@@ -13,6 +14,7 @@ export const getProducts = (
       pageSize,
       genderId,
       categoryId,
+      sortBy,
     };
 
     const response = await productInstance.get('/', { params });

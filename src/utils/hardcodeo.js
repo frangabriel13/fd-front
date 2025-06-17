@@ -3,6 +3,11 @@ import bermudasShorts from '../assets/categorias/hombre/bermudas-y-shorts.png';
 import buzosHombre from '../assets/categorias/hombre/buzos.png';
 import calzadosHombre from '../assets/categorias/hombre/calzados.png';
 import camisasHombre from '../assets/categorias/hombre/camisas.png';
+import camperasHombre from '../assets/categorias/hombre/camperas.png';
+import jeansHombre from '../assets/categorias/hombre/jeans.png';
+import remerasHombre from '../assets/categorias/hombre/remeras.png';
+import interiorHombre from '../assets/categorias/hombre/ropa-interior.png';
+import sweatersHombre from '../assets/categorias/hombre/sweaters.png';
 
 export const parentCategories = [
   { id: 88, name: 'Indumentaria' },
@@ -16,16 +21,16 @@ export const genders = [
     name: 'Hombre', 
     url: 'hombre',
     categories: [
-      { id: 135, name: 'Jeans', image, url: 'jeans', img: bermudasShorts },
+      { id: 135, name: 'Jeans', image, url: 'jeans', img: jeansHombre },
       { id: 136, name: 'Pantalones', image, url: 'pantalones', img: bermudasShorts },
       { id: 139, name: 'Bermudas y shorts', image, url: 'bermudas-y-shorts', img: bermudasShorts },
-      { id: 141, name: 'Camperas', image, url: 'camperas', img: bermudasShorts },
-      { id: 142, name: 'Remeras', image, url: 'remeras', img: bermudasShorts },
+      { id: 141, name: 'Camperas', image, url: 'camperas', img: camperasHombre },
+      { id: 142, name: 'Remeras', image, url: 'remeras', img: remerasHombre },
       { id: 143, name: 'Camisas', image, url: 'camisas', img: camisasHombre },
       { id: 144, name: 'Chombas', image, url: 'chombas', img: bermudasShorts },
       { id: 146, name: 'Buzos', image, url: 'buzos', img: buzosHombre },
-      { id: 147, name: 'Sweaters', image, url: 'sweaters', img: bermudasShorts },
-      { id: 151, name: 'Ropa interior', image, url: 'ropa-interior', img: bermudasShorts },
+      { id: 147, name: 'Sweaters', image, url: 'sweaters', img: sweatersHombre },
+      { id: 151, name: 'Ropa interior', image, url: 'ropa-interior', img: interiorHombre },
       { id: 154, name: 'Calzados', image, url: 'calzados', img: calzadosHombre },
       { id: 155, name: 'Otros', image, url: 'otros', img: bermudasShorts },
     ],

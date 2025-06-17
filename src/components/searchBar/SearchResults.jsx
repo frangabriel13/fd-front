@@ -57,11 +57,11 @@ const SearchResults = ({ results, onResultSelect }) => {
             <li key={results.user[0].id}>
               <Link 
               className={s.link} 
-              to={`/store/${results.user[0].id}`}
+              to={`/store/${results.user[0].userId}`}
               onClick={handleSelect}
               >
                 {results.user[0].name}
-              </Link>a
+              </Link>
             </li>
           </ul>
         </div>

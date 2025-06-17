@@ -9,7 +9,7 @@ const CategoryFilter = ({ categories, onSelect, selectedCategory }) => {
           className={`${s.item} ${selectedCategory === cat.url ? s.selected : ''}`}
           onClick={() => onSelect(cat.url)}
         >
-          <img src={cat.image} alt={cat.name} className={s.image} />
+          <img src={cat.img} alt={cat.name} className={s.image} />
           <span className={s.name}>{cat.name}</span>
         </div>
       ))}

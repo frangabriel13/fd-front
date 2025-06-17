@@ -25,13 +25,34 @@ const UploadProduct = ({ sizes }) => {
     dispatch(getCategories());
   }, [dispatch]);
 
+  // const handleTypeClick = (type, id) => {
+  //   setProductType({ type, id });
+  //   setShowForm(false);
+  //   setTimeout(() => {
+  //     characteristicsRef.current.scrollIntoView({ behavior: 'smooth' });
+  //   }, 100);
+  // }
   const handleTypeClick = (type, id) => {
-    setProductType({ type, id });
-    setShowForm(false);
+  setProductType({ type, id });
+  setShowForm(false);
+
+  // Si es Blanquería o Bisutería, pasar directo al formulario
+  if (id === 130 || id === 131) {
+    setFormProps({
+      productType: { type, id },
+      genderProduct: null, // o el valor que corresponda si necesitas género
+      selectedCategory: id, // categoryId igual al id del tipo
+    });
+    setShowForm(true);
+    setTimeout(() => {
+      formRef.current.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
+  } else {
     setTimeout(() => {
       characteristicsRef.current.scrollIntoView({ behavior: 'smooth' });
     }, 100);
   }
+};
 
   const handleShowForm = (props) => {
     setFormProps(props);
@@ -96,7 +117,7 @@ const UploadProduct = ({ sizes }) => {
           />
         </div>
       )}
-      {productType && (productType.id === 130 || productType.id === 131) && (
+      {/* {productType && (productType.id === 130 || productType.id === 131) && (
         <div ref={characteristicsRef}>
           <OtherProductCharacteristics 
             productType={productType} 
@@ -105,7 +126,7 @@ const UploadProduct = ({ sizes }) => {
             onShowForm={handleShowForm}
           />
         </div>
-      )}
+      )} */}
       {showForm && productType.id === 88 && formProps && formProps.uniqueSize && (
         <div ref={formRef}>
           <VariableProductForm

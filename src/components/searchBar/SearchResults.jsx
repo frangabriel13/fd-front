@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import s from './SearchResults.module.css';
 
 const SearchResults = ({ results, onResultSelect }) => {
-  const hasProducts = results.product.products.length > 0;
-  const hasCategories = results.product.categories && results.product.categories.length > 0;
+  const hasProducts = results.product.length > 0;
+  // const hasCategories = results.product.categories && results.product.categories.length > 0;
   const hasUsers = results.user && results.user.length > 0;
 
   const handleSelect = () => {
@@ -18,7 +18,7 @@ const SearchResults = ({ results, onResultSelect }) => {
         <div className={s.divResults}>
           <p>Productos</p>
           <ul>
-            {results.product.products.slice(0, 3).map((product) => (
+            {results.product.slice(0, 3).map((product) => (
               <li key={product.id}>
                 <Link 
                   className={s.link} 
@@ -32,7 +32,7 @@ const SearchResults = ({ results, onResultSelect }) => {
           </ul>
         </div>
       )}
-      {hasCategories && (
+      {/* {hasCategories && (
         <div className={s.divResults}>
           <p>Categorías</p>
           <ul>
@@ -49,7 +49,7 @@ const SearchResults = ({ results, onResultSelect }) => {
             ))}
           </ul>
         </div>
-      )}
+      )} */}
       {hasUsers && (
         <div className={s.divResults}>
           <p>Fabricante</p>
@@ -66,7 +66,8 @@ const SearchResults = ({ results, onResultSelect }) => {
           </ul>
         </div>
       )}
-      {!hasProducts && !hasCategories && !hasUsers && (
+      {!hasProducts && !hasUsers && (
+      // {!hasProducts && !hasCategories && !hasUsers && (
         <div className={s.noResults}>
           <p>No se encontraron resultados</p>
         </div>

@@ -99,6 +99,7 @@ const VariableProductForm = ({ productType, genderProduct, selectedCategory, onC
     //   onSuccess();
     //   onClose();
     // });
+    console.log('Product data to create:', productData);
     dispatch(createProduct(productData)).then(() => {
       setLoading(false); // <-- desactivar loading al terminar
       onSuccess();

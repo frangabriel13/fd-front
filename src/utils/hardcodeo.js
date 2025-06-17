@@ -8,6 +8,7 @@ import jeansHombre from '../assets/categorias/hombre/jeans.png';
 import remerasHombre from '../assets/categorias/hombre/remeras.png';
 import interiorHombre from '../assets/categorias/hombre/ropa-interior.png';
 import sweatersHombre from '../assets/categorias/hombre/sweaters.png';
+import pantalonesHombre from '../assets/categorias/hombre/pantalones.png';
 import sweatersMujer from '../assets/categorias/mujer/sweaters.png';
 import camisasMujer from '../assets/categorias/mujer/camisas.png';
 import camperasMujer from '../assets/categorias/mujer/camperas.png';
@@ -17,6 +18,16 @@ import pantalonesCalzasMujer from '../assets/categorias/mujer/pantalones-y-calza
 import shortsPollerasMujer from '../assets/categorias/mujer/shorts-y-polleras.png';
 import calzadosMujer from '../assets/categorias/mujer/calzados.png';
 import vestidosMujer from '../assets/categorias/mujer/vestidos.png';
+import buzosNino from '../assets/categorias/nino/buzos.png';
+import camperasNino from '../assets/categorias/nino/camperas.png';
+import otrosNino from '../assets/categorias/nino/otros.png';
+import interiorNino from '../assets/categorias/nino/ropa-interior.png';
+import otrosNina from '../assets/categorias/nina/otros.png';
+import vestidosNina from '../assets/categorias/nina/vestidos.png';
+import bodysBebe from '../assets/categorias/bebes/bodys.png';
+import eneteritosBebe from '../assets/categorias/bebes/conjuntos-y-enteritos.png';
+import otrosBebe from '../assets/categorias/bebes/otros.png';
+import remerasBebe from '../assets/categorias/bebes/remeras.png';
 
 export const parentCategories = [
   { id: 88, name: 'Indumentaria' },
@@ -31,7 +42,7 @@ export const genders = [
     url: 'hombre',
     categories: [
       { id: 135, name: 'Jeans', image, url: 'jeans', img: jeansHombre },
-      { id: 136, name: 'Pantalones', image, url: 'pantalones', img: bermudasShorts },
+      { id: 136, name: 'Pantalones', image, url: 'pantalones', img: pantalonesHombre },
       { id: 139, name: 'Bermudas y shorts', image, url: 'bermudas-y-shorts', img: bermudasShorts },
       { id: 141, name: 'Camperas', image, url: 'camperas', img: camperasHombre },
       { id: 142, name: 'Remeras', image, url: 'remeras', img: remerasHombre },
@@ -71,15 +82,15 @@ export const genders = [
       { id: 135, name: 'Jeans', image, url: 'jeans', img: bermudasShorts },
       { id: 136, name: 'Pantalones', image, url: 'pantalones', img: bermudasShorts },
       { id: 139, name: 'Bermudas y shorts', image, url: 'bermudas-y-shorts', img: bermudasShorts },
-      { id: 141, name: 'Camperas', image, url: 'camperas', img: bermudasShorts },
+      { id: 141, name: 'Camperas', image, url: 'camperas', img: camperasNino },
       { id: 142, name: 'Remeras', image, url: 'remeras', img: bermudasShorts },
       { id: 143, name: 'Camisas', image, url: 'camisas', img: bermudasShorts },
       { id: 144, name: 'Chombas', image, url: 'chombas', img: bermudasShorts },
-      { id: 146, name: 'Buzos', image, url: 'buzos', img: bermudasShorts },
+      { id: 146, name: 'Buzos', image, url: 'buzos', img: buzosNino },
       { id: 147, name: 'Sweaters', image, url: 'sweaters', img: bermudasShorts },
-      { id: 151, name: 'Ropa interior', image, url: 'ropa-interior', img: bermudasShorts },
+      { id: 151, name: 'Ropa interior', image, url: 'ropa-interior', img: interiorNino },
       { id: 154, name: 'Calzados', image, url: 'calzados', img: bermudasShorts },
-      { id: 155, name: 'Otros', image, url: 'otros', img: bermudasShorts },
+      { id: 155, name: 'Otros', image, url: 'otros', img: otrosNino },
     ], 
   },
   { 
@@ -95,10 +106,10 @@ export const genders = [
       { id: 143, name: 'Camisas', image, url: 'camisas', img: bermudasShorts },
       { id: 146, name: 'Buzos', image, url: 'buzos', img: bermudasShorts },
       { id: 147, name: 'Swaters', image, url: 'swaters', img: bermudasShorts },
-      { id: 149, name: 'Vestidos', image, url: 'vestidos', img: bermudasShorts },
+      { id: 149, name: 'Vestidos', image, url: 'vestidos', img: vestidosNina },
       { id: 152, name: 'Ropa interior y mallas', image, url: 'ropa-interior-y-mallas', img: bermudasShorts },
       { id: 154, name: 'Calzados', image, url: 'calzados', img: bermudasShorts },
-      { id: 155, name: 'Otros', image, url: 'otros', img: bermudasShorts },
+      { id: 155, name: 'Otros', image, url: 'otros', img: otrosNina },
     ],
   },
   { 
@@ -109,15 +120,15 @@ export const genders = [
       { id: 135, name: 'Jeans', image, url: 'jeans', img: bermudasShorts },
       { id: 138, name: 'Pantalones y shorts', image, url: 'pantalones-y-shorts', img: bermudasShorts },
       { id: 141, name: 'Camperas', image, url: 'camperas', img: bermudasShorts },
-      { id: 142, name: 'Remeras', image, url: 'remeras', img: bermudasShorts },
+      { id: 142, name: 'Remeras', image, url: 'remeras', img: remerasBebe },
       { id: 143, name: 'Camisas', image, url: 'camisas', img: bermudasShorts },
-      { id: 145, name: 'Bodys', image, url: 'bodys', img: bermudasShorts },
+      { id: 145, name: 'Bodys', image, url: 'bodys', img: bodysBebe },
       { id: 148, name: 'Buzos y swaters', image, url: 'buzos-y-swaters', img: bermudasShorts },
       { id: 149, name: 'Vestidos', image, url: 'vestidos', img: bermudasShorts },
-      { id: 150, name: 'Conjuntos y enteritos', image, url: 'conjuntos-y-enteritos', img: bermudasShorts },
+      { id: 150, name: 'Conjuntos y enteritos', image, url: 'conjuntos-y-enteritos', img: eneteritosBebe },
       { id: 152, name: 'Ropa interior y mallas', image, url: 'ropa-interior-y-mallas', img: bermudasShorts },
       { id: 154, name: 'Calzados', image, url: 'calzados', img: bermudasShorts },
-      { id: 155, name: 'Otros', image, url: 'otros', img: bermudasShorts },
+      { id: 155, name: 'Otros', image, url: 'otros', img: otrosBebe },
     ],
   },
   { 

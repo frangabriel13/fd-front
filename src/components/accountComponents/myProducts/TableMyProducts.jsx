@@ -63,7 +63,7 @@ const TableMyProducts = ({
                     <td>{product.name}</td>
                     {/* <td>{product.category.parent.name}</td> */}
                     {/* <td>{product.category.name}</td> */}
-                    <td>{product.category?.parent?.name || 'Cargando...'}</td>
+                    <td>{product.category?.parent?.name || 'Otros'}</td>
                     <td>{product.category?.name || 'Cargando...'}</td>
                     <td>{product.gender ? product.gender.name : 'No'}</td>
                     <td>{formatPrice(product.price)}</td>
@@ -85,11 +85,22 @@ const TableMyProducts = ({
           pageSize={myPageSize}
         />
       </div>
-      {isModalOpen && (
+      {/* {isModalOpen && (
         isVariable ? (
           <EditVariableProduct product={selectedProduct} closeModal={closeModal} />
         ) : (
           selectedProduct.category.parent.name === 'Indumentaria' ? (
+            <EditSimpleProduct product={selectedProduct} closeModal={closeModal} sizes={sizes} />
+          ) : (
+            <EditBisuteriProduct product={selectedProduct} closeModal={closeModal} />
+          )
+        )
+      )} */}
+      {isModalOpen && (
+        isVariable ? (
+          <EditVariableProduct product={selectedProduct} closeModal={closeModal} />
+        ) : (
+          selectedProduct.category?.parent && selectedProduct.category.parent.name === 'Indumentaria' ? (
             <EditSimpleProduct product={selectedProduct} closeModal={closeModal} sizes={sizes} />
           ) : (
             <EditBisuteriProduct product={selectedProduct} closeModal={closeModal} />

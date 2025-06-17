@@ -72,6 +72,7 @@ const BisuteriProductForm = ({ productType, genderProduct, selectedCategory, onC
     };
 
     setErrors({});
+    console.log('Datos del producto:', productData);
     dispatch(createProduct(productData)).then(() => {
       setLoading(false); // <-- desactivar loading al terminar
       onSuccess();

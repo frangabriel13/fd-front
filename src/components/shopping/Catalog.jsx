@@ -11,7 +11,7 @@ const Catalog = ({ genderId, categoryId }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { products, loading, error, currentPage, totalProducts } = useSelector(state => state.product);
-  const [sortBy, setSortBy] = useState('newest');
+  const [sortBy, setSortBy] = useState('notOrdered');
 
   useEffect(() => {
     dispatch(getProducts(currentPage, 24, genderId, categoryId, sortBy));
@@ -43,6 +43,7 @@ const Catalog = ({ genderId, categoryId }) => {
       <div className={s.divProducts}>
         <div className={s.divSelect}>
           <select className={s.select} value={sortBy} onChange={handleSortChange}>
+            <option value="notOrdered">Sin orden</option>
             <option value="newest">Más Nuevos</option>
             <option value="lowestPrice">Menor precio</option>
             <option value="highestPrice">Mayor precio</option>

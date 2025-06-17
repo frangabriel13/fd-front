@@ -99,12 +99,16 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
   const handleCloseModal = () => {
     setShowModal(false);
   };
+
+  console.log('Product:', product);
   
   return (
     <div className={s.container}>
       <div className={s.divHeader}>
         <div className={s.divCategory}>
-          <p>{product.category.name} | {product.category.parent.name}</p>
+          {product.category && product.category.name && product.category.parent && product.category.parent.name ? (
+            <p>{product.category.name} | {product.category.parent.name}</p>
+          ) : null}
         </div>
         <div className={s.divName}>
           <div className={s.divTitle}>

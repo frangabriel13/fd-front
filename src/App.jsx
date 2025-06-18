@@ -69,7 +69,7 @@ function App() {
       ) : (
         <Header />
       )}
-      {/* <div className="App-content">
+      <div className="App-content">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/ingresar' element={<Login />} />
@@ -91,8 +91,8 @@ function App() {
           <Route path='/tienda/:gender' element={<Shopping />} />
           <Route path='/tienda/:gender/:category' element={<Shopping />} />
         </Routes>
-      </div> */}
-      <Maintenance />
+      </div>
+      {/* <Maintenance /> */}
       <Footer />
     </div>
   );

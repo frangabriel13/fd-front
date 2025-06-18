@@ -7,42 +7,42 @@ const GenderList = () => {
   const navigate = useNavigate();
 
   const handleClick = (gender) => {
-    navigate(`/tienda?type=product&category=&subcategory=&gender=${gender}&sortBy=&searchTerm=`);
+    navigate(`/tienda/${gender}`);
   };
 
   return(
     <div className={s.container}>
       <button 
         className={`${s.btnIcon}`} 
-        onClick={() => handleClick(1)}
+        onClick={() => handleClick('hombre')}
       >
         <IoMan className={s.icon} />
         <span>Hombre</span>
       </button>
       <button 
         className={`${s.btnIcon}`}
-        onClick={() => handleClick(2)}
+        onClick={() => handleClick('mujer')}
       >
         <IoWoman className={s.icon} />
         <span>Mujer</span>
       </button>
       <button 
         className={`${s.btnIcon}`}
-        onClick={() => handleClick(3)}
+        onClick={() => handleClick('niño')}
       >
         <FaChild className={s.icon} />
         <span>Niño</span>
       </button>
       <button 
         className={`${s.btnIcon}`}
-        onClick={() => handleClick(4)}
+        onClick={() => handleClick('niña')}
       >
         <FaChildDress className={s.icon} />
         <span>Niña</span>
       </button>
       <button 
         className={`${s.btnIcon}`}
-        onClick={() => handleClick(5)}
+        onClick={() => handleClick('bebes')}
       >
         <FaBaby className={s.icon} />
         <span>Bebés</span>

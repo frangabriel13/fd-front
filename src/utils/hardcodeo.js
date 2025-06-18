@@ -37,7 +37,7 @@ export const parentCategories = [
 
 export const genders = [
   { 
-    id: 2, 
+    id: 1, 
     name: 'Hombre', 
     url: 'hombre',
     categories: [
@@ -56,7 +56,7 @@ export const genders = [
     ],
   },
   { 
-    id: 3, 
+    id: 2, 
     name: 'Mujer', 
     url: 'mujer',
     categories: [
@@ -75,7 +75,7 @@ export const genders = [
     ],
   },
   { 
-    id: 4, 
+    id: 3, 
     name: 'Niño', 
     url: 'niño',
     categories: [
@@ -94,7 +94,7 @@ export const genders = [
     ], 
   },
   { 
-    id: 5, 
+    id: 4, 
     name: 'Niña', 
     url: 'niña',
     categories: [
@@ -113,7 +113,7 @@ export const genders = [
     ],
   },
   { 
-    id: 6, 
+    id: 5, 
     name: 'Bebés', 
     url: 'bebes',
     categories: [
@@ -132,7 +132,7 @@ export const genders = [
     ],
   },
   { 
-    id: 7, 
+    id: 6, 
     name: 'Más', 
     url: 'mas',
     categories: [

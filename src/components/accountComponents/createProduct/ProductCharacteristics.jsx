@@ -69,36 +69,36 @@ const ProductCharacteristics = ({ productType, setProductType, categories, onSho
         <h4>¿A qué género está dirigido tu producto?</h4>
         <div className={s.divIcons}>
           <button 
-            className={`${s.btnIcon} ${genderProduct === 2 ? s.selected : ''}`} 
-            onClick={() => handleGenderClick(2)}
+            className={`${s.btnIcon} ${genderProduct === 1 ? s.selected : ''}`} 
+            onClick={() => handleGenderClick(1)}
           >
             <IoMan className={s.icon} />
             <span>Hombre</span>
           </button>
           <button 
-            className={`${s.btnIcon} ${genderProduct === 3 ? s.selected : ''}`} 
-            onClick={() => handleGenderClick(3)}
+            className={`${s.btnIcon} ${genderProduct === 2 ? s.selected : ''}`} 
+            onClick={() => handleGenderClick(2)}
           >
             <IoWoman className={s.icon} />
             <span>Mujer</span>
           </button>
           <button 
-            className={`${s.btnIcon} ${genderProduct === 4 ? s.selected : ''}`} 
-            onClick={() => handleGenderClick(4)}
+            className={`${s.btnIcon} ${genderProduct === 3 ? s.selected : ''}`} 
+            onClick={() => handleGenderClick(3)}
           >
             <FaChild className={s.icon} />
             <span>Niño</span>
           </button>
           <button 
-            className={`${s.btnIcon} ${genderProduct === 5 ? s.selected : ''}`} 
-            onClick={() => handleGenderClick(5)}
+            className={`${s.btnIcon} ${genderProduct === 4 ? s.selected : ''}`} 
+            onClick={() => handleGenderClick(4)}
           >
             <FaChildDress className={s.icon} />
             <span>Niña</span>
           </button>
           <button 
-            className={`${s.btnIcon} ${genderProduct === 6 ? s.selected : ''}`} 
-            onClick={() => handleGenderClick(6)}
+            className={`${s.btnIcon} ${genderProduct === 5 ? s.selected : ''}`} 
+            onClick={() => handleGenderClick(5)}
           >
             <FaBaby className={s.icon} />
             <span>Bebés</span>

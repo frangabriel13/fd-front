@@ -23,6 +23,8 @@ import Cart from './pages/cart/Cart';
 import PackDetail from './pages/packDetail/PackDetail';
 import useWindowWidth from './hooks/useWindowWidth';
 import Maintenance from './components/maintenance/Maintenance';
+import Packs from './pages/packs/Packs';
+import Shopping from './pages/shopping/Shopping';
 
 function App() {
   const location = useLocation();
@@ -67,7 +69,7 @@ function App() {
       ) : (
         <Header />
       )}
-      <div className="App-content">
+      {/* <div className="App-content">
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/ingresar' element={<Login />} />
@@ -79,19 +81,18 @@ function App() {
           <Route path='/completar-registro' element={<CompleteRegistration />} />
           <Route path='/verificar-cuenta' element={<VerifyAccount />} />
           <Route path='/store/:userId' element={<Store />} />
-          <Route path="/tienda" element={<Shop />} />
-          <Route path="/tienda/:category" element={<Shop />} />
-          <Route path="/tienda/:category/:subcategory" element={<Shop />} />
-          <Route path="/tienda/:category/:gender" element={<Shop />} />
-          <Route path="/tienda/:category/:gender/:subcategory" element={<Shop />} />
           <Route path='/producto/:productId' element={<ProductDetail />} />
           <Route path='/fabricantes' element={<Manufacturers />} />
           <Route path='/preguntas-frecuentes' element={<Help />} />
           <Route path='/mi-carrito' element={<Cart />} />
           <Route path='/pack/:packId' element={<PackDetail />} />
+          <Route path='/packs' element={<Packs />} />
+          <Route path='/tienda' element={<Shopping />} />
+          <Route path='/tienda/:gender' element={<Shopping />} />
+          <Route path='/tienda/:gender/:category' element={<Shopping />} />
         </Routes>
-      </div>
-      {/* <Maintenance /> */}
+      </div> */}
+      <Maintenance />
       <Footer />
     </div>
   );

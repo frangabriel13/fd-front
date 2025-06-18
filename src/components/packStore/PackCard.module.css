@@ -72,15 +72,62 @@
 }
 
 @media (max-width: 1360px) {
+  .container {
+    max-width: 16.5rem;
+  }
 }
 
 @media (max-width: 1024px) {
+  .container {
+    max-width: 14rem;
+  }
+  .image {
+    max-width: 13rem;
+  }
+  .logo {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .divLogo {
+    top: .3rem;
+    left: .3rem;
+  }
+  .name {
+    font-size: 1.6rem;
+  }
+  .price {
+    font-size: 1.5rem;
+  }
 }
 
 @media (max-width: 768px) {
+  .container {
+    max-width: 12rem;
+  }
+  .image {
+    max-width: 11rem;
+  }
+  .logo {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .divLogo {
+    top: .3rem;
+    left: .3rem;
+  }
+  .name {
+    font-size: 1.5rem;
+  }
+  .price {
+    font-size: 1.4rem;
+  }
 }
 
 @media (max-width: 480px) {
+  .container {
+    max-width: 20rem;
+  }
+
   .logo {
     width: 2rem;
     height: 2rem;

@@ -5,6 +5,7 @@ import s from './SearchBar.module.css';
 import { FaSearch } from 'react-icons/fa';
 import { searchResults } from '../../store/actions/productActions';
 import SearchResults from './SearchResults';
+import { genders } from '../../utils/hardcodeo';
 
 const SearchBar = () => {
   const dispatch = useDispatch();

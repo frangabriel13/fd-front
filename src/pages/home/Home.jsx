@@ -12,9 +12,6 @@ const Home = () => {
   return (
     <div className={s.container}>
       <div>
-        {/* <div className={s.divWarning}>
-          <h5 className={s.title}>Algunas funcionalidades se encuentran momentáneamente desactivadas porque se están realizando cambios para mejorar tu experiencia en nuestra web</h5>
-        </div> */}
         <Banner />
       </div>
       <div className={s.home}>

@@ -17,7 +17,7 @@ const PacksRow = () => {
   }, [dispatch]);
 
   const handleViewMore = () => {
-    navigate('/tienda?type=pack&sortBy=newest');
+    navigate('/packs');
   };
 
   const handleNext = () => {

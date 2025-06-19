@@ -4,7 +4,7 @@ import { formatPrice, formatDateAndTime } from '../../../utils/utils';
 import SubOrderDetail from './SubOrderDetail';
 import { contactWspBuyer } from '../../../utils/utils';
 
-const TableMyOrders = ({ mySubOrders }) => {
+const TableMyOrders = ({ mySubOrders = [] }) => {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 

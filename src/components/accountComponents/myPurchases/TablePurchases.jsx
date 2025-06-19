@@ -58,7 +58,7 @@ const TablePurchases = ({ myOrders, onDeleteOrder }) => {
                     <td>{order.unifique ? "Sí" : "No"}</td>
                     <td className={s.tdActions}>
                       <button className={s.btnEdit} onClick={() => openModal(order)}>Ver</button>
-                      <button className={s.btnEdit} onClick={() => handleContact(order)}>Contactar</button>
+                      {/* <button className={s.btnEdit} onClick={() => handleContact(order)}>Contactar</button> */}
                       <button className={s.btnDelete} onClick={() => onDeleteOrder(order.id)}>Eliminar</button>
                     </td>
                   </tr>

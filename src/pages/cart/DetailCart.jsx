@@ -115,7 +115,7 @@ const DetailCart = ({ cart, onClose, refreshCart }) => {
                   </div>
                 </div>
                 <div className={s.divQuantities}>
-                  {product.inventories.some((inventory) => inventory.size !== 'Único') && (
+                  {product.inventories.some((inventory) => inventory.size !== 'Talle Único') && (
                     <div className={s.divList}>
                       <h6>Talles</h6>
                       {product.inventories
@@ -144,7 +144,7 @@ const DetailCart = ({ cart, onClose, refreshCart }) => {
                         ))}
                     </div>
                   )}
-                  {product.inventories.some((inventory) => inventory.size === 'Único') && (
+                  {product.inventories.some((inventory) => inventory.size === 'Talle Único') && (
                     <div className={s.divList}>
                       <h6>Colores</h6>
                       {product.inventories

@@ -2,9 +2,15 @@ import { Link } from 'react-router-dom';
 import s from './SearchResults.module.css';
 
 const SearchResults = ({ results, onResultSelect }) => {
-  const hasProducts = results.product.length > 0;
+  const products = results.product || [];
+  const users = results.user || [];
+
+  const hasProducts = products.length > 0;
+  const hasUsers = users.length > 0;
+
+  // const hasProducts = results.product.length > 0;
   // const hasCategories = results.product.categories && results.product.categories.length > 0;
-  const hasUsers = results.user && results.user.length > 0;
+  // const hasUsers = results.user && results.user.length > 0;
 
   const handleSelect = () => {
     onResultSelect();

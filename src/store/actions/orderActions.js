@@ -92,3 +92,20 @@ export const getUnifiedOrders = (page = 1, limit = 15) => async (dispatch) => {
     });
   }
 };
+
+export const getOrderById = (orderId) => async (dispatch) => {
+  dispatch({ type: 'GET_ORDER_BY_ID_REQUEST' });
+  try {
+    const response = await orderInstance.get(`/${orderId}`);
+    console.log('Order fetched successfully:', response.data);
+    dispatch({
+      type: 'GET_ORDER_BY_ID_SUCCESS',
+      payload: response.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: 'GET_ORDER_BY_ID_FAILURE',
+      error: error.message,
+    });
+  }
+};

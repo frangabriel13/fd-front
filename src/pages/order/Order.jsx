@@ -1,22 +1,33 @@
-import s from "./OrderDetail.module.css";
-import { formatPrice, contactWspOrder } from "../../../utils/utils";
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { getOrderById } from '../../store/actions/orderActions';
+import { formatPrice } from '../../utils/utils';
+import s from './Order.module.css';
 
-const OrderDetail = ({ order, onClose }) => {
-  const handleClickOutside = (e) => {
-    if (e.target === e.currentTarget) {
-      onClose();
+const Order = () => {
+  const dispatch = useDispatch();
+  const { orderId } = useParams();
+  const { selectedOrder, loading, error } = useSelector(state => state.order);
+
+  useEffect(() => {
+    if (orderId) {
+      dispatch(getOrderById(orderId));
     }
-  }
+  }, [dispatch, orderId]);
 
   return (
-    <div className={s.modal} onClick={handleClickOutside}>
-      <div className={s.modalContent}>
+    <div className={s.orderContainer}>
+      <h1 className={s.title}>Detalle de la Orden</h1>
+      {loading && <p>Cargando...</p>}
+      {error && <p>Error: {error}</p>}
+      {selectedOrder ? (
         <div className={s.container}>
           <div className={s.divTitle}>
-            <h3>Detalle de la orden #{order.id}</h3>
+            <h3>Detalle de la orden #{selectedOrder.id}</h3>
           </div>
           <div className={s.divTable}>
-            {order.subOrders && order.subOrders.length > 0 && order.subOrders.map((subOrder, index) => (
+            {selectedOrder.subOrders && selectedOrder.subOrders.length > 0 && selectedOrder.subOrders.map((subOrder, index) => (
               <div key={index} className={s.divSuborder}>
                 <h4>{subOrder.user.manufacturer.name} - suborden #{subOrder.id}</h4>
                 <div className={s.divProdPack}>
@@ -83,33 +94,20 @@ const OrderDetail = ({ order, onClose }) => {
                 </div>
                 <div className={s.divTotal}>
                   <h4>Subtotal: {formatPrice(subOrder.subtotal)}</h4>
-                  <button
-                    className={s.btnContact}
-                    onClick={() =>
-                      contactWspOrder(
-                        subOrder.user.manufacturer.name,
-                        subOrder.user.manufacturer.phone,
-                        order.id // Puedes usar subOrder.id o order.id según tu lógica
-                      )
-                    }
-                  >
-                    Contactar
-                  </button>
                 </div>
               </div>
             ))}
           </div>
           <div className={s.divTotalOrder}>
-            <h4>Total: {formatPrice(order.total)}</h4>
+            <h4>Total: {formatPrice(selectedOrder.total)}</h4>
           </div>
         </div>
-        <div className={s.divActions}>
-          <button className={s.btnCancel} onClick={onClose}>Cancelar</button>
-        </div>
-      </div>
+      ) : (
+        !loading && <p>No se encontró la orden.</p>
+      )}
     </div>
-  )
+  );
 };
 
 
-export default OrderDetail;
+export default Order;

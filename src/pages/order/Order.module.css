@@ -27,6 +27,7 @@
   background-color: white;
   box-shadow: 0 0 1rem rgba(0, 0, 0, .1);
   padding: 1.5rem 1.5rem;
+  margin: 7.5rem 30rem 0 30rem;
 }
 
 .divTitle {
@@ -106,27 +107,11 @@
 .divTotal {
   display: flex;
   justify-content: end;
-  align-items: center;
-  gap: 1rem;
 }
 
 .divTotal h4 {
   font-size: 1.5rem;
   font-weight: 500;
-}
-
-.btnContact {
-  background-color: var(--main-color);
-  color: white;
-  padding: .5rem 1rem;
-  border-radius: .3rem;
-  font-size: 1.2rem;
-  cursor: pointer;
-}
-
-.btnContact:hover {
-  background-color: var(--second-color);
-  transition: all .3s ease-in-out;
 }
 
 .divTotalOrder {

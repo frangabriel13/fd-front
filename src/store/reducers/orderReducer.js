@@ -8,6 +8,8 @@ const initialState = {
   total: 0,
   totalPages: 1,
   page: 1,
+
+  selectedOrder: null,
 };
 
 const orderReducer = (state = initialState, action) => {
@@ -49,6 +51,12 @@ const orderReducer = (state = initialState, action) => {
       };
     case 'GET_UNIFIED_ORDERS_FAILURE':
       return { ...state, loading: false, error: action.error };
+    case 'GET_ORDER_BY_ID_REQUEST':
+      return { ...state, loading: true, error: null, selectedOrder: null };
+    case 'GET_ORDER_BY_ID_SUCCESS':
+      return { ...state, loading: false, selectedOrder: action.payload };
+    case 'GET_ORDER_BY_ID_FAILURE':
+      return { ...state, loading: false, error: action.error, selectedOrder: null };
     default:
       return state;
   }

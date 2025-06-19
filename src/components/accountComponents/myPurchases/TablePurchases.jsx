@@ -3,7 +3,7 @@ import s from "./TablePurchases.module.css";
 import { formatPrice, formatDateAndTime, contactWspOrder } from "../../../utils/utils";
 import OrderDetail from "./OrderDetail";
 
-const TablePurchases = ({ myOrders, onDeleteOrder }) => {
+const TablePurchases = ({ myOrders = [], onDeleteOrder }) => {
   const [selectedOrder, setSelectedOrder] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -58,7 +58,7 @@ const TablePurchases = ({ myOrders, onDeleteOrder }) => {
                     <td>{order.unifique ? "Sí" : "No"}</td>
                     <td className={s.tdActions}>
                       <button className={s.btnEdit} onClick={() => openModal(order)}>Ver</button>
-                      <button className={s.btnEdit} onClick={() => handleContact(order)}>Contactar</button>
+                      {/* <button className={s.btnEdit} onClick={() => handleContact(order)}>Contactar</button> */}
                       <button className={s.btnDelete} onClick={() => onDeleteOrder(order.id)}>Eliminar</button>
                     </td>
                   </tr>

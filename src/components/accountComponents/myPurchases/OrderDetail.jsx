@@ -1,5 +1,5 @@
 import s from "./OrderDetail.module.css";
-import { formatPrice } from "../../../utils/utils";
+import { formatPrice, contactWspOrder } from "../../../utils/utils";
 
 const OrderDetail = ({ order, onClose }) => {
   const handleClickOutside = (e) => {
@@ -83,6 +83,18 @@ const OrderDetail = ({ order, onClose }) => {
                 </div>
                 <div className={s.divTotal}>
                   <h4>Subtotal: {formatPrice(subOrder.subtotal)}</h4>
+                  <button
+                    className={s.btnContact}
+                    onClick={() =>
+                      contactWspOrder(
+                        subOrder.user.manufacturer.name,
+                        subOrder.user.manufacturer.phone,
+                        order.id // Puedes usar subOrder.id o order.id según tu lógica
+                      )
+                    }
+                  >
+                    Contactar
+                  </button>
                 </div>
               </div>
             ))}

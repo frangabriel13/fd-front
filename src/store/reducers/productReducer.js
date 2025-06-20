@@ -214,6 +214,16 @@ const productReducer = (state = initialState, action) => {
         loadingRelatedProducts: false,
         errorRelatedProducts: action.error,
       };
+    case 'DELETE_PRODUCTS_BY_USER_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'DELETE_PRODUCTS_BY_USER_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: null,
+      };
+    case 'DELETE_PRODUCTS_BY_USER_FAILURE':
+      return { ...state, loading: false, error: action.error };
     default:
       return state;
   }

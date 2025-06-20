@@ -129,6 +129,13 @@ const manufacturerReducer = (state = initialState, action) => {
           manufacturer.id === action.payload.id ? action.payload : manufacturer
         ),
       };
+    case 'CLEAR_MANUFACTURER':
+      return {
+        ...state,
+        manufacturer: {},
+        loading: false,
+        error: null,
+      };
     default:
       return state;
   }

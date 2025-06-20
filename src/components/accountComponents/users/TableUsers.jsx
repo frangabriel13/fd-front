@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteUser } from "../../../store/actions/adminActions";
+import { deleteProductsByUserId } from "../../../store/actions/productActions";
 import Pagination from "../../Pagination/Pagination";
 import EditManufacturer from "./EditManufacturer";
 import VerifyUser from "./VerifyUser";
@@ -21,8 +22,9 @@ const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) =>
     setModalType(null);
   };
 
-  const handleDeleteUser = (id) => {
+  const handleDeleteUser = async (id) => {
     if (window.confirm("¿Estás seguro de que deseas eliminar este usuario?")) {
+      await dispatch(deleteProductsByUserId(id));
       dispatch(deleteUser(id));
     }
   }

@@ -82,9 +82,9 @@ const ProductDetail = () => {
             manufacturerLogo={manufacturer.image}
           />
         )}
-        { product.categoryId && (
+        {/* { product.categoryId && (
           <RelatedProducts categoryId={product.categoryId} />
-        )}
+        )} */}
       </div>
       <div className={s.btnHomeContainer}>
         <button className={s.btnHome} onClick={() => navigate('/')}>Inicio</button>

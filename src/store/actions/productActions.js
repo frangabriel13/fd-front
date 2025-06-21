@@ -337,3 +337,6 @@ export const deleteProductsByUserId = (userId) => async (dispatch) => {
     });
   }
 };
+
+export const clearOtherProducts = () => ({ type: 'CLEAR_OTHER_PRODUCTS' });
+export const clearRelatedProducts = () => ({ type: 'CLEAR_RELATED_PRODUCTS' });

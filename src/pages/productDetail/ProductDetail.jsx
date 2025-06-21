@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import s from './ProductDetail.module.css';
 import { getProductById } from '../../store/actions/productActions';
-import { getManufacturerByUserId, clearManufacturer } from '../../store/actions/manufacturerActions';
+import { getManufacturerByUserId } from '../../store/actions/manufacturerActions';
 import { addToCart } from '../../store/actions/cartActions';
 import { formatPrice } from '../../utils/utils';
 import Gallery from '../../components/detailProduct/Gallery';
@@ -22,22 +22,33 @@ const ProductDetail = () => {
   const manufacturer = useSelector((state) => state.manufacturer.manufacturer);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    setLoading(true);
-    dispatch(clearManufacturer());
-  }, [dispatch, productId]);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   dispatch(getProductById(productId)).finally(() => setLoading(false));
+  // }, [dispatch, productId]);
 
+  // useEffect(() => {
+  //   if(product) {
+  //     setLoading(true);
+  //     dispatch(getManufacturerByUserId(product.userId)).finally(() => setLoading(false));
+  //   }
+  // }, [dispatch, product]);
   useEffect(() => {
-    setLoading(true);
-    dispatch(getProductById(productId)).finally(() => setLoading(false));
-  }, [dispatch, productId]);
-
-  useEffect(() => {
-    if(product) {
+    const fetchData = async () => {
       setLoading(true);
-      dispatch(getManufacturerByUserId(product.userId)).finally(() => setLoading(false));
-    }
-  }, [dispatch, product]);
+      try {
+        const productAction = await dispatch(getProductById(productId));
+        const prod = productAction.payload || product; // Ajusta según cómo retorna tu action
+        if (prod && prod.userId) {
+          await dispatch(getManufacturerByUserId(prod.userId));
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dispatch, productId]);
 
   const handleAddToCart = (variations) => {
     const item = {

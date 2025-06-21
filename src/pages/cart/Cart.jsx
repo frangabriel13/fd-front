@@ -237,6 +237,8 @@ const Cart = () => {
   const safeProducts = Array.isArray(products) ? products : [];
   const unifiedTotal = safeProducts.reduce((acc, product) => acc + calculateTotalCart(product), 0);
 
+  console.log('products', products);
+
   return(
     <div className={s.container}>
       <div className={s.divHeader}>

@@ -22,22 +22,39 @@ const ProductDetail = () => {
   const manufacturer = useSelector((state) => state.manufacturer.manufacturer);
   const [loading, setLoading] = useState(true);
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     setLoading(true);
+  //     try {
+  //       const productAction = await dispatch(getProductById(productId));
+  //       console.log('Product Action:', productAction);
+  //       const prod = productAction.payload || product; // Ajusta según cómo retorna tu action
+  //       if (prod && prod.userId) {
+  //         await dispatch(getManufacturerByUserId(prod.userId));
+  //       }
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+  //   fetchData();
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [dispatch, productId]);
+
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      try {
-        const productAction = await dispatch(getProductById(productId));
-        const prod = productAction.payload || product; // Ajusta según cómo retorna tu action
-        if (prod && prod.userId) {
-          await dispatch(getManufacturerByUserId(prod.userId));
-        }
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dispatch, productId]);
+  setLoading(true);
+  dispatch(getProductById(productId))
+    .then((action) => {
+      setLoading(false);
+      // Si necesitas guardar el producto en un estado local, hazlo aquí
+    })
+    .catch(() => setLoading(false));
+}, [dispatch, productId]);
+
+useEffect(() => {
+  if (product && product.userId) {
+    dispatch(getManufacturerByUserId(product.userId));
+  }
+}, [dispatch, product]);
 
   const handleAddToCart = (variations) => {
     const item = {
@@ -82,9 +99,9 @@ const ProductDetail = () => {
             manufacturerLogo={manufacturer.image}
           />
         )}
-        {/* { product.categoryId && (
+        { product.categoryId && (
           <RelatedProducts categoryId={product.categoryId} />
-        )} */}
+        )} 
       </div>
       <div className={s.btnHomeContainer}>
         <button className={s.btnHome} onClick={() => navigate('/')}>Inicio</button>

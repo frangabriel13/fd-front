@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
@@ -17,21 +17,25 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product.product);
-  const loading = useSelector((state) => state.product.loading);
+  // const loading = useSelector((state) => state.product.loading);
   const error = useSelector((state) => state.product.error);
   const manufacturer = useSelector((state) => state.manufacturer.manufacturer);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     dispatch(clearManufacturer());
   }, [dispatch, productId]);
 
   useEffect(() => {
-    dispatch(getProductById(productId));
+    setLoading(true);
+    dispatch(getProductById(productId)).finally(() => setLoading(false));
   }, [dispatch, productId]);
 
   useEffect(() => {
     if(product) {
-      dispatch(getManufacturerByUserId(product.userId));
+      setLoading(true);
+      dispatch(getManufacturerByUserId(product.userId)).finally(() => setLoading(false));
     }
   }, [dispatch, product]);
 

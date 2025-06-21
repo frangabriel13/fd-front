@@ -181,3 +181,7 @@ export const refreshToken = async () => {
     throw error;
   }
 };
+
+export const clearManufacturer = () => (dispatch) => {
+  dispatch({ type: 'CLEAR_MANUFACTURER' });
+};

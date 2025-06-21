@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import s from './ProductDetail.module.css';
 import { getProductById } from '../../store/actions/productActions';
-import { getManufacturerByUserId } from '../../store/actions/manufacturerActions';
+import { getManufacturerByUserId, clearManufacturer } from '../../store/actions/manufacturerActions';
 import { addToCart } from '../../store/actions/cartActions';
 import { formatPrice } from '../../utils/utils';
 import Gallery from '../../components/detailProduct/Gallery';
@@ -20,6 +20,10 @@ const ProductDetail = () => {
   const loading = useSelector((state) => state.product.loading);
   const error = useSelector((state) => state.product.error);
   const manufacturer = useSelector((state) => state.manufacturer.manufacturer);
+
+  useEffect(() => {
+    dispatch(clearManufacturer());
+  }, [dispatch, productId]);
 
   useEffect(() => {
     dispatch(getProductById(productId));

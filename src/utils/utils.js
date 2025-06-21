@@ -22,7 +22,6 @@ export const formatPrice = (price) => {
 };
 
 export const calculateTotalCart = (cart) => {
-  console.log('Calculando total del carrito:', cart);
   if (!cart) return 0;
 
   // Calcular el total de los packs

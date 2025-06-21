@@ -92,7 +92,6 @@ export const getCart = () => async (dispatch, getState) => {
 
     // Enviar los items directamente al backend
     const response = await productInstance.post('/cart', items);
-    console.log('items', items);
 
     dispatch({
       type: 'CART_GET_ITEMS',

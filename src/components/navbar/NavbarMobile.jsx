@@ -31,9 +31,9 @@ const NavbarMobile = ({ open, onClose }) => {
             <Link to="/registro" className={s.link} onClick={onClose}>Registrarse</Link>
           </>
         )}
-        <button className={s.link} onClick={() => setShowCategories(v => !v)}>
+        {/* <button className={s.link} onClick={() => setShowCategories(v => !v)}>
           Categorías
-        </button>
+        </button> */}
         {showCategories && (
           <div className={s.categoriesList}>
             {categories

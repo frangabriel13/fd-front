@@ -58,6 +58,7 @@ const ProductDetail = () => {
   }
 
   console.log('Product Detail:', product);
+  console.log('Manufacturer Detail:', manufacturer);
 
   return (
     <div className={s.container}>

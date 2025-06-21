@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import s from './ProductDetail.module.css';
-import { getProductById } from '../../store/actions/productActions';
+import { getProductById, clearOtherProducts, clearRelatedProducts } from '../../store/actions/productActions';
 import { getManufacturerByUserId } from '../../store/actions/manufacturerActions';
 import { addToCart } from '../../store/actions/cartActions';
 import { formatPrice } from '../../utils/utils';
@@ -22,17 +22,13 @@ const ProductDetail = () => {
   const manufacturer = useSelector((state) => state.manufacturer.manufacturer);
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   setLoading(true);
-  //   dispatch(getProductById(productId)).finally(() => setLoading(false));
-  // }, [dispatch, productId]);
+  useEffect(() => {
+    return () => {
+      dispatch(clearOtherProducts());
+      dispatch(clearRelatedProducts());
+    };
+  }, [dispatch, productId]);
 
-  // useEffect(() => {
-  //   if(product) {
-  //     setLoading(true);
-  //     dispatch(getManufacturerByUserId(product.userId)).finally(() => setLoading(false));
-  //   }
-  // }, [dispatch, product]);
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);

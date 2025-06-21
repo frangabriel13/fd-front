@@ -324,3 +324,16 @@ export const getRelatedProducts = (categoryId) => async (dispatch) => {
     });
   }
 };
+
+export const deleteProductsByUserId = (userId) => async (dispatch) => {
+  dispatch({ type: 'DELETE_PRODUCTS_BY_USER_REQUEST' });
+  try {
+    await productInstance.delete(`/by-user/${userId}`);
+    dispatch({ type: 'DELETE_PRODUCTS_BY_USER_SUCCESS', payload: userId });
+  } catch (error) {
+    dispatch({
+      type: 'DELETE_PRODUCTS_BY_USER_FAILURE',
+      error: error.message,
+    });
+  }
+};

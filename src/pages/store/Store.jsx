@@ -29,9 +29,13 @@ const Store = () => {
   const [isFollowed, setIsFollowed] = useState(manufacturer.isFollowed);
   const [followersCount, setFollowersCount] = useState(manufacturer.followersCount);
   const [showModal, setShowModal] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    dispatch(getUserData(userId, 1, pageSize, sortOrder));
+    setLoading(true); // <-- Añadido para mostrar el loader antes de pedir los datos
+    dispatch(getUserData(userId, 1, pageSize, sortOrder)).finally(() => {
+      setLoading(false); // <-- Oculta el loader cuando termina la petición
+    });
   }, [dispatch, userId, pageSize, sortOrder]);
 
   useEffect(() => {
@@ -79,6 +83,14 @@ const Store = () => {
     }
     return stars;
   };
+
+  if (loading) {
+  return (
+    <div className={s.container}>
+      <p>Cargando datos del fabricante...</p>
+    </div>
+  );
+}
 
   console.log('Manufacturer:', manufacturer);
 

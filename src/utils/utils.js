@@ -32,11 +32,13 @@ export const calculateTotalCart = (cart) => {
 
   // Calcular el total de los productos
   const productsTotal = cart.products?.reduce((sum, product) => {
-    const totalItemsInInventories = product.inventories.reduce((inventorySum, inventory) => {
+    const inventories = Array.isArray(product.inventories) ? product.inventories : [];
+    const totalItemsInInventories = inventories.reduce((inventorySum, inventory) => {
       return inventorySum + inventory.totalItem;
     }, 0);
 
-    return sum + (product.price * totalItemsInInventories);
+    const price = Number(product.price) || 0;
+    return sum + (price * totalItemsInInventories);
   }, 0) || 0;
 
   // Sumar ambos totales

@@ -94,6 +94,7 @@ const DetailCart = ({ cart, onClose, refreshCart }) => {
     }
   }
 
+  console.log('cart', cart);
   console.log('localCart', localCart);
 
   return (
@@ -105,7 +106,7 @@ const DetailCart = ({ cart, onClose, refreshCart }) => {
           </div>
           <div className={s.divProducts}>
             <h4>Productos</h4>
-            {localCart.products.map((product) => (
+            {/* {localCart.products.map((product) => (
               <div key={product.id} className={s.productCard}>
                 <div className={s.productInfo}>
                   <img src={product.mainImage} alt={product.name} className={s.productImage} />
@@ -174,6 +175,83 @@ const DetailCart = ({ cart, onClose, refreshCart }) => {
                     </div>
                   )}
                 </div>
+              </div>
+            ))} */}
+            {localCart.products.map((product, idx) => (
+              <div key={product.id || idx} className={s.productCard}>
+                {(!product || !product.id || !Array.isArray(product.inventories) || product.inventories.length === 0) ? (
+                  <div className={s.productInfo}>
+                    <p>Este producto ha sido eliminado.</p>
+                  </div>
+                ) : (
+                  <>
+                    <div className={s.productInfo}>
+                      <img src={product.mainImage} alt={product.name} className={s.productImage} />
+                      <div className={s.divName}>
+                        <h5 className={s.productName}>{product.name}</h5>
+                        <p className={s.productPrice}>{formatPrice(product.price)}</p>
+                      </div>
+                    </div>
+                    <div className={s.divQuantities}>
+                      {product.inventories.some((inventory) => inventory.size !== 'Talle Único') && (
+                        <div className={s.divList}>
+                          <h6>Talles</h6>
+                          {product.inventories.map((inventory, index) => (
+                            <div key={index} className={s.divInventory}>
+                              <p className={s.inventoryDetail}>{inventory.size}</p>
+                              <div className={s.divQuant}>
+                                <button 
+                                  className={s.buttonQuant}
+                                  onClick={() => handleUpdateInventoryTotal(product.id, index, inventory.totalItem - 1)}
+                                  disabled={inventory.totalItem <= 0}
+                                >-</button>
+                                <input 
+                                  type="number" 
+                                  className={s.inputQuant}
+                                  value={inventory.totalItem}
+                                  onChange={(e) => handleUpdateInventoryTotal(product.id, index, parseInt(e.target.value, 10) || 0)}
+                                />
+                                <button 
+                                  className={s.buttonQuant}
+                                  onClick={() => handleUpdateInventoryTotal(product.id, index, inventory.totalItem + 1)}
+                                >+</button>
+                                <button className={s.buttonDelete} onClick={() => handleDeleteInventory(product.id, index)}>x</button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                      {product.inventories.some((inventory) => inventory.size === 'Talle Único') && (
+                        <div className={s.divList}>
+                          <h6>Colores</h6>
+                          {product.inventories.map((inventory, index) => (
+                            <div key={index} className={s.divInventory}>
+                              <p className={s.inventoryDetail}>{inventory.color}</p>
+                              <div className={s.divQuant}>
+                                <button 
+                                  className={s.buttonQuant}
+                                  onClick={() => handleUpdateInventoryTotal(product.id, index, inventory.totalItem - 1)}
+                                  disabled={inventory.totalItem <= 0}
+                                >-</button>
+                                <input 
+                                  type="number" 
+                                  className={s.inputQuant}
+                                  value={inventory.totalItem}
+                                  onChange={(e) => handleUpdateInventoryTotal(product.id, index, parseInt(e.target.value, 10) || 0)}
+                                />
+                                <button 
+                                  className={s.buttonQuant}
+                                  onClick={() => handleUpdateInventoryTotal(product.id, index, inventory.totalItem + 1)}
+                                >+</button>
+                                <button className={s.buttonDelete} onClick={() => handleDeleteInventory(product.id, index)}>x</button>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </>
+                )}
               </div>
             ))}
           </div>

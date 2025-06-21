@@ -224,10 +224,6 @@ const productReducer = (state = initialState, action) => {
       };
     case 'DELETE_PRODUCTS_BY_USER_FAILURE':
       return { ...state, loading: false, error: action.error };
-    case 'CLEAR_OTHER_PRODUCTS':
-      return { ...state, otherProducts: [] };
-    case 'CLEAR_RELATED_PRODUCTS':
-      return { ...state, relatedProducts: [] };
     default:
       return state;
   }

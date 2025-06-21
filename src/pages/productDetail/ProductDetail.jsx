@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import s from './ProductDetail.module.css';
-import { getProductById, clearOtherProducts, clearRelatedProducts } from '../../store/actions/productActions';
+import { getProductById } from '../../store/actions/productActions';
 import { getManufacturerByUserId } from '../../store/actions/manufacturerActions';
 import { addToCart } from '../../store/actions/cartActions';
 import { formatPrice } from '../../utils/utils';
@@ -21,13 +21,6 @@ const ProductDetail = () => {
   const error = useSelector((state) => state.product.error);
   const manufacturer = useSelector((state) => state.manufacturer.manufacturer);
   const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    return () => {
-      dispatch(clearOtherProducts());
-      dispatch(clearRelatedProducts());
-    };
-  }, [dispatch, productId]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -60,9 +53,11 @@ const ProductDetail = () => {
   if(loading || !product || !manufacturer) {
     return <div>Loading...</div>;
   }
-  if (!product.images || !Array.isArray(product.images)) {
-  return <div>Producto sin imágenes</div>;
-}
+    if (!product.images || !Array.isArray(product.images)) {
+    return <div>Producto sin imágenes</div>;
+  }
+
+  console.log('Product Detail:', product);
 
   return (
     <div className={s.container}>

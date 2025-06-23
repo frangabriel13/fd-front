@@ -15,6 +15,8 @@ const ProductCard = ({ id, name, image, price, logo, products }) => {
     ? [...products, ...Array(4 - products.length).fill(products[0])].slice(0, 4)
     : Array(4).fill(null);
 
+  console.log('displayedProducts', displayedProducts);
+
   return (
     <div className={s.container} onClick={handleClick}>
       <div className={s.divImage}>
@@ -23,7 +25,7 @@ const ProductCard = ({ id, name, image, price, logo, products }) => {
         </div>
         <div className={s.divImages}>
           {displayedProducts.map((product, index) => (
-            product && product.mainImage && product.name ? (
+            product && product.mainImage ? (
               <img 
                 key={index} 
                 src={product.mainImage} 

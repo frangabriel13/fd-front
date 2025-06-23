@@ -10,8 +10,10 @@ const ProductCard = ({ id, name, image, price, logo, products }) => {
   };
 
   const displayedProducts = products.length >= 4 
-    ? products.slice(0, 4)
-    : [...products, ...Array(4 - products.length).fill(products[0])].slice(0, 4);
+  ? products.slice(0, 4)
+  : products.length > 0
+    ? [...products, ...Array(4 - products.length).fill(products[0])].slice(0, 4)
+    : Array(4).fill(null);
 
   return (
     <div className={s.container} onClick={handleClick}>
@@ -21,12 +23,16 @@ const ProductCard = ({ id, name, image, price, logo, products }) => {
         </div>
         <div className={s.divImages}>
           {displayedProducts.map((product, index) => (
-            <img 
-              key={index} 
-              src={product.mainImage} 
-              alt={product.name} 
-              className={s.image} 
-            />
+            product && product.mainImage && product.name ? (
+              <img 
+                key={index} 
+                src={product.mainImage} 
+                alt={product.name} 
+                className={s.image} 
+              />
+            ) : (
+              <div key={index} className={s.imagePlaceholder}>Sin producto</div>
+            )
           ))}
         </div>
       </div>

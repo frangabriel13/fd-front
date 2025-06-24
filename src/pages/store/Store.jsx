@@ -7,20 +7,24 @@ import s from './Store.module.css';
 import Products from '../../components/productStore/Products';
 import Pagination from '../../components/pagination/Pagination';
 import Reviews from '../../components/reviews/Reviews';
+import HeaderStore from '../../components/shopping/HeaderStore';
 import {
   BsStar,
   BsStarHalf,
   BsStarFill,
   BsInstagram,
   BsTiktok,
+  BsWhatsapp,
 } from "react-icons/bs";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import SuccessModal from '../../components/modals/SuccessModal';
 import { shareWspLink } from '../../utils/utils';
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 const Store = () => {
   const { userId } = useParams();
   const dispatch = useDispatch();
+  const width = useWindowWidth();
   const { user } = useSelector((state) => state.auth);
   const { manufacturer } = useSelector(state => state.manufacturer);
   const { manufacturerProducts, manufacturerCurrentPage, manufacturerTotalProducts } = useSelector(state => state.product);
@@ -96,6 +100,16 @@ const Store = () => {
 
   return (
     <div className={s.container}>
+      {width < 768 ? (
+        <HeaderStore 
+          manufacturer={manufacturer}
+          followersCount={followersCount}
+          isFollowed={isFollowed}
+          handleFollow={handleFollow}
+          renderStars={renderStars}
+          shareWspLink={shareWspLink}
+        />
+      ) : (
       <div className={s.divHeader}>
         <div className={s.divTitle}>
           <div className={s.divLogo}>
@@ -122,40 +136,41 @@ const Store = () => {
             <p className={s.description}>{manufacturer.description}</p>
           </div>
         )}
-        <div className={s.divData}>
-          <div className={s.divSocial}>
-            {manufacturer.instagramNick && (
-              <a
-              href={`https://instagram.com/${manufacturer.instagramNick}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={s.iconShare}
-              title="Instagram"
-              >
-                <BsInstagram />
-              </a>
-            )}
-            {manufacturer.tiktokUrl && (
-              <a
-              href={manufacturer.tiktokUrl.replace(/\/live$/, '')}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={s.iconShare}
-              title="TikTok"
-              >
-                <BsTiktok />
-              </a>
-            )}
-            <FaRegShareFromSquare className={s.iconShare} onClick={() => shareWspLink(window.location.href)} />
-          </div>
-          <div className={s.divFollow}>
-            <p className={s.followers}>{followersCount} seguidores</p>
-            <button className={s.btnFollow} onClick={handleFollow}>
-              {isFollowed ? 'Dejar de seguir' : 'Seguir'}
-            </button>
+          <div className={s.divData}>
+            <div className={s.divSocial}>
+              {manufacturer.instagramNick && (
+                <a
+                href={`https://instagram.com/${manufacturer.instagramNick}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={s.iconShare}
+                title="Instagram"
+                >
+                  <BsInstagram />
+                </a>
+              )}
+              {manufacturer.tiktokUrl && (
+                <a
+                href={manufacturer.tiktokUrl.replace(/\/live$/, '')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={s.iconShare}
+                title="TikTok"
+                >
+                  <BsTiktok />
+                </a>
+              )}
+              <FaRegShareFromSquare className={s.iconShare} onClick={() => shareWspLink(window.location.href)} />
+            </div>
+            <div className={s.divFollow}>
+              <p className={s.followers}>{followersCount} seguidores</p>
+              <button className={s.btnFollow} onClick={handleFollow}>
+                {isFollowed ? 'Dejar de seguir' : 'Seguir'}
+              </button>
+            </div>
           </div>
         </div>
-      </div>
+      )}
       <Reviews 
         // reviews={manufacturer.reviews} 
         reviews={manufacturer.reviews || []} 

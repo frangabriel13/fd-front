@@ -1,0 +1,225 @@
+.container {
+  background: #fff;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1.5px 4px rgba(0,0,0,0.04);
+  padding: 2rem 1.6rem 1.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeIn 0.7s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px);}
+  to { opacity: 1; transform: translateY(0);}
+}
+
+.divData {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.divProfile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.divImage {
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+
+.imgLogo {
+  width: 64px;
+  height: 64px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2.5px solid #f2f2f2;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  background: #fafafa;
+}
+
+.live {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #e53935;
+  color: #fff;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 10px;
+  border-radius: 12px;
+  letter-spacing: 1px;
+  box-shadow: 0 1px 4px rgba(229,57,53,0.18);
+}
+
+.name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+  text-align: center;
+}
+
+.divSocial {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.divFollow {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.divFollowers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.followersCount {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.followersText {
+  font-size: 0.85rem;
+  color: #888;
+}
+
+.divNetwork {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.iconShare {
+  color: #888;
+  background: #f5f5f5;
+  border-radius: 50%;
+  padding: 7px;
+  font-size: 1.2rem;
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.iconShare:hover {
+  background: #e0e0e0;
+  color: #222;
+  transform: scale(1.08);
+}
+
+.iconSocial {
+  font-size: 1.3rem;
+}
+
+.divActions {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.btnFollow {
+  background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%);
+  color: #222;
+  border: none;
+  border-radius: 18px;
+  padding: 7px 18px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(255,204,51,0.13);
+  transition: background 0.2s, color 0.2s;
+}
+
+.btnFollow.following {
+  background: #e0e0e0;
+  color: #666;
+}
+
+.btnFollow:hover {
+  background: #ffe066;
+  color: #111;
+}
+
+.btnShare {
+  background: #f5f5f5;
+  color: #222;
+  border: none;
+  border-radius: 18px;
+  padding: 7px 18px;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btnShare:hover {
+  background: #e0e0e0;
+  color: #111;
+}
+
+.divDescription {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.description {
+  font-size: 1rem;
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.divRating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.divStars {
+  display: flex;
+  gap: 2px;
+}
+
+.averageRating {
+  font-size: 1rem;
+  color: #ffb347;
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 12px 6px 10px 6px;
+  }
+  .divData {
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+  .divSocial {
+    align-items: center;
+  }
+  .divActions {
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+  }
+  .btnFollow, .btnShare {
+    width: 100%;
+    font-size: 0.98rem;
+  }
+}

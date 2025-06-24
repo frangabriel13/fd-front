@@ -153,7 +153,7 @@
 }
 
 .btnFollow:hover {
-  background: var(--white-blue);
+  /* background: var(--white-blue); */
   color: black;
 }
 

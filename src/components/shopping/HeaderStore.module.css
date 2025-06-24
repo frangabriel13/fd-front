@@ -1,5 +1,5 @@
 .container {
-  background: #fff;
+  background: white;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1.5px 4px rgba(0,0,0,0.04);
   padding: 2rem 1.6rem 1.6rem 1.6rem;
   display: flex;
@@ -15,53 +15,54 @@
 
 .divData {
   display: flex;
-  align-items: flex-start;
+  flex-direction: row;
   justify-content: space-between;
-  gap: 12px;
+  gap: 2rem;
 }
 
 .divProfile {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: .5rem;
+  width: 30%;
+  /* background-color: blue; */
 }
 
 .divImage {
   position: relative;
-  width: 64px;
-  height: 64px;
+  width: 6rem;
+  height: 6rem;
 }
 
 .imgLogo {
-  width: 64px;
-  height: 64px;
+  width: 6rem;
+  height: 6rem;
   object-fit: cover;
   border-radius: 50%;
-  border: 2.5px solid #f2f2f2;
+  border: .2rem solid #f2f2f2;
   box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   background: #fafafa;
 }
 
 .live {
   position: absolute;
-  bottom: -8px;
+  bottom: -.8rem;
   left: 50%;
   transform: translateX(-50%);
-  background: #e53935;
-  color: #fff;
-  font-size: 11px;
+  background: var(--red-color-light);
+  color: white;
+  font-size: 1rem;
   font-weight: bold;
-  padding: 2px 10px;
-  border-radius: 12px;
-  letter-spacing: 1px;
+  padding: .2rem 1rem;
+  border-radius: .4rem;
   box-shadow: 0 1px 4px rgba(229,57,53,0.18);
 }
 
 .name {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 700;
-  color: #222;
+  color: black;
   margin: 0;
   text-align: center;
 }
@@ -69,45 +70,46 @@
 .divSocial {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
+  /* align-items: flex-end; */
+  gap: 1rem;
+  width: 70%;
+  /* background-color: green; */
 }
 
 .divFollow {
   display: flex;
+  justify-content: center;
   align-items: center;
-  gap: 18px;
+  gap: 2rem;
 }
 
 .divFollowers {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 8px;
 }
 
 .followersCount {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: 600;
-  color: #222;
+  color: black;
 }
 
 .followersText {
-  font-size: 0.85rem;
-  color: #888;
+  font-size: 1rem;
+  color: var(--gray-color);
 }
 
 .divNetwork {
   display: flex;
-  gap: 10px;
-  margin-top: 4px;
+  gap: 1rem;
 }
 
 .iconShare {
   color: #888;
   background: #f5f5f5;
   border-radius: 50%;
-  padding: 7px;
+  padding: .7rem;
   font-size: 1.2rem;
   transition: background 0.2s, color 0.2s, transform 0.2s;
   display: flex;
@@ -127,81 +129,85 @@
 
 .divActions {
   display: flex;
-  gap: 10px;
-  margin-top: 8px;
+  gap: 1rem;
 }
 
 .btnFollow {
-  background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%);
-  color: #222;
-  border: none;
-  border-radius: 18px;
-  padding: 7px 18px;
-  font-weight: 600;
+  /* background: linear-gradient(90deg, #ffb347 0%, #ffcc33 100%); */
+  background-color: var(--third-bg-color);
+  color: white;
+  /* border: none; */
+  border-radius: .4rem;
+  padding: .7rem 1.8rem;
+  font-weight: 500;
   font-size: 1rem;
   cursor: pointer;
   box-shadow: 0 1px 4px rgba(255,204,51,0.13);
   transition: background 0.2s, color 0.2s;
+  width: 100%;
 }
 
 .btnFollow.following {
-  background: #e0e0e0;
-  color: #666;
+  background: var(--bg-color);
+  color: black;
 }
 
 .btnFollow:hover {
-  background: #ffe066;
-  color: #111;
+  background: var(--white-blue);
+  color: black;
 }
 
 .btnShare {
-  background: #f5f5f5;
-  color: #222;
+  box-shadow: 0 1px 4px rgba(255,204,51,0.13);
+  /* background: #f5f5f5; */
+  background-color: var(--bg-color);
+  color: black;
   border: none;
-  border-radius: 18px;
-  padding: 7px 18px;
+  border-radius: .4rem;
+  padding: .7rem 1.8rem;
   font-weight: 500;
   font-size: 1rem;
   cursor: pointer;
   transition: background 0.2s, color 0.2s;
+  width: 100%;
 }
 
 .btnShare:hover {
   background: #e0e0e0;
-  color: #111;
+  color: black;
 }
 
-.divDescription {
+/* .divDescription {
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px solid #f0f0f0;
-}
+} */
 
-.description {
+/* .description {
   font-size: 1rem;
   color: #444;
   margin-bottom: 10px;
-}
+} */
 
-.divRating {
+/* .divRating {
   display: flex;
   align-items: center;
   gap: 10px;
   margin-top: 6px;
-}
+} */
 
-.divStars {
+/* .divStars {
   display: flex;
   gap: 2px;
-}
+} */
 
-.averageRating {
+/* .averageRating {
   font-size: 1rem;
   color: #ffb347;
   font-weight: 600;
-}
+} */
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .container {
     padding: 12px 6px 10px 6px;
   }
@@ -222,4 +228,4 @@
     width: 100%;
     font-size: 0.98rem;
   }
-}
+} */

@@ -4,8 +4,9 @@ import {
   BsTiktok,
   BsWhatsapp,
 } from "react-icons/bs";
+import { shareWspLink } from '../../utils/utils';
 
-const HeaderStore = ({ manufacturer, followersCount, isFollowed, handleFollow, renderStars, shareWspLink }) => {
+const HeaderStore = ({ manufacturer, followersCount, isFollowed, handleFollow, renderStars }) => {
   console.log('HeaderStore', manufacturer);
 
   return (
@@ -47,15 +48,28 @@ const HeaderStore = ({ manufacturer, followersCount, isFollowed, handleFollow, r
                   <BsTiktok className={s.iconSocial} />
                 </a>
               )}
-              <a
+              {/* <a
                 href={shareWspLink}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={s.iconShare}
                 title="Compartir por WhatsApp"
               >
+                <BsWhatsapp className={s.iconSocial} onClick={() => shareWspLink(window.location.href)} />
+              </a> */}
+              <button
+                type="button"
+                className={s.iconShare}
+                title="Compartir por WhatsApp"
+                onClick={() => {
+                  if (manufacturer.phone) {
+                    const wspUrl = `https://wa.me/${manufacturer.phone}`;
+                    window.open(wspUrl, '_blank');
+                  }
+                }}
+              >
                 <BsWhatsapp className={s.iconSocial} />
-              </a>
+              </button>
             </div>
           </div>
           <div className={s.divActions}>
@@ -65,7 +79,7 @@ const HeaderStore = ({ manufacturer, followersCount, isFollowed, handleFollow, r
             >
               {isFollowed ? 'Siguiendo' : 'Seguir'}
             </button>
-            <button className={s.btnShare}>
+            <button className={s.btnShare} onClick={() => shareWspLink(window.location.href)}>
               Compartir
             </button>
           </div>

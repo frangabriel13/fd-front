@@ -107,7 +107,6 @@ const Store = () => {
           isFollowed={isFollowed}
           handleFollow={handleFollow}
           renderStars={renderStars}
-          shareWspLink={shareWspLink}
         />
       ) : (
       <div className={s.divHeader}>

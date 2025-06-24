@@ -77,9 +77,9 @@ const HeaderStore = ({ manufacturer, followersCount, isFollowed, handleFollow, r
         )}
         <div className={s.divRating}>
           <div>
-            <p>Calificaciones de los usuarios:</p>
+            <p className={s.pRating}>Calificación de los usuarios:</p>
           </div>
-          <div>
+          <div className={s.divRatingStars}>
             <div className={s.divStars}>
               {renderStars(manufacturer.averageRating)}
             </div>

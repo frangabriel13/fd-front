@@ -14,6 +14,7 @@ import {
   BsStarFill,
   BsInstagram,
   BsTiktok,
+  BsWhatsapp,
 } from "react-icons/bs";
 import { FaRegShareFromSquare } from "react-icons/fa6";
 import SuccessModal from '../../components/modals/SuccessModal';

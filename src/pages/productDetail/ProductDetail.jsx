@@ -17,44 +17,24 @@ const ProductDetail = () => {
   const { productId } = useParams();
   const dispatch = useDispatch();
   const product = useSelector((state) => state.product.product);
-  // const loading = useSelector((state) => state.product.loading);
   const error = useSelector((state) => state.product.error);
   const manufacturer = useSelector((state) => state.manufacturer.manufacturer);
   const [loading, setLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     setLoading(true);
-  //     try {
-  //       const productAction = await dispatch(getProductById(productId));
-  //       console.log('Product Action:', productAction);
-  //       const prod = productAction.payload || product; // Ajusta según cómo retorna tu action
-  //       if (prod && prod.userId) {
-  //         await dispatch(getManufacturerByUserId(prod.userId));
-  //       }
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-  //   fetchData();
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [dispatch, productId]);
-
   useEffect(() => {
-  setLoading(true);
-  dispatch(getProductById(productId))
+    setLoading(true);
+    dispatch(getProductById(productId))
     .then((action) => {
       setLoading(false);
-      // Si necesitas guardar el producto en un estado local, hazlo aquí
     })
     .catch(() => setLoading(false));
-}, [dispatch, productId]);
+  }, [dispatch, productId]);
 
-useEffect(() => {
-  if (product && product.userId) {
-    dispatch(getManufacturerByUserId(product.userId));
-  }
-}, [dispatch, product]);
+  useEffect(() => {
+    if (product && product.userId) {
+      dispatch(getManufacturerByUserId(product.userId));
+    }
+  }, [dispatch, product]);
 
   const handleAddToCart = (variations) => {
     const item = {

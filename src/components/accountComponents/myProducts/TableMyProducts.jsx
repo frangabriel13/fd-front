@@ -47,11 +47,11 @@ const TableMyProducts = ({
               <tr>
                 <th>Image</th>
                 <th>Nombre</th>
-                <th>Tipo</th>
+                {/* <th>Tipo</th>
                 <th>Categoría</th>
-                <th>Género</th>
+                <th>Género</th> */}
                 <th>ARS</th>
-                <th>USD</th>
+                {/* <th>USD</th> */}
                 <th className={s.thActions}>Acciones</th>
               </tr>
             </thead>
@@ -63,11 +63,11 @@ const TableMyProducts = ({
                     <td>{product.name}</td>
                     {/* <td>{product.category.parent.name}</td> */}
                     {/* <td>{product.category.name}</td> */}
-                    <td>{product.category?.parent?.name || 'Otros'}</td>
+                    {/* <td>{product.category?.parent?.name || 'Otros'}</td>
                     <td>{product.category?.name || 'Cargando...'}</td>
-                    <td>{product.gender ? product.gender.name : 'No'}</td>
+                    <td>{product.gender ? product.gender.name : 'No'}</td> */}
                     <td>{formatPrice(product.price)}</td>
-                    <td>{product.priceUSD}</td>
+                    {/* <td>{product.priceUSD}</td> */}
                     <td className={s.tdActions}>
                       <button className={s.btnEdit} onClick={() => openModal(product)}>Editar</button>
                       <button className={s.btnDelete} onClick={() => handleDelete(product.id)}>Eliminar</button>

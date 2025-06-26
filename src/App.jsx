@@ -93,7 +93,7 @@ function App() {
           <Route path='/tienda/:gender' element={<Shopping />} />
           <Route path='/tienda/:gender/:category' element={<Shopping />} />
           <Route path='/orden/:orderId' element={<Order />} />
-          <Route path='/busqueda' element={<Search />} />
+          <Route path='/busqueda/:query' element={<Search />} />
         </Routes>
       </div>
       {/* <Maintenance /> */}

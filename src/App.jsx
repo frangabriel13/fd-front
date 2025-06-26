@@ -26,6 +26,7 @@ import Maintenance from './components/maintenance/Maintenance';
 import Packs from './pages/packs/Packs';
 import Shopping from './pages/shopping/Shopping';
 import Order from './pages/order/Order';
+import Search from './pages/search/Search';
 
 function App() {
   const location = useLocation();
@@ -92,6 +93,7 @@ function App() {
           <Route path='/tienda/:gender' element={<Shopping />} />
           <Route path='/tienda/:gender/:category' element={<Shopping />} />
           <Route path='/orden/:orderId' element={<Order />} />
+          <Route path='/busqueda' element={<Search />} />
         </Routes>
       </div>
       {/* <Maintenance /> */}

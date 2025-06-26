@@ -53,6 +53,7 @@ const NavbarMobile = ({ open, onClose }) => {
           </div>
         )}
         <Link to="/tienda" className={s.link} onClick={onClose}>Tienda</Link>
+        <Link to="/packs" className={s.link} onClick={onClose}>Packs/combos</Link>
         <Link to="/fabricantes" className={s.link} onClick={onClose}>Fabricantes</Link>
         <Link to="/preguntas-frecuentes" className={s.link} onClick={onClose}>Ayuda</Link>
         {isAuthenticated && (

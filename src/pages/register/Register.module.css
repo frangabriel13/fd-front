@@ -91,6 +91,25 @@
   background-color: var(--second-color);
 }
 
+.btnGoogle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.2rem;
+  border: none;
+  border-radius: .3rem;
+  background-color: white;
+  color: black;
+  font-size: 1.6rem;
+  cursor: pointer;
+  gap: 2rem;
+  border: .1rem solid var(--gray-color-light);
+}
+
+.googleIcon {
+  font-size: 2rem;
+}
+
 .error {
   color: red;
   font-size: 1.2rem;

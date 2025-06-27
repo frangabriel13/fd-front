@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { registerUser } from '../../store/actions/userActions';
+import { googleLogin } from '../../store/actions/authActions';
 import { registerUserValidator } from '../../utils/validations';
 import s from './Register.module.css';
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -43,6 +45,15 @@ const Register = () => {
 
   const handleShowPassword = () => {
     setShowPassword(!showPassword);
+  };
+
+  const handleGoogleLogin = async () => {
+    const result = await dispatch(googleLogin());
+    if(result.success) {
+      navigate('/');
+    } else {
+      setErrors({ error: result.message });
+    }
   };
 
   return (
@@ -96,6 +107,9 @@ const Register = () => {
             {loading ? 'Registrando...' : 'Registrarse'}
           </button>
         </form>
+        <button className={s.btnGoogle} onClick={handleGoogleLogin}>
+          <FcGoogle className={s.googleIcon} /> Registrarse con Google
+        </button>
         {successMessage && <p className={s.success}>{successMessage}</p>}
         {errors.error && <p className={s.error}>{errors.error}</p>}
       </div>

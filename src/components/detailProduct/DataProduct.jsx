@@ -9,7 +9,7 @@ import {
   BsStarHalf,
   BsStarFill,
 } from "react-icons/bs";
-import { FaRegShareFromSquare } from "react-icons/fa6";
+import { FaRegShareFromSquare, FaLocationDot } from "react-icons/fa6";
 import { formatPrice, contactWspProduct, shareWspLink } from '../../utils/utils';
 import SuccessModal from '../modals/SuccessModal';
 import Description from './Description';
@@ -156,12 +156,13 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
           >Contactar</button>
           {/* <p>{manufacturer.street}</p> */}
           <a
-            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(manufacturer.street)}`}
+            href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(manufacturer.street || 'Helguera 248, CABA')}`}
             target="_blank"
             rel="noopener noreferrer"
             className={s.streetLink}
           >
-            {manufacturer.street}
+            <FaLocationDot className={s.iconLocation} />
+            {manufacturer.street || 'Venta online. Punto de entrega, Helguera 248'}
           </a>
         </div>
       </div>

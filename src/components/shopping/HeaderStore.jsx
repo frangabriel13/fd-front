@@ -63,7 +63,12 @@ const HeaderStore = ({ manufacturer, followersCount, isFollowed, handleFollow, r
                 title="Compartir por WhatsApp"
                 onClick={() => {
                   if (manufacturer.phone) {
-                    const wspUrl = `https://wa.me/${manufacturer.phone}`;
+                    // Agregar +54 si no está presente
+                    let phoneNumber = manufacturer.phone.replace(/\D/g, ''); // Remover caracteres no numéricos
+                    if (!phoneNumber.startsWith('54')) {
+                      phoneNumber = `54${phoneNumber}`;
+                    }
+                    const wspUrl = `https://wa.me/${phoneNumber}`;
                     window.open(wspUrl, '_blank');
                   }
                 }}

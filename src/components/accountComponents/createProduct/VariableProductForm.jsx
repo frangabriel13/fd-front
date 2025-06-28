@@ -250,6 +250,28 @@ const VariableProductForm = ({ productType, genderProduct, selectedCategory, onC
                 <div>
                   <button type="button" onClick={handleShowImageModal}>Editar imágenes</button>
                 </div>
+                {formData.images.length > 0 && (
+                  <div className={s.selectedImagesPreview}>
+                    <h5>Imágenes seleccionadas:</h5>
+                    <div className={s.imagesPreviewList}>
+                      {formData.images.map((imageUrl, index) => (
+                        <div 
+                          key={index} 
+                          className={`${s.imagePreviewItem} ${formData.mainImage === imageUrl ? s.mainImagePreview : ''}`}
+                        >
+                          <img 
+                            src={imageUrl} 
+                            alt={`Imagen ${index + 1}`} 
+                            className={s.previewImage} 
+                          />
+                          {formData.mainImage === imageUrl && (
+                            <span className={s.mainImageLabel}>Principal</span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 {errors.images && <p className={s.error}>{errors.images}</p>}
               </div>
             </div>

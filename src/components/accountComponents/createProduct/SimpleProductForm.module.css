@@ -290,6 +290,37 @@
   text-align: center;
 }
 
+.selectedSizesPreview {
+  margin-top: .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.selectedSizesPreview h5 {
+  font-size: 1.4rem;
+  color: var(--gray-color);
+  margin: 0;
+}
+
+.sizesPreviewList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-height: 15vh;
+  overflow-y: auto;
+}
+
+.sizePreviewItem {
+  padding: 0.5rem 1rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.3rem;
+  font-size: 1.4rem;
+  background-color: var(--light-bg-color);
+  min-width: fit-content;
+  text-align: center;
+}
+
 .divider {
   border: 0;
   height: .1rem;
@@ -342,6 +373,10 @@
   .selectedImagesPreview h5 {
     font-size: 1.2rem;
   }
+
+  .selectedSizesPreview h5 {
+  font-size: 1.2rem;
+}
 }
 
 @media (max-width: 1024px) {

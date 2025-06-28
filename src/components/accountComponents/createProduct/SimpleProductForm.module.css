@@ -239,6 +239,57 @@
   min-width: fit-content;
 }
 
+.selectedImagesPreview {
+  margin-top: .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.selectedImagesPreview h5 {
+  font-size: 1.4rem;
+  color: var(--gray-color);
+  margin: 0;
+}
+
+.imagesPreviewList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-height: 20vh;
+  overflow-y: auto;
+}
+
+.imagePreviewItem {
+  position: relative;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+
+.previewImage {
+  width: 3rem;
+  height: 4rem;
+  object-fit: cover;
+  display: block;
+}
+
+.mainImagePreview {
+  border: 0.2rem solid var(--second-color);
+}
+
+.mainImageLabel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--second-color);
+  color: white;
+  font-size: 1rem;
+  padding: 0.2rem;
+  text-align: center;
+}
+
 .divider {
   border: 0;
   height: .1rem;
@@ -286,6 +337,10 @@
 
   .colorPreviewItem {
     font-size: 1.6rem;
+  }
+
+  .selectedImagesPreview h5 {
+    font-size: 1.2rem;
   }
 }
 
@@ -373,5 +428,12 @@
 
   .btnNext {
     font-size: 1.4rem;
+  }
+
+  .previewImage {
+    width: 3rem;
+    height: 4rem;
+    object-fit: cover;
+    display: block;
   }
 }

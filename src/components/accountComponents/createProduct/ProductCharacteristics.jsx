@@ -2,9 +2,10 @@ import { useState } from 'react';
 import s from './ProductCharacteristics.module.css';
 import { FaChild, FaChildDress, FaBaby } from "react-icons/fa6";
 import { IoWoman, IoMan } from "react-icons/io5";
-import { filterCategoriesByParentAndGender } from '../../../utils/utils';
+import { genders } from '../../../utils/hardcodeo';
+import CategoryFilterTwo from '../../shopping/CategoryFilterTwo';
 
-const ProductCharacteristics = ({ productType, setProductType, categories, onShowForm }) => {
+const ProductCharacteristics = ({ onShowForm }) => {
   const [typeProduct, setTypeProduct] = useState(null);
   const [genderProduct, setGenderProduct] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -17,11 +18,17 @@ const ProductCharacteristics = ({ productType, setProductType, categories, onSho
 
   const handleGenderClick = (gender) => {
     setGenderProduct(gender);
+    setSelectedCategory(null);
   };
 
-  const handleCategoryChange = (e) => {
-    setSelectedCategory(e.target.value);
-    onShowForm(null);
+  const handleCategorySelect = (categoryUrl) => {
+    const selectedGenderObj = genders.find(g => g.id === genderProduct);
+    const selectedCategoryObj = selectedGenderObj ? selectedGenderObj.categories.find(c => c.url === categoryUrl) : null;
+    
+    if (selectedCategoryObj) {
+      setSelectedCategory(selectedCategoryObj.id);
+      onShowForm(null);
+    }
   };
 
   const handleNextClick = () => {
@@ -31,14 +38,16 @@ const ProductCharacteristics = ({ productType, setProductType, categories, onSho
     }
     setErrorMessage('');
     onShowForm({
-      productType,
       genderProduct,
       selectedCategory,
       uniqueSize: typeProduct === 'uniqueSize',
     });
   };
 
-  const filteredCategories = filterCategoriesByParentAndGender(categories, productType.id, genderProduct);
+  const selectedGenderObj = genders.find(g => g.id === genderProduct);
+  const genderCategories = selectedGenderObj ? selectedGenderObj.categories : [];
+  const selectedCategoryObj = genderCategories.find(c => c.id === selectedCategory);
+  const selectedCategoryUrl = selectedCategoryObj ? selectedCategoryObj.url : null;
 
   return (
     <div className={s.container}>
@@ -108,14 +117,15 @@ const ProductCharacteristics = ({ productType, setProductType, categories, onSho
       <div className={s.divFinal}>
         <div className={s.divCategory}>
           <h4>¿A qué categoría pertenece tu producto?</h4>
-          <select onChange={handleCategoryChange}>
-            <option value={""}>Selecciona una categoría</option>
-            {filteredCategories.map((category) => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
+          {genderProduct && genderCategories.length > 0 ? (
+            <CategoryFilterTwo 
+              categories={genderCategories} 
+              onSelect={handleCategorySelect} 
+              selectedCategory={selectedCategoryUrl}
+            />
+          ) : (
+            <p>Selecciona un género primero</p>
+          )}
         </div>
         {errorMessage && <p className={s.errorMessage}>{errorMessage}</p>}
         <hr className={s.divider} />

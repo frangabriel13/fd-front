@@ -119,6 +119,12 @@
   background-color: var(--green-color-light);
 }
 
+.buttonWsp {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
 .streetLink {
   color: var(--gray-color);
   font-size: 1.4rem;

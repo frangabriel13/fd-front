@@ -158,11 +158,77 @@
   }
 
   .table {
-    min-width: 60rem;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
+    min-width: auto;
+  }
+
+  .table th, .table td {
+    padding: 0.5rem 0.3rem;
+    font-size: 0.9rem;
   }
 
   .container {
     padding: 1rem;
+  }
+
+  .container h3 {
+    font-size: 1.6rem;
+  }
+
+  .thActions {
+    width: 8rem;
+  }
+
+  .btnEdit, .btnDelete {
+    padding: 0.3rem 0.5rem;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+  }
+
+  .btnDelete {
+    margin-right: 0;
+  }
+
+  /* Ocultar algunas columnas en móvil para ahorrar espacio */
+  .table th:nth-child(4), 
+  .table td:nth-child(4) {
+    display: none;
+  }
+}
+
+/* Media query para pantallas extra pequeñas */
+@media (max-width: 360px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .container h3 {
+    font-size: 1.4rem;
+  }
+
+  .table {
+    font-size: 0.8rem;
+  }
+
+  .table th, .table td {
+    padding: 0.4rem 0.2rem;
+    font-size: 0.8rem;
+  }
+
+  .thActions {
+    width: 6rem;
+  }
+
+  .btnEdit, .btnDelete {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.7rem;
+  }
+
+  /* En pantallas muy pequeñas, mostrar solo ID, precio y acciones */
+  .table th:nth-child(3), 
+  .table td:nth-child(3),
+  .table th:nth-child(4), 
+  .table td:nth-child(4) {
+    display: none;
   }
 }

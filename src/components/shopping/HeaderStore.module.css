@@ -100,8 +100,14 @@
   color: var(--gray-color);
 }
 
+.divActions {
+  display: flex;
+  gap: 1rem;
+}
+
 .divNetwork {
   display: flex;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -125,11 +131,6 @@
 
 .iconSocial {
   font-size: 1.8rem;
-}
-
-.divActions {
-  display: flex;
-  gap: 1rem;
 }
 
 .btnFollow {

@@ -44,6 +44,10 @@
   font-size: 1.2rem;
 }
 
+.table th:last-child, .table td:last-child {
+  text-align: right;
+}
+
 .table th {
   background-color: var(--second-color);
   font-weight: bold;
@@ -56,7 +60,7 @@
 }
 
 .thActions {
-  text-align: center !important;
+  text-align: right !important;
 }
 
 .tdActions {
@@ -94,6 +98,85 @@
 
 .btnEdit:hover {
   background-color: var(--third-bg-color);
+}
+
+/* Modal de confirmación */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background-color: white;
+  padding: 2rem;
+  border-radius: .5rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  max-width: 400px;
+  width: 90%;
+  text-align: center;
+}
+
+.modalContent h4 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: var(--second-color);
+}
+
+.modalContent p {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+  color: var(--gray-color);
+}
+
+.warningText {
+  color: var(--red-color) !important;
+  font-weight: 500;
+  font-size: 1.2rem !important;
+}
+
+.modalActions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.btnCancel {
+  background-color: var(--other-gray);
+  color: var(--gray-color);
+  padding: .8rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  border-radius: .3rem;
+  font-size: 1.4rem;
+  transition: background-color 0.3s ease;
+}
+
+.btnCancel:hover {
+  background-color: var(--other-gray-light);
+}
+
+.btnConfirmDelete {
+  background-color: var(--red-color);
+  color: white;
+  padding: .8rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  border-radius: .3rem;
+  font-size: 1.4rem;
+  transition: background-color 0.3s ease;
+}
+
+.btnConfirmDelete:hover {
+  background-color: var(--red-color-light);
 }
 
 @media (max-width: 1360px) {
@@ -180,20 +263,30 @@
 @media (max-width: 480px) {
   .divData {
     width: 100%;
+  }
+
+  .divProducts {
     overflow-x: auto;
   }
 
-  .mainImage {
-    width: 10rem;
+  .table {
+    width: 100%;
+    min-width: auto;
+    font-size: .9rem;
   }
 
-  .table {
-    min-width: 600px;
-    font-size: .8rem;
+  .table th, .table td {
+    padding: .5rem .3rem;
+    font-size: .9rem;
+  }
+
+  .table img {
+    width: 3rem;
+    height: 4rem;
   }
 
   .container {
-    padding: 1rem;
+    padding: .5rem;
   }
 
   .container h3 {
@@ -208,13 +301,42 @@
     font-size: .8rem;
   }
 
-  .table th, .table td {
+  .btnDelete,
+  .btnEdit {
     font-size: .8rem;
+    padding: .3rem .5rem;
+    margin-right: .3rem;
   }
 
-  .buttonDelete,
-  .buttonEdit {
+  .btnEdit {
+    margin-right: .3rem;
+  }
+  
+  .modalContent {
+    padding: 1.5rem;
+    margin: 1rem;
+  }
+  
+  .modalContent h4 {
     font-size: 1.4rem;
-    padding: .4rem 1rem;
+  }
+  
+  .modalContent p {
+    font-size: 1.2rem;
+  }
+  
+  .warningText {
+    font-size: 1rem !important;
+  }
+  
+  .modalActions {
+    flex-direction: column;
+    gap: .5rem;
+  }
+  
+  .btnCancel,
+  .btnConfirmDelete {
+    font-size: 1.2rem;
+    padding: .6rem 1rem;
   }
 }

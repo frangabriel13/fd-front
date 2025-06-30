@@ -40,11 +40,13 @@
 }
 
 .thActions {
-  text-align: center !important;
+  text-align: right !important;
+  width: 15rem;
 }
 
 .tdActions {
   text-align: right !important;
+  white-space: nowrap;
 }
 
 .table img {

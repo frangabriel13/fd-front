@@ -6,6 +6,7 @@ import { getPackById } from "../../store/actions/packActions";
 import { addToCart } from "../../store/actions/cartActions";
 import { formatPrice } from "../../utils/utils";
 import DataPack from "../../components/detailPack/DataPack";
+import MoreProducts from "../../components/productRow/MoreProducts";
 
 const PackDetail = () => {
   const { packId } = useParams();
@@ -41,6 +42,14 @@ const PackDetail = () => {
       </div>
       <div className={s.divDetail}>
         <DataPack pack={pack} onAddToCart={handleAddToCart} />
+      </div>
+      <div className={s.divMoreProducts}>
+        <MoreProducts 
+          userId={pack.userId}
+          manufacturerName={pack.manufacturer.name}
+          manufacturerId={pack.manufacturer.id}
+          manufacturerLogo={pack.manufacturer.logo}
+        />
       </div>
     </div>
   )

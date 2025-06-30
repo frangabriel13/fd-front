@@ -186,6 +186,8 @@
 .description {
   font-size: 1.1rem;
   color: var(--gray-color);
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .divRating {

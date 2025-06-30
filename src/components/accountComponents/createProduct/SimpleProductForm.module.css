@@ -210,6 +210,117 @@
   background-color: var(--second-color);
 }
 
+.selectedColorsPreview {
+  margin-top: .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.selectedColorsPreview h5 {
+  font-size: 1.4rem;
+  color: var(--gray-color);
+}
+
+.colorsPreviewList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-height: 15vh;
+  overflow-y: auto;
+}
+
+.colorPreviewItem {
+  padding: 0.8rem 1rem 0.3rem 1rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.3rem;
+  font-size: 1.4rem;
+  background-color: var(--light-bg-color);
+  min-width: fit-content;
+}
+
+.selectedImagesPreview {
+  margin-top: .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.selectedImagesPreview h5 {
+  font-size: 1.4rem;
+  color: var(--gray-color);
+  margin: 0;
+}
+
+.imagesPreviewList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  max-height: 20vh;
+  overflow-y: auto;
+}
+
+.imagePreviewItem {
+  position: relative;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.3rem;
+  overflow: hidden;
+}
+
+.previewImage {
+  width: 3rem;
+  height: 4rem;
+  object-fit: cover;
+  display: block;
+}
+
+.mainImagePreview {
+  border: 0.2rem solid var(--second-color);
+}
+
+.mainImageLabel {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--second-color);
+  color: white;
+  font-size: 1rem;
+  padding: 0.2rem;
+  text-align: center;
+}
+
+.selectedSizesPreview {
+  margin-top: .5rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+
+.selectedSizesPreview h5 {
+  font-size: 1.4rem;
+  color: var(--gray-color);
+  margin: 0;
+}
+
+.sizesPreviewList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-height: 15vh;
+  overflow-y: auto;
+}
+
+.sizePreviewItem {
+  padding: 0.5rem 1rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 0.3rem;
+  font-size: 1.4rem;
+  background-color: var(--light-bg-color);
+  min-width: fit-content;
+  text-align: center;
+}
+
 .divider {
   border: 0;
   height: .1rem;
@@ -243,6 +354,29 @@
 }
 
 @media (max-width: 1360px) {
+  .selectedColorsPreview {
+    width: 100%;
+  }
+
+  .selectedColorsPreview h5 {
+    font-size: 1.2rem;
+  }
+
+  .colorsPreviewList {
+    max-height: 20vh;
+  }
+
+  .colorPreviewItem {
+    font-size: 1.6rem;
+  }
+
+  .selectedImagesPreview h5 {
+    font-size: 1.2rem;
+  }
+
+  .selectedSizesPreview h5 {
+  font-size: 1.2rem;
+}
 }
 
 @media (max-width: 1024px) {
@@ -329,5 +463,12 @@
 
   .btnNext {
     font-size: 1.4rem;
+  }
+
+  .previewImage {
+    width: 3rem;
+    height: 4rem;
+    object-fit: cover;
+    display: block;
   }
 }

@@ -7,8 +7,6 @@ import {
 import { shareWspLink } from '../../utils/utils';
 
 const HeaderStore = ({ manufacturer, followersCount, isFollowed, handleFollow, renderStars }) => {
-  console.log('HeaderStore', manufacturer);
-
   return (
     <div className={s.container}>
       <div className={s.divData}>
@@ -25,62 +23,67 @@ const HeaderStore = ({ manufacturer, followersCount, isFollowed, handleFollow, r
               <p className={s.followersCount}>{followersCount}</p>
               <p className={s.followersText}>Seguidores</p>
             </div>
-            <div className={s.divNetwork}>
-              {manufacturer.instagramNick && (
-                <a
-                href={`https://instagram.com/${manufacturer.instagramNick}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={s.iconShare}
-                title="Instagram"
-                >
-                  <BsInstagram className={s.iconSocial} />
-                </a>
-              )}
-              {manufacturer.tiktokUrl && (
-                <a
-                href={manufacturer.tiktokUrl.replace(/\/live$/, '')}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={s.iconShare}
-                title="TikTok"
-                >
-                  <BsTiktok className={s.iconSocial} />
-                </a>
-              )}
-              {/* <a
-                href={shareWspLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={s.iconShare}
-                title="Compartir por WhatsApp"
+            <div className={s.divActions}>
+              <button 
+                className={`${s.btnFollow} ${isFollowed ? s.following : ''}`} 
+                onClick={handleFollow}
               >
-                <BsWhatsapp className={s.iconSocial} onClick={() => shareWspLink(window.location.href)} />
-              </a> */}
-              <button
-                type="button"
-                className={s.iconShare}
-                title="Compartir por WhatsApp"
-                onClick={() => {
-                  if (manufacturer.phone) {
-                    const wspUrl = `https://wa.me/${manufacturer.phone}`;
-                    window.open(wspUrl, '_blank');
-                  }
-                }}
-              >
-                <BsWhatsapp className={s.iconSocial} />
+                {isFollowed ? 'Siguiendo' : 'Seguir'}
+              </button>
+              <button className={s.btnShare} onClick={() => shareWspLink(window.location.href)}>
+                Compartir
               </button>
             </div>
           </div>
-          <div className={s.divActions}>
-            <button 
-              className={`${s.btnFollow} ${isFollowed ? s.following : ''}`} 
-              onClick={handleFollow}
+          <div className={s.divNetwork}>
+            {manufacturer.instagramNick && (
+              <a
+              href={`https://instagram.com/${manufacturer.instagramNick}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={s.iconShare}
+              title="Instagram"
+              >
+                <BsInstagram className={s.iconSocial} />
+              </a>
+            )}
+            {manufacturer.tiktokUrl && (
+              <a
+              href={manufacturer.tiktokUrl.replace(/\/live$/, '')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={s.iconShare}
+              title="TikTok"
+              >
+                <BsTiktok className={s.iconSocial} />
+              </a>
+            )}
+            {/* <a
+              href={shareWspLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={s.iconShare}
+              title="Compartir por WhatsApp"
             >
-              {isFollowed ? 'Siguiendo' : 'Seguir'}
-            </button>
-            <button className={s.btnShare} onClick={() => shareWspLink(window.location.href)}>
-              Compartir
+              <BsWhatsapp className={s.iconSocial} onClick={() => shareWspLink(window.location.href)} />
+            </a> */}
+            <button
+              type="button"
+              className={s.iconShare}
+              title="Compartir por WhatsApp"
+              onClick={() => {
+                if (manufacturer.phone) {
+                  // Agregar +54 si no está presente
+                  let phoneNumber = manufacturer.phone.replace(/\D/g, ''); // Remover caracteres no numéricos
+                  if (!phoneNumber.startsWith('54')) {
+                    phoneNumber = `54${phoneNumber}`;
+                  }
+                  const wspUrl = `https://wa.me/${phoneNumber}`;
+                  window.open(wspUrl, '_blank');
+                }
+              }}
+            >
+              <BsWhatsapp className={s.iconSocial} />
             </button>
           </div>
         </div>

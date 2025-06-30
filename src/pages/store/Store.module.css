@@ -67,6 +67,8 @@
   font-size: 1.2rem;
   color: black;
   text-align: center;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .divData {

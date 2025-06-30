@@ -16,7 +16,7 @@ const RegisterManufacturer = ({ user }) => {
     pointOfSale: false,
     street: '',
     phone: '',
-    minPurchase: 0,
+    minPurchase: '',
     userId: user.userId,
     // antes userId
   });
@@ -34,18 +34,23 @@ const RegisterManufacturer = ({ user }) => {
     const { name, value } = e.target;
     setFormData({
       ...formData,
-      [name]: name === 'minPurchase' ? Number(value) : value,
+      [name]: name === 'minPurchase' ? value : value,
     });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const validationErrors = registerManufacturerValidator(formData);
+    // Preparar datos para validación convirtiendo minPurchase a número
+    const dataForValidation = {
+      ...formData,
+      minPurchase: formData.minPurchase === '' ? 0 : Number(formData.minPurchase)
+    };
+    const validationErrors = registerManufacturerValidator(dataForValidation);
     if(Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
     } else {
       setErrors({});
-      const dataToSubmit = { ...formData };
+      const dataToSubmit = { ...dataForValidation };
       if (!dataToSubmit.pointOfSale) {
         delete dataToSubmit.street;
       }
@@ -56,7 +61,7 @@ const RegisterManufacturer = ({ user }) => {
         pointOfSale: false,
         street: '',
         phone: '',
-        minPurchase: 0,
+        minPurchase: '',
         userId: user.userId,
         // antes userId
       });

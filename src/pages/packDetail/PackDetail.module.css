@@ -29,8 +29,18 @@
   gap: 3rem;
 }
 
+.divMoreProducts {
+  display: flex;
+  justify-content: center;
+  margin: 0rem 30rem;
+}
+
 @media (max-width: 1360px) {
   .divDetail {
+    margin: 0rem 15rem;
+  }
+
+  .divMoreProducts {
     margin: 0rem 15rem;
   }
 }
@@ -43,6 +53,10 @@
   .divHeader {
     padding: 0rem 5rem;
   }
+
+  .divMoreProducts {
+    margin: 0rem 5rem;
+  }
 }
 
 @media (max-width: 768px) {
@@ -54,6 +68,10 @@
 
   .divHeader {
     padding: 0rem 2rem;
+  }
+
+  .divMoreProducts {
+    margin: 0rem 2rem;
   }
 }
 
@@ -75,5 +93,9 @@
     margin: 0rem 1rem;
     padding: 1rem;
     gap: 1rem;
+  }
+
+  .divMoreProducts {
+    margin: 0rem 1rem;
   }
 }

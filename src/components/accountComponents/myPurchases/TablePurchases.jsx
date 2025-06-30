@@ -2,6 +2,8 @@ import { useState } from "react";
 import s from "./TablePurchases.module.css";
 import { formatPrice, formatDateAndTime, contactWspOrder } from "../../../utils/utils";
 import OrderDetail from "./OrderDetail";
+import { BsEye } from "react-icons/bs";
+import { MdDeleteOutline } from "react-icons/md";
 
 const TablePurchases = ({ myOrders = [], onDeleteOrder }) => {
   const [selectedOrder, setSelectedOrder] = useState(null);
@@ -37,7 +39,6 @@ const TablePurchases = ({ myOrders = [], onDeleteOrder }) => {
                 <th>ARS</th>
                 <th>Fecha</th>
                 <th>Hora</th>
-                <th>Unificado</th>
                 <th className={s.thActions}>Acciones</th>
               </tr>
             </thead>
@@ -55,11 +56,13 @@ const TablePurchases = ({ myOrders = [], onDeleteOrder }) => {
                     <td>{formatPrice(order.total)}</td>
                     <td>{formattedDate}</td>
                     <td>{formattedTime}</td>
-                    <td>{order.unifique ? "Sí" : "No"}</td>
                     <td className={s.tdActions}>
-                      <button className={s.btnEdit} onClick={() => openModal(order)}>Ver</button>
-                      {/* <button className={s.btnEdit} onClick={() => handleContact(order)}>Contactar</button> */}
-                      <button className={s.btnDelete} onClick={() => onDeleteOrder(order.id)}>Eliminar</button>
+                      <button className={s.btnEdit} onClick={() => openModal(order)}>
+                        <BsEye className={s.icon} />
+                      </button>
+                      <button className={s.btnDelete} onClick={() => onDeleteOrder(order.id)}>
+                        <MdDeleteOutline className={s.icon} />
+                      </button>
                     </td>
                   </tr>
                 );

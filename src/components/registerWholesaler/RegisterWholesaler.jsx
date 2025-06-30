@@ -40,7 +40,7 @@ const RegisterWholesaler = ({ user }) => {
         // antes userId
       });
       await dispatch(getMe());
-      navigate('/mi-cuenta');
+      navigate('/');
     }
   };
 

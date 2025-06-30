@@ -34,12 +34,6 @@ const VariableProductForm = ({ productType, genderProduct, selectedCategory, onC
     dispatch(getColors());
   }, [dispatch]);
  
-  // const handleChange = (e) => {
-  //   setFormData({
-  //     ...formData,
-  //     [e.target.name]: e.target.value,
-  //   });
-  // };
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
     setFormData({
@@ -95,11 +89,6 @@ const VariableProductForm = ({ productType, genderProduct, selectedCategory, onC
     };
 
     setErrors({});
-    // dispatch(createProduct(productData)).then(() => {
-    //   onSuccess();
-    //   onClose();
-    // });
-    console.log('Product data to create:', productData);
     dispatch(createProduct(productData)).then(() => {
       setLoading(false); // <-- desactivar loading al terminar
       onSuccess();
@@ -238,6 +227,22 @@ const VariableProductForm = ({ productType, genderProduct, selectedCategory, onC
                 <div>
                   <button type="button" onClick={handleShowColorModal}>Editar colores</button>
                 </div>
+                {formData.colors.length > 0 && (
+                  <div className={s.selectedColorsPreview}>
+                    <h5>Colores seleccionados:</h5>
+                    <div className={s.colorsPreviewList}>
+                      {formData.colors.map(color => (
+                        <div 
+                          key={color.id} 
+                          className={s.colorPreviewItem} 
+                          style={{ borderBottom: `5px solid ${color.code}` }}
+                        >
+                          {color.name}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 {errors.colors && <p className={s.error}>{errors.colors}</p>}
               </div>
               <div className={s.divCategories}>
@@ -245,6 +250,28 @@ const VariableProductForm = ({ productType, genderProduct, selectedCategory, onC
                 <div>
                   <button type="button" onClick={handleShowImageModal}>Editar imágenes</button>
                 </div>
+                {formData.images.length > 0 && (
+                  <div className={s.selectedImagesPreview}>
+                    <h5>Imágenes seleccionadas:</h5>
+                    <div className={s.imagesPreviewList}>
+                      {formData.images.map((imageUrl, index) => (
+                        <div 
+                          key={index} 
+                          className={`${s.imagePreviewItem} ${formData.mainImage === imageUrl ? s.mainImagePreview : ''}`}
+                        >
+                          <img 
+                            src={imageUrl} 
+                            alt={`Imagen ${index + 1}`} 
+                            className={s.previewImage} 
+                          />
+                          {formData.mainImage === imageUrl && (
+                            <span className={s.mainImageLabel}>Principal</span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 {errors.images && <p className={s.error}>{errors.images}</p>}
               </div>
             </div>
@@ -252,7 +279,6 @@ const VariableProductForm = ({ productType, genderProduct, selectedCategory, onC
         </div>
         <hr className={s.divider} />
         <div className={s.divBtn}>
-          {/* <button className={s.btnNext} type='submit'>Crear producto</button> */}
           <button className={s.btnNext} type='submit' disabled={loading}>
             {loading ? 'Creando producto...' : 'Crear producto'}
           </button>

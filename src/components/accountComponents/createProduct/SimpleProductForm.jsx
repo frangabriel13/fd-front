@@ -213,6 +213,24 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
                 <div>
                   <button type="button" onClick={handleShowSizeModal}>Editar talles</button>
                 </div>
+                {formData.sizes.length > 0 && (
+                  <div className={s.selectedSizesPreview}>
+                    <h5>Talles seleccionados:</h5>
+                    <div className={s.sizesPreviewList}>
+                      {formData.sizes.map((sizeId, index) => {
+                        const size = sizes.Numéricos?.find(s => s.id === sizeId) || 
+                                    sizes.Letras?.find(s => s.id === sizeId) || 
+                                    sizes.Infantiles?.find(s => s.id === sizeId) || 
+                                    sizes.Zapatos?.find(s => s.id === sizeId);
+                        return (
+                          <div key={index} className={s.sizePreviewItem}>
+                            {size ? size.name : `Talle ${sizeId}`}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                )}
                 {errors.sizes && <p className={s.error}>{errors.sizes}</p>}
               </div>
               <div className={s.divCategories}>
@@ -220,6 +238,28 @@ const SimpleProductForm = ({ productType, genderProduct, selectedCategory, onClo
                 <div>
                   <button type="button" onClick={handleShowImageModal}>Editar imágenes</button>
                 </div>
+                {formData.images.length > 0 && (
+                  <div className={s.selectedImagesPreview}>
+                    <h5>Imágenes seleccionadas:</h5>
+                    <div className={s.imagesPreviewList}>
+                      {formData.images.map((imageUrl, index) => (
+                        <div 
+                          key={index} 
+                          className={`${s.imagePreviewItem} ${formData.mainImage === imageUrl ? s.mainImagePreview : ''}`}
+                        >
+                          <img 
+                            src={imageUrl} 
+                            alt={`Imagen ${index + 1}`} 
+                            className={s.previewImage} 
+                          />
+                          {formData.mainImage === imageUrl && (
+                            <span className={s.mainImageLabel}>Principal</span>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
                 {errors.images && <p className={s.error}>{errors.images}</p>}
               </div>
             </div>

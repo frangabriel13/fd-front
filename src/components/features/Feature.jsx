@@ -1,8 +1,8 @@
 import s from './Feature.module.css';
 
-const Feature = ({ icon, title, description }) => {
+const Feature = ({ icon, title, description, onClick }) => {
   return (
-    <div className={s.container}>
+    <div className={s.container} onClick={onClick}>
       <div className={s.icon}>
         {icon}
       </div>

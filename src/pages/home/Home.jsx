@@ -15,13 +15,13 @@ const Home = () => {
         <Banner />
       </div>
       <div className={s.home}>
-        <LiveShopping />
         <GenederList />
-        <Features />
+        <LiveShopping />
         <NewArrivals />
+        <PacksRow />
         <ProductsOnSale />
         <BisBlanProducts />
-        <PacksRow />
+        <Features />
       </div>
     </div>
   );

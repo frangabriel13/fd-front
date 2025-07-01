@@ -65,9 +65,8 @@
 
 .header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1rem;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .divStars {
@@ -87,10 +86,10 @@
 
 .divFooter {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.2rem;
-  text-align: right;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.5rem;
 }
 
 .divFooter h5 {
@@ -142,6 +141,10 @@
     gap: 0.8rem;
   }
 
+  .divFooter {
+    margin-top: 0.4rem;
+  }
+
   .star {
     font-size: 1.2rem;
   }
@@ -185,6 +188,7 @@
   .divFooter {
     align-items: flex-start;
     text-align: left;
+    margin-top: 0.3rem;
   }
 
   .star {

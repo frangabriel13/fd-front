@@ -37,13 +37,13 @@ const ReviewMobile = ({ review, isEditable, onEdit, onDelete }) => {
               {renderStars(review.rating)}
             </div>
           </div>
-          <div className={s.divFooter}>
-            <h5>De: {review.user.wholesaler.name}</h5>
-            <p>Hace {timeAgo(review.createdAt)}</p>
-          </div>
         </div>
         <div className={s.divComment}>
           <p className={s.comment}>{review.comment}</p>
+        </div>
+        <div className={s.divFooter}>
+          <h5>De: {review.user.wholesaler.name}</h5>
+          <p>Hace {timeAgo(review.createdAt)}</p>
         </div>
       </div>
     </div>

@@ -22,8 +22,8 @@ const CompleteRegistration = () => {
           <p>Por favor, completa tu registro para poder acceder a todas las funcionalidades de la aplicación.</p>
         </div>
         <div className={s.divOptions}>
-          <button className={s.btnOption} onClick={() => handleRoleSelection('manufacturer')}>FABRICANTE</button>
-          <button className={s.btnOption} onClick={() => handleRoleSelection('wholesaler')}>MAYORISTA</button>
+          <button className={s.btnOption} onClick={() => handleRoleSelection('manufacturer')}> SOY FABRICANTE</button>
+          <button className={s.btnOption} onClick={() => handleRoleSelection('wholesaler')}>SOY COMPRADOR MAYORISTA</button>
         </div>
       </div>
       {

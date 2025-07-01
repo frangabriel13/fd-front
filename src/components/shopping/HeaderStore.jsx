@@ -6,7 +6,7 @@ import {
 } from "react-icons/bs";
 import { shareWspLink } from '../../utils/utils';
 
-const HeaderStore = ({ manufacturer, followersCount, isFollowed, handleFollow, renderStars }) => {
+const HeaderStore = ({ manufacturer, followersCount, isFollowed, handleFollow, renderStars, onStarsClick }) => {
   return (
     <div className={s.container}>
       <div className={s.divData}>
@@ -97,7 +97,7 @@ const HeaderStore = ({ manufacturer, followersCount, isFollowed, handleFollow, r
             <p className={s.pRating}>Calificación de los usuarios:</p>
           </div>
           <div className={s.divRatingStars}>
-            <div className={s.divStars}>
+            <div className={s.divStars} onClick={onStarsClick} style={{ cursor: 'pointer' }}>
               {renderStars(manufacturer.averageRating)}
             </div>
             <p className={s.averageRating}>

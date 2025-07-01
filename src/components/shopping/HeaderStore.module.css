@@ -239,6 +239,12 @@
 .divStars {
   display: flex;
   gap: .2rem;
+  transition: all 0.2s ease;
+}
+
+.divStars:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 .averageRating {

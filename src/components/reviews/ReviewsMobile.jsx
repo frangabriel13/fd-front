@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import s from './ReviewsMobile.module.css';
-import Review from './Review';
+import ReviewMobile from './ReviewMobile';
 import CreateReview from './CreateReview';
 import EditReview from './EditReview';
 import SuccessModal from '../modals/SuccessModal';
@@ -102,7 +102,7 @@ const ReviewsMobile = ({ reviews, manufacturerId, onRefresh }) => {
         {reviews
           .slice(0, reviewsToShow)
           .map((review, index) => (
-            <Review 
+            <ReviewMobile 
               key={index} 
               review={review}
               isEditable={user?.userId === review.user.id}

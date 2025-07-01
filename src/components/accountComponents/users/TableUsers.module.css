@@ -86,6 +86,22 @@
   background-color: var(--green-color-light);
 }
 
+.btnWhatsapp {
+  background-color: #25d366;
+  color: white;
+  padding: .5rem 1rem;
+  border: none;
+  cursor: pointer;
+  border-radius: .3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btnWhatsapp:hover {
+  background-color: #20b954;
+}
+
 @media (max-width: 1360px) {
   .container {
     padding: 2rem;

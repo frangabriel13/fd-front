@@ -3,11 +3,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getUserData } from '../../store/actions/storeActions';
 import { followManufacturer, unfollowManufacturer } from '../../store/actions/userActions';
+import { createReview, updateReview } from '../../store/actions/reviewActions';
 import s from './Store.module.css';
 import Products from '../../components/productStore/Products';
 import Pagination from '../../components/pagination/Pagination';
 import Reviews from '../../components/reviews/Reviews';
 import HeaderStore from '../../components/shopping/HeaderStore';
+import ReviewsMobile from '../../components/reviews/ReviewsMobile';
+import CreateReview from '../../components/reviews/CreateReview';
+import EditReview from '../../components/reviews/EditReview';
 import {
   BsStar,
   BsStarHalf,
@@ -34,6 +38,31 @@ const Store = () => {
   const [followersCount, setFollowersCount] = useState(manufacturer.followersCount);
   const [showModal, setShowModal] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [isCreateReviewModalOpen, setIsCreateReviewModalOpen] = useState(false);
+  const [isEditReviewModalOpen, setIsEditReviewModalOpen] = useState(false);
+  const [reviewToEdit, setReviewToEdit] = useState(null);
+
+  const handleStarsClick = () => {
+    // Esta función será pasada al HeaderStore para manejar el clic en las estrellas
+    // Simula el mismo comportamiento que tiene ReviewsMobile
+    if (!user || user.role !== 'wholesaler') {
+      setShowModal(true);
+      return;
+    }
+
+    const existingReview = manufacturer.reviews?.find(
+      (review) => review.user.id === user.userId
+    );
+
+    if (existingReview) {
+      // Si ya tiene una reseña, abre el modal de edición
+      setReviewToEdit(existingReview);
+      setIsEditReviewModalOpen(true);
+    } else {
+      // Si no tiene reseña, abre el modal de creación
+      setIsCreateReviewModalOpen(true);
+    }
+  };
 
   useEffect(() => {
     setLoading(true); // <-- Añadido para mostrar el loader antes de pedir los datos
@@ -72,6 +101,27 @@ const Store = () => {
     }
   };
 
+  const handleCreateReview = async (reviewData) => {
+    const response = await dispatch(createReview(manufacturer.id, reviewData));
+    if(response.success) {
+      dispatch(getUserData(userId, 1, pageSize, sortOrder));
+      setIsCreateReviewModalOpen(false);
+    } else {
+      console.error('Error al crear la reseña:', response.error);
+    }
+  };
+
+  const handleUpdateReview = async (reviewData) => {
+    const response = await dispatch(updateReview(reviewToEdit.id, reviewData));
+    if(response.success) {
+      dispatch(getUserData(userId, 1, pageSize, sortOrder));
+      setIsEditReviewModalOpen(false);
+      setReviewToEdit(null);
+    } else {
+      console.error('Error al actualizar la reseña:', response.error);
+    }
+  };
+
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -96,8 +146,6 @@ const Store = () => {
   );
 }
 
-  console.log('Manufacturer:', manufacturer);
-
   return (
     <div className={s.container}>
       {width < 768 ? (
@@ -107,6 +155,7 @@ const Store = () => {
           isFollowed={isFollowed}
           handleFollow={handleFollow}
           renderStars={renderStars}
+          onStarsClick={handleStarsClick}
         />
       ) : (
       <div className={s.divHeader}>
@@ -170,12 +219,19 @@ const Store = () => {
           </div>
         </div>
       )}
-      <Reviews 
-        // reviews={manufacturer.reviews} 
-        reviews={manufacturer.reviews || []} 
-        manufacturerId={manufacturer.id}
-        onRefresh={() => dispatch(getUserData(userId, 1, pageSize, sortOrder))}
-      />
+      {width < 768 ? (
+        <ReviewsMobile 
+          reviews={manufacturer.reviews || []} 
+          manufacturerId={manufacturer.id}
+          onRefresh={() => dispatch(getUserData(userId, 1, pageSize, sortOrder))}
+        />
+      ) : (
+        <Reviews 
+          reviews={manufacturer.reviews || []} 
+          manufacturerId={manufacturer.id}
+          onRefresh={() => dispatch(getUserData(userId, 1, pageSize, sortOrder))}
+        />
+      )}
       <div className={s.divProducts}>
         <Products 
           // products={manufacturerProducts} 
@@ -198,6 +254,23 @@ const Store = () => {
           show={showModal} 
           onClose={() => setShowModal(false)} 
           message="Registrate como mayorista para seguir a fabricantes."
+        />
+      )}
+      {isCreateReviewModalOpen && (
+        <CreateReview
+          manufacturerId={manufacturer.id}
+          onClose={() => setIsCreateReviewModalOpen(false)}
+          onSubmit={handleCreateReview}
+        />
+      )}
+      {isEditReviewModalOpen && reviewToEdit && (
+        <EditReview
+          review={reviewToEdit}
+          onClose={() => {
+            setIsEditReviewModalOpen(false);
+            setReviewToEdit(null);
+          }}
+          onUpdate={handleUpdateReview}
         />
       )}
     </div>

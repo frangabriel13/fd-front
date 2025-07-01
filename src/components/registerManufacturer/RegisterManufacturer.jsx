@@ -113,13 +113,17 @@ const RegisterManufacturer = ({ user }) => {
           </div>
           <div className={s.divInput}>
             <h4>Mínimo de compra</h4>
-            <input 
-              className={s.input}
-              type="number"
-              name="minPurchase"
-              value={formData.minPurchase}
-              onChange={handleInputChange}
-            />
+            <div className={s.inputWithCurrency}>
+              <span className={s.currencySymbol}>$</span>
+              <input 
+                className={`${s.input} ${s.inputCurrency}`}
+                type="number"
+                name="minPurchase"
+                value={formData.minPurchase}
+                onChange={handleInputChange}
+                placeholder="0"
+              />
+            </div>
             {errors.minPurchase && <p className={s.error}>{errors.minPurchase}</p>}
           </div>
         </div>

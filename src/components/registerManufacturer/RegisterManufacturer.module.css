@@ -43,6 +43,27 @@
   font-size: 1.5rem;
 }
 
+.inputWithCurrency {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.currencySymbol {
+  position: absolute;
+  left: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gray-color);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.inputCurrency {
+  padding-left: 2.5rem;
+  width: 100%;
+}
+
 .divInputAddress {
   display: flex;
   flex-direction: column;

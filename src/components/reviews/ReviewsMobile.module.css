@@ -1,112 +1,74 @@
 .container {
-  padding: 0 1rem;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
+  border-radius: .4rem;
+  margin-bottom: 1rem;
+  margin-top: -3rem;
 }
 
 .divTitle {
   display: flex;
-  /* flex-direction: column; */
-  gap: .5rem;
+  justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 }
 
 .divTitle h2 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 600;
   color: var(--text-color);
   margin: 0;
+  flex: 1;
 }
 
 .divButtons {
   display: flex;
-  gap: 1rem;
+  gap: .8rem;
   align-items: center;
-  /* width: 100%; */
 }
 
 .btnReview {
-  padding: .8rem 1.2rem;
+  padding: .6rem 1rem;
   border: none;
   border-radius: .4rem;
   background-color: var(--main-color);
   color: white;
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  flex: 1;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .btnReview:hover {
   background-color: var(--second-color);
+  transform: translateY(-1px);
 }
 
 .btnMore {
-  padding: .8rem 1.2rem;
-  border: none;
+  padding: .6rem 1rem;
+  border: 1px solid var(--bg-color);
   border-radius: .4rem;
-  background-color: var(--second-bg-color);
-  color: white;
-  font-size: 1.3rem;
+  background-color: transparent;
+  color: var(--text-color);
+  font-size: 1.1rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  flex: 1;
+  transition: all 0.2s ease;
+  white-space: nowrap;
 }
 
 .btnMore:hover {
-  background-color: var(--main-color);
+  background-color: var(--bg-color);
+  transform: translateY(-1px);
 }
 
 .divReviews {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
-}
-
-/* Media queries para diferentes tamaños de móvil */
-@media (max-width: 480px) {
-  .container {
-    padding: 0 .5rem;
-  }
-
-  .divTitle h2 {
-    font-size: 1.6rem;
-  }
-
-  .divButtons {
-    gap: .8rem;
-  }
-
-  .btnReview,
-  .btnMore {
-    padding: .7rem 1rem;
-    font-size: 1.2rem;
-  }
-
-  .divReviews {
-    gap: 1rem;
-  }
-}
-
-@media (max-width: 360px) {
-  .container {
-    padding: 0 .3rem;
-  }
-
-  .divTitle h2 {
-    font-size: 1.5rem;
-  }
-
-  .divButtons {
-    gap: .6rem;
-  }
-
-  .btnReview,
-  .btnMore {
-    padding: .6rem .8rem;
-    font-size: 1.1rem;
-  }
+  gap: 1rem;
 }

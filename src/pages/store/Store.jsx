@@ -8,6 +8,7 @@ import Products from '../../components/productStore/Products';
 import Pagination from '../../components/pagination/Pagination';
 import Reviews from '../../components/reviews/Reviews';
 import HeaderStore from '../../components/shopping/HeaderStore';
+import ReviewsMobile from '../../components/reviews/ReviewsMobile';
 import {
   BsStar,
   BsStarHalf,
@@ -170,12 +171,19 @@ const Store = () => {
           </div>
         </div>
       )}
-      <Reviews 
-        // reviews={manufacturer.reviews} 
-        reviews={manufacturer.reviews || []} 
-        manufacturerId={manufacturer.id}
-        onRefresh={() => dispatch(getUserData(userId, 1, pageSize, sortOrder))}
-      />
+      {width < 768 ? (
+        <ReviewsMobile 
+          reviews={manufacturer.reviews || []} 
+          manufacturerId={manufacturer.id}
+          onRefresh={() => dispatch(getUserData(userId, 1, pageSize, sortOrder))}
+        />
+      ) : (
+        <Reviews 
+          reviews={manufacturer.reviews || []} 
+          manufacturerId={manufacturer.id}
+          onRefresh={() => dispatch(getUserData(userId, 1, pageSize, sortOrder))}
+        />
+      )}
       <div className={s.divProducts}>
         <Products 
           // products={manufacturerProducts} 

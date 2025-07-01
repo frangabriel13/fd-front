@@ -1,0 +1,112 @@
+.container {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.divTitle {
+  display: flex;
+  /* flex-direction: column; */
+  gap: .5rem;
+  align-items: center;
+}
+
+.divTitle h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.divButtons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  /* width: 100%; */
+}
+
+.btnReview {
+  padding: .8rem 1.2rem;
+  border: none;
+  border-radius: .4rem;
+  background-color: var(--main-color);
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex: 1;
+}
+
+.btnReview:hover {
+  background-color: var(--second-color);
+}
+
+.btnMore {
+  padding: .8rem 1.2rem;
+  border: none;
+  border-radius: .4rem;
+  background-color: var(--second-bg-color);
+  color: white;
+  font-size: 1.3rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  flex: 1;
+}
+
+.btnMore:hover {
+  background-color: var(--main-color);
+}
+
+.divReviews {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Media queries para diferentes tamaños de móvil */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 .5rem;
+  }
+
+  .divTitle h2 {
+    font-size: 1.6rem;
+  }
+
+  .divButtons {
+    gap: .8rem;
+  }
+
+  .btnReview,
+  .btnMore {
+    padding: .7rem 1rem;
+    font-size: 1.2rem;
+  }
+
+  .divReviews {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0 .3rem;
+  }
+
+  .divTitle h2 {
+    font-size: 1.5rem;
+  }
+
+  .divButtons {
+    gap: .6rem;
+  }
+
+  .btnReview,
+  .btnMore {
+    padding: .6rem .8rem;
+    font-size: 1.1rem;
+  }
+}

@@ -5,6 +5,8 @@ import { deleteProductsByUserId } from "../../../store/actions/productActions";
 import Pagination from "../../Pagination/Pagination";
 import EditManufacturer from "./EditManufacturer";
 import VerifyUser from "./VerifyUser";
+import { FaWhatsapp, FaEdit, FaTrash } from "react-icons/fa";
+import PropTypes from 'prop-types';
 import s from "./TableUsers.module.css";
 
 const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) => {
@@ -27,7 +29,22 @@ const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) =>
       await dispatch(deleteProductsByUserId(id));
       dispatch(deleteUser(id));
     }
-  }
+  };
+
+  const handleContactWhatsApp = (user) => {
+    if (user.manufacturer && user.manufacturer.phone) {
+      let phone = user.manufacturer.phone;
+      // Agregar código de país si no lo tiene
+      if (!phone.startsWith('+')) {
+        phone = '+54' + phone;
+      }
+      const message = `Hola`;
+      const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+      window.open(url, '_blank');
+    } else {
+      alert('Este usuario no tiene número de teléfono registrado.');
+    }
+  };
   
   return(
     <div className={s.container}>
@@ -64,15 +81,26 @@ const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) =>
                     </button>
                   )}
                   <button
+                    className={s.btnWhatsapp}
+                    onClick={() => handleContactWhatsApp(user)}
+                    title="Contactar por WhatsApp"
+                  >
+                    <FaWhatsapp />
+                  </button>
+                  <button
                     className={s.btnEdit}
                     onClick={() => handleOpenModal(user, 'edit')}
+                    title="Editar usuario"
                   >
-                    Editar
+                    <FaEdit />
                   </button>
                   <button 
                     className={s.btnDelete}
                     onClick={() => handleDeleteUser(user.id)}
-                  >Eliminar</button>
+                    title="Eliminar usuario"
+                  >
+                    <FaTrash />
+                  </button>
                 </td>
               </tr>
             ))
@@ -101,5 +129,12 @@ const TableUsers = ({ manufacturers, total, totalPages, page, onPageChange }) =>
   );
 };
 
+TableUsers.propTypes = {
+  manufacturers: PropTypes.array.isRequired,
+  total: PropTypes.number.isRequired,
+  totalPages: PropTypes.number,
+  page: PropTypes.number.isRequired,
+  onPageChange: PropTypes.func.isRequired
+};
 
 export default TableUsers;

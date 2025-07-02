@@ -107,8 +107,8 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
     <div className={s.container}>
       <div className={s.divHeader}>
         <div className={s.divCategory}>
-          {product.category && product.category.name && product.category.parent && product.category.parent.name ? (
-            <p>{product.category.name} | {product.category.parent.name}</p>
+          {product.category && product.category.name && product.gender && product.gender.name ? (
+            <p>{product.category.name} | {product.gender.name}</p>
           ) : null}
         </div>
         <div className={s.divName}>

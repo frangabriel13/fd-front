@@ -58,15 +58,6 @@ const HeaderStore = ({ manufacturer, followersCount, isFollowed, handleFollow, r
                 <BsTiktok className={s.iconSocial} />
               </a>
             )}
-            {/* <a
-              href={shareWspLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={s.iconShare}
-              title="Compartir por WhatsApp"
-            >
-              <BsWhatsapp className={s.iconSocial} onClick={() => shareWspLink(window.location.href)} />
-            </a> */}
             <button
               type="button"
               className={s.iconShare}

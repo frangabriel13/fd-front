@@ -92,7 +92,7 @@ const ReviewsMobile = ({ reviews, manufacturerId, onRefresh }) => {
   return (
     <div className={s.container}>
       <div className={s.divTitle}>
-        <h2>Últimas reviews</h2>
+        <h2>Comentarios</h2>
         <div className={s.divButtons}>
           <button className={s.btnReview} onClick={handleOpenModal}>Calificar</button>
           <button className={s.btnMore} onClick={handleShowAllReviews}>Ver más</button>

@@ -33,6 +33,7 @@ const ReviewMobile = ({ review, isEditable, onEdit, onDelete }) => {
       <div className={s.content}>
         <div className={s.header}>
           <div className={s.divStars}>
+            <h5>{review.user.wholesaler.name}</h5>
             <div className={s.divRating}>
               {renderStars(review.rating)}
             </div>
@@ -42,7 +43,6 @@ const ReviewMobile = ({ review, isEditable, onEdit, onDelete }) => {
           <p className={s.comment}>{review.comment}</p>
         </div>
         <div className={s.divFooter}>
-          <h5>De: {review.user.wholesaler.name}</h5>
           <p>Hace {timeAgo(review.createdAt)}</p>
         </div>
       </div>

@@ -29,7 +29,7 @@ const AllReviews = ({ reviews, onEdit, onDelete, onClose }) => {
       <div className={s.modalContent}>
         <div className={s.container}>
           <div className={s.divTitle}>
-            <h3>Todas las reviews</h3>
+            <h3>Todas los comentarios</h3>
           </div>
           <div className={s.divReviews}>
             {reviews.length > 0 ? (

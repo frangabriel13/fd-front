@@ -72,6 +72,14 @@
 .divStars {
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+}
+
+.divStars h5 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--second-bg-color);
+  margin: 0;
 }
 
 .divRating {
@@ -86,17 +94,10 @@
 
 .divFooter {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
   width: 100%;
   margin-top: 0.5rem;
-}
-
-.divFooter h5 {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--second-bg-color);
-  margin: 0;
 }
 
 .divFooter p {

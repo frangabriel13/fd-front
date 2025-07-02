@@ -19,7 +19,20 @@ const VerifyUser = ({ user, onClose }) => {
         <div className={s.container}>
           <div className={s.divHeader}>
             <h3>Verificar cuenta</h3>
-            <p>Verifica las credenciales de {user.manufacturer.name}</p>
+            <div className={s.divInfo}>
+              <div className={s.infoItem}>
+                <span className={s.infoLabel}>Marca:</span>
+                <span className={s.infoValue}>{user.manufacturer.name}</span>
+              </div>
+              <div className={s.infoItem}>
+                <span className={s.infoLabel}>Nombre:</span>
+                <span className={s.infoValue}>{user.manufacturer.owner}</span>
+              </div>
+              <div className={s.infoItem}>
+                <span className={s.infoLabel}>Teléfono:</span>
+                <span className={s.infoValue}>{user.manufacturer.phone}</span>
+              </div>
+            </div>
           </div>
           <div className={s.divCredentials}>
             <img

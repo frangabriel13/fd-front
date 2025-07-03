@@ -24,10 +24,20 @@ import otrosNino from '../assets/categorias/nino/otros.png';
 import interiorNino from '../assets/categorias/nino/ropa-interior.png';
 import otrosNina from '../assets/categorias/nina/otros.png';
 import vestidosNina from '../assets/categorias/nina/vestidos.png';
+import abrigosBebe from '../assets/categorias/bebes/ABRIGOS.png';
+import accesoriosBebe from '../assets/categorias/bebes/ACCESORIOS.png';
 import bodysBebe from '../assets/categorias/bebes/bodys.png';
-import eneteritosBebe from '../assets/categorias/bebes/conjuntos-y-enteritos.png';
-import otrosBebe from '../assets/categorias/bebes/otros.png';
+import calzadosBebe from '../assets/categorias/bebes/CALZADOS.png';
+import camisasBebe from '../assets/categorias/bebes/CAMISAS.png';
+import conjuntosBebe from '../assets/categorias/bebes/CONJUNTOS.png';
+import eneteritosBebe from '../assets/categorias/bebes/ENTERIZOS.png';
+import mediasBebe from '../assets/categorias/bebes/MEDIAS.png';
+import otrosBebe from '../assets/categorias/bebes/OTROS.png';
+import pantalonesBebe from '../assets/categorias/bebes/PANTALONES.png';
 import remerasBebe from '../assets/categorias/bebes/remeras.png';
+import vestidosBebe from '../assets/categorias/bebes/VESTIDOS.png';
+import bisuteriaImg from '../assets/categorias/otros/BISUTERIA.png';
+import blanqueriaImg from '../assets/categorias/otros/BLANQUERIA.png';
 
 export const parentCategories = [
   { id: 88, name: 'Indumentaria' },
@@ -117,17 +127,17 @@ export const genders = [
     name: 'Bebés', 
     url: 'bebes',
     categories: [
-      { id: 135, name: 'Jeans', image, url: 'jeans', img: jeansHombre },
-      { id: 138, name: 'Pantalones y shorts', image, url: 'pantalones-y-shorts', img: bermudasShorts },
-      { id: 141, name: 'Camperas', image, url: 'camperas', img: camperasNino },
-      { id: 142, name: 'Remeras', image, url: 'remeras', img: remerasBebe },
-      { id: 143, name: 'Camisas', image, url: 'camisas', img: camisasHombre },
       { id: 145, name: 'Bodys', image, url: 'bodys', img: bodysBebe },
-      { id: 148, name: 'Buzos y swaters', image, url: 'buzos-y-swaters', img: buzosNino },
-      { id: 149, name: 'Vestidos', image, url: 'vestidos', img: vestidosNina },
-      { id: 150, name: 'Conjuntos y enteritos', image, url: 'conjuntos-y-enteritos', img: eneteritosBebe },
-      { id: 152, name: 'Ropa interior y mallas', image, url: 'ropa-interior-y-mallas', img: interiorNino },
-      { id: 154, name: 'Calzados', image, url: 'calzados', img: calzadosHombre },
+      { id: 142, name: 'Remeras', image, url: 'remeras', img: remerasBebe },
+      { id: 143, name: 'Camisas', image, url: 'camisas', img: camisasBebe },
+      { id: 156, name: 'Abrigos', image, url: 'abrigos', img: abrigosBebe },
+      { id: 149, name: 'Vestidos', image, url: 'vestidos', img: vestidosBebe },
+      { id: 136, name: 'Pantalones', image, url: 'pantalones', img: pantalonesBebe },
+      { id: 150, name: 'Conjuntos', image, url: 'conjuntos', img: conjuntosBebe },
+      { id: 157, name: 'Enterizos', image, url: 'enterizos', img: eneteritosBebe },
+      { id: 154, name: 'Calzados', image, url: 'calzados', img: calzadosBebe },
+      { id: 158, name: 'Medias', image, url: 'medias', img: mediasBebe },
+      { id: 159, name: 'Accesorios', image, url: 'accesorios', img: accesoriosBebe },
       { id: 155, name: 'Otros', image, url: 'otros', img: otrosBebe },
     ],
   },
@@ -136,8 +146,8 @@ export const genders = [
     name: 'Más', 
     url: 'mas',
     categories: [
-      { id: 130, name: 'Blanquería', image, url: 'blanqueria', img: otrosBebe },
-      { id: 131, name: 'Bisutería', image, url: 'bisuteria', img: otrosNina },
+      { id: 130, name: 'Blanquería', image, url: 'blanqueria', img: bisuteriaImg },
+      { id: 131, name: 'Bisutería', image, url: 'bisuteria', img: blanqueriaImg },
     ],
   },
 ];

@@ -20,6 +20,8 @@ const Description = ({ text }) => {
         ref={pRef}
         className={`${s.text} ${!showFull ? s.clamp : ''}`}
         style={{ marginBottom: 0 }}
+        data-no-map="true"
+        suppressHydrationWarning={true}
       >
         {text}
       </p>
@@ -34,6 +36,5 @@ const Description = ({ text }) => {
     </div>
   );
 };
-
 
 export default Description;

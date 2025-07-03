@@ -27,6 +27,7 @@ import Packs from './pages/packs/Packs';
 import Shopping from './pages/shopping/Shopping';
 import Order from './pages/order/Order';
 import Search from './pages/search/Search';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const location = useLocation();
@@ -62,8 +63,14 @@ function App() {
     // }
   }, [isAuthenticated, user, location.pathname, navigate]);
 
+  // Scroll hacia arriba en cada cambio de ruta (respaldo)
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, [location.pathname]);
+
   return (
     <div className="App">
+      <ScrollToTop />
       {isLoginPage ? (
         <HeaderLogin />
       ) : width < 768 ? (

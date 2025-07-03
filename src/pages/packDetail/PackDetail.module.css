@@ -108,6 +108,7 @@
 @media (max-width: 480px) {
   .container {
     margin-top: 4.5rem;
+    gap: 1rem;
   }
 
   .divHeader {

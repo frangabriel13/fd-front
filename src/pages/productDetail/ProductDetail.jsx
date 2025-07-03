@@ -54,9 +54,6 @@ const ProductDetail = () => {
     return <div>Producto sin imágenes</div>;
   }
 
-  console.log('Product Detail:', product);
-  console.log('Manufacturer Detail:', manufacturer);
-
   return (
     <div className={s.container}>
       <div className={s.divHeader}>

@@ -4,16 +4,30 @@
   gap: .5rem;
   align-items: flex-start;
   justify-content: center;
+  /* Prevenir detección automática de Google Maps */
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
 }
 
 .text {
   color: #222;
   font-size: 1.4rem;
+  /* Prevenir detección automática de direcciones */
+  -webkit-touch-callout: none;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  pointer-events: auto;
 }
 
 .clamp {
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;

@@ -9,7 +9,7 @@
 .divHeader {
   display: flex;
   align-items: center;
-  padding: 2rem 30rem;
+  padding: 1rem 30rem;
   background-color: #d8071c;
   justify-content: center;
   text-align: center;
@@ -111,7 +111,7 @@
   }
 
   .divHeader {
-    padding: 1rem 0.5rem;
+    padding: .5rem 0.5rem;
     min-height: 4rem;
   }
 

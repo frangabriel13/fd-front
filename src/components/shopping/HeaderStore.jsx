@@ -12,7 +12,18 @@ const HeaderStore = ({ manufacturer, followersCount, isFollowed, handleFollow, r
       <div className={s.divData}>
         <div className={s.divProfile}>
           <div className={s.divImage}>
-            <img src={manufacturer.image} alt={manufacturer.name} className={s.imgLogo} />
+            {manufacturer.live && manufacturer.tiktokUrl ? (
+              <a
+                href={manufacturer.tiktokUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ cursor: 'pointer' }}
+              >
+                <img src={manufacturer.image} alt={manufacturer.name} className={s.imgLogo} />
+              </a>
+            ) : (
+              <img src={manufacturer.image} alt={manufacturer.name} className={s.imgLogo} />
+            )}
             {manufacturer.live && <div className={s.live}>LIVE</div>}
           </div>
           <h2 className={s.name}>{manufacturer.name}</h2>

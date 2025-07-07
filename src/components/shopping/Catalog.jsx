@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import ProductCard from '../productStore/ProductCard';
 import Pagination from '../pagination/Pagination';
 import s from './Catalog.module.css';
@@ -10,6 +10,7 @@ import { GrLinkPrevious } from "react-icons/gr";
 const Catalog = ({ genderId, categoryId }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { products, loading, error, currentPage, totalProducts } = useSelector(state => state.product);
   const [sortBy, setSortBy] = useState('notOrdered');
 
@@ -18,7 +19,18 @@ const Catalog = ({ genderId, categoryId }) => {
   }, [dispatch, genderId, categoryId, currentPage, sortBy]);
 
   const handleBack = () => {
-    navigate('/tienda');
+    const pathSegments = location.pathname.split('/').filter(Boolean);
+    
+    // Si solo hay un segmento después de la raíz (ej: /tienda), ir a home
+    if (pathSegments.length <= 1) {
+      navigate('/');
+      return;
+    }
+    
+    // Remover el último segmento y crear la nueva ruta
+    pathSegments.pop();
+    const newPath = '/' + pathSegments.join('/');
+    navigate(newPath);
   };
 
   const handlePageChange = (page) => {

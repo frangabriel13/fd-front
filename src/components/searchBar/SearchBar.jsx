@@ -45,8 +45,15 @@ const SearchBar = () => {
   };
 
   const handleSearch = () => {
-    if(searchTerm) {
-      navigate(`/tienda?searchTerm=${encodeURIComponent(searchTerm)}`);
+    if(searchTerm.trim()) {
+      setShowResults(false);
+      navigate(`/busqueda/${encodeURIComponent(searchTerm.trim())}`);
+    }
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      handleSearch();
     }
   };
 
@@ -58,7 +65,8 @@ const SearchBar = () => {
           className={s.input} 
           placeholder="Buscar productos, fabricantes y más..."
           value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}   
+          onChange={(e) => setSearchTerm(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <button className={s.searchBtn} onClick={handleSearch}>
           <FaSearch className={s.icon} />

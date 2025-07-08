@@ -36,36 +36,6 @@ export const getProducts = (
   }
 };
 
-// export const getProducts = (page = 1, pageSize = 24, filters = {}, searchTerm = '') => async (dispatch) => {
-//   dispatch({ type: 'GET_PRODUCTS_REQUEST' });
-//   console.log('filters', filters);
-//   try {
-//     const response = await productInstance.get('/', {
-//       params: {
-//         page,
-//         pageSize,
-//         searchTerm,
-//         ...filters,
-//       }
-//     });
-//     console.log(response.data);
-//     dispatch({
-//       type: 'GET_PRODUCTS_SUCCESS',
-//       payload: {
-//         products: response.data.products,
-//         currentPage: page,
-//         pageSize: pageSize,
-//         totalProducts: response.data.totalProducts,
-//       }
-//     });
-//   } catch(error) {
-//     dispatch({
-//       type: 'GET_PRODUCTS_FAILURE',
-//       error: error.message,
-//     });
-//   }
-// };
-
 export const searchProducts = (page = 1, pageSize = 18, search) => async (dispatch) => {
   dispatch({ type: 'SEARCH_PRODUCTS_REQUEST' });
   try {
@@ -320,6 +290,40 @@ export const getRelatedProducts = (categoryId) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: 'GET_RELATED_PRODUCTS_FAILURE',
+      error: error.message,
+    });
+  }
+};
+
+export const advancedSearchProducts = (
+  page = 1,
+  pageSize = 20,
+  search,
+  sortBy = 'relevance'
+) => async (dispatch) => {
+  dispatch({ type: 'ADVANCED_SEARCH_PRODUCTS_REQUEST' });
+  try {
+    const params = {
+      page,
+      pageSize,
+      search,
+      sortBy,
+    };
+
+    const response = await productInstance.get('/advanced-search', { params });
+    dispatch({
+      type: 'ADVANCED_SEARCH_PRODUCTS_SUCCESS',
+      payload: {
+        products: response.data.products,
+        currentPage: page,
+        pageSize: pageSize,
+        totalProducts: response.data.totalProducts,
+        searchTerm: response.data.searchTerm,
+      }
+    });
+  } catch (error) {
+    dispatch({
+      type: 'ADVANCED_SEARCH_PRODUCTS_FAILURE',
       error: error.message,
     });
   }

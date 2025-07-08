@@ -9,6 +9,12 @@ const initialState = {
   searchPageSize: 18,
   totalSearchProducts: 0,
   
+  advancedSearchProducts: [],
+  advancedSearchCurrentPage: 1,
+  advancedSearchPageSize: 20,
+  totalAdvancedSearchProducts: 0,
+  advancedSearchTerm: '',
+  
   myProducts: [],
   myCurrentPage: 1,
   myPageSize: 10,
@@ -66,6 +72,21 @@ const productReducer = (state = initialState, action) => {
         totalSearchProducts: action.payload.totalProducts
       };
     case 'SEARCH_PRODUCTS_FAILURE':
+      return { ...state, loading: false, error: action.error };
+    case 'ADVANCED_SEARCH_PRODUCTS_REQUEST':
+      return { ...state, loading: true, error: null };
+    case 'ADVANCED_SEARCH_PRODUCTS_SUCCESS':
+      return {
+        ...state,
+        loading: false,
+        error: null,
+        advancedSearchProducts: action.payload.products,
+        advancedSearchCurrentPage: action.payload.currentPage,
+        advancedSearchPageSize: action.payload.pageSize,
+        totalAdvancedSearchProducts: action.payload.totalProducts,
+        advancedSearchTerm: action.payload.searchTerm,
+      };
+    case 'ADVANCED_SEARCH_PRODUCTS_FAILURE':
       return { ...state, loading: false, error: action.error };
     case 'GET_PRODUCTS_BY_USER_REQUEST':
       return { ...state, loading: true, error: null };

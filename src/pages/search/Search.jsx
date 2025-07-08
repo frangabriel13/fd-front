@@ -22,12 +22,12 @@ const Search = () => {
 
   useEffect(() => {
     if(query) {
-      dispatch(advancedSearchProducts(1, 20, query, sortBy));
+      dispatch(advancedSearchProducts(1, 24, query, sortBy));
     }
   }, [dispatch, query, sortBy]);
 
   const handlePageChange = (page) => {
-    dispatch(advancedSearchProducts(page, 20, query, sortBy));
+    dispatch(advancedSearchProducts(page, 24, query, sortBy));
   };
 
   const handleSortChange = (e) => {
@@ -103,10 +103,10 @@ const Search = () => {
             )}
           </div>
 
-          {products.length > 0 && totalProducts > 20 && (
+          {products.length > 0 && totalProducts > 24 && (
             <Pagination 
               totalProducts={totalProducts} 
-              pageSize={20} 
+              pageSize={24} 
               currentPage={currentPage} 
               onPageChange={handlePageChange}
             />

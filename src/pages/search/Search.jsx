@@ -5,6 +5,7 @@ import ProductCard from '../../components/productStore/ProductCard';
 import Pagination from '../../components/pagination/Pagination';
 import { advancedSearchProducts } from '../../store/actions/productActions';
 import s from './Search.module.css';
+import { GrLinkPrevious } from "react-icons/gr";
 
 const Search = () => {
   const dispatch = useDispatch();
@@ -17,14 +18,10 @@ const Search = () => {
     totalAdvancedSearchProducts: totalProducts
   } = useSelector(state => state.product);
   
-  const [sortBy, setSortBy] = useState('relevance');
-
-  // Debug: log del estado actual
-  console.log('Search component state:', { products, loading, error, currentPage, totalProducts });
+  const [sortBy, setSortBy] = useState('notOrdered');
 
   useEffect(() => {
     if(query) {
-      console.log('Dispatching advancedSearchProducts with query:', query, 'sortBy:', sortBy);
       dispatch(advancedSearchProducts(1, 20, query, sortBy));
     }
   }, [dispatch, query, sortBy]);
@@ -37,10 +34,20 @@ const Search = () => {
     setSortBy(e.target.value);
   };
 
+  const handleBack = () => {
+    window.history.back();
+  };
+
   return (
     <div className={s.container}>
       <div className={s.header}>
-        <h2>Resultados de búsqueda</h2>
+        <button
+          className={`${s.button} ${s.backBtn}`}
+          onClick={handleBack}
+        >
+          <GrLinkPrevious className={s.iconBack} />
+          Volver
+        </button>
         {query && (
           <p className={s.searchInfo}>
             Mostrando resultados para: <strong>&ldquo;{query}&rdquo;</strong>
@@ -52,14 +59,14 @@ const Search = () => {
       </div>
 
       {query ? (
-        <>
+        <div className={s.searchContainer}>
           <div className={s.controls}>
             <select 
               className={s.sortSelect} 
               value={sortBy} 
               onChange={handleSortChange}
             >
-              <option value="relevance">Más relevante</option>
+              <option value="notOrdered">Sin orden</option>
               <option value="newest">Más nuevos</option>
               <option value="lowestPrice">Menor precio</option>
               <option value="highestPrice">Mayor precio</option>
@@ -104,7 +111,7 @@ const Search = () => {
               onPageChange={handlePageChange}
             />
           )}
-        </>
+        </div>
       ) : (
         <div className={s.noQuery}>
           <p className={s.description}>

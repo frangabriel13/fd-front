@@ -11,12 +11,14 @@ const Catalog = ({ genderId, categoryId }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { products, loading, error, currentPage, totalProducts } = useSelector(state => state.product);
+  const { products, loading, error, totalProducts } = useSelector(state => state.product);
   const [sortBy, setSortBy] = useState('notOrdered');
+  const [currentPage, setCurrentPage] = useState(1); // Estado local para la página
 
   useEffect(() => {
-    dispatch(getProducts(currentPage, 24, genderId, categoryId, sortBy));
-  }, [dispatch, genderId, categoryId, currentPage, sortBy]);
+    setCurrentPage(1); // Resetear a página 1
+    dispatch(getProducts(1, 24, genderId, categoryId, sortBy));
+  }, [dispatch, genderId, categoryId, sortBy]);
 
   const handleBack = () => {
     const pathSegments = location.pathname.split('/').filter(Boolean);
@@ -34,7 +36,8 @@ const Catalog = ({ genderId, categoryId }) => {
   };
 
   const handlePageChange = (page) => {
-    dispatch(getProducts(page, 24, genderId, categoryId));
+    setCurrentPage(page); // Actualizar estado local
+    dispatch(getProducts(page, 24, genderId, categoryId, sortBy));
   };
 
   const handleSortChange = (e) => {

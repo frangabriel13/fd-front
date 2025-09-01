@@ -178,7 +178,7 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
         <h3>Descripción:</h3>
         <Description text={product.description} />
       </div>
-      <div className={s.divQuantities}>
+      {/* <div className={s.divQuantities}>
         { product.isVariable ? (
           <p>Selecciona los  colores:</p>
         ) : (
@@ -221,6 +221,71 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
             )
           })
         }
+      </div> */}
+      <div className={s.divQuantities}>
+        {(!product.isVariable && (product.category === 130 || product.category === 131)) ? (
+          product.inventories.map((inv) => (
+            <div key={inv.id} className={s.divInventory}>
+              <div className={s.divQuant}>
+                <button 
+                  className={s.buttonQuant}
+                  onClick={() => handleDecrement(inv.id)}
+                >-</button>
+                <input 
+                  type="number" 
+                  className={s.inputQuant}
+                  value={quantities.find((q) => q.id === inv.id).quantity}
+                  onChange={(e) => handleChange(inv.id, e.target.value)}
+                />
+                <button 
+                  className={s.buttonQuant}
+                  onClick={() => handleIncrement(inv.id)}
+                >+</button>
+              </div>
+            </div>
+          ))
+        ) : (
+          <>
+            {product.isVariable ? (
+              <p>Selecciona los colores:</p>
+            ) : (
+              <p>Selecciona los talles:</p>
+            )}
+            {product.inventories.map((inv) => (
+              <div key={inv.id} className={s.divInventory}>
+                {product.isVariable ? (
+                  <div className={s.divColor}>
+                    <div
+                      className={s.color}
+                      style={{
+                        backgroundColor: inv.code,
+                      }}
+                    ></div>
+                    <p>{inv.color}</p>
+                  </div>
+                ) : (
+                  <p>{inv.size}</p>
+                )}
+                <div className={s.divQuant}>
+                  <button 
+                    className={s.buttonQuant}
+                    onClick={() => handleDecrement(inv.id)}
+                  >-</button>
+                  <input 
+                    type="number" 
+                    className={s.inputQuant}
+                    value={quantities.find((q) => q.id === inv.id).quantity}
+                    onChange={(e) => handleChange(inv.id, e.target.value)}
+                  />
+                  <button 
+                    className={s.buttonQuant}
+                    onClick={() => handleIncrement(inv.id)}
+                  >+</button>
+                </div>
+              </div>
+            ))}
+          </>
+        )}
       </div>
       <div className={s.divCart}>
         <button className={s.btnCart} onClick={handleAddToCartClick}>Añadir al carrito</button>

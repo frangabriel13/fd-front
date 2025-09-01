@@ -223,7 +223,7 @@ const DataProduct = ({ product, manufacturer, onAddToCart }) => {
         }
       </div> */}
       <div className={s.divQuantities}>
-        {(!product.isVariable && (product.category === 130 || product.category === 131)) ? (
+        {(!product.isVariable && (product.category.id === 130 || product.category.id === 131)) ? (
           product.inventories.map((inv) => (
             <div key={inv.id} className={s.divInventory}>
               <div className={s.divQuant}>
